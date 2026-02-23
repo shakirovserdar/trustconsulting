@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="hero">
+        <h2>{{ diller[dil_kodu]['hero_baslik'] }}</h2>
+        <p>{{ diller[dil_kodu]['hero_alt'] }}</p>
+        <div>
+            <a href="{{ url_for('iletisim') }}" class="btn">{{ diller[dil_kodu]['hero_buton1'] }}</a>
+            <a href="{{ url_for('hizmetler') }}" class="btn">{{ diller[dil_kodu]['hero_buton2'] }}</a>
+        </div>
+    </div>
+
+    <div class="ozet-hizmetler">
+        <div class="hizmet-karti">
+            <h3>{{ diller[dil_kodu]['ozet_hizmet1_baslik'] }}</h3>
+            <p>{{ diller[dil_kodu]['ozet_hizmet1_aciklama'] }}</p>
+        </div>
+        <div class="hizmet-karti">
+            <h3>{{ diller[dil_kodu]['ozet_hizmet2_baslik'] }}</h3>
+            <p>{{ diller[dil_kodu]['ozet_hizmet2_aciklama'] }}</p>
+        </div>
+        <div class="hizmet-karti">
+            <h3>{{ diller[dil_kodu]['ozet_hizmet3_baslik'] }}</h3>
+            <p>{{ diller[dil_kodu]['ozet_hizmet3_aciklama'] }}</p>
+        </div>
+    </div>
+
+    <div class="duyurular">
+        <h3>{{ diller[dil_kodu]['duyuru_baslik'] }}</h3>
+        <ul>
+            <li>{{ diller[dil_kodu]['duyuru1'] }}</li>
+            <li>{{ diller[dil_kodu]['duyuru2'] }}</li>
+        </ul>
+    </div>
+{% endblock %}

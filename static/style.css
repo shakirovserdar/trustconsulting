@@ -1,0 +1,267 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background-color: #9ec2e6;  /* ana arka plan açık mavi */
+    color: #01263a;  /* yazılar için koyu mavi, okunabilirlik */
+    line-height: 1.6;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: #9ec2e6;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+.logo h1 {
+    color: #01263a;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+/* Navigasyon butonları */
+nav {
+    display: flex;
+    gap: 0.5rem;
+}
+
+nav a {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: #2271b1;  /* buton rengi */
+    color: #FFFFFF;  /* beyaz yazı */
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+nav a:hover {
+    background-color: #01263a;  /* hover koyu mavi */
+    color: #FFFFFF;  /* yazı rengi değişmesin */
+    transform: scale(1.02);
+}
+
+/* Dil butonları */
+.dil-butonlari {
+    display: flex;
+    gap: 0.3rem;
+}
+
+.dil-butonlari a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background-color: #2271b1;
+    color: #FFFFFF;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.dil-butonlari a:hover {
+    background-color: #01263a;
+    color: #FFFFFF;
+}
+
+/* Hero bölümü */
+.hero {
+    text-align: center;
+    padding: 4rem 5%;
+    background-color: rgba(255,255,255,0.1);  /* hafif şeffaf beyaz katman */
+    border-radius: 8px;
+    margin: 2rem 5%;
+}
+
+.hero h2 {
+    font-size: 2.8rem;
+    color: #01263a;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    color: #01263a;
+    max-width: 700px;
+    margin: 0 auto 2rem auto;
+}
+
+/* Butonlar (hero içindeki) */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    margin: 0 0.5rem;
+    background-color: #2271b1;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn:hover {
+    background-color: #01263a;
+    color: #FFFFFF;
+    transform: scale(1.02);
+}
+
+/* Özet hizmet kartları */
+.ozet-hizmetler {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin: 4rem 5%;
+}
+
+.hizmet-karti {
+    flex: 1;
+    padding: 1.5rem;
+    background-color: #FFFFFF;  /* beyaz kartlar */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.hizmet-karti:hover {
+    transform: translateY(-5px);
+}
+
+.hizmet-karti h3 {
+    color: #2271b1;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.hizmet-karti p {
+    color: #01263a;
+}
+
+/* Duyurular */
+.duyurular {
+    margin: 4rem 5%;
+    padding: 2rem;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.duyurular h3 {
+    color: #2271b1;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.duyurular ul {
+    list-style: none;
+}
+
+.duyurular li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #9ec2e6;
+    color: #01263a;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem 5%;
+    background-color: #2271b1;
+    color: #FFFFFF;
+    margin-top: 2rem;
+}
+
+/* İletişim formu */
+form {
+    max-width: 600px;
+    margin: 2rem auto;
+    background-color: #FFFFFF;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+label {
+    display: block;
+    margin: 1rem 0 0.2rem;
+    color: #2271b1;
+    font-weight: 500;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #9ec2e6;
+    border-radius: 4px;
+    font-family: inherit;
+    color: #01263a;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #2271b1;
+}
+
+button[type="submit"] {
+    background-color: #2271b1;
+    color: #FFFFFF;
+    border: none;
+    padding: 0.8rem 2rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #01263a;
+}
+
+.flash {
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 4px;
+    background-color: #2271b1;
+    color: #FFFFFF;
+}
+
+/* Hakkımızda, Hizmetler sayfaları için genel stil */
+.sayfa-icerik {
+    background-color: #FFFFFF;
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem 5%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.sayfa-icerik h2 {
+    color: #2271b1;
+    margin-bottom: 1rem;
+}
+
+.sayfa-icerik p {
+    color: #01263a;
+    line-height: 1.8;
+}

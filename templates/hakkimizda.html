@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="sayfa-icerik">
+        <h2>{{ diller[dil_kodu]['hakkimizda_baslik'] }}</h2>
+        <p>{{ diller[dil_kodu]['hakkimizda_icerik'] }}</p>
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="sayfa-icerik">
+        <h2>{{ diller[dil_kodu]['iletisim_baslik'] }}</h2>
+        <form method="post">
+            <label>{{ diller[dil_kodu]['iletisim_form_isim'] }}:</label>
+            <input type="text" name="isim" required>
+            
+            <label>{{ diller[dil_kodu]['iletisim_form_email'] }}:</label>
+            <input type="email" name="email" required>
+            
+            <label>{{ diller[dil_kodu]['iletisim_form_mesaj'] }}:</label>
+            <textarea name="mesaj" required></textarea>
+            
+            <button type="submit">{{ diller[dil_kodu]['iletisim_form_gonder'] }}</button>
+        </form>
+    </div>
+{% endblock %}

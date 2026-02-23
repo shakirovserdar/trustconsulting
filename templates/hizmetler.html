@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="sayfa-icerik">
+        <h2>{{ diller[dil_kodu]['hizmetler_baslik'] }}</h2>
+        
+        <div style="margin-top: 2rem;">
+            <h3>{{ diller[dil_kodu]['hizmet1_baslik'] }}</h3>
+            <p>{{ diller[dil_kodu]['hizmet1_aciklama'] }}</p>
+            
+            <h3>{{ diller[dil_kodu]['hizmet2_baslik'] }}</h3>
+            <p>{{ diller[dil_kodu]['hizmet2_aciklama'] }}</p>
+            
+            <h3>{{ diller[dil_kodu]['hizmet3_baslik'] }}</h3>
+            <p>{{ diller[dil_kodu]['hizmet3_aciklama'] }}</p>
+            
+            <h3>{{ diller[dil_kodu]['hizmet4_baslik'] }}</h3>
+            <p>{{ diller[dil_kodu]['hizmet4_aciklama'] }}</p>
+        </div>
+    </div>
+{% endblock %}

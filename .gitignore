@@ -1,0 +1,4 @@
+venv/
+site.db
+__pycache__/
+*.pyc
