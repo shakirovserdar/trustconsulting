@@ -152,6 +152,10 @@ def init_db():
         ''')
 
 # Ana sayfa
+@app.route('/test')
+def test():
+    return "Test çalışıyor"
+
 @app.route('/')
 def index():
     return render_template('index.html', baslik='Ana Sayfa')
