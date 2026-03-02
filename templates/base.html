@@ -12,15 +12,15 @@
             <img src="{{ url_for('static', filename='logo.png') }}" alt="Trust Consulting Logo">
             <h1>{{ diller[dil_kodu]['ana_baslik'] }}</h1>
         </div>
-        <nav>
-    <a href="{{ url_for('index') }}" class="nav-btn">{{ diller[dil_kodu]['menu_anasayfa'] }}</a>
-    <a href="{{ url_for('hakkimizda') }}" class="nav-btn">{{ diller[dil_kodu]['menu_hakkimizda'] }}</a>
-    <a href="{{ url_for('hizmetler') }}" class="nav-btn">{{ diller[dil_kodu]['menu_hizmetler'] }}</a>
-    <a href="{{ url_for('iletisim') }}" class="nav-btn">{{ diller[dil_kodu]['menu_iletisim'] }}</a>
-	</nav>
-        <div class="dil-butonlari">
-            <a href="?dil=tr">TR</a> |
-            <a href="?dil=ru">RU</a> |
+        <div class="nav-buttons">
+            <a href="{{ url_for('index') }}">{{ diller[dil_kodu]['menu_anasayfa'] }}</a>
+            <a href="{{ url_for('hakkimizda') }}">{{ diller[dil_kodu]['menu_hakkimizda'] }}</a>
+            <a href="{{ url_for('hizmetler') }}">{{ diller[dil_kodu]['menu_hizmetler'] }}</a>
+            <a href="{{ url_for('iletisim') }}">{{ diller[dil_kodu]['menu_iletisim'] }}</a>
+        </div>
+        <div class="dil-buttons">
+            <a href="?dil=tr">TR</a>
+            <a href="?dil=ru">RU</a>
             <a href="?dil=tk">TK</a>
         </div>
     </header>
