@@ -198,3 +198,7 @@ button[type="submit"]:hover {
     color: #ffffff;
     border-radius: 4px;
 }
+
+nav a, .dil-butonlari a {
+    color: #ffffff !important;
+}
