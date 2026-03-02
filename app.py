@@ -9,6 +9,8 @@ app.secret_key = 'trustconsulting_gizli_anahtar'
 # Dil dosyaları
 diller = {
     'tr': {
+	'travel_baslik': 'Seyahat Danışmanlığı',
+'travel_aciklama': 'Güvenilir seyahat planlaması, vize işlemleri ve yurtdışı eğitim danışmanlığı için doğru adres.',
         'ana_baslik': 'Trust Consulting',
         'menu_anasayfa': 'Ana Sayfa',
         'menu_hakkimizda': 'Hakkımızda',

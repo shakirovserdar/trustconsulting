@@ -11,14 +11,15 @@
         <div class="logo">
             <img src="{{ url_for('static', filename='logo.png') }}" alt="Trust Consulting Logo">
             <h1>{{ diller[dil_kodu]['ana_baslik'] }}</h1>
+            <p>TRAVEL COMPANY</p>  <!-- Sabit yazı, dil desteği eklemek istersen sonra hallederiz -->
         </div>
-        <div class="nav-buttons">
+        <nav>
             <a href="{{ url_for('index') }}">{{ diller[dil_kodu]['menu_anasayfa'] }}</a>
             <a href="{{ url_for('hakkimizda') }}">{{ diller[dil_kodu]['menu_hakkimizda'] }}</a>
             <a href="{{ url_for('hizmetler') }}">{{ diller[dil_kodu]['menu_hizmetler'] }}</a>
             <a href="{{ url_for('iletisim') }}">{{ diller[dil_kodu]['menu_iletisim'] }}</a>
-        </div>
-        <div class="dil-buttons">
+        </nav>
+        <div class="dil-butonlari">
             <a href="?dil=tr">TR</a>
             <a href="?dil=ru">RU</a>
             <a href="?dil=tk">TK</a>
@@ -37,6 +38,7 @@
     </main>
     <footer>
         <p>{{ diller[dil_kodu]['footer_telif'] }}</p>
+        <p>İletişim: info@trustconsulting.com | +90 555 123 4567</p>
     </footer>
 </body>
 </html>
