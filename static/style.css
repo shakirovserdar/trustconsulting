@@ -202,3 +202,38 @@ button[type="submit"]:hover {
 nav a, .dil-butonlari a {
     color: #ffffff !important;
 }
+
+/* Logo yuvarlak yap */
+.logo img {
+    border-radius: 50%;
+    object-fit: cover; /* logonun düzgün sığması için */
+}
+
+/* Logo ve başlık için ayrı bir panel (kart) efekti */
+.logo {
+    background-color: #ffffff; /* beyaz zemin */
+    padding: 10px 20px;
+    border-radius: 50px; /* yuvarlak köşeler */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Navigasyon butonları (ana sayfa, hakkımızda vb.) */
+nav a {
+    font-size: 1rem; /* normal boyut */
+    padding: 0.6rem 1.2rem;
+}
+
+/* Dil butonları daha küçük olsun */
+.dil-butonlari a {
+    font-size: 0.85rem; /* küçük yazı */
+    padding: 0.3rem 0.6rem; /* küçük buton */
+    margin: 0 0.1rem;
+}
+
+/* İstersen header düzeni */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* mobil için */
+}
