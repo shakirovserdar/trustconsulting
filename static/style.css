@@ -716,15 +716,77 @@ header {
 
 .hd {
     position: absolute;
-    opacity: 0.07;
-    filter: grayscale(30%);
-    animation: hd-yuz 10s ease-in-out infinite;
+    opacity: 0.18;
     user-select: none;
+    line-height: 1;
 }
 
-@keyframes hd-yuz {
-    0%, 100% { transform: translateY(0) rotate(-5deg); opacity: 0.06; }
-    50%       { transform: translateY(-14px) rotate(8deg); opacity: 0.13; }
+/* YÜZEN — yukarı aşağı */
+.hd-float {
+    animation: hd-float-anim ease-in-out infinite;
+}
+@keyframes hd-float-anim {
+    0%,100% { transform: translateY(0px) scale(1);    opacity: 0.16; }
+    50%      { transform: translateY(-18px) scale(1.06); opacity: 0.28; }
+}
+
+/* SALLANAN — sol sağ hafif */
+.hd-sway {
+    animation: hd-sway-anim ease-in-out infinite;
+}
+@keyframes hd-sway-anim {
+    0%,100% { transform: translateX(0) rotate(-4deg); opacity: 0.16; }
+    50%      { transform: translateX(12px) rotate(5deg); opacity: 0.26; }
+}
+
+/* DÖNEN — dünya globları */
+.hd-spin {
+    animation: hd-spin-anim linear infinite;
+}
+@keyframes hd-spin-anim {
+    0%   { transform: rotate(0deg) scale(1);    opacity: 0.15; }
+    50%  { transform: rotate(180deg) scale(1.1); opacity: 0.25; }
+    100% { transform: rotate(360deg) scale(1);  opacity: 0.15; }
+}
+
+/* YANIP SÖNEN — yıldızlar */
+.hd-twinkle {
+    animation: hd-twinkle-anim ease-in-out infinite;
+}
+@keyframes hd-twinkle-anim {
+    0%,100% { opacity: 0.08; transform: scale(0.85); }
+    50%      { opacity: 0.35; transform: scale(1.2);  }
+}
+
+/* UÇAN — soldan sağa geçen uçaklar */
+.hd-fly {
+    animation: hd-fly-anim linear infinite;
+}
+@keyframes hd-fly-anim {
+    0%   { transform: translateX(0)    translateY(0)   rotate(0deg);   opacity: 0; }
+    5%   { opacity: 0.22; }
+    90%  { opacity: 0.22; }
+    100% { transform: translateX(110vw) translateY(-20px) rotate(-5deg); opacity: 0; }
+}
+
+.hd-fly2 {
+    animation: hd-fly2-anim linear infinite;
+}
+@keyframes hd-fly2-anim {
+    0%   { transform: translateX(0) translateY(0) rotate(3deg);   opacity: 0; }
+    5%   { opacity: 0.18; }
+    90%  { opacity: 0.18; }
+    100% { transform: translateX(110vw) translateY(15px) rotate(-3deg); opacity: 0; }
+}
+
+.hd-fly3 {
+    animation: hd-fly3-anim linear infinite;
+}
+@keyframes hd-fly3-anim {
+    0%   { transform: translateX(0) translateY(0) rotate(-2deg);  opacity: 0; }
+    5%   { opacity: 0.20; }
+    90%  { opacity: 0.20; }
+    100% { transform: translateX(110vw) translateY(-10px) rotate(4deg); opacity: 0; }
 }
 
 .header-icerik {
@@ -979,4 +1041,40 @@ header {
     .fiyat-scroll {
         padding: 0.8rem 1rem 1.5rem;
     }
+}
+/* ── Mosaic Wiza Butonlary ── */
+.mosaic-btn-wrap {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 1.2rem 0 1.8rem;
+}
+.mosaic-btn-dark,
+.mosaic-btn-light {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+  min-width: 220px;
+  transition: opacity 0.2s, transform 0.15s;
+  box-shadow: 0 4px 14px rgba(34,113,177,0.25);
+}
+.mosaic-btn-dark {
+  background: linear-gradient(135deg, #01263a, #2271b1);
+}
+.mosaic-btn-light {
+  background: linear-gradient(135deg, #2271b1, #5ba3d9);
+}
+.mosaic-btn-dark:hover,
+.mosaic-btn-light:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+  color: #fff;
 }

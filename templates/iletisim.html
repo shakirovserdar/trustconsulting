@@ -105,38 +105,7 @@
     </div>
 </div>
 
-<!-- MOSAİC VİZA BUTONLARI -->
-<div style="margin-top: 2rem;">
-    <h2 class="section-title">
-        {% if dil_kodu == 'tr' %}🗓️ Mosaic Viza İşlemleri
-        {% elif dil_kodu == 'ru' %}🗓️ Операции с визой Mosaic
-        {% else %}🗓️ Mosaic Wiza Amallary{% endif %}
-    </h2>
-    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem;">
-        <a href="https://appointment.mosaicvisa.com/mission/5" target="_blank" rel="noopener"
-           style="display:flex; align-items:center; justify-content:center; gap:0.6rem;
-                  background: linear-gradient(135deg, #2271b1, #01263a);
-                  color: white; text-decoration: none; padding: 1rem 1.2rem;
-                  border-radius: 14px; font-weight: 700; font-size: 0.95rem;
-                  text-align: center; box-shadow: 0 4px 15px rgba(34,113,177,0.3);
-                  transition: all 0.25s;">
-            📅
-            {% if dil_kodu == 'tr' %}Randevu Al
-            {% elif dil_kodu == 'ru' %}Записаться на приём
-            {% else %}Oçert Al (Randevu){% endif %}
-        </a>
-        <a href="https://appointment.mosaicvisa.com/application/" target="_blank" rel="noopener"
-           style="display:flex; align-items:center; justify-content:center; gap:0.6rem;
-                  background: linear-gradient(135deg, #1a90d4, #0e6fa8);
-                  color: white; text-decoration: none; padding: 1rem 1.2rem;
-                  border-radius: 14px; font-weight: 700; font-size: 0.95rem;
-                  text-align: center; box-shadow: 0 4px 15px rgba(26,144,212,0.3);
-                  transition: all 0.25s;">
-            🔍
-            {% if dil_kodu == 'tr' %}Başvuru Sonucunu Öğren
-            {% elif dil_kodu == 'ru' %}Узнать результат заявки
-            {% else %}Netijäňi Bil (Başvuru){% endif %}
-        </a>
-    
+
+
 
 {% endblock %}

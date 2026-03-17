@@ -89,17 +89,28 @@
     </li>
 </ul>
 
-<!-- EK HİZMETLER -->
-<h2 class="section-title">{{ t.hizmetler_ek_baslik }}</h2>
+<!-- MOSAİC WİZA AMALLARY -->
+<h2 class="section-title">
+    &#x1F4C5;
+    {% if dil_kodu == 'tr' %}Mosaic Vize İşlemleri
+    {% elif dil_kodu == 'ru' %}Визовые операции Mosaic
+    {% else %}Mosaic Wiza Amallary{% endif %}
+</h2>
 
-<ul class="ek-hizmet-liste">
-    <li><span class="icon">&#x1F4C5;</span>{% if dil_kodu == 'tr' %}Mosaic viza için randevu alma{% elif dil_kodu == 'ru' %}Запись на визу в Mosaic{% else %}Mosaic wiza üçin oçert (randevu) almak{% endif %}</li>
-    <li><span class="icon">&#x1F3E8;</span>{% if dil_kodu == 'tr' %}Otel ve bilet rezervasyonu{% elif dil_kodu == 'ru' %}Бронирование отеля и билетов{% else %}Otel we bilet bronlamak{% endif %}</li>
-    <li><span class="icon">&#x2708;&#xFE0F;</span>{% if dil_kodu == 'tr' %}Uçak ve tren biletleri{% elif dil_kodu == 'ru' %}Авиа и ж/д билеты{% else %}Uçar we otly biletleri{% endif %}</li>
-    <li><span class="icon">&#x1F310;</span>{% if dil_kodu == 'tr' %}Tercüme hizmetleri (TKM-TR, TKM-ING, TKM-RU){% elif dil_kodu == 'ru' %}Переводческие услуги{% else %}Terjime hyzmatlary (TKM-TRK, TKM-ING-RUS){% endif %}</li>
-    <li><span class="icon">&#x1F5A8;&#xFE0F;</span>{% if dil_kodu == 'tr' %}Fotokopi & Tarama{% elif dil_kodu == 'ru' %}Ксерокопирование{% else %}Kserokopýa{% endif %}</li>
-    <li><span class="icon">&#x1F4C4;</span>{% if dil_kodu == 'tr' %}Sponsor ve belge danışmanlığı{% elif dil_kodu == 'ru' %}Консультация по документам{% else %}Sponsor we resminamalar maslahat{% endif %}</li>
-</ul>
+<div class="mosaic-btn-wrap">
+    <a href="https://appointment.mosaicvisa.com/mission/5" target="_blank" rel="noopener" class="mosaic-btn-dark">
+        &#x1F4C5;
+        {% if dil_kodu == 'tr' %}Randevu Al (Oçert)
+        {% elif dil_kodu == 'ru' %}Записаться на приём
+        {% else %}Oçert Al (Randevu){% endif %}
+    </a>
+    <a href="https://appointment.mosaicvisa.com/application/" target="_blank" rel="noopener" class="mosaic-btn-light">
+        &#x1F50D;
+        {% if dil_kodu == 'tr' %}Başvuru Sonucunu Öğren
+        {% elif dil_kodu == 'ru' %}Узнать результат заявки
+        {% else %}Netijäňi Bil (Başvuru){% endif %}
+    </a>
+</div>
 
 <!-- TÜRKİYE'DE EĞİTİM -->
 <h2 class="section-title">{{ t.hizmetler_egitim_baslik }}</h2>
