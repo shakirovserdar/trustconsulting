@@ -47,7 +47,7 @@ def mail_gonder(isim, email, mesaj, tarih):
         </div></body></html>
         """
         veri = {
-            "from": "Trust Consulting <onboarding@resend.dev>",
+            "from": "Trust Consulting <noreply@trustedutm.com>",
             "to": [BILDIRIM_EMAIL],
             "reply_to": email,
             "subject": f"Yeni Mesaj: {isim} — Trust Consulting",
