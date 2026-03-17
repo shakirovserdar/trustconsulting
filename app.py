@@ -5,6 +5,57 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 from datetime import datetime
 import sqlite3
 import os
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
+# E-posta ayarları — Render/hosting'de environment variable olarak set edin
+SMTP_HOST = os.environ.get('SMTP_HOST', 'smtp.gmail.com')
+SMTP_PORT = int(os.environ.get('SMTP_PORT', 587))
+SMTP_USER = os.environ.get('SMTP_USER', '')        # Gönderen Gmail adresi
+SMTP_PASS = os.environ.get('SMTP_PASS', '')        # Gmail App Password
+BILDIRIM_EMAIL = 'info@trustedutm.com'             # Mesajların gideceği adres
+
+def mail_gonder(isim, email, mesaj, tarih):
+    if not SMTP_USER or not SMTP_PASS:
+        logging.warning("SMTP ayarları yapılmamış, mail gönderilmedi.")
+        return False
+    try:
+        msg = MIMEMultipart('alternative')
+        msg['Subject'] = f'Yeni Mesaj: {isim} — Trust Consulting'
+        msg['From'] = SMTP_USER
+        msg['To'] = BILDIRIM_EMAIL
+        msg['Reply-To'] = email
+        html = f"""
+        <html><body style="font-family:Arial,sans-serif;background:#f0f7ff;padding:20px;">
+        <div style="max-width:500px;margin:auto;background:white;border-radius:12px;
+                    padding:24px;border-top:4px solid #2271b1;">
+            <h2 style="color:#2271b1;">Yeni Site Mesaji</h2>
+            <table style="width:100%;border-collapse:collapse;">
+                <tr><td style="padding:8px;color:#666;width:100px;"><strong>Isim:</strong></td>
+                    <td style="padding:8px;">{isim}</td></tr>
+                <tr style="background:#f5f9fd;">
+                    <td style="padding:8px;color:#666;"><strong>E-posta:</strong></td>
+                    <td style="padding:8px;"><a href="mailto:{email}">{email}</a></td></tr>
+                <tr><td style="padding:8px;color:#666;"><strong>Tarih:</strong></td>
+                    <td style="padding:8px;">{tarih}</td></tr>
+                <tr style="background:#f5f9fd;">
+                    <td style="padding:8px;color:#666;vertical-align:top;"><strong>Mesaj:</strong></td>
+                    <td style="padding:8px;">{mesaj}</td></tr>
+            </table>
+            <p style="margin-top:16px;font-size:12px;color:#aaa;">— trustedutm.com site formu</p>
+        </div></body></html>
+        """
+        msg.attach(MIMEText(html, 'html'))
+        with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as server:
+            server.starttls()
+            server.login(SMTP_USER, SMTP_PASS)
+            server.sendmail(SMTP_USER, BILDIRIM_EMAIL, msg.as_string())
+        logging.info(f"Mail gonderildi: {isim} <{email}>")
+        return True
+    except Exception as e:
+        logging.error(f"Mail gonderme hatasi: {e}")
+        return False
 
 app = Flask(__name__)
 app.secret_key = 'trustconsulting_gizli_anahtar'
@@ -211,6 +262,7 @@ def iletisim():
                     (isim, email, mesaj, tarih)
                 )
                 db.commit()
+                mail_gonder(isim, email, mesaj, tarih)
                 flash(diller[dil]['mesaj_basarili'], 'success')
             except Exception as e:
                 logging.error(f"Mesaj kayıt hatası: {e}")
