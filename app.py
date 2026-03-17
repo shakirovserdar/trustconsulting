@@ -5,56 +5,73 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 from datetime import datetime
 import sqlite3
 import os
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+import urllib.request
+import urllib.error
+import json
 
-# E-posta ayarları — Render/hosting'de environment variable olarak set edin
-SMTP_HOST = os.environ.get('SMTP_HOST', 'smtp.gmail.com')
-SMTP_PORT = int(os.environ.get('SMTP_PORT', 587))
-SMTP_USER = os.environ.get('SMTP_USER', '')        # Gönderen Gmail adresi
-SMTP_PASS = os.environ.get('SMTP_PASS', '')        # Gmail App Password
-BILDIRIM_EMAIL = 'info@trustedutm.com'             # Mesajların gideceği adres
+# Resend API — SMTP kullanmaz, HTTP üzerinden çalışır (Render ile uyumlu)
+RESEND_API_KEY = os.environ.get('RESEND_API_KEY', '')
+BILDIRIM_EMAIL = 'info@trustedutm.com'
 
 def mail_gonder(isim, email, mesaj, tarih):
-    if not SMTP_USER or not SMTP_PASS:
-        logging.warning("SMTP ayarları yapılmamış, mail gönderilmedi.")
+    if not RESEND_API_KEY:
+        logging.warning("RESEND_API_KEY ayarlanmamis, mail gonderilmedi.")
         return False
     try:
-        msg = MIMEMultipart('alternative')
-        msg['Subject'] = f'Yeni Mesaj: {isim} — Trust Consulting'
-        msg['From'] = SMTP_USER
-        msg['To'] = BILDIRIM_EMAIL
-        msg['Reply-To'] = email
-        html = f"""
+        html_icerik = f"""
         <html><body style="font-family:Arial,sans-serif;background:#f0f7ff;padding:20px;">
         <div style="max-width:500px;margin:auto;background:white;border-radius:12px;
                     padding:24px;border-top:4px solid #2271b1;">
-            <h2 style="color:#2271b1;">Yeni Site Mesaji</h2>
+            <h2 style="color:#2271b1;">&#x2709; Yeni Site Mesaji — Trust Consulting</h2>
             <table style="width:100%;border-collapse:collapse;">
-                <tr><td style="padding:8px;color:#666;width:100px;"><strong>Isim:</strong></td>
-                    <td style="padding:8px;">{isim}</td></tr>
+                <tr>
+                    <td style="padding:8px;color:#666;width:90px;"><strong>Isim:</strong></td>
+                    <td style="padding:8px;">{isim}</td>
+                </tr>
                 <tr style="background:#f5f9fd;">
                     <td style="padding:8px;color:#666;"><strong>E-posta:</strong></td>
-                    <td style="padding:8px;"><a href="mailto:{email}">{email}</a></td></tr>
-                <tr><td style="padding:8px;color:#666;"><strong>Tarih:</strong></td>
-                    <td style="padding:8px;">{tarih}</td></tr>
+                    <td style="padding:8px;"><a href="mailto:{email}">{email}</a></td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;color:#666;"><strong>Tarih:</strong></td>
+                    <td style="padding:8px;">{tarih}</td>
+                </tr>
                 <tr style="background:#f5f9fd;">
                     <td style="padding:8px;color:#666;vertical-align:top;"><strong>Mesaj:</strong></td>
-                    <td style="padding:8px;">{mesaj}</td></tr>
+                    <td style="padding:8px;">{mesaj}</td>
+                </tr>
             </table>
-            <p style="margin-top:16px;font-size:12px;color:#aaa;">— trustedutm.com site formu</p>
+            <p style="margin-top:16px;font-size:12px;color:#aaa;">
+                Gonderen: {email} — trustedutm.com site formu
+            </p>
         </div></body></html>
         """
-        msg.attach(MIMEText(html, 'html'))
-        with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as server:
-            server.starttls()
-            server.login(SMTP_USER, SMTP_PASS)
-            server.sendmail(SMTP_USER, BILDIRIM_EMAIL, msg.as_string())
-        logging.info(f"Mail gonderildi: {isim} <{email}>")
-        return True
+        veri = {
+            "from": "Trust Consulting <onboarding@resend.dev>",
+            "to": [BILDIRIM_EMAIL],
+            "reply_to": email,
+            "subject": f"Yeni Mesaj: {isim} — Trust Consulting",
+            "html": html_icerik
+        }
+        istek = urllib.request.Request(
+            "https://api.resend.com/emails",
+            data=json.dumps(veri).encode("utf-8"),
+            headers={
+                "Authorization": f"Bearer {RESEND_API_KEY}",
+                "Content-Type": "application/json"
+            },
+            method="POST"
+        )
+        with urllib.request.urlopen(istek, timeout=10) as yanit:
+            sonuc = json.loads(yanit.read().decode())
+            logging.info(f"Resend mail gonderildi: {sonuc}")
+            return True
+    except urllib.error.HTTPError as e:
+        hata = e.read().decode()
+        logging.error(f"Resend HTTP hatasi: {e.code} — {hata}")
+        return False
     except Exception as e:
-        logging.error(f"Mail gonderme hatasi: {e}")
+        logging.error(f"Resend hatasi: {e}")
         return False
 
 app = Flask(__name__)
