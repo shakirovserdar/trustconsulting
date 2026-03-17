@@ -9,38 +9,127 @@ import os
 app = Flask(__name__)
 app.secret_key = 'trustconsulting_gizli_anahtar'
 
-# Dil dosyaları (kısaltılmış, sadece tr ile test edelim)
 diller = {
     'tr': {
-        'ana_baslik': 'Trust Consulting',
+        'lang_attr': 'tr',
         'menu_anasayfa': 'Ana Sayfa',
         'menu_hakkimizda': 'Hakkımızda',
         'menu_hizmetler': 'Hizmetler',
         'menu_iletisim': 'İletişim',
         'footer_telif': '© 2026 Trust Consulting. Tüm hakları saklıdır.',
-        'index_baslik': 'Güven Yönetimi Danışmanlığı',
-        'index_alt_baslik': 'İşinizi bir üst seviyeye taşıyoruz.',
-        'index_duyuru1': 'Yeni ofisimiz açıldı.',
-        'index_duyuru2': 'Online danışmanlık başladı.',
+        'footer_iletisim': 'İletişim',
+        'index_baslik': '✈️ Vize & Seyahat Danışmanlığı',
+        'index_alt_baslik': 'Türkmenistan\'dan dünyaya açılan kapınız.',
+        'index_ulkeler_baslik': '🌍 Hizmet Verdiğimiz Ülkeler',
+        'index_hizmet_baslik': '⚡ Hızlı Hizmetler',
+        'index_cta': 'Ücretsiz Danışmanlık Al',
         'hakkimizda_baslik': 'Hakkımızda',
-        'hakkimizda_icerik': 'Trust Consulting olarak...',
-        'hizmetler_baslik': 'Hizmetlerimiz',
-        'hizmet1_baslik': 'Kurumsal Danışmanlık',
-        'hizmet1_aciklama': 'Profesyonel destek.',
-        'hizmet2_baslik': 'Dijital Dönüşüm',
-        'hizmet2_aciklama': 'Verimlilik artışı.',
-        'hizmet3_baslik': 'Finansal Danışmanlık',
-        'hizmet3_aciklama': 'Bütçe yönetimi.',
-        'hizmet4_baslik': 'Eğitim ve Gelişim',
-        'hizmet4_aciklama': 'Kurumsal eğitim.',
-        'iletisim_baslik': 'İletişim',
-        'iletisim_form_isim': 'İsim',
-        'iletisim_form_email': 'E-posta',
-        'iletisim_form_mesaj': 'Mesaj',
-        'iletisim_form_gonder': 'Gönder',
-        'mesaj_basarili': 'Mesajınız gönderildi!',
+        'hakkimizda_metin': 'Trust Consulting olarak, Türkmenistan\'dan dünyanın dört bir yanına vize ve seyahat danışmanlığı hizmetleri sunuyoruz. Türkiye ve İstanbul ofislerimizle, müşterilerimize en hızlı ve güvenilir vize çözümlerini sağlıyoruz. Yıllarca edindiğimiz deneyimle, her vize sürecinde yanınızdayız.',
+        'hakkimizda_misyon': 'Misyonumuz',
+        'hakkimizda_misyon_metin': 'Türkmenistan\'daki insanlara istedikleri ülkeye güvenli, hızlı ve uygun fiyatlı vize almasında yardımcı olmak.',
+        'hakkimizda_ofis1': '🇹🇲 Türkmenistan Ofisi',
+        'hakkimizda_ofis2': '🇹🇷 İstanbul Ofisi',
+        'hizmetler_baslik': '✈️ Hizmetlerimiz',
+        'hizmetler_turkiye_baslik': '🇹🇷 Türkiye Vize Türleri',
+        'hizmetler_diger_baslik': '🌍 Diğer Ülkeler',
+        'hizmetler_ek_baslik': '➕ Ek Hizmetler',
+        'hizmetler_egitim_baslik': '🎓 Türkiye\'de Eğitim',
+        'iletisim_baslik': '📞 İletişim',
+        'iletisim_form_baslik': 'Bize Yazın',
+        'iletisim_form_isim': 'İsminiz',
+        'iletisim_form_email': 'E-posta Adresiniz',
+        'iletisim_form_mesaj': 'Mesajınız',
+        'iletisim_form_gonder': '📤 Gönder',
+        'iletisim_adres_baslik': '📍 Adreslerimiz',
+        'iletisim_whatsapp': 'WhatsApp\'tan Yaz',
+        'mesaj_basarili': '✅ Mesajınız gönderildi! En kısa sürede dönüş yapacağız.',
+        'mesajlar_baslik': 'Gelen Mesajlar',
+        'mesajlar_isim': 'İsim',
+        'mesajlar_email': 'E-posta',
+        'mesajlar_mesaj': 'Mesaj',
+        'mesajlar_tarih': 'Tarih',
+        'mesajlar_yok': 'Henüz mesaj yok.',
     },
-    # ru ve tk kısımlarını geçici olarak kaldırdım, sorun çözülünce ekleriz
+    'ru': {
+        'lang_attr': 'ru',
+        'menu_anasayfa': 'Главная',
+        'menu_hakkimizda': 'О нас',
+        'menu_hizmetler': 'Услуги',
+        'menu_iletisim': 'Контакты',
+        'footer_telif': '© 2026 Trust Consulting. Все права защищены.',
+        'footer_iletisim': 'Контакты',
+        'index_baslik': '✈️ Визовые & Туристические Услуги',
+        'index_alt_baslik': 'Ваши ворота из Туркменистана в мир.',
+        'index_ulkeler_baslik': '🌍 Страны, с которыми мы работаем',
+        'index_hizmet_baslik': '⚡ Быстрые услуги',
+        'index_cta': 'Получить бесплатную консультацию',
+        'hakkimizda_baslik': 'О нас',
+        'hakkimizda_metin': 'Trust Consulting предоставляет визовые и туристические услуги из Туркменистана по всему миру. С офисами в Туркменистане и Стамбуле мы обеспечиваем нашим клиентам самые быстрые и надёжные визовые решения.',
+        'hakkimizda_misyon': 'Наша миссия',
+        'hakkimizda_misyon_metin': 'Помочь людям в Туркменистане безопасно, быстро и по доступным ценам получить визу в любую страну.',
+        'hakkimizda_ofis1': '🇹🇲 Офис в Туркменистане',
+        'hakkimizda_ofis2': '🇹🇷 Офис в Стамбуле',
+        'hizmetler_baslik': '✈️ Наши услуги',
+        'hizmetler_turkiye_baslik': '🇹🇷 Типы виз в Турцию',
+        'hizmetler_diger_baslik': '🌍 Другие страны',
+        'hizmetler_ek_baslik': '➕ Дополнительные услуги',
+        'hizmetler_egitim_baslik': '🎓 Образование в Турции',
+        'iletisim_baslik': '📞 Контакты',
+        'iletisim_form_baslik': 'Напишите нам',
+        'iletisim_form_isim': 'Ваше имя',
+        'iletisim_form_email': 'Ваш E-mail',
+        'iletisim_form_mesaj': 'Ваше сообщение',
+        'iletisim_form_gonder': '📤 Отправить',
+        'iletisim_adres_baslik': '📍 Наши адреса',
+        'iletisim_whatsapp': 'Написать в WhatsApp',
+        'mesaj_basarili': '✅ Ваше сообщение отправлено! Мы ответим вам в ближайшее время.',
+        'mesajlar_baslik': 'Входящие сообщения',
+        'mesajlar_isim': 'Имя',
+        'mesajlar_email': 'E-mail',
+        'mesajlar_mesaj': 'Сообщение',
+        'mesajlar_tarih': 'Дата',
+        'mesajlar_yok': 'Сообщений пока нет.',
+    },
+    'tk': {
+        'lang_attr': 'tk',
+        'menu_anasayfa': 'Baş sahypa',
+        'menu_hakkimizda': 'Biz hakda',
+        'menu_hizmetler': 'Hyzmatlar',
+        'menu_iletisim': 'Habarlaşmak',
+        'footer_telif': '© 2026 Trust Consulting. Ähli hukuklar goralýar.',
+        'footer_iletisim': 'Habarlaşmak',
+        'index_baslik': '✈️ Wiza & Syýahat Maslahat Hyzmaty',
+        'index_alt_baslik': 'Türkmenistandan dünýä açylýan derwezäňiz.',
+        'index_ulkeler_baslik': '🌍 Hyzmat berýän ýurtlarymyz',
+        'index_hizmet_baslik': '⚡ Çalt hyzmatlar',
+        'index_cta': 'Mugt maslahat al',
+        'hakkimizda_baslik': 'Biz hakda',
+        'hakkimizda_metin': 'Trust Consulting hökmünde, Türkmenistandan dünýäniň dört künjüne wiza we syýahat maslahat hyzmatlaryny hödürleýäris. Türkmenistan we Stambul ofislerimiz bilen müşderilerimize iň çalt we ygtybarly wiza çözgütlerini hödürleýäris.',
+        'hakkimizda_misyon': 'Biziň wezipämiz',
+        'hakkimizda_misyon_metin': 'Türkmenistandaky adamlara islän ýurduna howpsuz, çalt we elýeterli bahadan wiza almagyna kömek etmek.',
+        'hakkimizda_ofis1': '🇹🇲 Türkmenistan ofisi',
+        'hakkimizda_ofis2': '🇹🇷 Stambul ofisi',
+        'hizmetler_baslik': '✈️ Hyzmatlarymyz',
+        'hizmetler_turkiye_baslik': '🇹🇷 Türkiýe wiza görnüşleri',
+        'hizmetler_diger_baslik': '🌍 Beýleki ýurtlar',
+        'hizmetler_ek_baslik': '➕ Goşmaça hyzmatlar',
+        'hizmetler_egitim_baslik': '🎓 Türkiýede okuw',
+        'iletisim_baslik': '📞 Habarlaşmak',
+        'iletisim_form_baslik': 'Bize ýazyň',
+        'iletisim_form_isim': 'Adyňyz',
+        'iletisim_form_email': 'E-poçtaňyz',
+        'iletisim_form_mesaj': 'Habaraňyz',
+        'iletisim_form_gonder': '📤 Ibermek',
+        'iletisim_adres_baslik': '📍 Salgymyz',
+        'iletisim_whatsapp': 'WhatsApp-dan ýaz',
+        'mesaj_basarili': '✅ Habaraňyz iberildi! Iň gysga wagtda jogap bereris.',
+        'mesajlar_baslik': 'Gelen habarlar',
+        'mesajlar_isim': 'At',
+        'mesajlar_email': 'E-poçta',
+        'mesajlar_mesaj': 'Habar',
+        'mesajlar_tarih': 'Senesi',
+        'mesajlar_yok': 'Heniz habar ýok.',
+    },
 }
 
 @app.before_request
@@ -53,9 +142,11 @@ def dil_ayarla():
 
 @app.context_processor
 def aktar_dil():
-    return dict(dil_kodu=session.get('dil', 'tr'), diller=diller)
+    dil = session.get('dil', 'tr')
+    if dil not in diller:
+        dil = 'tr'
+    return dict(dil_kodu=dil, diller=diller, t=diller[dil])
 
-# Veritabanı bağlantısı (hata yakalama ile)
 def get_db():
     try:
         conn = sqlite3.connect('site.db')
@@ -85,7 +176,6 @@ def init_db():
         finally:
             db.close()
 
-# Uygulama başlarken veritabanını oluştur
 init_db()
 
 @app.route('/')
@@ -112,7 +202,7 @@ def iletisim():
         email = request.form['email']
         mesaj = request.form['mesaj']
         tarih = datetime.now().strftime('%d.%m.%Y %H:%M')
-        
+        dil = session.get('dil', 'tr')
         db = get_db()
         if db:
             try:
@@ -121,7 +211,7 @@ def iletisim():
                     (isim, email, mesaj, tarih)
                 )
                 db.commit()
-                flash(diller[session.get('dil', 'tr')]['mesaj_basarili'], 'success')
+                flash(diller[dil]['mesaj_basarili'], 'success')
             except Exception as e:
                 logging.error(f"Mesaj kayıt hatası: {e}")
                 flash("Bir hata oluştu.", 'error')
@@ -130,16 +220,15 @@ def iletisim():
         else:
             flash("Veritabanı bağlantı hatası.", 'error')
         return redirect(url_for('iletisim'))
-    
     return render_template('iletisim.html', baslik='İletişim')
 
 @app.route('/mesajlar')
 def mesajlar():
     db = get_db()
     if db:
-        mesajlar = db.execute('SELECT * FROM mesajlar ORDER BY id DESC').fetchall()
+        msgs = db.execute('SELECT * FROM mesajlar ORDER BY id DESC').fetchall()
         db.close()
-        return render_template('mesajlar.html', mesajlar=mesajlar)
+        return render_template('mesajlar.html', mesajlar=msgs)
     else:
         return "Veritabanı hatası", 500
 

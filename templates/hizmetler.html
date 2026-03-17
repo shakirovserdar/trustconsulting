@@ -1,20 +1,166 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
 {% block content %}
-    <div class="sayfa-icerik">
-        <h2>{{ diller[dil_kodu]['hizmetler_baslik'] }}</h2>
-        
-        <div style="margin-top: 2rem;">
-            <h3>{{ diller[dil_kodu]['hizmet1_baslik'] }}</h3>
-            <p>{{ diller[dil_kodu]['hizmet1_aciklama'] }}</p>
-            
-            <h3>{{ diller[dil_kodu]['hizmet2_baslik'] }}</h3>
-            <p>{{ diller[dil_kodu]['hizmet2_aciklama'] }}</p>
-            
-            <h3>{{ diller[dil_kodu]['hizmet3_baslik'] }}</h3>
-            <p>{{ diller[dil_kodu]['hizmet3_aciklama'] }}</p>
-            
-            <h3>{{ diller[dil_kodu]['hizmet4_baslik'] }}</h3>
-            <p>{{ diller[dil_kodu]['hizmet4_aciklama'] }}</p>
-        </div>
+
+<h1 class="section-title" style="margin-top:0.5rem;">{{ t.hizmetler_baslik }}</h1>
+
+<!-- TÜRKİYE VİZE TÜRLERİ -->
+<h2 class="section-title">{{ t.hizmetler_turkiye_baslik }}</h2>
+
+<div class="vize-grid">
+    <div class="vize-kart">
+        <span class="vize-icon">🎓</span>
+        <p>{% if dil_kodu == 'tr' %}Öğrenci Vizesi{% elif dil_kodu == 'ru' %}Студенческая виза{% else %}Talyp wizasy{% endif %}</p>
     </div>
+    <div class="vize-kart">
+        <span class="vize-icon">📚</span>
+        <p>{% if dil_kodu == 'tr' %}Türkçe Öğrenim Vizesi (Tömer){% elif dil_kodu == 'ru' %}Виза на изучение тур. языка (Tömer){% else %}Türkçe öwrenmek wizasy (Tömer){% endif %}</p>
+    </div>
+    <div class="vize-kart">
+        <span class="vize-icon">💼</span>
+        <p>{% if dil_kodu == 'tr' %}Çalışma Vizesi{% elif dil_kodu == 'ru' %}Рабочая виза{% else %}Iş wizasy{% endif %}</p>
+    </div>
+    <div class="vize-kart">
+        <span class="vize-icon">🧳</span>
+        <p>{% if dil_kodu == 'tr' %}Turist Vizesi (30 günlük){% elif dil_kodu == 'ru' %}Туристическая виза (30 дней){% else %}Syýahatçylyk wizasy (30 günlük){% endif %}</p>
+    </div>
+    <div class="vize-kart">
+        <span class="vize-icon">🏠</span>
+        <p>{% if dil_kodu == 'tr' %}Turist İkamet (90 günlük){% elif dil_kodu == 'ru' %}Туристический вид на жительство (90 дней){% else %}Syýahat ikamet (90 günlük){% endif %}</p>
+    </div>
+    <div class="vize-kart">
+        <span class="vize-icon">🌍</span>
+        <p>{% if dil_kodu == 'tr' %}Turist Ziyaret Vizesi (90 günlük){% elif dil_kodu == 'ru' %}Туристическая посещение (90 дней){% else %}Syýahat ziyaret wizasy (90 günlük){% endif %}</p>
+    </div>
+    <div class="vize-kart">
+        <span class="vize-icon">👨‍👩‍👧</span>
+        <p>{% if dil_kodu == 'tr' %}Aile Birleşimi{% elif dil_kodu == 'ru' %}Воссоединение семьи{% else %}Maşgala birleşimi{% endif %}</p>
+    </div>
+    <div class="vize-kart">
+        <span class="vize-icon">🏥</span>
+        <p>{% if dil_kodu == 'tr' %}Sağlık Vizesi{% elif dil_kodu == 'ru' %}Медицинская виза{% else %}Saglyk wizasy{% endif %}</p>
+    </div>
+</div>
+
+<!-- DİĞER ÜLKELER -->
+<h2 class="section-title">{{ t.hizmetler_diger_baslik }}</h2>
+
+<ul class="hizmet-liste">
+    <li>
+        <span class="icon">🇷🇺</span>
+        <div>
+            <strong>{% if dil_kodu == 'tr' %}Rusya{% elif dil_kodu == 'ru' %}Россия{% else %}Russiýa{% endif %}</strong><br>
+            <span style="font-size:0.82rem; color:#4a7a9b;">
+                {% if dil_kodu == 'tr' %}E-viza · Turist · Öğrenci · 1–3 yıllık İş vizesi{% elif dil_kodu == 'ru' %}Э-виза · Туристическая · Студенческая · Рабочая 1–3 года{% else %}E-wiza · Syýahatçylyk · Talyp · 1–3 ýyllyk Iş wizasy{% endif %}
+            </span>
+        </div>
+    </li>
+    <li>
+        <span class="icon">🇩🇪</span>
+        <div>
+            <strong>{% if dil_kodu == 'tr' %}Almanya{% elif dil_kodu == 'ru' %}Германия{% else %}Germaniýa{% endif %}</strong><br>
+            <span style="font-size:0.82rem; color:#4a7a9b;">
+                {% if dil_kodu == 'tr' %}Turist · Öğrenci · İş vizesi{% elif dil_kodu == 'ru' %}Туристическая · Студенческая · Рабочая{% else %}Syýahat · Talyp · Iş wizasy{% endif %}
+            </span>
+        </div>
+    </li>
+    <li>
+        <span class="icon">🇧🇪</span>
+        <div>
+            <strong>{% if dil_kodu == 'tr' %}Belçika{% elif dil_kodu == 'ru' %}Бельгия{% else %}Belgiýa{% endif %}</strong><br>
+            <span style="font-size:0.82rem; color:#4a7a9b;">
+                {% if dil_kodu == 'tr' %}Turist · İş vizesi{% elif dil_kodu == 'ru' %}Туристическая · Рабочая{% else %}Syýahat · Iş wizasy{% endif %}
+            </span>
+        </div>
+    </li>
+    <li>
+        <span class="icon">🇷🇴</span>
+        <div>
+            <strong>{% if dil_kodu == 'tr' %}Romanya{% elif dil_kodu == 'ru' %}Румыния{% else %}Rumyniýa{% endif %}</strong><br>
+            <span style="font-size:0.82rem; color:#4a7a9b;">
+                {% if dil_kodu == 'tr' %}Turist · İş vizesi{% elif dil_kodu == 'ru' %}Туристическая · Рабочая{% else %}Syýahat · Iş wizasy{% endif %}
+            </span>
+        </div>
+    </li>
+    <li>
+        <span class="icon">🇦🇪</span>
+        <div>
+            <strong>{% if dil_kodu == 'tr' %}Dubai / BAE{% elif dil_kodu == 'ru' %}Дубай / ОАЭ{% else %}Dubaý / BAE{% endif %}</strong><br>
+            <span style="font-size:0.82rem; color:#4a7a9b;">
+                {% if dil_kodu == 'tr' %}30, 60 günlük E-viza · 3 yıllık İş vizesi{% elif dil_kodu == 'ru' %}30, 60-дневная Э-виза · 3-летняя Рабочая{% else %}30, 60 günlük E-wiza · 3 ýyllyk Iş wizasy{% endif %}
+            </span>
+        </div>
+    </li>
+    <li>
+        <span class="icon">🇺🇿</span>
+        <div>
+            <strong>{% if dil_kodu == 'tr' %}Özbekistan{% elif dil_kodu == 'ru' %}Узбекистан{% else %}Özbegistan{% endif %}</strong><br>
+            <span style="font-size:0.82rem; color:#4a7a9b;">
+                {% if dil_kodu == 'tr' %}10, 20, 30, 90 günlük vize{% elif dil_kodu == 'ru' %}10, 20, 30, 90-дневные визы{% else %}10, 20, 30 we 90 günlük wizalar{% endif %}
+            </span>
+        </div>
+    </li>
+    <li>
+        <span class="icon">🇦🇿🇰🇿</span>
+        <div>
+            <strong>{% if dil_kodu == 'tr' %}Azerbaycan & Kazakistan ve diğerleri{% elif dil_kodu == 'ru' %}Азербайджан & Казахстан и др.{% else %}Azerbaýjan & Gazagystan we başg.{% endif %}</strong><br>
+            <span style="font-size:0.82rem; color:#4a7a9b;">E-visa</span>
+        </div>
+    </li>
+</ul>
+
+<!-- EK HİZMETLER -->
+<h2 class="section-title">{{ t.hizmetler_ek_baslik }}</h2>
+
+<ul class="ek-hizmet-liste">
+    <li>
+        <span class="icon">📅</span>
+        {% if dil_kodu == 'tr' %}Mosaic viza için randevu alma{% elif dil_kodu == 'ru' %}Запись на визу в Mosaic{% else %}Mosaic wiza üçin oçert (randevu) almak{% endif %}
+    </li>
+    <li>
+        <span class="icon">🏨</span>
+        {% if dil_kodu == 'tr' %}Otel ve bilet rezervasyonu{% elif dil_kodu == 'ru' %}Бронирование отеля и билетов{% else %}Otel we bilet bronlamak{% endif %}
+    </li>
+    <li>
+        <span class="icon">✈️</span>
+        {% if dil_kodu == 'tr' %}Uçak ve tren biletleri{% elif dil_kodu == 'ru' %}Авиа и железнодорожные билеты{% else %}Uçar we otly biletlerini almak{% endif %}
+    </li>
+    <li>
+        <span class="icon">🌐</span>
+        {% if dil_kodu == 'tr' %}Tercüme hizmetleri (TKM-TR, TKM-İNG, TKM-RU){% elif dil_kodu == 'ru' %}Переводческие услуги (ТКМ-ТУР, ТКМ-АНГ, ТКМ-РУС){% else %}Terjime hyzmatlary (TKM-TRK, TKM-ING-RUS we beýleki dillere){% endif %}
+    </li>
+    <li>
+        <span class="icon">🖨️</span>
+        {% if dil_kodu == 'tr' %}Fotokopi & Tarama{% elif dil_kodu == 'ru' %}Ксерокопирование{% else %}Kserokopýa{% endif %}
+    </li>
+    <li>
+        <span class="icon">📄</span>
+        {% if dil_kodu == 'tr' %}Sponsor ve gerekli belgeler danışmanlığı{% elif dil_kodu == 'ru' %}Консультация по спонсорству и необходимым документам{% else %}Sponsor we zerur resminamalar boýunça maslahat{% endif %}
+    </li>
+</ul>
+
+<!-- TÜRKİYE'DE EĞİTİM -->
+<h2 class="section-title">{{ t.hizmetler_egitim_baslik }}</h2>
+
+<ul class="egitim-liste">
+    <li>
+        <span>🎓</span>
+        {% if dil_kodu == 'tr' %}Türk üniversitelerine kabul (Depozitsiz){% elif dil_kodu == 'ru' %}Зачисление в турецкие университеты (без депозита){% else %}Türk Uniwersitetlerinden çakylyk (Depozitsiz){% endif %}
+    </li>
+    <li>
+        <span>🏛️</span>
+        {% if dil_kodu == 'tr' %}İstanbul üniversitelerine kabul (Depozitli — depozit konusunda yardım edilir){% elif dil_kodu == 'ru' %}Зачисление в стамбульские университеты (с депозитом — помогаем){% else %}Stambuldaky Uniwersitetlerdan çakylyk (Depozitli, depozitiňize kömek edilýär){% endif %}
+    </li>
+    <li>
+        <span>📋</span>
+        {% if dil_kodu == 'tr' %}Turist / Turist İkamet / İşçi vizesiyle gelip öğrenci kimliği alma{% elif dil_kodu == 'ru' %}Получение студенческого удостоверения по туристической / рабочей визе{% else %}Turist, Turist ikamet, işçi wizasy bilen baryp hem student kimlik almak{% endif %}
+    </li>
+</ul>
+
+<div style="text-align:center; margin-top: 2rem;">
+    <a href="{{ url_for('iletisim') }}" class="cta-btn" style="background: linear-gradient(135deg,#2271b1,#01263a); color:white; padding:0.85rem 2.2rem; border-radius:25px; text-decoration:none; font-weight:700; font-size:1rem; display:inline-block; box-shadow: 0 4px 15px rgba(34,113,177,0.35); transition:all 0.25s;">
+        📞 {{ t.index_cta }}
+    </a>
+</div>
+
 {% endblock %}

@@ -6,136 +6,697 @@
 
 body {
     font-family: 'Segoe UI', Roboto, sans-serif;
-    background-color: #9ec2e6;
+    background-color: #e8f2fb;
     color: #01263a;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
+/* ─── HEADER ─────────────────────────────── */
 header {
-    background-color: #2271b1;
-    padding: 2rem 1rem;
+    background: linear-gradient(135deg, #01263a 0%, #2271b1 60%, #1a90d4 100%);
+    padding: 2rem 1rem 1.2rem;
     text-align: center;
-    border-bottom: 3px solid #01263a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
 .logo img {
-    width: 80px;
-    height: auto;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid rgba(255,255,255,0.4);
     margin-bottom: 0.5rem;
+    object-fit: contain;
+    background: white;
+    padding: 4px;
 }
 
 .logo h1 {
     color: white;
     font-size: 2rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    margin-bottom: 0.2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
 .logo p {
-    color: #f0f0f0;
-    font-size: 1rem;
+    color: #b8d9f5;
+    font-size: 0.95rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
 }
 
-/* Navigasyon butonları - küçük mavi */
+/* ─── NAV ─────────────────────────────────── */
 nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.5rem;
-    margin: 1.5rem 0 0.5rem 0;
+    margin: 1.2rem 0 0.6rem;
 }
 
 nav a {
-    background-color: #2271b1;
+    background-color: rgba(255,255,255,0.15);
     color: white;
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
+    padding: 0.45rem 1.1rem;
+    border-radius: 25px;
     font-size: 0.9rem;
     font-weight: 500;
-    border: 1px solid #01263a;
-    transition: 0.3s;
+    border: 1px solid rgba(255,255,255,0.35);
+    transition: all 0.25s;
+    backdrop-filter: blur(4px);
 }
 
-nav a:hover {
-    background-color: #01263a;
-    color: #9ec2e6;
+nav a:hover, nav a.aktif {
+    background-color: white;
+    color: #01263a;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
 
-/* Dil butonları - daha küçük */
+/* ─── DİL BUTONLARI ──────────────────────── */
 .dil-butonlari {
     display: flex;
     justify-content: center;
-    gap: 0.3rem;
-    margin: 1rem 0;
+    gap: 0.4rem;
+    margin: 0.8rem 0 0;
 }
 
 .dil-butonlari a {
-    background-color: #e0e0e0;
-    color: #01263a;
+    background-color: rgba(255,255,255,0.12);
+    color: #ddeeff;
     text-decoration: none;
-    padding: 0.3rem 0.8rem;
+    padding: 0.25rem 0.75rem;
     border-radius: 15px;
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     font-weight: 600;
-    border: 1px solid #2271b1;
-    transition: 0.3s;
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: all 0.25s;
 }
 
-.dil-butonlari a:hover {
-    background-color: #2271b1;
-    color: white;
+.dil-butonlari a:hover, .dil-butonlari a.aktif {
+    background-color: white;
+    color: #01263a;
 }
 
-/* Ana içerik */
+/* ─── FLASH MESSAGES ─────────────────────── */
+.flash-container {
+    max-width: 700px;
+    margin: 1rem auto 0;
+    padding: 0 1rem;
+}
+
+.flash {
+    padding: 0.85rem 1.2rem;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.flash.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.flash.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* ─── MAIN ───────────────────────────────── */
 main {
-    padding: 1rem;
-    max-width: 600px;
+    padding: 1.5rem 1rem 3rem;
+    max-width: 900px;
     margin: 0 auto;
 }
 
-.welcome {
-    background-color: rgba(255,255,255,0.3);
-    padding: 1.5rem;
-    border-radius: 10px;
-    margin: 1rem 0;
+/* ─── HERO / WELCOME ─────────────────────── */
+.hero {
+    background: linear-gradient(135deg, #2271b1, #01263a);
+    color: white;
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
     text-align: center;
-    border: 1px solid #2271b1;
+    margin-bottom: 2rem;
+    box-shadow: 0 6px 20px rgba(34,113,177,0.35);
+    position: relative;
+    overflow: hidden;
 }
 
-.welcome h2 {
+.hero::before {
+    content: '✈️';
+    position: absolute;
+    font-size: 8rem;
+    opacity: 0.06;
+    top: -10px;
+    right: -10px;
+}
+
+.hero h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.hero p {
+    font-size: 1.05rem;
+    color: #b8d9f5;
+    margin-bottom: 1.2rem;
+}
+
+.hero .cta-btn {
+    display: inline-block;
+    background: white;
+    color: #01263a;
+    text-decoration: none;
+    padding: 0.7rem 1.8rem;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: all 0.25s;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.hero .cta-btn:hover {
+    background: #b8d9f5;
+    transform: translateY(-2px);
+}
+
+/* ─── SECTION TITLES ─────────────────────── */
+.section-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #01263a;
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid #2271b1;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+/* ─── ÜLKE KARTLARI ──────────────────────── */
+.ulke-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.ulke-kart {
+    background: white;
+    border-radius: 14px;
+    padding: 1.2rem 1rem;
+    text-align: center;
+    box-shadow: 0 3px 12px rgba(34,113,177,0.12);
+    border: 1px solid #d4e8f8;
+    transition: all 0.25s;
+    cursor: default;
+    text-decoration: none;
+    display: block;
+    color: #01263a;
+}
+
+.ulke-kart:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(34,113,177,0.22);
+    border-color: #2271b1;
+}
+
+.ulke-kart .bayrak {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.ulke-kart h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    color: #01263a;
+}
+
+.ulke-kart p {
+    font-size: 0.8rem;
+    color: #4a7a9b;
+    line-height: 1.4;
+}
+
+/* ─── HİZMET LİSTESİ ─────────────────────── */
+.hizmet-liste {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.hizmet-liste li {
+    background: white;
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    box-shadow: 0 2px 8px rgba(34,113,177,0.1);
+    border-left: 4px solid #2271b1;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: all 0.2s;
+}
+
+.hizmet-liste li:hover {
+    border-left-color: #1a90d4;
+    box-shadow: 0 4px 14px rgba(34,113,177,0.18);
+    transform: translateX(3px);
+}
+
+.hizmet-liste li .icon {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+/* ─── VİZE TÜRÜ KARTLARI ─────────────────── */
+.vize-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.vize-kart {
+    background: linear-gradient(135deg, #2271b1, #1a5c8a);
+    color: white;
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(34,113,177,0.2);
+    transition: all 0.25s;
+}
+
+.vize-kart:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(34,113,177,0.3);
+}
+
+.vize-kart .vize-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+.vize-kart p {
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+/* ─── EK HİZMETLER ───────────────────────── */
+.ek-hizmet-liste {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 0.7rem;
+    margin-bottom: 1.5rem;
+}
+
+.ek-hizmet-liste li {
+    background: white;
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    box-shadow: 0 2px 8px rgba(34,113,177,0.1);
+    border-left: 4px solid #1a90d4;
+    font-size: 0.88rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+}
+
+.ek-hizmet-liste li .icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+/* ─── EĞİTİM BÖLÜMÜ ──────────────────────── */
+.egitim-liste {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.egitim-liste li {
+    background: white;
+    border-radius: 10px;
+    padding: 0.85rem 1rem 0.85rem 1.2rem;
+    box-shadow: 0 2px 8px rgba(34,113,177,0.1);
+    border-left: 4px solid #f0a500;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+/* ─── HAKKIMIZDA ─────────────────────────── */
+.hakkimizda-kart {
+    background: white;
+    border-radius: 14px;
+    padding: 1.8rem;
+    box-shadow: 0 3px 14px rgba(34,113,177,0.12);
+    margin-bottom: 1.2rem;
+    border-top: 4px solid #2271b1;
+}
+
+.hakkimizda-kart h3 {
+    font-size: 1.15rem;
+    color: #2271b1;
+    margin-bottom: 0.6rem;
+}
+
+.hakkimizda-kart p {
+    color: #34495e;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.ofis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.ofis-kart {
+    background: white;
+    border-radius: 12px;
+    padding: 1.2rem;
+    box-shadow: 0 2px 10px rgba(34,113,177,0.1);
+    border-top: 3px solid #1a90d4;
+    text-align: center;
+}
+
+.ofis-kart h4 {
+    font-size: 1rem;
     color: #01263a;
     margin-bottom: 0.5rem;
-    font-size: 1.5rem;
 }
 
-.welcome p {
+.ofis-kart p {
+    font-size: 0.83rem;
+    color: #4a7a9b;
+    line-height: 1.5;
+}
+
+/* ─── İLETİŞİM ───────────────────────────── */
+.iletisim-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.iletisim-form-kart {
+    background: white;
+    border-radius: 14px;
+    padding: 1.8rem;
+    box-shadow: 0 3px 14px rgba(34,113,177,0.12);
+    border-top: 4px solid #2271b1;
+}
+
+.iletisim-form-kart h3 {
+    font-size: 1.15rem;
     color: #01263a;
-    font-size: 1rem;
+    margin-bottom: 1.2rem;
 }
 
-/* Footer */
+.form-grup {
+    margin-bottom: 1rem;
+}
+
+.form-grup label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #01263a;
+    margin-bottom: 0.3rem;
+}
+
+.form-grup input,
+.form-grup textarea {
+    width: 100%;
+    padding: 0.65rem 0.9rem;
+    border: 1.5px solid #c8dff0;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    color: #01263a;
+    background: #f5f9fd;
+    transition: border-color 0.2s;
+    outline: none;
+}
+
+.form-grup input:focus,
+.form-grup textarea:focus {
+    border-color: #2271b1;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(34,113,177,0.1);
+}
+
+.form-grup textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.gonder-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #2271b1, #1a5c8a);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+    font-family: inherit;
+}
+
+.gonder-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(34,113,177,0.3);
+}
+
+.iletisim-bilgi-kart {
+    background: white;
+    border-radius: 14px;
+    padding: 1.8rem;
+    box-shadow: 0 3px 14px rgba(34,113,177,0.12);
+    border-top: 4px solid #1a90d4;
+}
+
+.iletisim-bilgi-kart h3 {
+    font-size: 1.15rem;
+    color: #01263a;
+    margin-bottom: 1.2rem;
+}
+
+.iletisim-satir {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    margin-bottom: 0.9rem;
+    font-size: 0.88rem;
+    color: #34495e;
+}
+
+.iletisim-satir .ic {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.iletisim-satir a {
+    color: #2271b1;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.iletisim-satir a:hover {
+    text-decoration: underline;
+}
+
+.sosyal-butonlar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.sosyal-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.whatsapp-link {
+    background: #25D366;
+    color: white;
+}
+
+.tiktok-link {
+    background: #010101;
+    color: white;
+}
+
+.instagram-link {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white;
+}
+
+.sosyal-btn:hover {
+    transform: translateX(4px);
+    opacity: 0.9;
+}
+
+/* ─── WHATSAPP FLOATING BUTTON ──────────── */
+.whatsapp-float {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background: #25D366;
+    color: white;
+    border-radius: 50px;
+    padding: 0.75rem 1.2rem;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.25s;
+    animation: pulse 2.5s infinite;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 28px rgba(37,211,102,0.55);
+}
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 6px 20px rgba(37,211,102,0.4); }
+    50% { box-shadow: 0 6px 30px rgba(37,211,102,0.65); }
+}
+
+/* ─── MESAJLAR (ADMIN) ───────────────────── */
+.mesajlar-tablo {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 14px rgba(34,113,177,0.12);
+    font-size: 0.88rem;
+}
+
+.mesajlar-tablo th {
+    background: #2271b1;
+    color: white;
+    padding: 0.85rem 1rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+.mesajlar-tablo td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e8f2fb;
+    color: #34495e;
+    vertical-align: top;
+}
+
+.mesajlar-tablo tr:hover td {
+    background: #f0f7ff;
+}
+
+.mesajlar-bos {
+    text-align: center;
+    color: #4a7a9b;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+}
+
+/* ─── FOOTER ─────────────────────────────── */
 footer {
     text-align: center;
-    padding: 1.5rem;
-    background-color: #2271b1;
+    padding: 1.8rem 1rem;
+    background: linear-gradient(135deg, #01263a, #2271b1);
     color: white;
     margin-top: 2rem;
 }
 
 footer p {
     margin: 0.3rem 0;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
+    color: #b8d9f5;
 }
 
-/* Mobil uyumluluk zaten mevcut */
-@media (max-width: 480px) {
-    .logo h1 {
-        font-size: 1.8rem;
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* ─── MOBİL ──────────────────────────────── */
+@media (max-width: 600px) {
+    .logo h1 { font-size: 1.7rem; }
+    .hero h2 { font-size: 1.4rem; }
+
+    .iletisim-grid,
+    .ofis-grid {
+        grid-template-columns: 1fr;
     }
+
+    .ulke-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .vize-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .whatsapp-float {
+        bottom: 1rem;
+        right: 1rem;
+        padding: 0.65rem 1rem;
+        font-size: 0.85rem;
+    }
+
     nav a {
         padding: 0.4rem 0.8rem;
-        font-size: 0.8rem;
+        font-size: 0.82rem;
+    }
+
+    .mesajlar-tablo {
+        font-size: 0.78rem;
+    }
+
+    .mesajlar-tablo th,
+    .mesajlar-tablo td {
+        padding: 0.6rem 0.6rem;
     }
 }

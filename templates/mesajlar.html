@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="section-title" style="margin-top:0.5rem;">
+    📥 {{ t.mesajlar_baslik }}
+    <span style="font-size:1rem; font-weight:400; color:#4a7a9b; margin-left:0.5rem;">
+        ({{ mesajlar | length }})
+    </span>
+</h1>
+
+{% if mesajlar %}
+    <div style="overflow-x: auto;">
+        <table class="mesajlar-tablo">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>👤 {{ t.mesajlar_isim }}</th>
+                    <th>📧 {{ t.mesajlar_email }}</th>
+                    <th>💬 {{ t.mesajlar_mesaj }}</th>
+                    <th>📅 {{ t.mesajlar_tarih }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for m in mesajlar %}
+                <tr>
+                    <td>{{ m.id }}</td>
+                    <td><strong>{{ m.isim }}</strong></td>
+                    <td>
+                        <a href="mailto:{{ m.email }}" style="color:#2271b1; text-decoration:none;">
+                            {{ m.email }}
+                        </a>
+                    </td>
+                    <td>{{ m.mesaj }}</td>
+                    <td style="white-space:nowrap; color:#4a7a9b;">{{ m.tarih }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <div class="mesajlar-bos">
+        <p style="font-size:2rem; margin-bottom:0.5rem;">📭</p>
+        <p>{{ t.mesajlar_yok }}</p>
+    </div>
+{% endif %}
+
+{% endblock %}

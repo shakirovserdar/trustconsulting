@@ -1,44 +1,75 @@
 <!DOCTYPE html>
-<html lang="{{ dil_kodu }}">
+<html lang="{{ t.lang_attr }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ baslik }} - {{ diller[dil_kodu]['ana_baslik'] }}</title>
+    <meta name="description" content="Trust Consulting - Visa & Travel Consulting from Turkmenistan">
+    <title>{{ baslik }} — Trust Consulting</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="{{ url_for('static', filename='logo.png') }}" alt="Trust Consulting Logo">
-            <h1>{{ diller[dil_kodu]['ana_baslik'] }}</h1>
-            <p>TRAVEL COMPANY</p>  <!-- Sabit yazı, dil desteği eklemek istersen sonra hallederiz -->
-        </div>
-        <nav>
-            <a href="{{ url_for('index') }}">{{ diller[dil_kodu]['menu_anasayfa'] }}</a>
-            <a href="{{ url_for('hakkimizda') }}">{{ diller[dil_kodu]['menu_hakkimizda'] }}</a>
-            <a href="{{ url_for('hizmetler') }}">{{ diller[dil_kodu]['menu_hizmetler'] }}</a>
-            <a href="{{ url_for('iletisim') }}">{{ diller[dil_kodu]['menu_iletisim'] }}</a>
-        </nav>
-        <div class="dil-butonlari">
-            <a href="?dil=tr">TR</a>
-            <a href="?dil=ru">RU</a>
-            <a href="?dil=tk">TK</a>
-        </div>
-    </header>
-    <main>
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
+
+<header>
+    <div class="logo">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Trust Consulting Logo">
+        <h1>Trust Consulting</h1>
+        <p>✈️ Travel &amp; Education Company</p>
+    </div>
+
+    <nav>
+        <a href="{{ url_for('index') }}" {% if request.endpoint == 'index' %}class="aktif"{% endif %}>
+            🏠 {{ t.menu_anasayfa }}
+        </a>
+        <a href="{{ url_for('hakkimizda') }}" {% if request.endpoint == 'hakkimizda' %}class="aktif"{% endif %}>
+            🏢 {{ t.menu_hakkimizda }}
+        </a>
+        <a href="{{ url_for('hizmetler') }}" {% if request.endpoint == 'hizmetler' %}class="aktif"{% endif %}>
+            📋 {{ t.menu_hizmetler }}
+        </a>
+        <a href="{{ url_for('iletisim') }}" {% if request.endpoint == 'iletisim' %}class="aktif"{% endif %}>
+            📞 {{ t.menu_iletisim }}
+        </a>
+    </nav>
+
+    <div class="dil-butonlari">
+        <a href="?dil=tr" {% if dil_kodu == 'tr' %}class="aktif"{% endif %}>🇹🇷 TR</a>
+        <a href="?dil=ru" {% if dil_kodu == 'ru' %}class="aktif"{% endif %}>🇷🇺 RU</a>
+        <a href="?dil=tk" {% if dil_kodu == 'tk' %}class="aktif"{% endif %}>🇹🇲 TK</a>
+    </div>
+</header>
+
+<main>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-container">
                 {% for category, message in messages %}
                     <div class="flash {{ category }}">{{ message }}</div>
                 {% endfor %}
-            {% endif %}
-        {% endwith %}
-        
-        {% block content %}{% endblock %}
-    </main>
-    <footer>
-        <p>{{ diller[dil_kodu]['footer_telif'] }}</p>
-        <p>İletişim: info@trustconsulting.com | +90 555 123 4567</p>
-    </footer>
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+</main>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/905524254697" class="whatsapp-float" target="_blank" rel="noopener">
+    💬 WhatsApp
+</a>
+
+<footer>
+    <p>{{ t.footer_telif }}</p>
+    <p>
+        📧 <a href="mailto:info@trustedutm.com">info@trustedutm.com</a>
+        &nbsp;|&nbsp;
+        📞 <a href="tel:+905524254697">+90 552 425 46 97</a>
+    </p>
+    <p style="margin-top:0.4rem; font-size:0.8rem; color:#7ab5d8;">
+        🌐 <a href="https://www.trustedutm.com">www.trustedutm.com</a>
+        &nbsp;|&nbsp;
+        📸 <a href="https://instagram.com/trustmconsulting" target="_blank">trustmconsulting</a>
+    </p>
+</footer>
+
 </body>
 </html>

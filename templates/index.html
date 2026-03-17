@@ -1,8 +1,127 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
 {% block content %}
-    <div class="welcome">
-        <h2>{{ diller[dil_kodu]['travel_baslik'] }}</h2>
-        <p>{{ diller[dil_kodu]['travel_aciklama'] }}</p>
-    </div>
-    <!-- İstersen buraya küçük kartlar veya duyurular ekleyebilirsin -->
+
+<!-- HERO -->
+<div class="hero">
+    <h2>{{ t.index_baslik }}</h2>
+    <p>{{ t.index_alt_baslik }}</p>
+    <a href="{{ url_for('iletisim') }}" class="cta-btn">{{ t.index_cta }}</a>
+</div>
+
+<!-- ÜLKELER -->
+<h2 class="section-title">{{ t.index_ulkeler_baslik }}</h2>
+
+<div class="ulke-grid">
+
+    <a href="{{ url_for('hizmetler') }}" class="ulke-kart">
+        <span class="bayrak">🇹🇷</span>
+        <h3>
+            {% if dil_kodu == 'tr' %}Türkiye{% elif dil_kodu == 'ru' %}Турция{% else %}Türkiýe{% endif %}
+        </h3>
+        <p>
+            {% if dil_kodu == 'tr' %}Öğrenci, Çalışma, Turist, Aile, Sağlık vizesi{% elif dil_kodu == 'ru' %}Студенческая, Рабочая, Туристическая, Семейная{% else %}Talyp, Iş, Syýahatçylyk, Maşgala, Saglyk{% endif %}
+        </p>
+    </a>
+
+    <a href="{{ url_for('hizmetler') }}" class="ulke-kart">
+        <span class="bayrak">🇷🇺</span>
+        <h3>
+            {% if dil_kodu == 'tr' %}Rusya{% elif dil_kodu == 'ru' %}Россия{% else %}Russiýa{% endif %}
+        </h3>
+        <p>
+            {% if dil_kodu == 'tr' %}E-viza, Turist, Öğrenci, 1-3 yıllık İş{% elif dil_kodu == 'ru' %}Э-виза, Туристическая, Студенческая, Рабочая 1-3 года{% else %}E-wiza, Syýahat, Talyp, 1-3 ýyllyk Iş{% endif %}
+        </p>
+    </a>
+
+    <a href="{{ url_for('hizmetler') }}" class="ulke-kart">
+        <span class="bayrak">🇩🇪</span>
+        <h3>
+            {% if dil_kodu == 'tr' %}Almanya{% elif dil_kodu == 'ru' %}Германия{% else %}Germaniýa{% endif %}
+        </h3>
+        <p>
+            {% if dil_kodu == 'tr' %}Turist, Öğrenci, İş vizesi{% elif dil_kodu == 'ru' %}Туристическая, Студенческая, Рабочая{% else %}Syýahat, Talyp, Iş wizasy{% endif %}
+        </p>
+    </a>
+
+    <a href="{{ url_for('hizmetler') }}" class="ulke-kart">
+        <span class="bayrak">🇧🇪</span>
+        <h3>
+            {% if dil_kodu == 'tr' %}Belçika{% elif dil_kodu == 'ru' %}Бельгия{% else %}Belgiýa{% endif %}
+        </h3>
+        <p>
+            {% if dil_kodu == 'tr' %}Turist, İş vizesi{% elif dil_kodu == 'ru' %}Туристическая, Рабочая{% else %}Syýahat, Iş wizasy{% endif %}
+        </p>
+    </a>
+
+    <a href="{{ url_for('hizmetler') }}" class="ulke-kart">
+        <span class="bayrak">🇷🇴</span>
+        <h3>
+            {% if dil_kodu == 'tr' %}Romanya{% elif dil_kodu == 'ru' %}Румыния{% else %}Rumyniýa{% endif %}
+        </h3>
+        <p>
+            {% if dil_kodu == 'tr' %}Turist, İş vizesi{% elif dil_kodu == 'ru' %}Туристическая, Рабочая{% else %}Syýahat, Iş wizasy{% endif %}
+        </p>
+    </a>
+
+    <a href="{{ url_for('hizmetler') }}" class="ulke-kart">
+        <span class="bayrak">🇦🇪</span>
+        <h3>
+            {% if dil_kodu == 'tr' %}Dubai / BAE{% elif dil_kodu == 'ru' %}Дубай / ОАЭ{% else %}Dubaý / BAE{% endif %}
+        </h3>
+        <p>
+            {% if dil_kodu == 'tr' %}30, 60 günlük E-viza, 3 yıllık İş{% elif dil_kodu == 'ru' %}30, 60-дневная Э-виза, 3-летняя Рабочая{% else %}30, 60 günlük E-wiza, 3 ýyllyk Iş{% endif %}
+        </p>
+    </a>
+
+    <a href="{{ url_for('hizmetler') }}" class="ulke-kart">
+        <span class="bayrak">🇺🇿</span>
+        <h3>
+            {% if dil_kodu == 'tr' %}Özbekistan{% elif dil_kodu == 'ru' %}Узбекистан{% else %}Özbegistan{% endif %}
+        </h3>
+        <p>
+            {% if dil_kodu == 'tr' %}10, 20, 30, 90 günlük vize{% elif dil_kodu == 'ru' %}10, 20, 30, 90-дневные визы{% else %}10, 20, 30, 90 günlük wizalar{% endif %}
+        </p>
+    </a>
+
+    <a href="{{ url_for('hizmetler') }}" class="ulke-kart">
+        <span class="bayrak">🇦🇿🇰🇿</span>
+        <h3>
+            {% if dil_kodu == 'tr' %}Azerbaycan & Kazakistan{% elif dil_kodu == 'ru' %}Азербайджан & Казахстан{% else %}Azerbaýjan & Gazagystan{% endif %}
+        </h3>
+        <p>E-visa</p>
+    </a>
+
+</div>
+
+<!-- HIZLI HİZMETLER -->
+<h2 class="section-title">{{ t.index_hizmet_baslik }}</h2>
+
+<ul class="hizmet-liste">
+    <li>
+        <span class="icon">📅</span>
+        {% if dil_kodu == 'tr' %}Mosaic viza randevu alma{% elif dil_kodu == 'ru' %}Запись на визу в Mosaic{% else %}Mosaic wiza üçin oçert (randevu){% endif %}
+    </li>
+    <li>
+        <span class="icon">🏨</span>
+        {% if dil_kodu == 'tr' %}Otel & Bilet Rezervasyonu{% elif dil_kodu == 'ru' %}Бронирование отеля и билетов{% else %}Otel we bilet bronlamak{% endif %}
+    </li>
+    <li>
+        <span class="icon">✈️</span>
+        {% if dil_kodu == 'tr' %}Uçak & Tren Biletleri{% elif dil_kodu == 'ru' %}Авиа и железнодорожные билеты{% else %}Uçar we otly biletleri{% endif %}
+    </li>
+    <li>
+        <span class="icon">🌐</span>
+        {% if dil_kodu == 'tr' %}Tercüme Hizmetleri (TKM-TR, TKM-ING, TKM-RU){% elif dil_kodu == 'ru' %}Переводческие услуги (ТКМ-РУ, ТКМ-АНГ){% else %}Terjime hyzmatlary (TKM-TRK, TKM-ING, TKM-RUS){% endif %}
+    </li>
+    <li>
+        <span class="icon">🎓</span>
+        {% if dil_kodu == 'tr' %}Türkiye'de Üniversite Kaydı{% elif dil_kodu == 'ru' %}Поступление в университеты Турции{% else %}Türkiýede Uniwersitet Çakylyk{% endif %}
+    </li>
+    <li>
+        <span class="icon">📄</span>
+        {% if dil_kodu == 'tr' %}Sponsor & Belge Danışmanlığı{% elif dil_kodu == 'ru' %}Консультация по спонсорству и документам{% else %}Sponsor we resminamalary maslahat{% endif %}
+    </li>
+</ul>
+
 {% endblock %}
