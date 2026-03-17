@@ -10,31 +10,47 @@
 <body>
 
 <header>
-    <div class="logo">
-        <img src="{{ url_for('static', filename='logo.png') }}" alt="Trust Consulting Logo">
-        <h1>Trust Consulting</h1>
-        <p>✈️ Travel &amp; Education Company</p>
+    <!-- Arka plan dekorasyon sembolleri -->
+    <div class="header-deko" aria-hidden="true">
+        <span class="hd" style="top:8%;left:3%;font-size:3.5rem;animation-delay:0s;">&#x2708;&#xFE0F;</span>
+        <span class="hd" style="top:55%;left:8%;font-size:2rem;animation-delay:1.5s;">&#x1F30D;</span>
+        <span class="hd" style="top:15%;left:22%;font-size:2.5rem;animation-delay:3s;">&#x1F4CB;</span>
+        <span class="hd" style="top:65%;left:25%;font-size:1.8rem;animation-delay:0.8s;">&#x2B50;</span>
+        <span class="hd" style="top:10%;right:5%;font-size:4rem;animation-delay:2s;">&#x1F6C2;</span>
+        <span class="hd" style="top:60%;right:8%;font-size:2.2rem;animation-delay:0.4s;">&#x1F393;</span>
+        <span class="hd" style="top:30%;right:20%;font-size:2.8rem;animation-delay:1s;">&#x1F30E;</span>
+        <span class="hd" style="top:75%;right:25%;font-size:1.6rem;animation-delay:2.5s;">&#x2B50;</span>
+        <span class="hd" style="top:20%;left:45%;font-size:2rem;animation-delay:1.2s;">&#x1F5FA;&#xFE0F;</span>
+        <span class="hd" style="top:70%;left:45%;font-size:2.5rem;animation-delay:3.5s;">&#x1F4BC;</span>
     </div>
 
-    <nav>
-        <a href="{{ url_for('index') }}" {% if request.endpoint == 'index' %}class="aktif"{% endif %}>
-            🏠 {{ t.menu_anasayfa }}
-        </a>
-        <a href="{{ url_for('hakkimizda') }}" {% if request.endpoint == 'hakkimizda' %}class="aktif"{% endif %}>
-            🏢 {{ t.menu_hakkimizda }}
-        </a>
-        <a href="{{ url_for('hizmetler') }}" {% if request.endpoint == 'hizmetler' %}class="aktif"{% endif %}>
-            📋 {{ t.menu_hizmetler }}
-        </a>
-        <a href="{{ url_for('iletisim') }}" {% if request.endpoint == 'iletisim' %}class="aktif"{% endif %}>
-            📞 {{ t.menu_iletisim }}
-        </a>
-    </nav>
+    <div class="header-icerik">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Trust Consulting Logo">
+            <h1>Trust Consulting</h1>
+            <p>&#x2708;&#xFE0F; Travel &amp; Education Company</p>
+        </div>
 
-    <div class="dil-butonlari">
-        <a href="?dil=tr" {% if dil_kodu == 'tr' %}class="aktif"{% endif %}>🇹🇷 TR</a>
-        <a href="?dil=ru" {% if dil_kodu == 'ru' %}class="aktif"{% endif %}>🇷🇺 RU</a>
-        <a href="?dil=tk" {% if dil_kodu == 'tk' %}class="aktif"{% endif %}>🇹🇲 TK</a>
+        <nav>
+            <a href="{{ url_for('index') }}" {% if request.endpoint == 'index' %}class="aktif"{% endif %}>
+                &#x1F3E0; {{ t.menu_anasayfa }}
+            </a>
+            <a href="{{ url_for('hakkimizda') }}" {% if request.endpoint == 'hakkimizda' %}class="aktif"{% endif %}>
+                &#x1F3E2; {{ t.menu_hakkimizda }}
+            </a>
+            <a href="{{ url_for('hizmetler') }}" {% if request.endpoint == 'hizmetler' %}class="aktif"{% endif %}>
+                &#x1F4CB; {{ t.menu_hizmetler }}
+            </a>
+            <a href="{{ url_for('iletisim') }}" {% if request.endpoint == 'iletisim' %}class="aktif"{% endif %}>
+                &#x1F4DE; {{ t.menu_iletisim }}
+            </a>
+        </nav>
+
+        <div class="dil-butonlari">
+            <a href="?dil=tr" {% if dil_kodu == 'tr' %}class="aktif"{% endif %}>TR</a>
+            <a href="?dil=ru" {% if dil_kodu == 'ru' %}class="aktif"{% endif %}>RU</a>
+            <a href="?dil=tk" {% if dil_kodu == 'tk' %}class="aktif"{% endif %}>TK</a>
+        </div>
     </div>
 </header>
 
@@ -52,18 +68,31 @@
     {% block content %}{% endblock %}
 </main>
 
-<!-- WhatsApp Floating Button -->
+<!-- Fiyat Butonu (sabit, sağ alt) -->
+{% if request.endpoint == 'hizmetler' %}
+<button class="fiyat-float-btn" onclick="fiyatAc()">
+    &#x1F4B0; {% if dil_kodu == 'tr' %}Ücretler{% elif dil_kodu == 'ru' %}Цены{% else %}Bahalar{% endif %}
+</button>
+{% endif %}
+
+<!-- WhatsApp Butonu (sabit) -->
 <a href="https://wa.me/905524254697" class="whatsapp-float" target="_blank" rel="noopener">
-    💬 WhatsApp
+    &#x1F4AC; WhatsApp
 </a>
 
 <footer>
     <p>{{ t.footer_telif }}</p>
     <p>
-        📧 <a href="mailto:info@trustedutm.com">info@trustedutm.com</a>
+        &#x1F4E7; <a href="mailto:info@trustedutm.com">info@trustedutm.com</a>
         &nbsp;|&nbsp;
-        📞 <a href="tel:+905524254697">+90 552 425 46 97</a>
+        &#x1F4DE; <a href="tel:+905524254697">+90 552 425 46 97</a>
     </p>
-    <p style="margin-top:0.4rem; font-size:0.8rem; color:#7ab5d8;">
-        🌐 <a href="https://www.trustedutm.com">www.trustedutm.com</a>
+    <p style="margin-top:0.4rem;font-size:0.8rem;color:#7ab5d8;">
+        &#x1F310; <a href="https://www.trustedutm.com">www.trustedutm.com</a>
         &nbsp;|&nbsp;
+        &#x1F4F8; <a href="https://instagram.com/trusttmconsulting" target="_blank">trusttmconsulting</a>
+    </p>
+</footer>
+
+</body>
+</html>

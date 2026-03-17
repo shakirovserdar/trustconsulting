@@ -700,3 +700,283 @@ footer a:hover {
         padding: 0.6rem 0.6rem;
     }
 }
+/* ─── HEADER YAPISI ─────────────────────────── */
+header {
+    position: relative;
+    overflow: hidden;
+}
+
+.header-deko {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.hd {
+    position: absolute;
+    opacity: 0.07;
+    filter: grayscale(30%);
+    animation: hd-yuz 10s ease-in-out infinite;
+    user-select: none;
+}
+
+@keyframes hd-yuz {
+    0%, 100% { transform: translateY(0) rotate(-5deg); opacity: 0.06; }
+    50%       { transform: translateY(-14px) rotate(8deg); opacity: 0.13; }
+}
+
+.header-icerik {
+    position: relative;
+    z-index: 1;
+}
+
+/* ─── VİZE KART — TIKLANABILIR ───────────────── */
+.vize-kart {
+    cursor: pointer;
+    user-select: none;
+}
+
+.vize-kart:active {
+    transform: scale(0.97);
+}
+
+/* ─── MODAL OVERLAY ──────────────────────────── */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    backdrop-filter: blur(3px);
+    animation: modal-fade-in 0.2s ease;
+}
+
+.modal-overlay.aktif {
+    display: flex;
+}
+
+@keyframes modal-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.modal-kutu {
+    background: white;
+    border-radius: 18px;
+    padding: 1.8rem;
+    max-width: 600px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    border-top: 4px solid #2271b1;
+    animation: modal-slide-up 0.25s ease;
+}
+
+@keyframes modal-slide-up {
+    from { transform: translateY(30px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+}
+
+.modal-kapat-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #f0f7ff;
+    border: none;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #01263a;
+    font-weight: 700;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.modal-kapat-btn:hover {
+    background: #2271b1;
+    color: white;
+}
+
+.modal-evrak-liste {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.modal-evrak-liste li {
+    background: #f5f9fd;
+    border-radius: 8px;
+    padding: 0.55rem 0.85rem;
+    font-size: 0.87rem;
+    color: #01263a;
+    border-left: 3px solid #2271b1;
+    line-height: 1.5;
+}
+
+/* ─── FİYAT PANELİ ───────────────────────────── */
+.fiyat-panel-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 2000;
+    align-items: flex-end;
+    justify-content: center;
+    backdrop-filter: blur(2px);
+}
+
+.fiyat-panel-overlay.aktif {
+    display: flex;
+}
+
+.fiyat-panel-kutu {
+    background: white;
+    width: 100%;
+    max-width: 700px;
+    max-height: 88vh;
+    border-radius: 22px 22px 0 0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 -8px 40px rgba(0,0,0,0.25);
+    animation: panel-slide-up 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+@keyframes panel-slide-up {
+    from { transform: translateY(100%); }
+    to   { transform: translateY(0); }
+}
+
+.fiyat-panel-ust {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 1.5rem;
+    border-bottom: 2px solid #e8f2fb;
+    flex-shrink: 0;
+}
+
+.fiyat-scroll {
+    overflow-y: auto;
+    padding: 1rem 1.5rem 2rem;
+    flex: 1;
+}
+
+.fiyat-baslik {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #01263a;
+    margin: 0.5rem 0 0.6rem;
+}
+
+.fiyat-ulke-baslik {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #2271b1;
+    background: #f0f7ff;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    margin-bottom: 0.4rem;
+    display: inline-block;
+}
+
+.fiyat-tablo {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.87rem;
+    margin-bottom: 0.3rem;
+}
+
+.fiyat-tablo tr:nth-child(even) td {
+    background: #f9fcff;
+}
+
+.fiyat-tablo td {
+    padding: 0.5rem 0.6rem;
+    border-bottom: 1px solid #e8f2fb;
+    color: #34495e;
+    vertical-align: middle;
+}
+
+.fiyat-deger {
+    text-align: right;
+    font-weight: 700;
+    color: #01263a;
+    white-space: nowrap;
+}
+
+.fiyat-not {
+    font-size: 0.76rem;
+    color: #4a7a9b;
+    font-weight: 400;
+    display: block;
+}
+
+/* ─── FİYAT FLOAT BUTONU ─────────────────────── */
+.fiyat-float-btn {
+    position: fixed;
+    bottom: 5.5rem;
+    right: 1.5rem;
+    background: linear-gradient(135deg, #f0a500, #e08800);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 0.7rem 1.2rem;
+    font-weight: 700;
+    font-size: 0.88rem;
+    cursor: pointer;
+    box-shadow: 0 5px 18px rgba(240,165,0,0.4);
+    z-index: 998;
+    transition: all 0.25s;
+    font-family: inherit;
+}
+
+.fiyat-float-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 7px 24px rgba(240,165,0,0.55);
+}
+
+/* ─── ÜLKE İKON (bayrak yerine metin) ───────── */
+.hizmet-liste .icon {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: white;
+    background: #2271b1;
+    border-radius: 6px;
+    padding: 0.2rem 0.4rem;
+    min-width: 36px;
+    text-align: center;
+    flex-shrink: 0;
+    letter-spacing: 0.5px;
+}
+
+/* ─── MOBİL ──────────────────────────────────── */
+@media (max-width: 600px) {
+    .modal-kutu {
+        max-height: 90vh;
+        padding: 1.3rem;
+        border-radius: 14px;
+    }
+    .fiyat-float-btn {
+        bottom: 5rem;
+        right: 1rem;
+        padding: 0.6rem 1rem;
+        font-size: 0.82rem;
+    }
+    .fiyat-scroll {
+        padding: 0.8rem 1rem 1.5rem;
+    }
+}
