@@ -259,6 +259,35 @@ def init_db():
     db = get_db()
     if db:
         try:
+            # Eski şemayı yeni şemaya güncelle
+            # email sütunu NOT NULL ise yeni tablo oluştur
+            try:
+                info = db.execute("PRAGMA table_info(mesajlar)").fetchall()
+                email_col = next((c for c in info if c['name'] == 'email'), None)
+                if email_col and 'not null' in str(email_col).lower():
+                    # Eski tabloyu yeniden oluştur
+                    db.execute('ALTER TABLE mesajlar RENAME TO mesajlar_eski')
+                    db.execute('''
+                        CREATE TABLE mesajlar (
+                            id INTEGER PRIMARY KEY AUTOINCREMENT,
+                            isim TEXT NOT NULL,
+                            telefon TEXT,
+                            email TEXT,
+                            ulke TEXT,
+                            vize_ulke TEXT,
+                            mesaj TEXT,
+                            tarih TEXT NOT NULL
+                        )
+                    ''')
+                    db.execute('''
+                        INSERT INTO mesajlar (id, isim, email, mesaj, tarih)
+                        SELECT id, isim, email, mesaj, tarih FROM mesajlar_eski
+                    ''')
+                    db.execute('DROP TABLE mesajlar_eski')
+                    logging.info("Veritabanı şeması güncellendi.")
+            except Exception as e:
+                logging.warning(f"Şema güncelleme: {e}")
+
             db.execute('''
                 CREATE TABLE IF NOT EXISTS mesajlar (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -271,7 +300,6 @@ def init_db():
                     tarih TEXT NOT NULL
                 )
             ''')
-            # Mevcut tabloya yeni sütunlar ekle (varsa hata vermez)
             for col in ['telefon TEXT', 'ulke TEXT', 'vize_ulke TEXT']:
                 try:
                     db.execute(f'ALTER TABLE mesajlar ADD COLUMN {col}')
