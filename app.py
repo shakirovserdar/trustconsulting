@@ -306,6 +306,18 @@ def init_db():
                 except:
                     pass
             db.commit()
+            # Yorumlar tablosu
+            db.execute('''
+                CREATE TABLE IF NOT EXISTS yorumlar (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    isim TEXT NOT NULL,
+                    sehir TEXT,
+                    yildiz INTEGER DEFAULT 5,
+                    metin TEXT NOT NULL,
+                    onaylandi INTEGER DEFAULT 0,
+                    tarih TEXT NOT NULL
+                )
+            ''')
             logging.info("Veritabanı hazır.")
         except Exception as e:
             logging.error(f"Tablo oluşturma hatası: {e}")
@@ -317,7 +329,12 @@ init_db()
 @app.route('/')
 def index():
     try:
-        return render_template('index.html', baslik='Ana Sayfa')
+        db = get_db()
+        yorumlar = []
+        if db:
+            yorumlar = db.execute('SELECT * FROM yorumlar WHERE onaylandi=1 ORDER BY id DESC').fetchall()
+            db.close()
+        return render_template('index.html', baslik='Ana Sayfa', onaylanan_yorumlar=yorumlar)
     except Exception as e:
         logging.error(f"index hatası: {e}")
         return "Bir hata oluştu", 500
@@ -359,6 +376,76 @@ def iletisim():
             flash("Veritabanı bağlantı hatası.", 'error')
         return redirect(url_for('iletisim'))
     return render_template('iletisim.html', baslik='İletişim')
+
+@app.route('/yorum-gonder', methods=['POST'])
+def yorum_gonder():
+    isim  = request.form.get('isim', '').strip()
+    sehir = request.form.get('sehir', '').strip()
+    yildiz = int(request.form.get('yildiz', 5))
+    metin = request.form.get('metin', '').strip()
+    tarih = datetime.now().strftime('%d.%m.%Y %H:%M')
+    dil   = session.get('dil', 'tr')
+    if isim and metin:
+        db = get_db()
+        if db:
+            try:
+                db.execute(
+                    'INSERT INTO yorumlar (isim, sehir, yildiz, metin, tarih) VALUES (?, ?, ?, ?, ?)',
+                    (isim, sehir, yildiz, metin, tarih)
+                )
+                db.commit()
+                db.close()
+            except Exception as e:
+                logging.error(f"Yorum kayıt hatası: {e}")
+    mesaj = {'tr': '✅ Yorumunuz alındı, incelendikten sonra yayınlanacak!',
+             'ru': '✅ Отзыв получен, будет опубликован после проверки!',
+             'tk': '✅ Teswirlňiz alyndy, barlanandan soň çap ediler!'}
+    flash(mesaj.get(dil, mesaj['tr']), 'success')
+    return redirect(url_for('index') + '#yorumlar')
+
+@app.route('/yorumlar-admin')
+def yorumlar_admin():
+    sifre = request.args.get('s', '')
+    if sifre != 'trust2026':
+        return "Yetkisiz erişim", 403
+    db = get_db()
+    bekleyen = db.execute('SELECT * FROM yorumlar WHERE onaylandi=0 ORDER BY id DESC').fetchall()
+    onaylanan = db.execute('SELECT * FROM yorumlar WHERE onaylandi=1 ORDER BY id DESC').fetchall()
+    db.close()
+    html = '<html><head><meta charset="UTF-8"><style>body{font-family:Arial;padding:20px;background:#f0f7ff;}table{width:100%;border-collapse:collapse;background:white;border-radius:8px;overflow:hidden;}th{background:#2271b1;color:white;padding:10px;}td{padding:10px;border-bottom:1px solid #eee;}a{color:#2271b1;}.btn{padding:6px 14px;border-radius:6px;text-decoration:none;font-weight:bold;}.onay{background:#27ae60;color:white;}.sil{background:#e74c3c;color:white;}</style></head><body>'
+    html += f'<h2>⏳ Bekleyen Yorumlar ({len(bekleyen)})</h2>'
+    html += '<table><tr><th>İsim</th><th>Şehir</th><th>⭐</th><th>Yorum</th><th>Tarih</th><th>İşlem</th></tr>'
+    for y in bekleyen:
+        html += f'<tr><td>{y["isim"]}</td><td>{y["sehir"]}</td><td>{"⭐"*y["yildiz"]}</td><td>{y["metin"]}</td><td>{y["tarih"]}</td>'
+        html += f'<td><a href="/yorumlar-onayla/{y["id"]}?s=trust2026" class="btn onay">✅ Onayla</a> <a href="/yorumlar-sil/{y["id"]}?s=trust2026" class="btn sil">🗑 Sil</a></td></tr>'
+    html += '</table>'
+    html += f'<h2 style="margin-top:2rem">✅ Onaylanan Yorumlar ({len(onaylanan)})</h2>'
+    html += '<table><tr><th>İsim</th><th>Şehir</th><th>⭐</th><th>Yorum</th><th>Tarih</th><th>İşlem</th></tr>'
+    for y in onaylanan:
+        html += f'<tr><td>{y["isim"]}</td><td>{y["sehir"]}</td><td>{"⭐"*y["yildiz"]}</td><td>{y["metin"]}</td><td>{y["tarih"]}</td>'
+        html += f'<td><a href="/yorumlar-sil/{y["id"]}?s=trust2026" class="btn sil">🗑 Sil</a></td></tr>'
+    html += '</table></body></html>'
+    return html
+
+@app.route('/yorumlar-onayla/<int:yid>')
+def yorumlar_onayla(yid):
+    if request.args.get('s') != 'trust2026':
+        return "Yetkisiz", 403
+    db = get_db()
+    db.execute('UPDATE yorumlar SET onaylandi=1 WHERE id=?', (yid,))
+    db.commit()
+    db.close()
+    return redirect(f'/yorumlar-admin?s=trust2026')
+
+@app.route('/yorumlar-sil/<int:yid>')
+def yorumlar_sil(yid):
+    if request.args.get('s') != 'trust2026':
+        return "Yetkisiz", 403
+    db = get_db()
+    db.execute('DELETE FROM yorumlar WHERE id=?', (yid,))
+    db.commit()
+    db.close()
+    return redirect(f'/yorumlar-admin?s=trust2026')
 
 @app.route('/mesajlar')
 def mesajlar():
