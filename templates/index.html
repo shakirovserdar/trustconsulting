@@ -61,12 +61,7 @@
 <ul class="hizmet-liste">
     <li onclick="window.location='{{ url_for('hizmetler') }}#mosaic-amallary'" style="cursor:pointer;">
         <span class="icon">📅</span>
-        {% if dil_kodu == 'tr' %}Mosaic viza randevu alma{% elif dil_kodu == 'ru' %}Запись на визу в Mosaic{% else %}Mosaic wiza üçin oçert (randevu){% endif %}
-        <span style="float:right;color:#2271b1;font-size:0.85rem;">→</span>
-    </li>
-    <li onclick="window.location='{{ url_for('hizmetler') }}#mosaic-amallary'" style="cursor:pointer;">
-        <span class="icon">🔍</span>
-        {% if dil_kodu == 'tr' %}Mosaic viza sonucu sorgula{% elif dil_kodu == 'ru' %}Узнать результат заявки Mosaic{% else %}Mosaic wiza netijäni bil{% endif %}
+        {% if dil_kodu == 'tr' %}Mosaic Vize İşlemleri (Randevu & Sonuç){% elif dil_kodu == 'ru' %}Операции с визой Mosaic{% else %}Mosaic Wiza Amallary{% endif %}
         <span style="float:right;color:#2271b1;font-size:0.85rem;">→</span>
     </li>
     <li>
@@ -97,31 +92,67 @@
 <div class="yorumlar-grid">
     <div class="yorum-kart">
         <div class="yorum-yildiz">⭐⭐⭐⭐⭐</div>
-        <p class="yorum-metin">
-            {% if dil_kodu == 'tr' %}"Ofislerine gittim. İlgileri ve samimiyetleri harikaydı! Her şey için teşekkür ederim, işlemlerinizi gönül rahatlığı ile yapabilirsiniz."
-            {% elif dil_kodu == 'ru' %}"Посетил их офис. Внимание и искренность были потрясающими! Большое спасибо за всё, можете смело доверять им свои документы."
-            {% else %}"Ofislerine bardym. Üns berişleri we ýürekdenlikleri ajaýypdy! Her zat üçin sag boluň, resminamalaryňyzy ynjalykly berip bilersiňiz."{% endif %}
-        </p>
-        <div class="yorum-isim">— Merdan A., <span>{% if dil_kodu == 'ru' %}Туркменистан{% else %}Türkmenistan{% endif %} 🇹🇲</span></div>
+        <p class="yorum-metin">{% if dil_kodu == "tr" %}"Ofislerine gittim. İlgileri ve samimiyetleri harikaydı! İşlemlerinizi gönül rahatlığı ile yapabilirsiniz."{% elif dil_kodu == "ru" %}"Посетил офис. Внимание и искренность потрясающие! Смело доверяйте им свои документы."{% else %}"Ofislerine bardym. Üns berişleri ajaýypdy! Resminamalaryňyzy ynjalykly berip bilersiňiz."{% endif %}</p>
+        <div class="yorum-isim">— Merdan A., <span>Türkmenistan 🇹🇲</span></div>
     </div>
     <div class="yorum-kart">
         <div class="yorum-yildiz">⭐⭐⭐⭐⭐</div>
-        <p class="yorum-metin">
-            {% if dil_kodu == 'tr' %}"Türkiye öğrenci vizemi çok hızlı ve sorunsuz aldım. Belgeleri eksiksiz hazırladılar, hiç sorun yaşamadım. Kesinlikle tavsiye ederim!"
-            {% elif dil_kodu == 'ru' %}"Студенческую визу в Турцию получил очень быстро и без проблем. Все документы подготовили без ошибок. Очень рекомендую!"
-            {% else %}"Türkiýe talyp wizamy gaty çalt we mesele ýok aldym. Resminamalary doly taýýarladylar. Hökman maslahat berýärin!"{% endif %}
-        </p>
-        <div class="yorum-isim">— Aýgül B., <span>{% if dil_kodu == 'ru' %}Туркменистан{% else %}Türkmenistan{% endif %} 🇹🇲</span></div>
+        <p class="yorum-metin">{% if dil_kodu == "tr" %}"Türkiye öğrenci vizemi çok hızlı ve sorunsuz aldım. Belgeleri eksiksiz hazırladılar. Kesinlikle tavsiye ederim!"{% elif dil_kodu == "ru" %}"Студенческую визу в Турцию получил быстро и без проблем. Очень рекомендую!"{% else %}"Türkiýe talyp wizamy gaty çalt aldym. Hökman maslahat berýärin!"{% endif %}</p>
+        <div class="yorum-isim">— Aýgül B., <span>Türkmenistan 🇹🇲</span></div>
+    </div>
+    <div class="yorum-kart">
+        <div class="yorum-yildiz">⭐⭐⭐⭐</div>
+        <p class="yorum-metin">{% if dil_kodu == "tr" %}"WhatsApp üzerinden tüm süreç boyunca yardımcı oldular. Almanya vizem onaylandı! Güvenilir bir ekip."{% elif dil_kodu == "ru" %}"Сопровождали через WhatsApp. Немецкая виза одобрена! Надёжная команда."{% else %}"WhatsApp arkaly kömek etdiler. Germaniýa wizam tassyklandy!"{% endif %}</p>
+        <div class="yorum-isim">— Oraz Ý., <span>Türkmenistan 🇹🇲</span></div>
     </div>
     <div class="yorum-kart">
         <div class="yorum-yildiz">⭐⭐⭐⭐⭐</div>
-        <p class="yorum-metin">
-            {% if dil_kodu == 'tr' %}"WhatsApp üzerinden tüm süreç boyunca yardımcı oldular. Almanya vizem onaylandı! Profesyonel ve güvenilir bir ekip."
-            {% elif dil_kodu == 'ru' %}"Сопровождали через WhatsApp на протяжении всего процесса. Получил визу в Германию! Профессиональная и надёжная команда."
-            {% else %}"WhatsApp arkaly tutuş proses boyunca kömek etdiler. Germaniýa wizam tassyklandy! Professional we ygtybarly topar."{% endif %}
-        </p>
-        <div class="yorum-isim">— Oraz Ý., <span>{% if dil_kodu == 'ru' %}Туркменистан{% else %}Türkmenistan{% endif %} 🇹🇲</span></div>
+        <p class="yorum-metin">{% if dil_kodu == "tr" %}"Rusya e-vizemi 3 günde hallettiler. Fiyatlar çok makul. Bir daha ihtiyacım olursa yine başvuracağım."{% elif dil_kodu == "ru" %}"Российскую э-визу оформили за 3 дня. Цены разумные. Обязательно обращусь снова."{% else %}"Russiýa e-wizamy 3 günde çözdüler. Hökman ýene ýüz tutaryn."{% endif %}</p>
+        <div class="yorum-isim">— Gülälek M., <span>Türkmenistan 🇹🇲</span></div>
     </div>
+    <div class="yorum-kart">
+        <div class="yorum-yildiz">⭐⭐⭐⭐</div>
+        <p class="yorum-metin">{% if dil_kodu == "tr" %}"Tercüme ve sponsor belgelerini de onlar hazırladı. Tek çatı altında her şeyi hallettik, çok pratik."{% elif dil_kodu == "ru" %}"Перевод и спонсорские документы тоже они подготовили. Всё под одной крышей — очень удобно."{% else %}"Terjime we sponsor resminamalary hem olar taýýarlady. Bir ýerde hemme zat — gaty amatly."{% endif %}</p>
+        <div class="yorum-isim">— Serdar K., <span>Türkmenistan 🇹🇲</span></div>
+    </div>
+    {% for yorum in onaylanan_yorumlar %}
+    <div class="yorum-kart">
+        <div class="yorum-yildiz">{% for i in range(yorum.yildiz) %}⭐{% endfor %}</div>
+        <p class="yorum-metin">"{{ yorum.metin }}"</p>
+        <div class="yorum-isim">— {{ yorum.isim }}, <span>{{ yorum.sehir }}</span></div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- YORUM BIRAK -->
+<div class="yorum-form-kart">
+    <h3>{% if dil_kodu == "tr" %}✍️ Siz de Yorum Bırakın{% elif dil_kodu == "ru" %}✍️ Оставьте отзыв{% else %}✍️ Siz hem teswir goýuň{% endif %}</h3>
+    <p style="font-size:0.85rem;color:#4a7a9b;margin-bottom:1rem;">{% if dil_kodu == "tr" %}Yorumunuz incelendikten sonra yayınlanacaktır.{% elif dil_kodu == "ru" %}Отзыв будет опубликован после проверки.{% else %}Teswir barlanandan soň çap ediler.{% endif %}</p>
+    <form method="POST" action="{{ url_for('yorum_gonder') }}">
+        <div class="yorum-form-satir">
+            <div class="form-grup">
+                <label>👤 {% if dil_kodu == "tr" %}Adınız{% elif dil_kodu == "ru" %}Ваше имя{% else %}Adyňyz{% endif %}</label>
+                <input type="text" name="isim" required placeholder="{% if dil_kodu == "tr" %}Adınız{% elif dil_kodu == "ru" %}Имя{% else %}Adyňyz{% endif %}">
+            </div>
+            <div class="form-grup">
+                <label>📍 {% if dil_kodu == "tr" %}Şehir{% elif dil_kodu == "ru" %}Город{% else %}Şäher{% endif %}</label>
+                <input type="text" name="sehir" required placeholder="{% if dil_kodu == "tr" %}Örn: Dänew{% elif dil_kodu == "ru" %}Напр: Ашхабад{% else %}Mysal: Dänew{% endif %}">
+            </div>
+        </div>
+        <div class="form-grup">
+            <label>⭐ {% if dil_kodu == "tr" %}Puanınız{% elif dil_kodu == "ru" %}Оценка{% else %}Bahaňyz{% endif %}</label>
+            <div class="yildiz-sec">
+                <input type="radio" name="yildiz" id="y5" value="5" checked><label for="y5">⭐⭐⭐⭐⭐</label>
+                <input type="radio" name="yildiz" id="y4" value="4"><label for="y4">⭐⭐⭐⭐</label>
+                <input type="radio" name="yildiz" id="y3" value="3"><label for="y3">⭐⭐⭐</label>
+            </div>
+        </div>
+        <div class="form-grup">
+            <label>💬 {% if dil_kodu == "tr" %}Yorumunuz{% elif dil_kodu == "ru" %}Отзыв{% else %}Teswiriňiz{% endif %}</label>
+            <textarea name="metin" required rows="3" placeholder="{% if dil_kodu == "tr" %}Deneyiminizi paylaşın...{% elif dil_kodu == "ru" %}Поделитесь опытом...{% else %}Tejribäňizi paýlaşyň...{% endif %}"></textarea>
+        </div>
+        <button type="submit" class="gonder-btn">{% if dil_kodu == "tr" %}📤 Gönder{% elif dil_kodu == "ru" %}📤 Отправить{% else %}📤 Ibermek{% endif %}</button>
+    </form>
 </div>
 
 <!-- SSS -->
