@@ -31,7 +31,14 @@
         .btn-sil:hover { background:#c0392b; }
         .yildiz { color:#f39c12; }
         .bos { text-align:center; color:#aaa; padding:2rem; font-size:0.9rem; }
-        @media(max-width:700px) {
+        td.uzun { max-width:200px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; cursor:pointer; color:#2271b1; }
+        td.uzun:hover { text-decoration:underline; }
+        .popup-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center; }
+        .popup-overlay.aktif { display:flex; }
+        .popup-kutu { background:white; border-radius:14px; padding:1.5rem; max-width:500px; width:90%; box-shadow:0 10px 40px rgba(0,0,0,0.3); }
+        .popup-kutu h4 { color:#2271b1; margin-bottom:0.8rem; }
+        .popup-kutu p { color:#34495e; line-height:1.7; font-size:0.95rem; white-space:pre-wrap; }
+        .popup-kapat { margin-top:1rem; padding:0.5rem 1.5rem; background:#2271b1; color:white; border:none; border-radius:8px; cursor:pointer; font-weight:600; }
             .topbar, .nav-tabs, .icerik { padding-left:1rem; padding-right:1rem; }
             table { font-size:0.78rem; }
             td, th { padding:7px 6px; }
@@ -79,7 +86,7 @@
                 <td><a href="tel:{{ m.telefon }}" style="color:#2271b1;">{{ m.telefon or '—' }}</a></td>
                 <td>{{ m.ulke or '—' }}</td>
                 <td>{{ m.vize_ulke or '—' }}</td>
-                <td style="max-width:200px;">{{ m.mesaj or '—' }}</td>
+                <td class="uzun" onclick="popupAc(this)" title="{{ m.mesaj or '' }}">{{ m.mesaj or '—' }}</td>
                 <td style="white-space:nowrap;font-size:0.8rem;color:#888;">{{ m.tarih }}</td>
                 <td><a href="{{ url_for('admin_mesaj_sil', mid=m.id) }}" class="btn btn-sil" onclick="return confirm('Silinsin mi?')">🗑 Sil</a></td>
             </tr>
@@ -108,7 +115,7 @@
                 <td><strong>{{ y.isim }}</strong></td>
                 <td>{{ y.sehir or '—' }}</td>
                 <td class="yildiz">{{ '⭐' * y.yildiz }}</td>
-                <td style="max-width:250px;">{{ y.metin }}</td>
+                <td class="uzun" onclick="popupAc(this)" title="{{ y.metin }}">{{ y.metin }}</td>
                 <td style="white-space:nowrap;font-size:0.8rem;color:#888;">{{ y.tarih }}</td>
                 <td>
                     <a href="{{ url_for('admin_yorum_onayla', yid=y.id) }}" class="btn btn-onay">✅ Onayla</a>
@@ -140,7 +147,7 @@
                 <td><strong>{{ y.isim }}</strong></td>
                 <td>{{ y.sehir or '—' }}</td>
                 <td class="yildiz">{{ '⭐' * y.yildiz }}</td>
-                <td style="max-width:250px;">{{ y.metin }}</td>
+                <td class="uzun" onclick="popupAc(this)" title="{{ y.metin }}">{{ y.metin }}</td>
                 <td style="white-space:nowrap;font-size:0.8rem;color:#888;">{{ y.tarih }}</td>
                 <td><a href="{{ url_for('admin_yorum_sil', yid=y.id) }}" class="btn btn-sil" onclick="return confirm('Silinsin mi?')">🗑 Sil</a></td>
             </tr>
@@ -153,7 +160,23 @@
 
 </div>
 
+<!-- POPUP -->
+<div class="popup-overlay" id="popup" onclick="if(event.target===this)popupKapat()">
+    <div class="popup-kutu">
+        <h4>💬 Tam Mesaj</h4>
+        <p id="popup-metin"></p>
+        <button class="popup-kapat" onclick="popupKapat()">Kapat</button>
+    </div>
+</div>
+
 <script>
+function popupAc(el) {
+    document.getElementById('popup-metin').textContent = el.getAttribute('title');
+    document.getElementById('popup').classList.add('aktif');
+}
+function popupKapat() {
+    document.getElementById('popup').classList.remove('aktif');
+}
 function sekmeAc(id, el) {
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('aktif'));
     document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('aktif'));
