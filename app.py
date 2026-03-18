@@ -9,28 +9,35 @@ import urllib.request
 import urllib.error
 import json
 
-# Resend API — SMTP kullanmaz, HTTP üzerinden çalışır (Render ile uyumlu)
 RESEND_API_KEY = os.environ.get('RESEND_API_KEY', '')
 BILDIRIM_EMAIL = 'info@trustedutm.com'
 
-def mail_gonder(isim, email, mesaj, tarih):
+def mail_gonder(isim, telefon, ulke, vize_ulke, mesaj, tarih):
     if not RESEND_API_KEY:
         logging.warning("RESEND_API_KEY ayarlanmamis, mail gonderilmedi.")
         return False
     try:
         html_icerik = f"""
         <html><body style="font-family:Arial,sans-serif;background:#f0f7ff;padding:20px;">
-        <div style="max-width:500px;margin:auto;background:white;border-radius:12px;
+        <div style="max-width:520px;margin:auto;background:white;border-radius:12px;
                     padding:24px;border-top:4px solid #2271b1;">
             <h2 style="color:#2271b1;">&#x2709; Yeni Site Mesaji — Trust Consulting</h2>
             <table style="width:100%;border-collapse:collapse;">
                 <tr>
-                    <td style="padding:8px;color:#666;width:90px;"><strong>Isim:</strong></td>
+                    <td style="padding:8px;color:#666;width:110px;"><strong>Isim:</strong></td>
                     <td style="padding:8px;">{isim}</td>
                 </tr>
                 <tr style="background:#f5f9fd;">
-                    <td style="padding:8px;color:#666;"><strong>E-posta:</strong></td>
-                    <td style="padding:8px;"><a href="mailto:{email}">{email}</a></td>
+                    <td style="padding:8px;color:#666;"><strong>Telefon/WA:</strong></td>
+                    <td style="padding:8px;"><a href="tel:{telefon}">{telefon}</a></td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;color:#666;"><strong>Nereli:</strong></td>
+                    <td style="padding:8px;">{ulke}</td>
+                </tr>
+                <tr style="background:#f5f9fd;">
+                    <td style="padding:8px;color:#666;"><strong>Hangi Vize:</strong></td>
+                    <td style="padding:8px;">{vize_ulke}</td>
                 </tr>
                 <tr>
                     <td style="padding:8px;color:#666;"><strong>Tarih:</strong></td>
@@ -38,19 +45,16 @@ def mail_gonder(isim, email, mesaj, tarih):
                 </tr>
                 <tr style="background:#f5f9fd;">
                     <td style="padding:8px;color:#666;vertical-align:top;"><strong>Mesaj:</strong></td>
-                    <td style="padding:8px;">{mesaj}</td>
+                    <td style="padding:8px;">{mesaj if mesaj else '—'}</td>
                 </tr>
             </table>
-            <p style="margin-top:16px;font-size:12px;color:#aaa;">
-                Gonderen: {email} — trustedutm.com site formu
-            </p>
+            <p style="margin-top:16px;font-size:12px;color:#aaa;">trustedutm.com site formu</p>
         </div></body></html>
         """
         veri = {
             "from": "Trust Consulting <noreply@trustedutm.com>",
             "to": [BILDIRIM_EMAIL],
-            "reply_to": email,
-            "subject": f"Yeni Mesaj: {isim} — Trust Consulting",
+            "subject": f"Yeni Mesaj: {isim} ({vize_ulke}) — Trust Consulting",
             "html": html_icerik
         }
         istek = urllib.request.Request(
@@ -91,8 +95,13 @@ diller = {
         'index_ulkeler_baslik': '🌍 Hizmet Verdiğimiz Ülkeler',
         'index_hizmet_baslik': '⚡ Hızlı Hizmetler',
         'index_cta': 'Ücretsiz Danışmanlık Al',
+        'index_yorumlar_baslik': '⭐ Müşteri Yorumları',
+        'index_sss_baslik': '❓ Sık Sorulan Sorular',
+        'index_cta2_baslik': '🚀 Vize Sürecinizi Başlatın',
+        'index_cta2_alt': 'Ücretsiz ön değerlendirme için hemen iletişime geçin.',
+        'index_cta2_btn': '📞 Ücretsiz Ön Görüşme Al',
         'hakkimizda_baslik': 'Hakkımızda',
-        'hakkimizda_metin': 'Trust Consulting olarak, Türkmenistan\'dan dünyanın dört bir yanına vize ve seyahat danışmanlığı hizmetleri sunuyoruz. Türkiye ve İstanbul ofislerimizle, müşterilerimize en hızlı ve güvenilir vize çözümlerini sağlıyoruz. Yıllarca edindiğimiz deneyimle, her vize sürecinde yanınızdayız.',
+        'hakkimizda_metin': 'Trust Consulting olarak, Türkmenistan\'dan dünyanın dört bir yanına vize ve seyahat danışmanlığı hizmetleri sunuyoruz. Türkiye ve İstanbul ofislerimizle, müşterilerimize en hızlı ve güvenilir vize çözümlerini sağlıyoruz.',
         'hakkimizda_misyon': 'Misyonumuz',
         'hakkimizda_misyon_metin': 'Türkmenistan\'daki insanlara istedikleri ülkeye güvenli, hızlı ve uygun fiyatlı vize almasında yardımcı olmak.',
         'hakkimizda_ofis1': '🇹🇲 Türkmenistan Ofisi',
@@ -104,16 +113,20 @@ diller = {
         'hizmetler_egitim_baslik': '🎓 Türkiye\'de Eğitim',
         'iletisim_baslik': '📞 İletişim',
         'iletisim_form_baslik': 'Bize Yazın',
-        'iletisim_form_isim': 'İsminiz',
-        'iletisim_form_email': 'E-posta Adresiniz',
-        'iletisim_form_mesaj': 'Mesajınız',
+        'iletisim_form_isim': 'Ad Soyadınız',
+        'iletisim_form_telefon': 'Telefon / WhatsApp Numaranız',
+        'iletisim_form_ulke': 'Nereden? (Şehir / Ülke)',
+        'iletisim_form_vize_ulke': 'Hangi Ülkeye Vize İstiyorsunuz?',
+        'iletisim_form_mesaj': 'Eklemek İstedikleriniz (İsteğe Bağlı)',
         'iletisim_form_gonder': '📤 Gönder',
         'iletisim_adres_baslik': '📍 Adreslerimiz',
         'iletisim_whatsapp': 'WhatsApp\'tan Yaz',
-        'mesaj_basarili': '✅ Mesajınız gönderildi! En kısa sürede dönüş yapacağız.',
+        'mesaj_basarili': '✅ Mesajınız alındı! En kısa sürede sizi arayacağız.',
         'mesajlar_baslik': 'Gelen Mesajlar',
         'mesajlar_isim': 'İsim',
-        'mesajlar_email': 'E-posta',
+        'mesajlar_telefon': 'Telefon',
+        'mesajlar_ulke': 'Nereli',
+        'mesajlar_vize': 'Hangi Vize',
         'mesajlar_mesaj': 'Mesaj',
         'mesajlar_tarih': 'Tarih',
         'mesajlar_yok': 'Henüz mesaj yok.',
@@ -131,6 +144,11 @@ diller = {
         'index_ulkeler_baslik': '🌍 Страны, с которыми мы работаем',
         'index_hizmet_baslik': '⚡ Быстрые услуги',
         'index_cta': 'Получить бесплатную консультацию',
+        'index_yorumlar_baslik': '⭐ Отзывы клиентов',
+        'index_sss_baslik': '❓ Часто задаваемые вопросы',
+        'index_cta2_baslik': '🚀 Начните визовый процесс',
+        'index_cta2_alt': 'Свяжитесь с нами для бесплатной предварительной оценки.',
+        'index_cta2_btn': '📞 Получить бесплатную консультацию',
         'hakkimizda_baslik': 'О нас',
         'hakkimizda_metin': 'Trust Consulting предоставляет визовые и туристические услуги из Туркменистана по всему миру. С офисами в Туркменистане и Стамбуле мы обеспечиваем нашим клиентам самые быстрые и надёжные визовые решения.',
         'hakkimizda_misyon': 'Наша миссия',
@@ -144,16 +162,20 @@ diller = {
         'hizmetler_egitim_baslik': '🎓 Образование в Турции',
         'iletisim_baslik': '📞 Контакты',
         'iletisim_form_baslik': 'Напишите нам',
-        'iletisim_form_isim': 'Ваше имя',
-        'iletisim_form_email': 'Ваш E-mail',
-        'iletisim_form_mesaj': 'Ваше сообщение',
+        'iletisim_form_isim': 'Ваше имя и фамилия',
+        'iletisim_form_telefon': 'Телефон / WhatsApp',
+        'iletisim_form_ulke': 'Откуда вы? (Город / Страна)',
+        'iletisim_form_vize_ulke': 'В какую страну нужна виза?',
+        'iletisim_form_mesaj': 'Дополнительная информация (необязательно)',
         'iletisim_form_gonder': '📤 Отправить',
         'iletisim_adres_baslik': '📍 Наши адреса',
         'iletisim_whatsapp': 'Написать в WhatsApp',
-        'mesaj_basarili': '✅ Ваше сообщение отправлено! Мы ответим вам в ближайшее время.',
+        'mesaj_basarili': '✅ Ваше сообщение принято! Мы свяжемся с вами в ближайшее время.',
         'mesajlar_baslik': 'Входящие сообщения',
         'mesajlar_isim': 'Имя',
-        'mesajlar_email': 'E-mail',
+        'mesajlar_telefon': 'Телефон',
+        'mesajlar_ulke': 'Откуда',
+        'mesajlar_vize': 'Какая виза',
         'mesajlar_mesaj': 'Сообщение',
         'mesajlar_tarih': 'Дата',
         'mesajlar_yok': 'Сообщений пока нет.',
@@ -171,8 +193,13 @@ diller = {
         'index_ulkeler_baslik': '🌍 Hyzmat berýän ýurtlarymyz',
         'index_hizmet_baslik': '⚡ Çalt hyzmatlar',
         'index_cta': 'Mugt maslahat al',
+        'index_yorumlar_baslik': '⭐ Müşderi teswirler',
+        'index_sss_baslik': '❓ Köp soralýan soraglar',
+        'index_cta2_baslik': '🚀 Wiza prosesiňizi başlatyň',
+        'index_cta2_alt': 'Mugt baha beriş üçin biz bilen habarlaşyň.',
+        'index_cta2_btn': '📞 Mugt maslahat al',
         'hakkimizda_baslik': 'Biz hakda',
-        'hakkimizda_metin': 'Trust Consulting hökmünde, Türkmenistandan dünýäniň dört künjüne wiza we syýahat maslahat hyzmatlaryny hödürleýäris. Türkmenistan we Stambul ofislerimiz bilen müşderilerimize iň çalt we ygtybarly wiza çözgütlerini hödürleýäris.',
+        'hakkimizda_metin': 'Trust Consulting hökmünde, Türkmenistandan dünýäniň dört künjüne wiza we syýahat maslahat hyzmatlaryny hödürleýäris.',
         'hakkimizda_misyon': 'Biziň wezipämiz',
         'hakkimizda_misyon_metin': 'Türkmenistandaky adamlara islän ýurduna howpsuz, çalt we elýeterli bahadan wiza almagyna kömek etmek.',
         'hakkimizda_ofis1': '🇹🇲 Türkmenistan ofisi',
@@ -184,16 +211,20 @@ diller = {
         'hizmetler_egitim_baslik': '🎓 Türkiýede okuw',
         'iletisim_baslik': '📞 Habarlaşmak',
         'iletisim_form_baslik': 'Bize ýazyň',
-        'iletisim_form_isim': 'Adyňyz',
-        'iletisim_form_email': 'E-poçtaňyz',
-        'iletisim_form_mesaj': 'Habaraňyz',
+        'iletisim_form_isim': 'Adyňyz we familiýaňyz',
+        'iletisim_form_telefon': 'Telefon / WhatsApp belgiňiz',
+        'iletisim_form_ulke': 'Nireden? (Şäher / Ýurt)',
+        'iletisim_form_vize_ulke': 'Haýsy ýurda wiza gerek?',
+        'iletisim_form_mesaj': 'Goşmaça maglumat (islege görä)',
         'iletisim_form_gonder': '📤 Ibermek',
         'iletisim_adres_baslik': '📍 Salgymyz',
         'iletisim_whatsapp': 'WhatsApp-dan ýaz',
-        'mesaj_basarili': '✅ Habaraňyz iberildi! Iň gysga wagtda jogap bereris.',
+        'mesaj_basarili': '✅ Habaraňyz alyndy! Iň gysga wagtda sizi jaňlarys.',
         'mesajlar_baslik': 'Gelen habarlar',
         'mesajlar_isim': 'At',
-        'mesajlar_email': 'E-poçta',
+        'mesajlar_telefon': 'Telefon',
+        'mesajlar_ulke': 'Nireli',
+        'mesajlar_vize': 'Haýsy wiza',
         'mesajlar_mesaj': 'Habar',
         'mesajlar_tarih': 'Senesi',
         'mesajlar_yok': 'Heniz habar ýok.',
@@ -232,13 +263,22 @@ def init_db():
                 CREATE TABLE IF NOT EXISTS mesajlar (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     isim TEXT NOT NULL,
-                    email TEXT NOT NULL,
-                    mesaj TEXT NOT NULL,
+                    telefon TEXT,
+                    email TEXT,
+                    ulke TEXT,
+                    vize_ulke TEXT,
+                    mesaj TEXT,
                     tarih TEXT NOT NULL
                 )
             ''')
+            # Mevcut tabloya yeni sütunlar ekle (varsa hata vermez)
+            for col in ['telefon TEXT', 'ulke TEXT', 'vize_ulke TEXT']:
+                try:
+                    db.execute(f'ALTER TABLE mesajlar ADD COLUMN {col}')
+                except:
+                    pass
             db.commit()
-            logging.info("Veritabanı tablosu oluşturuldu/var.")
+            logging.info("Veritabanı hazır.")
         except Exception as e:
             logging.error(f"Tablo oluşturma hatası: {e}")
         finally:
@@ -248,7 +288,6 @@ init_db()
 
 @app.route('/')
 def index():
-    logging.debug("Ana sayfa çağrıldı")
     try:
         return render_template('index.html', baslik='Ana Sayfa')
     except Exception as e:
@@ -266,20 +305,22 @@ def hizmetler():
 @app.route('/iletisim', methods=['GET', 'POST'])
 def iletisim():
     if request.method == 'POST':
-        isim = request.form['isim']
-        email = request.form['email']
-        mesaj = request.form['mesaj']
-        tarih = datetime.now().strftime('%d.%m.%Y %H:%M')
-        dil = session.get('dil', 'tr')
+        isim      = request.form.get('isim', '').strip()
+        telefon   = request.form.get('telefon', '').strip()
+        ulke      = request.form.get('ulke', '').strip()
+        vize_ulke = request.form.get('vize_ulke', '').strip()
+        mesaj     = request.form.get('mesaj', '').strip()
+        tarih     = datetime.now().strftime('%d.%m.%Y %H:%M')
+        dil       = session.get('dil', 'tr')
         db = get_db()
         if db:
             try:
                 db.execute(
-                    'INSERT INTO mesajlar (isim, email, mesaj, tarih) VALUES (?, ?, ?, ?)',
-                    (isim, email, mesaj, tarih)
+                    'INSERT INTO mesajlar (isim, telefon, ulke, vize_ulke, mesaj, tarih) VALUES (?, ?, ?, ?, ?, ?)',
+                    (isim, telefon, ulke, vize_ulke, mesaj, tarih)
                 )
                 db.commit()
-                mail_gonder(isim, email, mesaj, tarih)
+                mail_gonder(isim, telefon, ulke, vize_ulke, mesaj, tarih)
                 flash(diller[dil]['mesaj_basarili'], 'success')
             except Exception as e:
                 logging.error(f"Mesaj kayıt hatası: {e}")

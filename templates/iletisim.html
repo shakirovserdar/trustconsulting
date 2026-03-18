@@ -15,12 +15,35 @@
                 <input type="text" id="isim" name="isim" required placeholder="{{ t.iletisim_form_isim }}">
             </div>
             <div class="form-grup">
-                <label for="email">📧 {{ t.iletisim_form_email }}</label>
-                <input type="email" id="email" name="email" required placeholder="{{ t.iletisim_form_email }}">
+                <label for="telefon">📞 {{ t.iletisim_form_telefon }}</label>
+                <input type="tel" id="telefon" name="telefon" required placeholder="+993 / +90 ...">
+            </div>
+            <div class="form-grup">
+                <label for="ulke">🌍 {{ t.iletisim_form_ulke }}</label>
+                <input type="text" id="ulke" name="ulke" required
+                  placeholder="{% if dil_kodu == 'tr' %}Örn: Dänew, Türkmenistan{% elif dil_kodu == 'ru' %}Напр: Дяньов, Туркменистан{% else %}Mysal: Dänew, Türkmenistan{% endif %}">
+            </div>
+            <div class="form-grup">
+                <label for="vize_ulke">✈️ {{ t.iletisim_form_vize_ulke }}</label>
+                <select id="vize_ulke" name="vize_ulke" required>
+                    <option value="" disabled selected>
+                        {% if dil_kodu == 'tr' %}Seçiniz...{% elif dil_kodu == 'ru' %}Выберите...{% else %}Saýlaň...{% endif %}
+                    </option>
+                    <option value="Türkiye">🇹🇷 {% if dil_kodu == 'tr' %}Türkiye{% elif dil_kodu == 'ru' %}Турция{% else %}Türkiýe{% endif %}</option>
+                    <option value="Rusya">🇷🇺 {% if dil_kodu == 'tr' %}Rusya{% elif dil_kodu == 'ru' %}Россия{% else %}Russiýa{% endif %}</option>
+                    <option value="Almanya">🇩🇪 {% if dil_kodu == 'tr' %}Almanya{% elif dil_kodu == 'ru' %}Германия{% else %}Germaniýa{% endif %}</option>
+                    <option value="Dubai/BAE">🇦🇪 Dubai / BAE</option>
+                    <option value="Belçika">🇧🇪 {% if dil_kodu == 'tr' %}Belçika{% elif dil_kodu == 'ru' %}Бельгия{% else %}Belgiýa{% endif %}</option>
+                    <option value="Romanya">🇷🇴 {% if dil_kodu == 'tr' %}Romanya{% elif dil_kodu == 'ru' %}Румыния{% else %}Rumyniýa{% endif %}</option>
+                    <option value="Özbekistan">🇺🇿 {% if dil_kodu == 'tr' %}Özbekistan{% elif dil_kodu == 'ru' %}Узбекистан{% else %}Özbegistan{% endif %}</option>
+                    <option value="Azerbaycan">🇦🇿 {% if dil_kodu == 'tr' %}Azerbaycan{% elif dil_kodu == 'ru' %}Азербайджан{% else %}Azerbaýjan{% endif %}</option>
+                    <option value="Kazakistan">🇰🇿 {% if dil_kodu == 'tr' %}Kazakistan{% elif dil_kodu == 'ru' %}Казахстан{% else %}Gazagystan{% endif %}</option>
+                    <option value="Diger">{% if dil_kodu == 'tr' %}Diğer{% elif dil_kodu == 'ru' %}Другая страна{% else %}Başga ýurt{% endif %}</option>
+                </select>
             </div>
             <div class="form-grup">
                 <label for="mesaj">💬 {{ t.iletisim_form_mesaj }}</label>
-                <textarea id="mesaj" name="mesaj" required placeholder="{{ t.iletisim_form_mesaj }}"></textarea>
+                <textarea id="mesaj" name="mesaj" placeholder="{{ t.iletisim_form_mesaj }}" rows="3"></textarea>
             </div>
             <button type="submit" class="gonder-btn">{{ t.iletisim_form_gonder }}</button>
         </form>
@@ -30,33 +53,26 @@
     <div class="iletisim-bilgi-kart">
         <h3>{{ t.iletisim_adres_baslik }}</h3>
 
-        <!-- Ofis 1: Dänew -->
         <div class="iletisim-satir">
             <span class="ic">🇹🇲</span>
             <div>
-                <strong>
-                    {% if dil_kodu == 'tr' %}Türkmenistan — Dänew{% elif dil_kodu == 'ru' %}Туркменистан — Дяньов{% else %}Türkmenistan — Dänew{% endif %}
-                </strong><br>
+                <strong>{% if dil_kodu == 'tr' %}Türkmenistan — Dänew{% elif dil_kodu == 'ru' %}Туркменистан — Дяньов{% else %}Türkmenistan — Dänew{% endif %}</strong><br>
                 Dänew etraby, Dänew şäheri,<br>
                 S.A.Nyýazow köçesi,<br>
                 5-nji çagalar bagynyň garşysy
             </div>
         </div>
 
-        <!-- Ofis 2: Aşgabat -->
         <div class="iletisim-satir">
             <span class="ic">🇹🇲</span>
             <div>
-                <strong>
-                    {% if dil_kodu == 'tr' %}Türkmenistan — Aşkabat{% elif dil_kodu == 'ru' %}Туркменистан — Ашхабад{% else %}Türkmenistan — Aşgabat{% endif %}
-                </strong><br>
+                <strong>{% if dil_kodu == 'tr' %}Türkmenistan — Aşkabat{% elif dil_kodu == 'ru' %}Туркменистан — Ашхабад{% else %}Türkmenistan — Aşgabat{% endif %}</strong><br>
                 {% if dil_kodu == 'tr' %}Aşkabat, Arkaç Alışveriş Merkezi, 2. kat
                 {% elif dil_kodu == 'ru' %}Ашхабад, ТЦ Аркач, 2-й этаж
                 {% else %}Aşgabat, Arkaç sowda merkezi, 2-nji gaty{% endif %}
             </div>
         </div>
 
-        <!-- Ofis 3: İstanbul -->
         <div class="iletisim-satir">
             <span class="ic">🇹🇷</span>
             <div>
@@ -67,7 +83,6 @@
             </div>
         </div>
 
-        <!-- Telefonlar -->
         <div class="iletisim-satir">
             <span class="ic">📞</span>
             <div>
@@ -77,7 +92,6 @@
             </div>
         </div>
 
-        <!-- Mailler -->
         <div class="iletisim-satir">
             <span class="ic">📧</span>
             <div>
@@ -86,7 +100,6 @@
             </div>
         </div>
 
-        <!-- Sosyal Medya & WhatsApp -->
         <div class="sosyal-butonlar">
             <a href="https://wa.me/905425468564" class="sosyal-btn whatsapp-link" target="_blank" rel="noopener">
                 💬 WhatsApp: +90 542 546 85 64
@@ -101,11 +114,7 @@
                 📸 Instagram: @trusttmconsulting
             </a>
         </div>
-
     </div>
 </div>
-
-
-
 
 {% endblock %}

@@ -4,10 +4,36 @@
 
 <h1 class="section-title" style="margin-top:0.5rem;">{{ t.hakkimizda_baslik }}</h1>
 
+<!-- İSTATİSTİKLER -->
+<div class="stats-grid">
+    <div class="stat-kart">
+        <div class="stat-sayi">500+</div>
+        <div class="stat-etiket">
+            {% if dil_kodu == 'tr' %}Başarılı Başvuru{% elif dil_kodu == 'ru' %}Успешных заявок{% else %}Üstünlikli Ýüz tutma{% endif %}
+        </div>
+    </div>
+    <div class="stat-kart">
+        <div class="stat-sayi">%92</div>
+        <div class="stat-etiket">
+            {% if dil_kodu == 'tr' %}Onay Oranı{% elif dil_kodu == 'ru' %}Процент одобрений{% else %}Tassyklanma Derejesi{% endif %}
+        </div>
+    </div>
+    <div class="stat-kart">
+        <div class="stat-sayi">10+</div>
+        <div class="stat-etiket">
+            {% if dil_kodu == 'tr' %}Ülkeye Vize{% elif dil_kodu == 'ru' %}Стран для виз{% else %}Ýurda Wiza{% endif %}
+        </div>
+    </div>
+    <div class="stat-kart">
+        <div class="stat-sayi">3</div>
+        <div class="stat-etiket">
+            {% if dil_kodu == 'tr' %}Ofis{% elif dil_kodu == 'ru' %}Офиса{% else %}Ofis{% endif %}
+        </div>
+    </div>
+</div>
+
 <div class="hakkimizda-kart">
-    <h3>
-        {% if dil_kodu == 'tr' %}✨ Biz Kimiz?{% elif dil_kodu == 'ru' %}✨ Кто мы?{% else %}✨ Biz kim?{% endif %}
-    </h3>
+    <h3>{% if dil_kodu == 'tr' %}✨ Biz Kimiz?{% elif dil_kodu == 'ru' %}✨ Кто мы?{% else %}✨ Biz kim?{% endif %}</h3>
     <p>{{ t.hakkimizda_metin }}</p>
 </div>
 
@@ -16,32 +42,57 @@
     <p>{{ t.hakkimizda_misyon_metin }}</p>
 </div>
 
-<div class="hakkimizda-kart">
+<!-- GÜVEN UNSURLARI -->
+<div class="hakkimizda-kart guven-kart">
     <h3>
-        {% if dil_kodu == 'tr' %}🌍 Neden Trust Consulting?{% elif dil_kodu == 'ru' %}🌍 Почему Trust Consulting?{% else %}🌍 Näme üçin Trust Consulting?{% endif %}
+        {% if dil_kodu == 'tr' %}🔐 Neden Bize Güvenebilirsiniz?
+        {% elif dil_kodu == 'ru' %}🔐 Почему нам доверяют?
+        {% else %}🔐 Näme üçin bize ynanyp bilersiňiz?{% endif %}
     </h3>
-    <ul style="list-style:none; display:flex; flex-direction:column; gap:0.6rem; margin-top:0.5rem;">
-        <li style="display:flex; align-items:center; gap:0.6rem;">
-            ✅
-            {% if dil_kodu == 'tr' %}Yıllarca deneyim, güvenilir hizmet{% elif dil_kodu == 'ru' %}Многолетний опыт, надёжный сервис{% else %}Köp ýyllyk tejribe, ygtybarly hyzmat{% endif %}
-        </li>
-        <li style="display:flex; align-items:center; gap:0.6rem;">
-            ✅
-            {% if dil_kodu == 'tr' %}Türkmenistan ve İstanbul'da ofisler{% elif dil_kodu == 'ru' %}Офисы в Туркменистане и Стамбуле{% else %}Türkmenistan we Stambulda ofisler{% endif %}
-        </li>
-        <li style="display:flex; align-items:center; gap:0.6rem;">
-            ✅
-            {% if dil_kodu == 'tr' %}3 dilde hizmet (Türkçe, Rusça, Türkmence){% elif dil_kodu == 'ru' %}Обслуживание на 3 языках (турецком, русском, туркменском){% else %}3 dilde hyzmat (Türkçe, Rusça, Türkmençe){% endif %}
-        </li>
-        <li style="display:flex; align-items:center; gap:0.6rem;">
-            ✅
-            {% if dil_kodu == 'tr' %}Hızlı ve şeffaf süreç{% elif dil_kodu == 'ru' %}Быстрый и прозрачный процесс{% else %}Çalt we aýdyň proses{% endif %}
-        </li>
-        <li style="display:flex; align-items:center; gap:0.6rem;">
-            ✅
-            {% if dil_kodu == 'tr' %}Uçak bileti, otel, tercüme — tek çatı altında{% elif dil_kodu == 'ru' %}Билеты, отели, переводы — под одной крышей{% else %}Biletler, otel, terjime — bir ýerde{% endif %}
-        </li>
-    </ul>
+    <div class="guven-grid">
+        <div class="guven-item">
+            <span class="guven-ikon">✅</span>
+            <div>
+                <strong>{% if dil_kodu == 'tr' %}Gerçek Müşteri Yorumları{% elif dil_kodu == 'ru' %}Реальные отзывы клиентов{% else %}Hakyky müşderi teswirler{% endif %}</strong>
+                <p>{% if dil_kodu == 'tr' %}Yüzlerce mutlu müşterimizin deneyimleri{% elif dil_kodu == 'ru' %}Опыт сотен довольных клиентов{% else %}Ýüzlerçe memnun müşderimizin tejribeleri{% endif %}</p>
+            </div>
+        </div>
+        <div class="guven-item">
+            <span class="guven-ikon">🏢</span>
+            <div>
+                <strong>{% if dil_kodu == 'tr' %}3 Fiziksel Ofis{% elif dil_kodu == 'ru' %}3 физических офиса{% else %}3 Fiziki Ofis{% endif %}</strong>
+                <p>{% if dil_kodu == 'tr' %}Dänew, Aşkabat ve İstanbul'da{% elif dil_kodu == 'ru' %}В Дяньове, Ашхабаде и Стамбуле{% else %}Dänewde, Aşgabatda we Stambulda{% endif %}</p>
+            </div>
+        </div>
+        <div class="guven-item">
+            <span class="guven-ikon">🌍</span>
+            <div>
+                <strong>{% if dil_kodu == 'tr' %}3 Dilde Hizmet{% elif dil_kodu == 'ru' %}Обслуживание на 3 языках{% else %}3 Dilde Hyzmat{% endif %}</strong>
+                <p>{% if dil_kodu == 'tr' %}Türkçe, Rusça, Türkmence{% elif dil_kodu == 'ru' %}Турецкий, Русский, Туркменский{% else %}Türkçe, Rusça, Türkmençe{% endif %}</p>
+            </div>
+        </div>
+        <div class="guven-item">
+            <span class="guven-ikon">⚡</span>
+            <div>
+                <strong>{% if dil_kodu == 'tr' %}Hızlı & Şeffaf Süreç{% elif dil_kodu == 'ru' %}Быстрый и прозрачный процесс{% else %}Çalt we aýdyň proses{% endif %}</strong>
+                <p>{% if dil_kodu == 'tr' %}Her adımda sizi bilgilendiriyoruz{% elif dil_kodu == 'ru' %}Информируем вас на каждом шагу{% else %}Her ädimde sizi habarly edýäris{% endif %}</p>
+            </div>
+        </div>
+        <div class="guven-item">
+            <span class="guven-ikon">📋</span>
+            <div>
+                <strong>{% if dil_kodu == 'tr' %}Eksiksiz Belge Desteği{% elif dil_kodu == 'ru' %}Полная помощь с документами{% else %}Doly Resminamalar Goldawy{% endif %}</strong>
+                <p>{% if dil_kodu == 'tr' %}Tercüme, sponsor, randevu — hepsi bizde{% elif dil_kodu == 'ru' %}Перевод, спонсор, запись — всё у нас{% else %}Terjime, sponsor, randevu — hemmesi bizde{% endif %}</p>
+            </div>
+        </div>
+        <div class="guven-item">
+            <span class="guven-ikon">💬</span>
+            <div>
+                <strong>{% if dil_kodu == 'tr' %}WhatsApp Desteği{% elif dil_kodu == 'ru' %}Поддержка в WhatsApp{% else %}WhatsApp Goldawy{% endif %}</strong>
+                <p>{% if dil_kodu == 'tr' %}Sorularınıza hızlıca yanıt veriyoruz{% elif dil_kodu == 'ru' %}Быстро отвечаем на ваши вопросы{% else %}Soraglarynıza çalt jogap berýäris{% endif %}</p>
+            </div>
+        </div>
+    </div>
 </div>
 
 <h2 class="section-title">
@@ -51,28 +102,20 @@
 <div class="ofis-grid">
     <div class="ofis-kart">
         <h4>{{ t.hakkimizda_ofis1 }}</h4>
-        <p>
-            Dänew etraby, Dänew şäheri,<br>
-            S.A.Nyýazow köçesi,<br>
-            5-nji çagalar bagynyň garşysy
-        </p>
+        <p>Dänew etraby, Dänew şäheri,<br>S.A.Nyýazow köçesi,<br>5-nji çagalar bagynyň garşysy</p>
         <p style="margin-top:0.5rem;">
             📞 <a href="tel:+99364489920" style="color:#2271b1;">+993 64 48 89 20</a><br>
             📞 <a href="tel:+99361950920" style="color:#2271b1;">+993 61 95 09 20</a><br>
-            📧 <a href="mailto:danew@edutrusttm.com" style="color:#2271b1; font-size:0.8rem;">danew@edutrusttm.com</a>
+            📧 <a href="mailto:danew@edutrusttm.com" style="color:#2271b1;font-size:0.8rem;">danew@edutrusttm.com</a>
         </p>
     </div>
     <div class="ofis-kart">
         <h4>{{ t.hakkimizda_ofis2 }}</h4>
-        <p>
-            Aksaray mah. Valide Cami sk.<br>
-            No: 8 Kat: 5 OFİS No: 52<br>
-            FATİH / İSTANBUL
-        </p>
+        <p>Aksaray mah. Valide Cami sk.<br>No: 8 Kat: 5 OFİS No: 52<br>FATİH / İSTANBUL</p>
         <p style="margin-top:0.5rem;">
-            📱 <a href="https://wa.me/905425468564" target="_blank" style="color:#25D366; font-weight:600;">+90 542 546 85 64</a><br>
-            📱 <a href="https://wa.me/905524254697" target="_blank" style="color:#25D366; font-weight:600;">+90 552 425 46 97</a><br>
-            📧 <a href="mailto:info@trustedutm.com" style="color:#2271b1; font-size:0.8rem;">info@trustedutm.com</a>
+            📱 <a href="https://wa.me/905425468564" target="_blank" style="color:#25D366;font-weight:600;">+90 542 546 85 64</a><br>
+            📱 <a href="https://wa.me/905524254697" target="_blank" style="color:#25D366;font-weight:600;">+90 552 425 46 97</a><br>
+            📧 <a href="mailto:info@trustedutm.com" style="color:#2271b1;font-size:0.8rem;">info@trustedutm.com</a>
         </p>
     </div>
 </div>

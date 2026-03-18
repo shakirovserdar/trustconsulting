@@ -13,94 +13,61 @@
 <h2 class="section-title">{{ t.index_ulkeler_baslik }}</h2>
 
 <div class="ulke-grid">
-
     <a href="{{ url_for('hizmetler') }}" class="ulke-kart">
         <span class="bayrak">🇹🇷</span>
-        <h3>
-            {% if dil_kodu == 'tr' %}Türkiye{% elif dil_kodu == 'ru' %}Турция{% else %}Türkiýe{% endif %}
-        </h3>
-        <p>
-            {% if dil_kodu == 'tr' %}Öğrenci, Çalışma, Turist, Aile, Sağlık vizesi{% elif dil_kodu == 'ru' %}Студенческая, Рабочая, Туристическая, Семейная{% else %}Talyp, Iş, Syýahatçylyk, Maşgala, Saglyk{% endif %}
-        </p>
+        <h3>{% if dil_kodu == 'tr' %}Türkiye{% elif dil_kodu == 'ru' %}Турция{% else %}Türkiýe{% endif %}</h3>
+        <p>{% if dil_kodu == 'tr' %}Öğrenci, Çalışma, Turist, Aile, Sağlık vizesi{% elif dil_kodu == 'ru' %}Студенческая, Рабочая, Туристическая, Семейная{% else %}Talyp, Iş, Syýahatçylyk, Maşgala, Saglyk{% endif %}</p>
     </a>
-
     <a href="{{ url_for('hizmetler') }}" class="ulke-kart">
         <span class="bayrak">🇷🇺</span>
-        <h3>
-            {% if dil_kodu == 'tr' %}Rusya{% elif dil_kodu == 'ru' %}Россия{% else %}Russiýa{% endif %}
-        </h3>
-        <p>
-            {% if dil_kodu == 'tr' %}E-viza, Turist, Öğrenci, 1-3 yıllık İş{% elif dil_kodu == 'ru' %}Э-виза, Туристическая, Студенческая, Рабочая 1-3 года{% else %}E-wiza, Syýahat, Talyp, 1-3 ýyllyk Iş{% endif %}
-        </p>
+        <h3>{% if dil_kodu == 'tr' %}Rusya{% elif dil_kodu == 'ru' %}Россия{% else %}Russiýa{% endif %}</h3>
+        <p>{% if dil_kodu == 'tr' %}E-viza, Turist, Öğrenci, 1-3 yıllık İş{% elif dil_kodu == 'ru' %}Э-виза, Туристическая, Студенческая, Рабочая{% else %}E-wiza, Syýahat, Talyp, 1-3 ýyllyk Iş{% endif %}</p>
     </a>
-
     <a href="{{ url_for('hizmetler') }}" class="ulke-kart">
         <span class="bayrak">🇩🇪</span>
-        <h3>
-            {% if dil_kodu == 'tr' %}Almanya{% elif dil_kodu == 'ru' %}Германия{% else %}Germaniýa{% endif %}
-        </h3>
-        <p>
-            {% if dil_kodu == 'tr' %}Turist, Öğrenci, İş vizesi{% elif dil_kodu == 'ru' %}Туристическая, Студенческая, Рабочая{% else %}Syýahat, Talyp, Iş wizasy{% endif %}
-        </p>
+        <h3>{% if dil_kodu == 'tr' %}Almanya{% elif dil_kodu == 'ru' %}Германия{% else %}Germaniýa{% endif %}</h3>
+        <p>{% if dil_kodu == 'tr' %}Turist, Öğrenci, İş vizesi{% elif dil_kodu == 'ru' %}Туристическая, Студенческая, Рабочая{% else %}Syýahat, Talyp, Iş wizasy{% endif %}</p>
     </a>
-
     <a href="{{ url_for('hizmetler') }}" class="ulke-kart">
         <span class="bayrak">🇧🇪</span>
-        <h3>
-            {% if dil_kodu == 'tr' %}Belçika{% elif dil_kodu == 'ru' %}Бельгия{% else %}Belgiýa{% endif %}
-        </h3>
-        <p>
-            {% if dil_kodu == 'tr' %}Turist, İş vizesi{% elif dil_kodu == 'ru' %}Туристическая, Рабочая{% else %}Syýahat, Iş wizasy{% endif %}
-        </p>
+        <h3>{% if dil_kodu == 'tr' %}Belçika{% elif dil_kodu == 'ru' %}Бельгия{% else %}Belgiýa{% endif %}</h3>
+        <p>{% if dil_kodu == 'tr' %}Turist, İş vizesi{% elif dil_kodu == 'ru' %}Туристическая, Рабочая{% else %}Syýahat, Iş wizasy{% endif %}</p>
     </a>
-
     <a href="{{ url_for('hizmetler') }}" class="ulke-kart">
         <span class="bayrak">🇷🇴</span>
-        <h3>
-            {% if dil_kodu == 'tr' %}Romanya{% elif dil_kodu == 'ru' %}Румыния{% else %}Rumyniýa{% endif %}
-        </h3>
-        <p>
-            {% if dil_kodu == 'tr' %}Turist, İş vizesi{% elif dil_kodu == 'ru' %}Туристическая, Рабочая{% else %}Syýahat, Iş wizasy{% endif %}
-        </p>
+        <h3>{% if dil_kodu == 'tr' %}Romanya{% elif dil_kodu == 'ru' %}Румыния{% else %}Rumyniýa{% endif %}</h3>
+        <p>{% if dil_kodu == 'tr' %}Turist, İş vizesi{% elif dil_kodu == 'ru' %}Туристическая, Рабочая{% else %}Syýahat, Iş wizasy{% endif %}</p>
     </a>
-
     <a href="{{ url_for('hizmetler') }}" class="ulke-kart">
         <span class="bayrak">🇦🇪</span>
-        <h3>
-            {% if dil_kodu == 'tr' %}Dubai / BAE{% elif dil_kodu == 'ru' %}Дубай / ОАЭ{% else %}Dubaý / BAE{% endif %}
-        </h3>
-        <p>
-            {% if dil_kodu == 'tr' %}30, 60 günlük E-viza, 3 yıllık İş{% elif dil_kodu == 'ru' %}30, 60-дневная Э-виза, 3-летняя Рабочая{% else %}30, 60 günlük E-wiza, 3 ýyllyk Iş{% endif %}
-        </p>
+        <h3>{% if dil_kodu == 'tr' %}Dubai / BAE{% elif dil_kodu == 'ru' %}Дубай / ОАЭ{% else %}Dubaý / BAE{% endif %}</h3>
+        <p>{% if dil_kodu == 'tr' %}30, 60 günlük E-viza, 3 yıllık İş{% elif dil_kodu == 'ru' %}30, 60-дневная Э-виза, 3-летняя Рабочая{% else %}30, 60 günlük E-wiza, 3 ýyllyk Iş{% endif %}</p>
     </a>
-
     <a href="{{ url_for('hizmetler') }}" class="ulke-kart">
         <span class="bayrak">🇺🇿</span>
-        <h3>
-            {% if dil_kodu == 'tr' %}Özbekistan{% elif dil_kodu == 'ru' %}Узбекистан{% else %}Özbegistan{% endif %}
-        </h3>
-        <p>
-            {% if dil_kodu == 'tr' %}10, 20, 30, 90 günlük vize{% elif dil_kodu == 'ru' %}10, 20, 30, 90-дневные визы{% else %}10, 20, 30, 90 günlük wizalar{% endif %}
-        </p>
+        <h3>{% if dil_kodu == 'tr' %}Özbekistan{% elif dil_kodu == 'ru' %}Узбекистан{% else %}Özbegistan{% endif %}</h3>
+        <p>{% if dil_kodu == 'tr' %}10, 20, 30, 90 günlük vize{% elif dil_kodu == 'ru' %}10, 20, 30, 90-дневные визы{% else %}10, 20, 30, 90 günlük wizalar{% endif %}</p>
     </a>
-
     <a href="{{ url_for('hizmetler') }}" class="ulke-kart">
         <span class="bayrak">🇦🇿🇰🇿</span>
-        <h3>
-            {% if dil_kodu == 'tr' %}Azerbaycan & Kazakistan{% elif dil_kodu == 'ru' %}Азербайджан & Казахстан{% else %}Azerbaýjan & Gazagystan{% endif %}
-        </h3>
+        <h3>{% if dil_kodu == 'tr' %}Azerbaycan & Kazakistan{% elif dil_kodu == 'ru' %}Азербайджан & Казахстан{% else %}Azerbaýjan & Gazagystan{% endif %}</h3>
         <p>E-visa</p>
     </a>
-
 </div>
 
 <!-- HIZLI HİZMETLER -->
 <h2 class="section-title">{{ t.index_hizmet_baslik }}</h2>
 
 <ul class="hizmet-liste">
-    <li>
+    <li onclick="window.location='{{ url_for('hizmetler') }}#mosaic-amallary'" style="cursor:pointer;">
         <span class="icon">📅</span>
         {% if dil_kodu == 'tr' %}Mosaic viza randevu alma{% elif dil_kodu == 'ru' %}Запись на визу в Mosaic{% else %}Mosaic wiza üçin oçert (randevu){% endif %}
+        <span style="float:right;color:#2271b1;font-size:0.85rem;">→</span>
+    </li>
+    <li onclick="window.location='{{ url_for('hizmetler') }}#mosaic-amallary'" style="cursor:pointer;">
+        <span class="icon">🔍</span>
+        {% if dil_kodu == 'tr' %}Mosaic viza sonucu sorgula{% elif dil_kodu == 'ru' %}Узнать результат заявки Mosaic{% else %}Mosaic wiza netijäni bil{% endif %}
+        <span style="float:right;color:#2271b1;font-size:0.85rem;">→</span>
     </li>
     <li>
         <span class="icon">🏨</span>
@@ -112,7 +79,7 @@
     </li>
     <li>
         <span class="icon">🌐</span>
-        {% if dil_kodu == 'tr' %}Tercüme Hizmetleri (TKM-TR, TKM-ING, TKM-RU){% elif dil_kodu == 'ru' %}Переводческие услуги (ТКМ-РУ, ТКМ-АНГ){% else %}Terjime hyzmatlary (TKM-TRK, TKM-ING, TKM-RUS){% endif %}
+        {% if dil_kodu == 'tr' %}Tercüme Hizmetleri (TKM-TR, TKM-ING, TKM-RU){% elif dil_kodu == 'ru' %}Переводческие услуги{% else %}Terjime hyzmatlary (TKM-TRK, TKM-ING, TKM-RUS){% endif %}
     </li>
     <li>
         <span class="icon">🎓</span>
@@ -120,8 +87,134 @@
     </li>
     <li>
         <span class="icon">📄</span>
-        {% if dil_kodu == 'tr' %}Sponsor & Belge Danışmanlığı{% elif dil_kodu == 'ru' %}Консультация по спонсорству и документам{% else %}Sponsor we resminamalary maslahat{% endif %}
+        {% if dil_kodu == 'tr' %}Sponsor & Belge Danışmanlığı{% elif dil_kodu == 'ru' %}Консультация по документам{% else %}Sponsor we resminamalary maslahat{% endif %}
     </li>
 </ul>
+
+<!-- MÜŞTERİ YORUMLARI -->
+<h2 class="section-title">{{ t.index_yorumlar_baslik }}</h2>
+
+<div class="yorumlar-grid">
+    <div class="yorum-kart">
+        <div class="yorum-yildiz">⭐⭐⭐⭐⭐</div>
+        <p class="yorum-metin">
+            {% if dil_kodu == 'tr' %}"Ofislerine gittim. İlgileri ve samimiyetleri harikaydı! Her şey için teşekkür ederim, işlemlerinizi gönül rahatlığı ile yapabilirsiniz."
+            {% elif dil_kodu == 'ru' %}"Посетил их офис. Внимание и искренность были потрясающими! Большое спасибо за всё, можете смело доверять им свои документы."
+            {% else %}"Ofislerine bardym. Üns berişleri we ýürekdenlikleri ajaýypdy! Her zat üçin sag boluň, resminamalaryňyzy ynjalykly berip bilersiňiz."{% endif %}
+        </p>
+        <div class="yorum-isim">— Merdan A., <span>{% if dil_kodu == 'ru' %}Туркменистан{% else %}Türkmenistan{% endif %} 🇹🇲</span></div>
+    </div>
+    <div class="yorum-kart">
+        <div class="yorum-yildiz">⭐⭐⭐⭐⭐</div>
+        <p class="yorum-metin">
+            {% if dil_kodu == 'tr' %}"Türkiye öğrenci vizemi çok hızlı ve sorunsuz aldım. Belgeleri eksiksiz hazırladılar, hiç sorun yaşamadım. Kesinlikle tavsiye ederim!"
+            {% elif dil_kodu == 'ru' %}"Студенческую визу в Турцию получил очень быстро и без проблем. Все документы подготовили без ошибок. Очень рекомендую!"
+            {% else %}"Türkiýe talyp wizamy gaty çalt we mesele ýok aldym. Resminamalary doly taýýarladylar. Hökman maslahat berýärin!"{% endif %}
+        </p>
+        <div class="yorum-isim">— Aýgül B., <span>{% if dil_kodu == 'ru' %}Туркменистан{% else %}Türkmenistan{% endif %} 🇹🇲</span></div>
+    </div>
+    <div class="yorum-kart">
+        <div class="yorum-yildiz">⭐⭐⭐⭐⭐</div>
+        <p class="yorum-metin">
+            {% if dil_kodu == 'tr' %}"WhatsApp üzerinden tüm süreç boyunca yardımcı oldular. Almanya vizem onaylandı! Profesyonel ve güvenilir bir ekip."
+            {% elif dil_kodu == 'ru' %}"Сопровождали через WhatsApp на протяжении всего процесса. Получил визу в Германию! Профессиональная и надёжная команда."
+            {% else %}"WhatsApp arkaly tutuş proses boyunca kömek etdiler. Germaniýa wizam tassyklandy! Professional we ygtybarly topar."{% endif %}
+        </p>
+        <div class="yorum-isim">— Oraz Ý., <span>{% if dil_kodu == 'ru' %}Туркменистан{% else %}Türkmenistan{% endif %} 🇹🇲</span></div>
+    </div>
+</div>
+
+<!-- SSS -->
+<h2 class="section-title">{{ t.index_sss_baslik }}</h2>
+
+<div class="sss-liste">
+    <div class="sss-item">
+        <button class="sss-soru" onclick="sssAc(this)">
+            {% if dil_kodu == 'tr' %}Vize reddedilirse ne olur?
+            {% elif dil_kodu == 'ru' %}Что будет если в визе откажут?
+            {% else %}Wiza ret edilse näme bolýar?{% endif %}
+            <span class="sss-ikon">+</span>
+        </button>
+        <div class="sss-cevap">
+            {% if dil_kodu == 'tr' %}Ret durumunda size ret gerekçelerini açıklıyor ve tekrar başvuru stratejisi belirliyoruz. Eksik veya hatalı belgeler varsa düzelterek yeniden başvuru yapılabilir.
+            {% elif dil_kodu == 'ru' %}В случае отказа мы объясняем причины и разрабатываем стратегию повторной подачи. При наличии неполных или неверных документов можно подать заново после исправлений.
+            {% else %}Ret ýagdaýynda ret sebäplerini düşündirýäris we gaýtadan ýüz tutmak strategiýasyny kesgitleýäris.{% endif %}
+        </div>
+    </div>
+    <div class="sss-item">
+        <button class="sss-soru" onclick="sssAc(this)">
+            {% if dil_kodu == 'tr' %}Süreç ne kadar sürer?
+            {% elif dil_kodu == 'ru' %}Сколько времени занимает процесс?
+            {% else %}Proses näçe wagt alýar?{% endif %}
+            <span class="sss-ikon">+</span>
+        </button>
+        <div class="sss-cevap">
+            {% if dil_kodu == 'tr' %}Türkiye vizesi genellikle 1-3 hafta, Avrupa ülkeleri 3-6 hafta sürebilir. Randevu yoğunluğuna göre değişiklik gösterebilir.
+            {% elif dil_kodu == 'ru' %}Виза в Турцию обычно занимает 1-3 недели, европейские страны — 3-6 недель. Зависит от загруженности консульства.
+            {% else %}Türkiýe wizasy adatça 1-3 hepde, Ýewropa ýurtlary 3-6 hepde alyp biler.{% endif %}
+        </div>
+    </div>
+    <div class="sss-item">
+        <button class="sss-soru" onclick="sssAc(this)">
+            {% if dil_kodu == 'tr' %}Türkmenistan'dan başvuru yapabilir miyim?
+            {% elif dil_kodu == 'ru' %}Можно ли подать заявку из Туркменистана?
+            {% else %}Türkmenistandan ýüz tutup bolarmy?{% endif %}
+            <span class="sss-ikon">+</span>
+        </button>
+        <div class="sss-cevap">
+            {% if dil_kodu == 'tr' %}Evet! Dänew ve Aşkabat ofislerimiz aracılığıyla Türkmenistan'dan tüm işlemlerinizi yürütebilirsiniz. İstanbul ofisimiz de hizmetinizdedir.
+            {% elif dil_kodu == 'ru' %}Да! Через наши офисы в Дяньове и Ашхабаде вы можете вести все процессы из Туркменистана. Наш стамбульский офис также к вашим услугам.
+            {% else %}Hawa! Dänew we Aşgabat ofislerimiz arkaly Türkmenistandan ähli işleriňizi alyp baryp bilersiňiz.{% endif %}
+        </div>
+    </div>
+    <div class="sss-item">
+        <button class="sss-soru" onclick="sssAc(this)">
+            {% if dil_kodu == 'tr' %}Hangi belgeleri hazırlamam gerekiyor?
+            {% elif dil_kodu == 'ru' %}Какие документы нужно подготовить?
+            {% else %}Haýsy resminamalary taýýarlamaly?{% endif %}
+            <span class="sss-ikon">+</span>
+        </button>
+        <div class="sss-cevap">
+            {% if dil_kodu == 'tr' %}Vize türüne göre belgeler değişir. Pasaport, biyometrik fotoğraf, sponsor belgesi ve vize türüne özel evraklar gereklidir. Detaylı liste için Hizmetler sayfamızı inceleyin.
+            {% elif dil_kodu == 'ru' %}Документы зависят от типа визы. Как правило: паспорт, биометрическое фото, спонсорские документы. Подробный список на странице Услуги.
+            {% else %}Resminamalar wiza görnüşine görä üýtgeýär. Pasport, biometrik surat, sponsor resminamasy gerek. Jikme-jik maglumat üçin Hyzmatlar sahypasyna serediň.{% endif %}
+        </div>
+    </div>
+    <div class="sss-item">
+        <button class="sss-soru" onclick="sssAc(this)">
+            {% if dil_kodu == 'tr' %}Ücretsiz danışmanlık veriyor musunuz?
+            {% elif dil_kodu == 'ru' %}Предоставляете ли вы бесплатную консультацию?
+            {% else %}Mugt maslahat berýärsiňizmi?{% endif %}
+            <span class="sss-ikon">+</span>
+        </button>
+        <div class="sss-cevap">
+            {% if dil_kodu == 'tr' %}Evet! İlk görüşme tamamen ücretsizdir. WhatsApp veya iletişim formu aracılığıyla bize ulaşabilirsiniz.
+            {% elif dil_kodu == 'ru' %}Да! Первая консультация совершенно бесплатна. Свяжитесь с нами через WhatsApp или форму обратной связи.
+            {% else %}Hawa! Ilkinji maslahat düýbünden mugtdyr. WhatsApp ýa-da habarlaşmak formy arkaly bize ýüz tutuň.{% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- CTA BÖLÜMÜ -->
+<div class="cta-bolum">
+    <h2>{{ t.index_cta2_baslik }}</h2>
+    <p>{{ t.index_cta2_alt }}</p>
+    <a href="{{ url_for('iletisim') }}" class="cta-btn cta-buyuk">{{ t.index_cta2_btn }}</a>
+</div>
+
+<script>
+function sssAc(btn) {
+    var item = btn.parentElement;
+    var acik = item.classList.contains('acik');
+    document.querySelectorAll('.sss-item.acik').forEach(function(el) {
+        el.classList.remove('acik');
+        el.querySelector('.sss-ikon').textContent = '+';
+    });
+    if (!acik) {
+        item.classList.add('acik');
+        btn.querySelector('.sss-ikon').textContent = '−';
+    }
+}
+</script>
 
 {% endblock %}

@@ -1078,3 +1078,181 @@ header {
   transform: translateY(-2px);
   color: #fff;
 }
+/* ── SELECT (dropdown) ── */
+select {
+    width: 100%;
+    padding: 0.65rem 0.9rem;
+    border: 1.5px solid #cde0f5;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    background: white;
+    color: #01263a;
+    appearance: auto;
+}
+select:focus {
+    outline: none;
+    border-color: #2271b1;
+    box-shadow: 0 0 0 3px rgba(34,113,177,0.15);
+}
+
+/* ── MÜŞTERİ YORUMLARI ── */
+.yorumlar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+}
+.yorum-kart {
+    background: white;
+    border-radius: 14px;
+    padding: 1.4rem;
+    box-shadow: 0 3px 14px rgba(34,113,177,0.1);
+    border-left: 4px solid #2271b1;
+    transition: transform 0.2s;
+}
+.yorum-kart:hover { transform: translateY(-3px); }
+.yorum-yildiz { font-size: 1.1rem; margin-bottom: 0.6rem; }
+.yorum-metin {
+    font-size: 0.9rem;
+    color: #34495e;
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 0.8rem;
+}
+.yorum-isim {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #2271b1;
+}
+.yorum-isim span { color: #888; font-weight: 400; }
+
+/* ── SSS ── */
+.sss-liste {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+}
+.sss-item {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(34,113,177,0.08);
+}
+.sss-soru {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 1rem 1.2rem;
+    text-align: left;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #01263a;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s;
+}
+.sss-soru:hover { background: #f0f7ff; }
+.sss-ikon {
+    font-size: 1.3rem;
+    color: #2271b1;
+    font-weight: 400;
+    min-width: 20px;
+    text-align: center;
+}
+.sss-cevap {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.25s;
+    font-size: 0.88rem;
+    color: #4a7a9b;
+    line-height: 1.6;
+    padding: 0 1.2rem;
+}
+.sss-item.acik .sss-cevap {
+    max-height: 200px;
+    padding: 0 1.2rem 1rem;
+}
+.sss-item.acik .sss-soru { background: #f0f7ff; color: #2271b1; }
+
+/* ── CTA BÖLÜM ── */
+.cta-bolum {
+    background: linear-gradient(135deg, #01263a, #2271b1);
+    border-radius: 18px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    margin: 2rem 0;
+    color: white;
+}
+.cta-bolum h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+.cta-bolum p {
+    color: #b8d9f5;
+    margin-bottom: 1.2rem;
+    font-size: 0.95rem;
+}
+.cta-buyuk {
+    font-size: 1.05rem !important;
+    padding: 0.9rem 2.5rem !important;
+}
+
+/* ── İSTATİSTİKLER ── */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+@media (max-width: 600px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.stat-kart {
+    background: linear-gradient(135deg, #2271b1, #01263a);
+    border-radius: 14px;
+    padding: 1.4rem 1rem;
+    text-align: center;
+    color: white;
+    box-shadow: 0 4px 14px rgba(34,113,177,0.25);
+}
+.stat-sayi {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+}
+.stat-etiket {
+    font-size: 0.8rem;
+    color: #b8d9f5;
+}
+
+/* ── GÜVEN UNSURLAR ── */
+.guven-kart { margin-top: 1.2rem; }
+.guven-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.guven-item {
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+    background: #f0f7ff;
+    border-radius: 10px;
+    padding: 0.9rem;
+}
+.guven-ikon { font-size: 1.5rem; min-width: 28px; }
+.guven-item strong { font-size: 0.9rem; color: #01263a; display: block; margin-bottom: 0.2rem; }
+.guven-item p { font-size: 0.8rem; color: #4a7a9b; margin: 0; }
+
+/* ── MOBİL UYUM ── */
+@media (max-width: 600px) {
+    .yorumlar-grid { grid-template-columns: 1fr; }
+    .cta-bolum { padding: 1.8rem 1rem; }
+    .cta-bolum h2 { font-size: 1.2rem; }
+}
