@@ -70,6 +70,11 @@
             <a href="{{ url_for('iletisim') }}" {% if request.endpoint == 'iletisim' %}class="aktif"{% endif %}>
                 &#x1F4DE; {{ t.menu_iletisim }}
             </a>
+            {% if session.get('admin_giris') %}
+            <a href="{{ url_for('admin_panel') }}" style="background:rgba(255,165,0,0.25);border-color:rgba(255,165,0,0.6);" {% if request.endpoint == 'admin_panel' %}class="aktif"{% endif %}>
+                🛡️ Admin
+            </a>
+            {% endif %}
         </nav>
 
         <div class="dil-butonlari">
@@ -109,16 +114,10 @@
 <footer>
     <p>{{ t.footer_telif }}</p>
     <p>
-        📧 <a href="mailto:info@trustedutm.com">info@trustedutm.com</a>
+        📧 <a href="/cdn-cgi/l/email-protection#90f9fef6ffd0e4e2e5e3e4f5f4e5e4fdbef3fffd"><span class="__cf_email__" data-cfemail="87eee9e1e8c7f3f5f2f4f3e2e3f2f3eaa9e4e8ea">[email&#160;protected]</span></a>
         &nbsp;|&nbsp;
         📞 <a href="tel:+905524254697">+90 552 425 46 97</a>
     </p>
     <p style="margin-top:0.4rem;font-size:0.8rem;color:#7ab5d8;">
         🌐 <a href="https://www.trustedutm.com">www.trustedutm.com</a>
         &nbsp;|&nbsp;
-        📸 <a href="https://instagram.com/trusttmconsulting" target="_blank">@trusttmconsulting</a>
-    </p>
-</footer>
-
-</body>
-</html>
