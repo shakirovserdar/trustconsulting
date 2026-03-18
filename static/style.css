@@ -1373,3 +1373,54 @@ select:focus {
 .sss-item.acik .sss-cevap {
     padding: 0.8rem 1.2rem 1.2rem 1.2rem !important;
 }
+
+/* ── YORUM PANELİ AÇILIR/KAPANIR ── */
+.yorum-panel-baslik {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #2271b1, #01263a);
+    color: white;
+    padding: 1.1rem 1.6rem;
+    border-radius: 14px;
+    cursor: pointer;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0;
+    user-select: none;
+    transition: opacity 0.2s;
+}
+.yorum-panel-baslik:hover { opacity: 0.9; }
+.yorum-panel-ikon { font-size: 1rem; transition: transform 0.3s; }
+
+.yorum-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    background: white;
+    border-radius: 0 0 14px 14px;
+    margin-bottom: 1.5rem;
+}
+.yorum-panel.acik {
+    max-height: 9999px;
+    border: 1px solid #cde0f5;
+    border-top: none;
+    padding: 1rem;
+}
+
+/* Yorum kartı yeni stil — yıldızsız, büyük yazı */
+.yorumlar-liste .yorum-kart {
+    border-left: 5px solid #2271b1;
+    background: #f8fbff;
+}
+.yorumlar-liste .yorum-yildiz { display: none; }
+.yorumlar-liste .yorum-metin {
+    font-size: 1.05rem !important;
+    font-weight: 600 !important;
+    color: #1a2e45 !important;
+    line-height: 1.75 !important;
+}
+.yorumlar-liste .yorum-isim {
+    font-size: 0.92rem !important;
+    margin-top: 0.6rem;
+}

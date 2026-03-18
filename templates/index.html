@@ -87,41 +87,64 @@
 </ul>
 
 <!-- MÜŞTERİ YORUMLARI -->
-<h2 class="section-title">{{ t.index_yorumlar_baslik }}</h2>
+<div class="yorum-panel-baslik" onclick="yorumPanelAc(this)">
+    <span>⭐ {{ t.index_yorumlar_baslik }}</span>
+    <span class="yorum-panel-ikon">▼</span>
+</div>
 
-<div class="yorumlar-liste">
-    <div class="yorum-kart">
-        <div class="yorum-yildiz">⭐⭐⭐⭐⭐</div>
-        <p class="yorum-metin">{% if dil_kodu == "tr" %}"Ofislerine gittim. İlgileri ve samimiyetleri harikaydı! İşlemlerinizi gönül rahatlığı ile yapabilirsiniz."{% elif dil_kodu == "ru" %}"Посетил офис. Внимание и искренность потрясающие! Смело доверяйте им свои документы."{% else %}"Ofislerine bardym. Üns berişleri ajaýypdy! Resminamalaryňyzy ynjalykly berip bilersiňiz."{% endif %}</p>
-        <div class="yorum-isim">— Merdan A., <span>Türkmenistan 🇹🇲</span></div>
+<div class="yorum-panel" id="yorum-panel">
+    <div class="yorumlar-liste">
+        <div class="yorum-kart">
+            <p class="yorum-metin">{% if dil_kodu == "tr" %}"Ofislerine gittim. İlgileri ve samimiyetleri harikaydı! İşlemlerinizi gönül rahatlığı ile yapabilirsiniz."{% elif dil_kodu == "ru" %}"Посетил офис. Внимание и искренность потрясающие! Смело доверяйте им свои документы."{% else %}"Ofislerine bardym. Üns berişleri ajaýypdy! Resminamalaryňyzy ynjalykly berip bilersiňiz."{% endif %}</p>
+            <div class="yorum-isim">— Merdan A., <span>Türkmenistan 🇹🇲</span></div>
+        </div>
+        <div class="yorum-kart">
+            <p class="yorum-metin">{% if dil_kodu == "tr" %}"Türkiye öğrenci vizemi çok hızlı ve sorunsuz aldım. Belgeleri eksiksiz hazırladılar. Kesinlikle tavsiye ederim!"{% elif dil_kodu == "ru" %}"Студенческую визу в Турцию получил быстро и без проблем. Очень рекомендую!"{% else %}"Türkiýe talyp wizamy gaty çalt aldym. Hökman maslahat berýärin!"{% endif %}</p>
+            <div class="yorum-isim">— Aýgül B., <span>Türkmenistan 🇹🇲</span></div>
+        </div>
+        <div class="yorum-kart">
+            <p class="yorum-metin">{% if dil_kodu == "tr" %}"WhatsApp üzerinden tüm süreç boyunca yardımcı oldular. Almanya vizem onaylandı! Güvenilir bir ekip."{% elif dil_kodu == "ru" %}"Сопровождали через WhatsApp. Немецкая виза одобрена! Надёжная команда."{% else %}"WhatsApp arkaly kömek etdiler. Germaniýa wizam tassyklandy!"{% endif %}</p>
+            <div class="yorum-isim">— Oraz Ý., <span>Türkmenistan 🇹🇲</span></div>
+        </div>
+        <div class="yorum-kart">
+            <p class="yorum-metin">{% if dil_kodu == "tr" %}"Rusya e-vizemi 3 günde hallettiler. Fiyatlar çok makul. Bir daha ihtiyacım olursa yine başvuracağım."{% elif dil_kodu == "ru" %}"Российскую э-визу оформили за 3 дня. Цены разумные. Обязательно обращусь снова."{% else %}"Russiýa e-wizamy 3 günde çözdüler. Hökman ýene ýüz tutaryn."{% endif %}</p>
+            <div class="yorum-isim">— Gülälek M., <span>Türkmenistan 🇹🇲</span></div>
+        </div>
+        <div class="yorum-kart">
+            <p class="yorum-metin">{% if dil_kodu == "tr" %}"Tercüme ve sponsor belgelerini de onlar hazırladı. Tek çatı altında her şeyi hallettik, çok pratik."{% elif dil_kodu == "ru" %}"Перевод и спонсорские документы тоже они подготовили. Всё под одной крышей — очень удобно."{% else %}"Terjime we sponsor resminamalary hem olar taýýarlady. Bir ýerde hemme zat — gaty amatly."{% endif %}</p>
+            <div class="yorum-isim">— Serdar K., <span>Türkmenistan 🇹🇲</span></div>
+        </div>
+        {% for yorum in onaylanan_yorumlar %}
+        <div class="yorum-kart">
+            <p class="yorum-metin">"{{ yorum.metin }}"</p>
+            <div class="yorum-isim">— {{ yorum.isim }}, <span>{{ yorum.sehir }}</span></div>
+        </div>
+        {% endfor %}
     </div>
-    <div class="yorum-kart">
-        <div class="yorum-yildiz">⭐⭐⭐⭐⭐</div>
-        <p class="yorum-metin">{% if dil_kodu == "tr" %}"Türkiye öğrenci vizemi çok hızlı ve sorunsuz aldım. Belgeleri eksiksiz hazırladılar. Kesinlikle tavsiye ederim!"{% elif dil_kodu == "ru" %}"Студенческую визу в Турцию получил быстро и без проблем. Очень рекомендую!"{% else %}"Türkiýe talyp wizamy gaty çalt aldym. Hökman maslahat berýärin!"{% endif %}</p>
-        <div class="yorum-isim">— Aýgül B., <span>Türkmenistan 🇹🇲</span></div>
+
+    <!-- YORUM BIRAK FORMU -->
+    <div class="yorum-form-kart">
+        <h3>{% if dil_kodu == "tr" %}✍️ Siz de Yorum Bırakın{% elif dil_kodu == "ru" %}✍️ Оставьте отзыв{% else %}✍️ Siz hem teswir goýuň{% endif %}</h3>
+        <p style="font-size:0.85rem;color:#4a7a9b;margin-bottom:1rem;">{% if dil_kodu == "tr" %}Yorumunuz incelendikten sonra yayınlanacaktır.{% elif dil_kodu == "ru" %}Отзыв будет опубликован после проверки.{% else %}Teswir barlanandan soň çap ediler.{% endif %}</p>
+        <form method="POST" action="{{ url_for('yorum_gonder') }}">
+            <div class="yorum-form-satir">
+                <div class="form-grup">
+                    <label>👤 {% if dil_kodu == "tr" %}Adınız{% elif dil_kodu == "ru" %}Ваше имя{% else %}Adyňyz{% endif %}</label>
+                    <input type="text" name="isim" required placeholder="{% if dil_kodu == 'tr' %}Adınız{% elif dil_kodu == 'ru' %}Имя{% else %}Adyňyz{% endif %}">
+                </div>
+                <div class="form-grup">
+                    <label>📍 {% if dil_kodu == "tr" %}Şehir{% elif dil_kodu == "ru" %}Город{% else %}Şäher{% endif %}</label>
+                    <input type="text" name="sehir" required placeholder="{% if dil_kodu == 'tr' %}Örn: Dänew{% elif dil_kodu == 'ru' %}Напр: Ашхабад{% else %}Mysal: Dänew{% endif %}">
+                </div>
+            </div>
+            <div class="form-grup">
+                <label>💬 {% if dil_kodu == "tr" %}Yorumunuz{% elif dil_kodu == "ru" %}Отзыв{% else %}Teswiriňiz{% endif %}</label>
+                <textarea name="metin" required rows="3" placeholder="{% if dil_kodu == 'tr' %}Deneyiminizi paylaşın...{% elif dil_kodu == 'ru' %}Поделитесь опытом...{% else %}Tejribäňizi paýlaşyň...{% endif %}"></textarea>
+            </div>
+            <input type="hidden" name="yildiz" value="5">
+            <button type="submit" class="gonder-btn">{% if dil_kodu == "tr" %}📤 Gönder{% elif dil_kodu == "ru" %}📤 Отправить{% else %}📤 Ibermek{% endif %}</button>
+        </form>
     </div>
-    <div class="yorum-kart">
-        <div class="yorum-yildiz">⭐⭐⭐⭐</div>
-        <p class="yorum-metin">{% if dil_kodu == "tr" %}"WhatsApp üzerinden tüm süreç boyunca yardımcı oldular. Almanya vizem onaylandı! Güvenilir bir ekip."{% elif dil_kodu == "ru" %}"Сопровождали через WhatsApp. Немецкая виза одобрена! Надёжная команда."{% else %}"WhatsApp arkaly kömek etdiler. Germaniýa wizam tassyklandy!"{% endif %}</p>
-        <div class="yorum-isim">— Oraz Ý., <span>Türkmenistan 🇹🇲</span></div>
-    </div>
-    <div class="yorum-kart">
-        <div class="yorum-yildiz">⭐⭐⭐⭐⭐</div>
-        <p class="yorum-metin">{% if dil_kodu == "tr" %}"Rusya e-vizemi 3 günde hallettiler. Fiyatlar çok makul. Bir daha ihtiyacım olursa yine başvuracağım."{% elif dil_kodu == "ru" %}"Российскую э-визу оформили за 3 дня. Цены разумные. Обязательно обращусь снова."{% else %}"Russiýa e-wizamy 3 günde çözdüler. Hökman ýene ýüz tutaryn."{% endif %}</p>
-        <div class="yorum-isim">— Gülälek M., <span>Türkmenistan 🇹🇲</span></div>
-    </div>
-    <div class="yorum-kart">
-        <div class="yorum-yildiz">⭐⭐⭐⭐</div>
-        <p class="yorum-metin">{% if dil_kodu == "tr" %}"Tercüme ve sponsor belgelerini de onlar hazırladı. Tek çatı altında her şeyi hallettik, çok pratik."{% elif dil_kodu == "ru" %}"Перевод и спонсорские документы тоже они подготовили. Всё под одной крышей — очень удобно."{% else %}"Terjime we sponsor resminamalary hem olar taýýarlady. Bir ýerde hemme zat — gaty amatly."{% endif %}</p>
-        <div class="yorum-isim">— Serdar K., <span>Türkmenistan 🇹🇲</span></div>
-    </div>
-    {% for yorum in onaylanan_yorumlar %}
-    <div class="yorum-kart">
-        <div class="yorum-yildiz">{% for i in range(yorum.yildiz) %}⭐{% endfor %}</div>
-        <p class="yorum-metin">"{{ yorum.metin }}"</p>
-        <div class="yorum-isim">— {{ yorum.isim }}, <span>{{ yorum.sehir }}</span></div>
-    </div>
-    {% endfor %}
 </div>
 
 
@@ -276,6 +299,13 @@
 </div>
 
 <script>
+function yorumPanelAc(el) {
+    var panel = document.getElementById('yorum-panel');
+    var acik = panel.classList.contains('acik');
+    panel.classList.toggle('acik');
+    el.querySelector('.yorum-panel-ikon').textContent = acik ? '▼' : '▲';
+}
+
 function sssAc(btn) {
     var item = btn.parentElement;
     var acik = item.classList.contains('acik');
