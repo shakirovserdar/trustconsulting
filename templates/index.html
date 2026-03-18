@@ -129,71 +129,143 @@
 <h2 class="section-title">{{ t.index_sss_baslik }}</h2>
 
 <div class="sss-liste">
+
     <div class="sss-item">
         <button class="sss-soru" onclick="sssAc(this)">
-            {% if dil_kodu == 'tr' %}Vize reddedilirse ne olur?
-            {% elif dil_kodu == 'ru' %}Что будет если в визе откажут?
-            {% else %}Wiza ret edilse näme bolýar?{% endif %}
+            <span class="sss-no">01</span>
+            <span>{% if dil_kodu == "tr" %}Vize reddedilirse ne olur? Para iadesi var mı?{% elif dil_kodu == "ru" %}Что будет если в визе откажут? Возврат средств?{% else %}Wiza ret edilse näme bolýar? Pul yzyna gaýtarylýarmy?{% endif %}</span>
             <span class="sss-ikon">+</span>
         </button>
         <div class="sss-cevap">
-            {% if dil_kodu == 'tr' %}Ret durumunda size ret gerekçelerini açıklıyor ve tekrar başvuru stratejisi belirliyoruz. Eksik veya hatalı belgeler varsa düzelterek yeniden başvuru yapılabilir.
-            {% elif dil_kodu == 'ru' %}В случае отказа мы объясняем причины и разрабатываем стратегию повторной подачи. При наличии неполных или неверных документов можно подать заново после исправлений.
-            {% else %}Ret ýagdaýynda ret sebäplerini düşündirýäris we gaýtadan ýüz tutmak strategiýasyny kesgitleýäris.{% endif %}
+            {% if dil_kodu == "tr" %}
+            Ret durumunda panik yapmayın! Size ret gerekçelerini detaylıca açıklıyor ve tekrar başvuru stratejisi belirliyoruz. Eksik veya hatalı belgeler varsa düzelterek yeniden başvuru yapılabilir. Ücret iadesi konusunda her durum ayrı değerlendirilir — lütfen danışmanlık öncesinde bu konuyu görüşün.
+            {% elif dil_kodu == "ru" %}
+            Не паникуйте! В случае отказа мы детально объясняем причины и разрабатываем стратегию повторной подачи. По вопросу возврата средств каждый случай рассматривается индивидуально — обсудите это до начала процесса.
+            {% else %}
+            Alada etmäň! Ret ýagdaýynda ret sebäplerini jikme-jik düşündirýäris we gaýtadan ýüz tutmak strategiýasyny kesgitleýäris. Pul yzyna gaýtarmak meselesi her ýagdaý aýry seredilýär.
+            {% endif %}
         </div>
     </div>
+
     <div class="sss-item">
         <button class="sss-soru" onclick="sssAc(this)">
-            {% if dil_kodu == 'tr' %}Süreç ne kadar sürer?
-            {% elif dil_kodu == 'ru' %}Сколько времени занимает процесс?
-            {% else %}Proses näçe wagt alýar?{% endif %}
+            <span class="sss-no">02</span>
+            <span>{% if dil_kodu == "tr" %}Türkiye vizesi ne kadar sürer? Randevu almak zor mu?{% elif dil_kodu == "ru" %}Сколько ждать визу в Турцию? Сложно записаться?{% else %}Türkiýe wizasy näçe wagt alýar? Randevu almak kynmy?{% endif %}</span>
             <span class="sss-ikon">+</span>
         </button>
         <div class="sss-cevap">
-            {% if dil_kodu == 'tr' %}Türkiye vizesi genellikle 1-3 hafta, Avrupa ülkeleri 3-6 hafta sürebilir. Randevu yoğunluğuna göre değişiklik gösterebilir.
-            {% elif dil_kodu == 'ru' %}Виза в Турцию обычно занимает 1-3 недели, европейские страны — 3-6 недель. Зависит от загруженности консульства.
-            {% else %}Türkiýe wizasy adatça 1-3 hepde, Ýewropa ýurtlary 3-6 hepde alyp biler.{% endif %}
+            {% if dil_kodu == "tr" %}
+            Türkiye vizesi ortalama <strong>2-4 hafta</strong> sürmektedir. Randevu yoğunluğuna göre değişebilir. Avrupa ülkeleri (Almanya, Belçika) için <strong>4-8 hafta</strong> planlayın. Randevu almakta zorluk yaşıyorsanız — bizim aracılığımızla çok daha hızlı halledebilirsiniz!
+            {% elif dil_kodu == "ru" %}
+            Виза в Турцию занимает в среднем <strong>2-4 недели</strong>. Для Европы (Германия, Бельгия) планируйте <strong>4-8 недель</strong>. Если сложно записаться — через нас намного быстрее!
+            {% else %}
+            Türkiýe wizasy ortaça <strong>2-4 hepde</strong> alýar. Ýewropa üçin <strong>4-8 hepde</strong> planlap bilersiňiz. Randevu almakda kynçylyk çekýän bolsaňyz — biziň arkamyz bilen has çalt çözülýär!
+            {% endif %}
         </div>
     </div>
+
     <div class="sss-item">
         <button class="sss-soru" onclick="sssAc(this)">
-            {% if dil_kodu == 'tr' %}Türkmenistan'dan başvuru yapabilir miyim?
-            {% elif dil_kodu == 'ru' %}Можно ли подать заявку из Туркменистана?
-            {% else %}Türkmenistandan ýüz tutup bolarmy?{% endif %}
+            <span class="sss-no">03</span>
+            <span>{% if dil_kodu == "tr" %}Türkmenistan'dan başvuru yapabilir miyim? Ofise gelmem şart mı?{% elif dil_kodu == "ru" %}Можно подать из Туркменистана? Обязательно приходить в офис?{% else %}Türkmenistandan ýüz tutup bolarmy? Ofise gelmek hökmänmi?{% endif %}</span>
             <span class="sss-ikon">+</span>
         </button>
         <div class="sss-cevap">
-            {% if dil_kodu == 'tr' %}Evet! Dänew ve Aşkabat ofislerimiz aracılığıyla Türkmenistan'dan tüm işlemlerinizi yürütebilirsiniz. İstanbul ofisimiz de hizmetinizdedir.
-            {% elif dil_kodu == 'ru' %}Да! Через наши офисы в Дяньове и Ашхабаде вы можете вести все процессы из Туркменистана. Наш стамбульский офис также к вашим услугам.
-            {% else %}Hawa! Dänew we Aşgabat ofislerimiz arkaly Türkmenistandan ähli işleriňizi alyp baryp bilersiňiz.{% endif %}
+            {% if dil_kodu == "tr" %}
+            Evet! Dänew ve Aşkabat ofislerimiz ile Türkmenistan'dan tüm işlemlerinizi yürütebilirsiniz. WhatsApp üzerinden de belgelerinizi iletip süreci uzaktan yönetebilirsiniz. Türkiye'deyseniz İstanbul ofisimiz de hizmetinizdedir.
+            {% elif dil_kodu == "ru" %}
+            Да! Через наши офисы в Дяньове и Ашхабаде можно вести все процессы из Туркменистана. Документы можно передать через WhatsApp. Если вы в Турции — наш стамбульский офис к вашим услугам.
+            {% else %}
+            Hawa! Dänew we Aşgabat ofislerimiz arkaly Türkmenistandan ähli işleriňizi alyp baryp bilersiňiz. WhatsApp arkaly resminamalaryňyzy iberip uzakdan hem dolandyryp bilersiňiz.
+            {% endif %}
         </div>
     </div>
+
     <div class="sss-item">
         <button class="sss-soru" onclick="sssAc(this)">
-            {% if dil_kodu == 'tr' %}Hangi belgeleri hazırlamam gerekiyor?
-            {% elif dil_kodu == 'ru' %}Какие документы нужно подготовить?
-            {% else %}Haýsy resminamalary taýýarlamaly?{% endif %}
+            <span class="sss-no">04</span>
+            <span>{% if dil_kodu == "tr" %}Hangi belgeleri hazırlamam gerekiyor?{% elif dil_kodu == "ru" %}Какие документы нужно подготовить?{% else %}Haýsy resminamalary taýýarlamaly?{% endif %}</span>
             <span class="sss-ikon">+</span>
         </button>
         <div class="sss-cevap">
-            {% if dil_kodu == 'tr' %}Vize türüne göre belgeler değişir. Pasaport, biyometrik fotoğraf, sponsor belgesi ve vize türüne özel evraklar gereklidir. Detaylı liste için Hizmetler sayfamızı inceleyin.
-            {% elif dil_kodu == 'ru' %}Документы зависят от типа визы. Как правило: паспорт, биометрическое фото, спонсорские документы. Подробный список на странице Услуги.
-            {% else %}Resminamalar wiza görnüşine görä üýtgeýär. Pasport, biometrik surat, sponsor resminamasy gerek. Jikme-jik maglumat üçin Hyzmatlar sahypasyna serediň.{% endif %}
+            {% if dil_kodu == "tr" %}
+            Temel belgeler genellikle şunlardır: <strong>Pasaport</strong> (en az 6 ay geçerli), <strong>2 adet biyometrik fotoğraf</strong> (5x6 cm), <strong>Sponsor belgesi</strong> (banka kaydı, iş belgesi), <strong>Doğum belgesi + tercüme</strong>, <strong>Evli ise nikah cüzdanı + tercüme</strong>. Vize türüne göre ek belgeler gerekebilir. Hizmetler sayfamızdan detaylı listeye ulaşabilirsiniz.
+            {% elif dil_kodu == "ru" %}
+            Основные документы: <strong>Паспорт</strong> (мин. 6 мес.), <strong>2 биометрических фото</strong> (5x6), <strong>Спонсорские документы</strong>, <strong>Свидетельство о рождении + перевод</strong>, <strong>Если женаты — свидетельство о браке + перевод</strong>. Подробный список на странице Услуги.
+            {% else %}
+            Esasy resminamalar: <strong>Pasport</strong> (iň az 6 aý), <strong>2 biometrik surat</strong> (5x6), <strong>Sponsor resminamasy</strong>, <strong>Dogluş şahadatnamasy + terjime</strong>, <strong>Öýlenen bolsa nika şahadatnamasy + terjime</strong>. Hyzmatlar sahypasynda jikme-jik sanawy görüp bilersiňiz.
+            {% endif %}
         </div>
     </div>
+
     <div class="sss-item">
         <button class="sss-soru" onclick="sssAc(this)">
-            {% if dil_kodu == 'tr' %}Ücretsiz danışmanlık veriyor musunuz?
-            {% elif dil_kodu == 'ru' %}Предоставляете ли вы бесплатную консультацию?
-            {% else %}Mugt maslahat berýärsiňizmi?{% endif %}
+            <span class="sss-no">05</span>
+            <span>{% if dil_kodu == "tr" %}Sponsor belgesi nedir? Kimden alınır?{% elif dil_kodu == "ru" %}Что такое спонсорский документ? У кого берётся?{% else %}Sponsor resminamasy näme? Kimden alynýar?{% endif %}</span>
             <span class="sss-ikon">+</span>
         </button>
         <div class="sss-cevap">
-            {% if dil_kodu == 'tr' %}Evet! İlk görüşme tamamen ücretsizdir. WhatsApp veya iletişim formu aracılığıyla bize ulaşabilirsiniz.
-            {% elif dil_kodu == 'ru' %}Да! Первая консультация совершенно бесплатна. Свяжитесь с нами через WhatsApp или форму обратной связи.
-            {% else %}Hawa! Ilkinji maslahat düýbünden mugtdyr. WhatsApp ýa-da habarlaşmak formy arkaly bize ýüz tutuň.{% endif %}
+            {% if dil_kodu == "tr" %}
+            Sponsor belgesi, vize süresince masraflarınızı karşılayacak kişinin maddi durumunu kanıtlayan evraktır. Genellikle <strong>iş yeri belgesi</strong>, <strong>son 3-6 aylık banka kaydı</strong>, <strong>noterden onaylı taahhütname</strong> içerir. Sponsorunuz yoksa veya yeterli belgeniz yoksa — bizimle iletişime geçin, çözüm yolları bulabiliriz!
+            {% elif dil_kodu == "ru" %}
+            Спонсорский документ подтверждает финансовую состоятельность лица, которое берёт на себя ваши расходы. Обычно включает <strong>справку с работы</strong>, <strong>выписку из банка за 3-6 мес.</strong>, <strong>нотариальное обязательство</strong>. Нет спонсора? — Свяжитесь с нами, найдём решение!
+            {% else %}
+            Sponsor resminamasy, wiza möhletinde çykdajylaryňyzy öz üstüne alýan adamyň maddy ýagdaýyny tassyklaýan resminamadyr. Adatça <strong>iş ýerinden sprawka</strong>, <strong>soňky 3-6 aýlyk bank çykarmasy</strong>, <strong>notarial borçnama</strong> öz içine alýar.
+            {% endif %}
         </div>
     </div>
+
+    <div class="sss-item">
+        <button class="sss-soru" onclick="sssAc(this)">
+            <span class="sss-no">06</span>
+            <span>{% if dil_kodu == "tr" %}Türkiye'de üniversiteye kaydolmak için ne yapmalıyım?{% elif dil_kodu == "ru" %}Как поступить в университет в Турции?{% else %}Türkiýede uniwersitete ýazylmak üçin näme etmeli?{% endif %}</span>
+            <span class="sss-ikon">+</span>
+        </button>
+        <div class="sss-cevap">
+            {% if dil_kodu == "tr" %}
+            Türk üniversitelerine Türkmenistan'dan kayıt yaptırabilirsiniz. <strong>Depozitsiz</strong> seçenekler mevcuttur. İstanbul üniversiteleri için depozit gerekebilir — bu konuda size yardımcı oluyoruz. Davetiye alındıktan sonra öğrenci vizesi için başvuru yapılır. Detaylar için bizimle iletişime geçin!
+            {% elif dil_kodu == "ru" %}
+            Из Туркменистана можно поступить в турецкий университет. Есть варианты <strong>без депозита</strong>. Для стамбульских вузов депозит может понадобиться — мы помогаем в этом. После получения приглашения подаётся студенческая виза.
+            {% else %}
+            Türkmenistandan türk uniwersitetlerine ýazylmak bolýar. <strong>Depozitsiz</strong> wariantlar bar. Stambul uniwersitetleri üçin depozit gerek bolup biler — bu meselede kömek edýäris. Çakylyk alynandan soň talyp wizasy üçin ýüz tutulýar.
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="sss-item">
+        <button class="sss-soru" onclick="sssAc(this)">
+            <span class="sss-no">07</span>
+            <span>{% if dil_kodu == "tr" %}Tercüme ve fotokopi hizmetleri de veriyor musunuz?{% elif dil_kodu == "ru" %}Вы также предоставляете услуги перевода и копирования?{% else %}Terjime we kseroks hyzmatlaryny hem berýärsiňizmi?{% endif %}</span>
+            <span class="sss-ikon">+</span>
+        </button>
+        <div class="sss-cevap">
+            {% if dil_kodu == "tr" %}
+            Evet! Türkmence-Türkçe, Türkmence-İngilizce ve Türkmence-Rusça tercüme hizmetleri sunuyoruz. Ayrıca fotokopi, tarama ve belge çoğaltma işlemleri de ofislerimizde yapılmaktadır. Tek çatı altında her şey!
+            {% elif dil_kodu == "ru" %}
+            Да! Предоставляем перевод туркменский-турецкий, туркменский-английский, туркменский-русский. А также ксерокопирование и сканирование документов в наших офисах. Всё под одной крышей!
+            {% else %}
+            Hawa! Türkmençe-Türkçe, Türkmençe-Iňlisçe we Türkmençe-Rusça terjime hyzmatlaryny hödürleýäris. Şeýle hem kseroks, skan we resminamalary köpeltmek ofislerimizde ýerine ýetirilýär.
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="sss-item">
+        <button class="sss-soru" onclick="sssAc(this)">
+            <span class="sss-no">08</span>
+            <span>{% if dil_kodu == "tr" %}Ücretsiz danışmanlık nasıl alabilirim?{% elif dil_kodu == "ru" %}Как получить бесплатную консультацию?{% else %}Mugt maslahaty nädip almaly?{% endif %}</span>
+            <span class="sss-ikon">+</span>
+        </button>
+        <div class="sss-cevap">
+            {% if dil_kodu == "tr" %}
+            Çok kolay! 3 yoldan ulaşabilirsiniz: <strong>1)</strong> WhatsApp'tan mesaj atın (+90 542 546 85 64 veya +90 552 425 46 97), <strong>2)</strong> İletişim formunu doldurun, <strong>3)</strong> Ofisimize doğrudan gelin. İlk görüşme tamamen ücretsizdir, sizi doğru yönlendiriyoruz!
+            {% elif dil_kodu == "ru" %}
+            Очень просто! 3 способа: <strong>1)</strong> Напишите в WhatsApp (+90 542 546 85 64 или +90 552 425 46 97), <strong>2)</strong> Заполните форму обратной связи, <strong>3)</strong> Приходите в офис. Первая консультация бесплатно!
+            {% else %}
+            Gaty aňsat! 3 ýol bilen habarlaşyp bilersiňiz: <strong>1)</strong> WhatsApp-a ýazyň (+90 542 546 85 64 ýa-da +90 552 425 46 97), <strong>2)</strong> Habarlaşmak formuny dolduryň, <strong>3)</strong> Ofisimize gönüden geliň. Ilkinji maslahat mugt!
+            {% endif %}
+        </div>
+    </div>
+
 </div>
 
 <!-- CTA BÖLÜMÜ -->

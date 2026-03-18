@@ -1341,3 +1341,35 @@ select:focus {
         gap: 0.5rem;
     }
 }
+
+/* ── SSS GÜNCELLENMİŞ STİL ── */
+.sss-soru {
+    gap: 0.8rem;
+}
+.sss-no {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #2271b1, #01263a);
+    color: white;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+.sss-soru span:nth-child(2) {
+    flex: 1;
+    text-align: left;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+.sss-cevap {
+    font-size: 0.95rem !important;
+    color: #34495e !important;
+    line-height: 1.8 !important;
+}
+.sss-item.acik .sss-cevap {
+    padding: 0.8rem 1.2rem 1.2rem 1.2rem !important;
+}
