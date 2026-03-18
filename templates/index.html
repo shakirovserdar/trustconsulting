@@ -89,7 +89,7 @@
 <!-- MÜŞTERİ YORUMLARI -->
 <h2 class="section-title">{{ t.index_yorumlar_baslik }}</h2>
 
-<div class="yorumlar-grid">
+<div class="yorumlar-liste">
     <div class="yorum-kart">
         <div class="yorum-yildiz">⭐⭐⭐⭐⭐</div>
         <p class="yorum-metin">{% if dil_kodu == "tr" %}"Ofislerine gittim. İlgileri ve samimiyetleri harikaydı! İşlemlerinizi gönül rahatlığı ile yapabilirsiniz."{% elif dil_kodu == "ru" %}"Посетил офис. Внимание и искренность потрясающие! Смело доверяйте им свои документы."{% else %}"Ofislerine bardym. Üns berişleri ajaýypdy! Resminamalaryňyzy ynjalykly berip bilersiňiz."{% endif %}</p>
@@ -124,36 +124,6 @@
     {% endfor %}
 </div>
 
-<!-- YORUM BIRAK -->
-<div class="yorum-form-kart">
-    <h3>{% if dil_kodu == "tr" %}✍️ Siz de Yorum Bırakın{% elif dil_kodu == "ru" %}✍️ Оставьте отзыв{% else %}✍️ Siz hem teswir goýuň{% endif %}</h3>
-    <p style="font-size:0.85rem;color:#4a7a9b;margin-bottom:1rem;">{% if dil_kodu == "tr" %}Yorumunuz incelendikten sonra yayınlanacaktır.{% elif dil_kodu == "ru" %}Отзыв будет опубликован после проверки.{% else %}Teswir barlanandan soň çap ediler.{% endif %}</p>
-    <form method="POST" action="{{ url_for('yorum_gonder') }}">
-        <div class="yorum-form-satir">
-            <div class="form-grup">
-                <label>👤 {% if dil_kodu == "tr" %}Adınız{% elif dil_kodu == "ru" %}Ваше имя{% else %}Adyňyz{% endif %}</label>
-                <input type="text" name="isim" required placeholder="{% if dil_kodu == "tr" %}Adınız{% elif dil_kodu == "ru" %}Имя{% else %}Adyňyz{% endif %}">
-            </div>
-            <div class="form-grup">
-                <label>📍 {% if dil_kodu == "tr" %}Şehir{% elif dil_kodu == "ru" %}Город{% else %}Şäher{% endif %}</label>
-                <input type="text" name="sehir" required placeholder="{% if dil_kodu == "tr" %}Örn: Dänew{% elif dil_kodu == "ru" %}Напр: Ашхабад{% else %}Mysal: Dänew{% endif %}">
-            </div>
-        </div>
-        <div class="form-grup">
-            <label>⭐ {% if dil_kodu == "tr" %}Puanınız{% elif dil_kodu == "ru" %}Оценка{% else %}Bahaňyz{% endif %}</label>
-            <div class="yildiz-sec">
-                <input type="radio" name="yildiz" id="y5" value="5" checked><label for="y5">⭐⭐⭐⭐⭐</label>
-                <input type="radio" name="yildiz" id="y4" value="4"><label for="y4">⭐⭐⭐⭐</label>
-                <input type="radio" name="yildiz" id="y3" value="3"><label for="y3">⭐⭐⭐</label>
-            </div>
-        </div>
-        <div class="form-grup">
-            <label>💬 {% if dil_kodu == "tr" %}Yorumunuz{% elif dil_kodu == "ru" %}Отзыв{% else %}Teswiriňiz{% endif %}</label>
-            <textarea name="metin" required rows="3" placeholder="{% if dil_kodu == "tr" %}Deneyiminizi paylaşın...{% elif dil_kodu == "ru" %}Поделитесь опытом...{% else %}Tejribäňizi paýlaşyň...{% endif %}"></textarea>
-        </div>
-        <button type="submit" class="gonder-btn">{% if dil_kodu == "tr" %}📤 Gönder{% elif dil_kodu == "ru" %}📤 Отправить{% else %}📤 Ibermek{% endif %}</button>
-    </form>
-</div>
 
 <!-- SSS -->
 <h2 class="section-title">{{ t.index_sss_baslik }}</h2>

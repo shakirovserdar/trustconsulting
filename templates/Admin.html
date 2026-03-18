@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Paneli — Trust Consulting</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Segoe UI',sans-serif; background:#f0f7ff; color:#01263a; }
+        .topbar { background:linear-gradient(135deg,#01263a,#2271b1); padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center; }
+        .topbar h1 { color:white; font-size:1.1rem; }
+        .topbar a { color:#b8d9f5; font-size:0.85rem; text-decoration:none; padding:0.4rem 1rem; border:1px solid rgba(255,255,255,0.3); border-radius:20px; }
+        .topbar a:hover { background:rgba(255,255,255,0.15); }
+        .nav-tabs { display:flex; gap:0.5rem; padding:1.2rem 2rem 0; }
+        .nav-tab { padding:0.6rem 1.4rem; border-radius:10px 10px 0 0; cursor:pointer; font-weight:600; font-size:0.9rem; background:#dde9f5; color:#4a7a9b; text-decoration:none; }
+        .nav-tab.aktif { background:white; color:#2271b1; }
+        .icerik { padding:0 2rem 2rem; }
+        .panel { background:white; border-radius:0 12px 12px 12px; padding:1.5rem; box-shadow:0 2px 12px rgba(34,113,177,0.08); display:none; }
+        .panel.aktif { display:block; }
+        .panel h2 { font-size:1rem; color:#01263a; margin-bottom:1.2rem; padding-bottom:0.6rem; border-bottom:2px solid #e8f2fb; }
+        .badge { display:inline-block; background:#e74c3c; color:white; border-radius:20px; padding:1px 8px; font-size:0.75rem; margin-left:6px; }
+        .badge.yesil { background:#27ae60; }
+        table { width:100%; border-collapse:collapse; font-size:0.88rem; }
+        th { background:#f0f7ff; color:#2271b1; padding:10px 12px; text-align:left; font-weight:600; }
+        td { padding:10px 12px; border-bottom:1px solid #f0f0f0; vertical-align:top; }
+        tr:hover td { background:#fafcff; }
+        .btn { display:inline-block; padding:5px 12px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.8rem; margin:2px; }
+        .btn-onay { background:#27ae60; color:white; }
+        .btn-sil { background:#e74c3c; color:white; }
+        .btn-onay:hover { background:#219150; }
+        .btn-sil:hover { background:#c0392b; }
+        .yildiz { color:#f39c12; }
+        .bos { text-align:center; color:#aaa; padding:2rem; font-size:0.9rem; }
+        @media(max-width:700px) {
+            .topbar, .nav-tabs, .icerik { padding-left:1rem; padding-right:1rem; }
+            table { font-size:0.78rem; }
+            td, th { padding:7px 6px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="topbar">
+    <h1>🛡️ Trust Consulting — Admin Paneli</h1>
+    <a href="{{ url_for('admin_cikis') }}">🚪 Çıkış</a>
+</div>
+
+<div class="nav-tabs">
+    <a href="#" class="nav-tab aktif" onclick="sekmeAc('mesajlar',this)">
+        📩 Mesajlar <span class="badge">{{ mesajlar|length }}</span>
+    </a>
+    <a href="#" class="nav-tab" onclick="sekmeAc('bekleyen',this)">
+        ⏳ Bekleyen <span class="badge">{{ bekleyen|length }}</span>
+    </a>
+    <a href="#" class="nav-tab" onclick="sekmeAc('onaylanan',this)">
+        ✅ Yorumlar <span class="badge yesil">{{ onaylanan|length }}</span>
+    </a>
+</div>
+
+<div class="icerik">
+
+    <!-- MESAJLAR -->
+    <div id="mesajlar" class="panel aktif">
+        <h2>📩 Gelen Mesajlar ({{ mesajlar|length }})</h2>
+        {% if mesajlar %}
+        <table>
+            <tr>
+                <th>👤 İsim</th>
+                <th>📞 Telefon</th>
+                <th>🌍 Nereli</th>
+                <th>✈️ Hangi Vize</th>
+                <th>💬 Mesaj</th>
+                <th>📅 Tarih</th>
+                <th>İşlem</th>
+            </tr>
+            {% for m in mesajlar %}
+            <tr>
+                <td><strong>{{ m.isim }}</strong></td>
+                <td><a href="tel:{{ m.telefon }}" style="color:#2271b1;">{{ m.telefon or '—' }}</a></td>
+                <td>{{ m.ulke or '—' }}</td>
+                <td>{{ m.vize_ulke or '—' }}</td>
+                <td style="max-width:200px;">{{ m.mesaj or '—' }}</td>
+                <td style="white-space:nowrap;font-size:0.8rem;color:#888;">{{ m.tarih }}</td>
+                <td><a href="{{ url_for('admin_mesaj_sil', mid=m.id) }}" class="btn btn-sil" onclick="return confirm('Silinsin mi?')">🗑 Sil</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <div class="bos">Henüz mesaj yok.</div>
+        {% endif %}
+    </div>
+
+    <!-- BEKLEYEN YORUMLAR -->
+    <div id="bekleyen" class="panel">
+        <h2>⏳ Onay Bekleyen Yorumlar ({{ bekleyen|length }})</h2>
+        {% if bekleyen %}
+        <table>
+            <tr>
+                <th>👤 İsim</th>
+                <th>📍 Şehir</th>
+                <th>⭐ Puan</th>
+                <th>💬 Yorum</th>
+                <th>📅 Tarih</th>
+                <th>İşlem</th>
+            </tr>
+            {% for y in bekleyen %}
+            <tr>
+                <td><strong>{{ y.isim }}</strong></td>
+                <td>{{ y.sehir or '—' }}</td>
+                <td class="yildiz">{{ '⭐' * y.yildiz }}</td>
+                <td style="max-width:250px;">{{ y.metin }}</td>
+                <td style="white-space:nowrap;font-size:0.8rem;color:#888;">{{ y.tarih }}</td>
+                <td>
+                    <a href="{{ url_for('admin_yorum_onayla', yid=y.id) }}" class="btn btn-onay">✅ Onayla</a>
+                    <a href="{{ url_for('admin_yorum_sil', yid=y.id) }}" class="btn btn-sil" onclick="return confirm('Silinsin mi?')">🗑 Sil</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <div class="bos">Bekleyen yorum yok.</div>
+        {% endif %}
+    </div>
+
+    <!-- ONAYLANAN YORUMLAR -->
+    <div id="onaylanan" class="panel">
+        <h2>✅ Yayındaki Yorumlar ({{ onaylanan|length }})</h2>
+        {% if onaylanan %}
+        <table>
+            <tr>
+                <th>👤 İsim</th>
+                <th>📍 Şehir</th>
+                <th>⭐ Puan</th>
+                <th>💬 Yorum</th>
+                <th>📅 Tarih</th>
+                <th>İşlem</th>
+            </tr>
+            {% for y in onaylanan %}
+            <tr>
+                <td><strong>{{ y.isim }}</strong></td>
+                <td>{{ y.sehir or '—' }}</td>
+                <td class="yildiz">{{ '⭐' * y.yildiz }}</td>
+                <td style="max-width:250px;">{{ y.metin }}</td>
+                <td style="white-space:nowrap;font-size:0.8rem;color:#888;">{{ y.tarih }}</td>
+                <td><a href="{{ url_for('admin_yorum_sil', yid=y.id) }}" class="btn btn-sil" onclick="return confirm('Silinsin mi?')">🗑 Sil</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <div class="bos">Henüz onaylanan yorum yok.</div>
+        {% endif %}
+    </div>
+
+</div>
+
+<script>
+function sekmeAc(id, el) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('aktif'));
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('aktif'));
+    document.getElementById(id).classList.add('aktif');
+    el.classList.add('aktif');
+    return false;
+}
+// URL hash ile sekme aç
+var hash = window.location.hash.replace('#','');
+if (hash) {
+    var tab = document.querySelector('[onclick*="' + hash + '"]');
+    if (tab) sekmeAc(hash, tab);
+}
+</script>
+</body>
+</html>

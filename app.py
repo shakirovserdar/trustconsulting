@@ -10,7 +10,7 @@ import urllib.error
 import json
 
 RESEND_API_KEY = os.environ.get('RESEND_API_KEY', '')
-BILDIRIM_EMAIL = 'info@trustedutm.com'
+BILDIRIM_EMAIL = 'shakirovserdar7@gmail.com'
 
 def mail_gonder(isim, telefon, ulke, vize_ulke, mesaj, tarih):
     if not RESEND_API_KEY:
@@ -379,12 +379,12 @@ def iletisim():
 
 @app.route('/yorum-gonder', methods=['POST'])
 def yorum_gonder():
-    isim  = request.form.get('isim', '').strip()
-    sehir = request.form.get('sehir', '').strip()
+    isim   = request.form.get('isim', '').strip()
+    sehir  = request.form.get('sehir', '').strip()
     yildiz = int(request.form.get('yildiz', 5))
-    metin = request.form.get('metin', '').strip()
-    tarih = datetime.now().strftime('%d.%m.%Y %H:%M')
-    dil   = session.get('dil', 'tr')
+    metin  = request.form.get('metin', '').strip()
+    tarih  = datetime.now().strftime('%d.%m.%Y %H:%M')
+    dil    = session.get('dil', 'tr')
     if isim and metin:
         db = get_db()
         if db:
@@ -394,68 +394,86 @@ def yorum_gonder():
                     (isim, sehir, yildiz, metin, tarih)
                 )
                 db.commit()
-                db.close()
             except Exception as e:
                 logging.error(f"Yorum kayıt hatası: {e}")
+            finally:
+                db.close()
     mesaj = {'tr': '✅ Yorumunuz alındı, incelendikten sonra yayınlanacak!',
              'ru': '✅ Отзыв получен, будет опубликован после проверки!',
              'tk': '✅ Teswirlňiz alyndy, barlanandan soň çap ediler!'}
     flash(mesaj.get(dil, mesaj['tr']), 'success')
-    return redirect(url_for('index') + '#yorumlar')
+    return redirect(url_for('index'))
 
-@app.route('/yorumlar-admin')
-def yorumlar_admin():
-    sifre = request.args.get('s', '')
-    if sifre != 'trust2026':
-        return "Yetkisiz erişim", 403
+# ── ADMIN LOGIN ─────────────────────────────────────────
+ADMIN_USER = os.environ.get('ADMIN_USER', 'trust_admin')
+ADMIN_PASS = os.environ.get('ADMIN_PASS', 'Trust@2026!')
+
+def admin_giris_gerekli(f):
+    from functools import wraps
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        if not session.get('admin_giris'):
+            return redirect(url_for('admin_login'))
+        return f(*args, **kwargs)
+    return decorated
+
+@app.route('/admin/login', methods=['GET', 'POST'])
+def admin_login():
+    hata = None
+    if request.method == 'POST':
+        kullanici = request.form.get('kullanici', '')
+        sifre     = request.form.get('sifre', '')
+        if kullanici == ADMIN_USER and sifre == ADMIN_PASS:
+            session['admin_giris'] = True
+            return redirect(url_for('admin_panel'))
+        else:
+            hata = 'Kullanıcı adı veya şifre hatalı!'
+    return render_template('admin_login.html', hata=hata)
+
+@app.route('/admin/cikis')
+def admin_cikis():
+    session.pop('admin_giris', None)
+    return redirect(url_for('admin_login'))
+
+@app.route('/admin')
+@admin_giris_gerekli
+def admin_panel():
     db = get_db()
-    bekleyen = db.execute('SELECT * FROM yorumlar WHERE onaylandi=0 ORDER BY id DESC').fetchall()
+    mesajlar  = db.execute('SELECT * FROM mesajlar ORDER BY id DESC').fetchall()
+    bekleyen  = db.execute('SELECT * FROM yorumlar WHERE onaylandi=0 ORDER BY id DESC').fetchall()
     onaylanan = db.execute('SELECT * FROM yorumlar WHERE onaylandi=1 ORDER BY id DESC').fetchall()
     db.close()
-    html = '<html><head><meta charset="UTF-8"><style>body{font-family:Arial;padding:20px;background:#f0f7ff;}table{width:100%;border-collapse:collapse;background:white;border-radius:8px;overflow:hidden;}th{background:#2271b1;color:white;padding:10px;}td{padding:10px;border-bottom:1px solid #eee;}a{color:#2271b1;}.btn{padding:6px 14px;border-radius:6px;text-decoration:none;font-weight:bold;}.onay{background:#27ae60;color:white;}.sil{background:#e74c3c;color:white;}</style></head><body>'
-    html += f'<h2>⏳ Bekleyen Yorumlar ({len(bekleyen)})</h2>'
-    html += '<table><tr><th>İsim</th><th>Şehir</th><th>⭐</th><th>Yorum</th><th>Tarih</th><th>İşlem</th></tr>'
-    for y in bekleyen:
-        html += f'<tr><td>{y["isim"]}</td><td>{y["sehir"]}</td><td>{"⭐"*y["yildiz"]}</td><td>{y["metin"]}</td><td>{y["tarih"]}</td>'
-        html += f'<td><a href="/yorumlar-onayla/{y["id"]}?s=trust2026" class="btn onay">✅ Onayla</a> <a href="/yorumlar-sil/{y["id"]}?s=trust2026" class="btn sil">🗑 Sil</a></td></tr>'
-    html += '</table>'
-    html += f'<h2 style="margin-top:2rem">✅ Onaylanan Yorumlar ({len(onaylanan)})</h2>'
-    html += '<table><tr><th>İsim</th><th>Şehir</th><th>⭐</th><th>Yorum</th><th>Tarih</th><th>İşlem</th></tr>'
-    for y in onaylanan:
-        html += f'<tr><td>{y["isim"]}</td><td>{y["sehir"]}</td><td>{"⭐"*y["yildiz"]}</td><td>{y["metin"]}</td><td>{y["tarih"]}</td>'
-        html += f'<td><a href="/yorumlar-sil/{y["id"]}?s=trust2026" class="btn sil">🗑 Sil</a></td></tr>'
-    html += '</table></body></html>'
-    return html
+    return render_template('admin_panel.html',
+                           mesajlar=mesajlar,
+                           bekleyen=bekleyen,
+                           onaylanan=onaylanan)
 
-@app.route('/yorumlar-onayla/<int:yid>')
-def yorumlar_onayla(yid):
-    if request.args.get('s') != 'trust2026':
-        return "Yetkisiz", 403
+@app.route('/admin/yorum-onayla/<int:yid>')
+@admin_giris_gerekli
+def admin_yorum_onayla(yid):
     db = get_db()
     db.execute('UPDATE yorumlar SET onaylandi=1 WHERE id=?', (yid,))
     db.commit()
     db.close()
-    return redirect(f'/yorumlar-admin?s=trust2026')
+    return redirect(url_for('admin_panel') + '#yorumlar')
 
-@app.route('/yorumlar-sil/<int:yid>')
-def yorumlar_sil(yid):
-    if request.args.get('s') != 'trust2026':
-        return "Yetkisiz", 403
+@app.route('/admin/yorum-sil/<int:yid>')
+@admin_giris_gerekli
+def admin_yorum_sil(yid):
     db = get_db()
     db.execute('DELETE FROM yorumlar WHERE id=?', (yid,))
     db.commit()
     db.close()
-    return redirect(f'/yorumlar-admin?s=trust2026')
+    return redirect(url_for('admin_panel') + '#yorumlar')
 
-@app.route('/mesajlar')
-def mesajlar():
+@app.route('/admin/mesaj-sil/<int:mid>')
+@admin_giris_gerekli
+def admin_mesaj_sil(mid):
     db = get_db()
-    if db:
-        msgs = db.execute('SELECT * FROM mesajlar ORDER BY id DESC').fetchall()
-        db.close()
-        return render_template('mesajlar.html', mesajlar=msgs)
-    else:
-        return "Veritabanı hatası", 500
+    db.execute('DELETE FROM mesajlar WHERE id=?', (mid,))
+    db.commit()
+    db.close()
+    return redirect(url_for('admin_panel') + '#mesajlar')
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
