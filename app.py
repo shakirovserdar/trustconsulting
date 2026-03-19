@@ -343,6 +343,10 @@ def index():
 def hakkimizda():
     return render_template('hakkimizda.html', baslik='Hakkımızda')
 
+@app.route('/universiteler')
+def universiteler():
+    return render_template('universiteler.html', baslik='Üniversiteler')
+
 @app.route('/hizmetler')
 def hizmetler():
     return render_template('hizmetler.html', baslik='Hizmetlerimiz')

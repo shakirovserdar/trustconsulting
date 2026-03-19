@@ -67,6 +67,9 @@
             <a href="{{ url_for('hizmetler') }}" {% if request.endpoint == 'hizmetler' %}class="aktif"{% endif %}>
                 &#x1F4CB; {{ t.menu_hizmetler }}
             </a>
+            <a href="{{ url_for('universiteler') }}" {% if request.endpoint == 'universiteler' %}class="aktif"{% endif %}>
+                &#x1F393; {% if dil_kodu == 'tr' %}Üniversiteler{% elif dil_kodu == 'ru' %}Университеты{% else %}Uniwersitetler{% endif %}
+            </a>
             <a href="{{ url_for('iletisim') }}" {% if request.endpoint == 'iletisim' %}class="aktif"{% endif %}>
                 &#x1F4DE; {{ t.menu_iletisim }}
             </a>
