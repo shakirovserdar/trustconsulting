@@ -9,64 +9,70 @@
 </head>
 <body>
 
-<!-- ── DİL SEÇİCİ (SAĞ ÜST) ── -->
-<div class="dil-widget">
-    <button class="dil-aktif-btn" onclick="dilMenuAc(this)">
-        {% if dil_kodu == 'tr' %}🇹🇷 TR{% elif dil_kodu == 'ru' %}🇷🇺 RU{% else %}🇹🇲 TK{% endif %}
-        <span class="dil-ok">▾</span>
-    </button>
-    <div class="dil-dropdown" id="dil-dropdown">
-        <a href="?dil=tr" class="dil-secim {% if dil_kodu == 'tr' %}secili{% endif %}">🇹🇷 Türkçe</a>
-        <a href="?dil=ru" class="dil-secim {% if dil_kodu == 'ru' %}secili{% endif %}">🇷🇺 Русский</a>
-        <a href="?dil=tk" class="dil-secim {% if dil_kodu == 'tk' %}secili{% endif %}">🇹🇲 Türkmençe</a>
-    </div>
-</div>
-
 <header>
-    <!-- LOGO + BAŞLIK -->
-    <div class="header-logo-alan">
-        <a href="{{ url_for('index') }}" class="logo-link">
-            <img src="{{ url_for('static', filename='logo.png') }}" alt="Trust Consulting">
-            <div class="logo-yazi">
+    <!-- ÜSTTE: Logo + Başlık -->
+    <div class="header-top">
+        <a href="{{ url_for('index') }}" class="header-logo-link">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Trust Consulting Logo">
+            <div class="header-baslik">
                 <h1>Trust Consulting</h1>
                 <p>✈️ Travel &amp; Education Company</p>
             </div>
         </a>
+
+        <!-- DİL SEÇİCİ -->
+        <div class="dil-widget">
+            <button class="dil-aktif-btn" onclick="dilMenuAc(this)">
+                {% if dil_kodu == 'tr' %}🇹🇷 TR{% elif dil_kodu == 'ru' %}🇷🇺 RU{% else %}🇹🇲 TK{% endif %}
+                <span class="dil-ok">▾</span>
+            </button>
+            <div class="dil-dropdown" id="dil-dropdown">
+                <a href="?dil=tr" class="dil-secim {% if dil_kodu == 'tr' %}secili{% endif %}">🇹🇷 Türkçe</a>
+                <a href="?dil=ru" class="dil-secim {% if dil_kodu == 'ru' %}secili{% endif %}">🇷🇺 Русский</a>
+                <a href="?dil=tk" class="dil-secim {% if dil_kodu == 'tk' %}secili{% endif %}">🇹🇲 Türkmençe</a>
+            </div>
+        </div>
     </div>
 
-    <!-- 6 NAV PANELİ -->
-    <nav class="nav-paneller">
-        <a href="{{ url_for('hizmetler') }}" class="nav-panel {% if request.endpoint == 'hizmetler' %}aktif{% endif %}">
-            <span class="np-ikon">🛂</span>
-            <span class="np-yazi">{% if dil_kodu == 'tr' %}Hizmetler{% elif dil_kodu == 'ru' %}Услуги{% else %}Hyzmatlar{% endif %}</span>
+    <!-- ALTTA: Büyük Panel Nav -->
+    <div class="header-nav-paneller">
+        <a href="{{ url_for('hakkimizda') }}" class="hn-panel {% if request.endpoint == 'hakkimizda' %}aktif{% endif %}">
+            <span class="hn-ikon">🏢</span>
+            <span class="hn-yazi">{% if dil_kodu == 'tr' %}Hakkımızda{% elif dil_kodu == 'ru' %}О нас{% else %}Biz hakda{% endif %}</span>
         </a>
-        <a href="{{ url_for('hakkimizda') }}" class="nav-panel {% if request.endpoint == 'hakkimizda' %}aktif{% endif %}">
-            <span class="np-ikon">🏢</span>
-            <span class="np-yazi">{% if dil_kodu == 'tr' %}Hakkımızda{% elif dil_kodu == 'ru' %}О нас{% else %}Biz hakda{% endif %}</span>
+        <a href="{{ url_for('hizmetler') }}" class="hn-panel {% if request.endpoint == 'hizmetler' %}aktif{% endif %}">
+            <span class="hn-ikon">🛂</span>
+            <span class="hn-yazi">{% if dil_kodu == 'tr' %}Hizmetler{% elif dil_kodu == 'ru' %}Услуги{% else %}Hyzmatlar{% endif %}</span>
         </a>
-        <a href="{{ url_for('universiteler') }}" class="nav-panel {% if request.endpoint == 'universiteler' %}aktif{% endif %}">
-            <span class="np-ikon">🎓</span>
-            <span class="np-yazi">{% if dil_kodu == 'tr' %}Üniversiteler{% elif dil_kodu == 'ru' %}Университеты{% else %}Uniwersitetler{% endif %}</span>
+        <a href="{{ url_for('universiteler') }}" class="hn-panel {% if request.endpoint == 'universiteler' %}aktif{% endif %}">
+            <span class="hn-ikon">🎓</span>
+            <span class="hn-yazi">{% if dil_kodu == 'tr' %}Üniversiteler{% elif dil_kodu == 'ru' %}Университеты{% else %}Uniwersitetler{% endif %}</span>
         </a>
-        <a href="{{ url_for('index') }}#sss" class="nav-panel">
-            <span class="np-ikon">❓</span>
-            <span class="np-yazi">{% if dil_kodu == 'tr' %}SSS{% elif dil_kodu == 'ru' %}FAQ{% else %}SSS{% endif %}</span>
+        <a href="{{ url_for('index') }}#sss" class="hn-panel {% if request.endpoint == 'index' %}{% endif %}">
+            <span class="hn-ikon">❓</span>
+            <span class="hn-yazi">{% if dil_kodu == 'tr' %}Sık Sorulanlar{% elif dil_kodu == 'ru' %}FAQ{% else %}SSS{% endif %}</span>
         </a>
-        <a href="{{ url_for('index') }}#yorumlar" class="nav-panel">
-            <span class="np-ikon">⭐</span>
-            <span class="np-yazi">{% if dil_kodu == 'tr' %}Yorumlar{% elif dil_kodu == 'ru' %}Отзывы{% else %}Teswirler{% endif %}</span>
+        <a href="{{ url_for('iletisim') }}" class="hn-panel {% if request.endpoint == 'iletisim' %}aktif{% endif %}">
+            <span class="hn-ikon">📞</span>
+            <span class="hn-yazi">{% if dil_kodu == 'tr' %}İletişim{% elif dil_kodu == 'ru' %}Контакты{% else %}Habarlaşmak{% endif %}</span>
         </a>
-        <a href="{{ url_for('iletisim') }}" class="nav-panel {% if request.endpoint == 'iletisim' %}aktif{% endif %}">
-            <span class="np-ikon">📞</span>
-            <span class="np-yazi">{% if dil_kodu == 'tr' %}İletişim{% elif dil_kodu == 'ru' %}Контакты{% else %}Habarlaşmak{% endif %}</span>
+        <a href="{{ url_for('index') }}#yorumlar" class="hn-panel">
+            <span class="hn-ikon">⭐</span>
+            <span class="hn-yazi">{% if dil_kodu == 'tr' %}Yorumlar{% elif dil_kodu == 'ru' %}Отзывы{% else %}Teswirler{% endif %}</span>
         </a>
         {% if session.get('admin_giris') %}
-        <a href="{{ url_for('admin_panel') }}" class="nav-panel admin-panel {% if request.endpoint == 'admin_panel' %}aktif{% endif %}">
-            <span class="np-ikon">🛡️</span>
-            <span class="np-yazi">Admin</span>
+        <a href="{{ url_for('admin_panel') }}" class="hn-panel hn-admin {% if request.endpoint == 'admin_panel' %}aktif{% endif %}">
+            <span class="hn-ikon">🛡️</span>
+            <span class="hn-yazi">Admin</span>
         </a>
         {% endif %}
-    </nav>
+
+        <!-- PARLAYAN KAYIT OL BUTONU -->
+        <button class="kayit-ol-btn" onclick="kayitFormAc()">
+            <span class="kayit-ikon">📝</span>
+            <span>{% if dil_kodu == 'tr' %}Kayıt Ol{% elif dil_kodu == 'ru' %}Записаться{% else %}Hasaba al{% endif %}</span>
+        </button>
+    </div>
 </header>
 
 <main>
@@ -79,7 +85,6 @@
             </div>
         {% endif %}
     {% endwith %}
-
     {% block content %}{% endblock %}
 </main>
 
@@ -89,22 +94,108 @@
 </button>
 {% endif %}
 
-<a href="https://wa.me/905524254697" class="whatsapp-float" target="_blank" rel="noopener">
-    💬 WhatsApp
-</a>
+<a href="https://wa.me/905524254697" class="whatsapp-float" target="_blank" rel="noopener">💬 WhatsApp</a>
 
+<!-- ── KAYIT FORMU MODAL ── -->
+<div class="modal-overlay" id="kayit-modal" onclick="if(event.target===this)kayitFormKapat()">
+<div class="modal-kutu">
+    <button class="modal-kapat-btn" onclick="kayitFormKapat()">✕</button>
+    <h2 style="color:#01263a;font-size:1.15rem;margin-bottom:1.2rem;">
+        📝 {% if dil_kodu == 'tr' %}Kayıt Formu{% elif dil_kodu == 'ru' %}Форма регистрации{% else %}Hasaba alyş{% endif %}
+    </h2>
+    <form method="POST" action="{{ url_for('kayit_gonder') }}">
+        <div class="form-grid-2">
+            <div class="form-grup">
+                <label>👤 {% if dil_kodu == 'tr' %}Ad Soyad{% elif dil_kodu == 'ru' %}Имя Фамилия{% else %}Ady we Familiýa{% endif %}</label>
+                <input type="text" name="ad_soyad" required placeholder="{% if dil_kodu == 'tr' %}Adınız ve soyadınız{% elif dil_kodu == 'ru' %}Ваше имя и фамилия{% else %}Adyňyz we familiýaňyz{% endif %}">
+            </div>
+            <div class="form-grup">
+                <label>🌍 {% if dil_kodu == 'tr' %}Nereden?{% elif dil_kodu == 'ru' %}Откуда?{% else %}Nireden?{% endif %}</label>
+                <input type="text" name="nereden" required placeholder="{% if dil_kodu == 'tr' %}Şehir / Ülke{% elif dil_kodu == 'ru' %}Город / Страна{% else %}Şäher / Ýurt{% endif %}">
+            </div>
+        </div>
+        <div class="form-grid-2">
+            <div class="form-grup">
+                <label>📞 {% if dil_kodu == 'tr' %}Telefon / WhatsApp{% elif dil_kodu == 'ru' %}Телефон / WhatsApp{% else %}Telefon / WhatsApp{% endif %}</label>
+                <input type="tel" name="telefon" required placeholder="+993 / +90 ...">
+            </div>
+            <div class="form-grup">
+                <label>📧 E-mail</label>
+                <input type="email" name="email" placeholder="ornek@mail.com">
+            </div>
+        </div>
+        <div class="form-grid-2">
+            <div class="form-grup">
+                <label>🎂 {% if dil_kodu == 'tr' %}Yaş{% elif dil_kodu == 'ru' %}Возраст{% else %}Ýaş{% endif %}</label>
+                <input type="number" name="yas" min="15" max="60" placeholder="{% if dil_kodu == 'tr' %}Yaşınız{% elif dil_kodu == 'ru' %}Ваш возраст{% else %}Ýaşyňyz{% endif %}">
+            </div>
+            <div class="form-grup">
+                <label>🎓 {% if dil_kodu == 'tr' %}İstediğiniz Üniversite/Ülke{% elif dil_kodu == 'ru' %}Желаемый университет/страна{% else %}Isleýän uniwersitetiňiz/ýurduňyz{% endif %}</label>
+                <input type="text" name="universite" placeholder="{% if dil_kodu == 'tr' %}Örn: Türkiye, Marmara Üniversitesi{% elif dil_kodu == 'ru' %}Напр: Турция, МГУ{% else %}Mysal: Türkiýe, Marmara{% endif %}">
+            </div>
+        </div>
+        <div class="form-grup">
+            <label>💬 {% if dil_kodu == 'tr' %}Eklemek İstedikleriniz{% elif dil_kodu == 'ru' %}Дополнительно{% else %}Goşmaça{% endif %}</label>
+            <textarea name="not" rows="2" placeholder="..."></textarea>
+        </div>
+        <button type="submit" class="gonder-btn">
+            {% if dil_kodu == 'tr' %}📤 Gönder{% elif dil_kodu == 'ru' %}📤 Отправить{% else %}📤 Ibermek{% endif %}
+        </button>
+    </form>
+</div>
+</div>
+
+<!-- ── ZENGİN FOOTER ── -->
 <footer>
-    <p>{{ t.footer_telif }}</p>
-    <p>
-        📧 <a href="mailto:info@trustedutm.com">info@trustedutm.com</a>
-        &nbsp;|&nbsp;
-        📞 <a href="tel:+905524254697">+90 552 425 46 97</a>
-    </p>
-    <p style="margin-top:0.4rem;font-size:0.8rem;color:#7ab5d8;">
-        🌐 <a href="https://www.trustedutm.com">www.trustedutm.com</a>
-        &nbsp;|&nbsp;
-        📸 <a href="https://instagram.com/trusttmconsulting" target="_blank">@trusttmconsulting</a>
-    </p>
+    <div class="footer-ic">
+        <!-- Sol: Logo + İletişim -->
+        <div class="footer-kolon">
+            <div class="footer-logo">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Trust Consulting">
+                <div>
+                    <strong>Trust Consulting</strong>
+                    <span>Travel &amp; Education</span>
+                </div>
+            </div>
+            <div class="footer-iletisim-liste">
+                <a href="tel:+99364489920">📞 +993 64 48 89 20</a>
+                <a href="tel:+99361950920">📞 +993 61 95 09 20</a>
+                <a href="tel:+905530890598">📞 +90 553 089 05 98</a>
+                <a href="mailto:info@trustedutm.com">📧 info@trustedutm.com</a>
+                <a href="mailto:lebap@trustedutm.com">📧 lebap@trustedutm.com</a>
+            </div>
+        </div>
+
+        <!-- Orta: Menü -->
+        <div class="footer-kolon">
+            <h4>{% if dil_kodu == 'tr' %}Menü{% elif dil_kodu == 'ru' %}Меню{% else %}Menyu{% endif %}</h4>
+            <nav class="footer-nav">
+                <a href="{{ url_for('hakkimizda') }}">{% if dil_kodu == 'tr' %}Hakkımızda{% elif dil_kodu == 'ru' %}О нас{% else %}Biz hakda{% endif %}</a>
+                <a href="{{ url_for('hizmetler') }}">{% if dil_kodu == 'tr' %}Hizmetler{% elif dil_kodu == 'ru' %}Услуги{% else %}Hyzmatlar{% endif %}</a>
+                <a href="{{ url_for('universiteler') }}">{% if dil_kodu == 'tr' %}Üniversiteler{% elif dil_kodu == 'ru' %}Университеты{% else %}Uniwersitetler{% endif %}</a>
+                <a href="{{ url_for('index') }}#sss">{% if dil_kodu == 'tr' %}Sık Sorulanlar{% elif dil_kodu == 'ru' %}FAQ{% else %}SSS{% endif %}</a>
+                <a href="{{ url_for('iletisim') }}">{% if dil_kodu == 'tr' %}İletişim{% elif dil_kodu == 'ru' %}Контакты{% else %}Habarlaşmak{% endif %}</a>
+                <a href="{{ url_for('index') }}#yorumlar">{% if dil_kodu == 'tr' %}Yorumlar{% elif dil_kodu == 'ru' %}Отзывы{% else %}Teswirler{% endif %}</a>
+            </nav>
+        </div>
+
+        <!-- Sağ: Sosyal Medya -->
+        <div class="footer-kolon">
+            <h4>{% if dil_kodu == 'tr' %}Sosyal Medya{% elif dil_kodu == 'ru' %}Соцсети{% else %}Sosial media{% endif %}</h4>
+            <div class="footer-sosyal">
+                <a href="https://wa.me/905425468564" class="fs-wa" target="_blank">💬 WhatsApp 1</a>
+                <a href="https://wa.me/905524254697" class="fs-wa" target="_blank">💬 WhatsApp 2</a>
+                <a href="https://instagram.com/trusttmconsulting" class="fs-ig" target="_blank">📸 Instagram</a>
+                <a href="https://www.tiktok.com/@trusttmconsulting" class="fs-tt" target="_blank">🎵 TikTok</a>
+            </div>
+            <div style="margin-top:1rem;font-size:0.78rem;color:rgba(255,255,255,0.45);">
+                🌐 <a href="https://www.trustedutm.com" style="color:rgba(255,255,255,0.55);">www.trustedutm.com</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-alt">
+        {{ t.footer_telif }}
+    </div>
 </footer>
 
 <script>
@@ -116,13 +207,14 @@ function dilMenuAc(btn) {
 document.addEventListener('click', function(e) {
     if (!e.target.closest('.dil-widget')) {
         var dd = document.getElementById('dil-dropdown');
-        if (dd) {
-            dd.classList.remove('acik');
-            var btn = document.querySelector('.dil-aktif-btn .dil-ok');
-            if (btn) btn.textContent = '▾';
-        }
+        if (dd) { dd.classList.remove('acik'); }
+        var ok = document.querySelector('.dil-ok');
+        if (ok) ok.textContent = '▾';
     }
 });
+function kayitFormAc() { document.getElementById('kayit-modal').classList.add('aktif'); document.body.style.overflow='hidden'; }
+function kayitFormKapat() { document.getElementById('kayit-modal').classList.remove('aktif'); document.body.style.overflow=''; }
+document.addEventListener('keydown', function(e) { if(e.key==='Escape') kayitFormKapat(); });
 </script>
 </body>
 </html>

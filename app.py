@@ -381,6 +381,74 @@ def iletisim():
         return redirect(url_for('iletisim'))
     return render_template('iletisim.html', baslik='İletişim')
 
+
+@app.route('/kayit-gonder', methods=['POST'])
+def kayit_gonder():
+    ad_soyad   = request.form.get('ad_soyad', '').strip()
+    nereden    = request.form.get('nereden', '').strip()
+    telefon    = request.form.get('telefon', '').strip()
+    email      = request.form.get('email', '').strip()
+    yas        = request.form.get('yas', '').strip()
+    universite = request.form.get('universite', '').strip()
+    not_       = request.form.get('not', '').strip()
+    tarih      = datetime.now().strftime('%d.%m.%Y %H:%M')
+    dil        = session.get('dil', 'tr')
+
+    if RESEND_API_KEY and ad_soyad:
+        try:
+            html_k = (
+                "<html><body style=\"font-family:Arial;background:#f0f7ff;padding:20px;\">"
+                "<div style=\"max-width:500px;margin:auto;background:white;border-radius:12px;padding:24px;border-top:4px solid #f59e0b;\">"
+                "<h2 style=\"color:#f59e0b;\">Yeni Kayit Formu - Trust Consulting</h2>"
+                "<table style=\"width:100%;border-collapse:collapse;\">"
+                f"<tr><td style=\"padding:8px;color:#666;\"><strong>Ad Soyad:</strong></td><td>{ad_soyad}</td></tr>"
+                f"<tr><td style=\"padding:8px;color:#666;\"><strong>Nereden:</strong></td><td>{nereden}</td></tr>"
+                f"<tr><td style=\"padding:8px;color:#666;\"><strong>Telefon:</strong></td><td>{telefon}</td></tr>"
+                f"<tr><td style=\"padding:8px;color:#666;\"><strong>E-mail:</strong></td><td>{email or chr(8212)}</td></tr>"
+                f"<tr><td style=\"padding:8px;color:#666;\"><strong>Yas:</strong></td><td>{yas or chr(8212)}</td></tr>"
+                f"<tr><td style=\"padding:8px;color:#666;\"><strong>Universite/Ulke:</strong></td><td>{universite or chr(8212)}</td></tr>"
+                f"<tr><td style=\"padding:8px;color:#666;\"><strong>Not:</strong></td><td>{not_ or chr(8212)}</td></tr>"
+                f"<tr><td style=\"padding:8px;color:#666;\"><strong>Tarih:</strong></td><td>{tarih}</td></tr>"
+                "</table></div></body></html>"
+            )
+            import urllib.request as ur, json as js
+            veri = {
+                "from": "Trust Consulting <noreply@trustedutm.com>",
+                "to": [BILDIRIM_EMAIL],
+                "subject": f"Yeni Kayit: {ad_soyad}",
+                "html": html_k
+            }
+            req = ur.Request(
+                "https://api.resend.com/emails",
+                data=js.dumps(veri).encode("utf-8"),
+                headers={"Authorization": f"Bearer {RESEND_API_KEY}", "Content-Type": "application/json"},
+                method="POST"
+            )
+            with ur.urlopen(req, timeout=10): pass
+        except Exception as e:
+            logging.error(f"Kayit mail hatasi: {e}")
+
+    db = get_db()
+    if db and ad_soyad:
+        try:
+            db.execute("""CREATE TABLE IF NOT EXISTS kayitlar (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                ad_soyad TEXT, nereden TEXT, telefon TEXT, email TEXT,
+                yas TEXT, universite TEXT, not_ TEXT, tarih TEXT)""")
+            db.execute("INSERT INTO kayitlar VALUES (NULL,?,?,?,?,?,?,?,?)",
+                (ad_soyad, nereden, telefon, email, yas, universite, not_, tarih))
+            db.commit()
+        except Exception as e:
+            logging.error(f"Kayit DB hatasi: {e}")
+        finally:
+            db.close()
+
+    mesajlar_k = {'tr': 'Kayit formunuz alindi! En kisa surede sizi arayacagiz.',
+                  'ru': 'Vasha forma poluchena! Svjazemsja s vami.',
+                  'tk': 'Hasaba alys formynyz alyndy! Janlarys.'}
+    flash(mesajlar_k.get(dil, mesajlar_k['tr']), 'success')
+    return redirect(url_for('index'))
+
 @app.route('/yorum-gonder', methods=['POST'])
 def yorum_gonder():
     isim   = request.form.get('isim', '').strip()
