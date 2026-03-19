@@ -6,18 +6,9 @@
     <meta name="description" content="Trust Consulting - Visa & Travel Consulting from Turkmenistan">
     <title>{{ baslik }} — Trust Consulting</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/twemoji.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        twemoji.parse(document.body, {
-            folder: 'svg',
-            ext: '.svg',
-            base: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/'
-        });
-    });
-</script>
 
 <header>
     <!-- ÜSTTE: Logo + Başlık -->
@@ -225,6 +216,14 @@ document.addEventListener('click', function(e) {
 function kayitFormAc() { document.getElementById('kayit-modal').classList.add('aktif'); document.body.style.overflow='hidden'; }
 function kayitFormKapat() { document.getElementById('kayit-modal').classList.remove('aktif'); document.body.style.overflow=''; }
 document.addEventListener('keydown', function(e) { if(e.key==='Escape') kayitFormKapat(); });
+window.addEventListener('load', function() {
+    if(typeof twemoji !== 'undefined') {
+        twemoji.parse(document.body, {
+            folder: 'svg', ext: '.svg',
+            base: 'https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/'
+        });
+    }
+});
 </script>
 </body>
 </html>
