@@ -7,54 +7,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="sayfa-{{ request.endpoint }}">
 
-{% if request.endpoint == 'index' %}
-<!-- ── ANA SAYFA LAYOUT ── -->
-<div class="ana-layout">
-
-    <!-- BÜYÜK BAŞLIK KARTI -->
-    <div class="baslik-karti">
-        <!-- Dil seçici sağ üstte -->
-        <div class="dil-widget baslik-dil">
-            <button class="dil-aktif-btn" onclick="dilMenuAc(this)">
-                {% if dil_kodu == 'tr' %}🇹🇷 TR{% elif dil_kodu == 'ru' %}🇷🇺 RU{% else %}🇹🇲 TK{% endif %}
-                <span class="dil-ok">▾</span>
-            </button>
-            <div class="dil-dropdown" id="dil-dropdown">
-                <a href="?dil=tr" class="dil-secim {% if dil_kodu == 'tr' %}secili{% endif %}">🇹🇷 Türkçe</a>
-                <a href="?dil=ru" class="dil-secim {% if dil_kodu == 'ru' %}secili{% endif %}">🇷🇺 Русский</a>
-                <a href="?dil=tk" class="dil-secim {% if dil_kodu == 'tk' %}secili{% endif %}">🇹🇲 Türkmençe</a>
-            </div>
-        </div>
-
-        <!-- Logo + Başlık ortada -->
-        <div class="baslik-merkez">
-            <img src="{{ url_for('static', filename='logo.png') }}" alt="Trust Consulting">
-            <div>
-                <h1>Trust Consulting</h1>
-                <p>✈️ Travel &amp; Education Company</p>
-            </div>
-        </div>
-
-        <!-- Alt butonlar -->
-        <div class="baslik-alt-butonlar">
-            <span class="baslik-alt-bos"></span>
-            <button class="kayit-ol-btn" onclick="kayitFormAc()">
-                📝 {% if dil_kodu == 'tr' %}Kayıt Ol{% elif dil_kodu == 'ru' %}Записаться{% else %}Hasaba al{% endif %}
-            </button>
-        </div>
-    </div>
-
-    <!-- PANEL KARTLARI -->
-    <div class="panel-kartlar">
-        {% block content %}{% endblock %}
-    </div>
-
-</div>
-
-{% else %}
-<!-- ── DİĞER SAYFALAR LAYOUT ── -->
+<!-- ── DİĞER SAYFALAR HEADER (ana sayfa hariç) ── -->
+{% if request.endpoint != 'index' %}
 <header class="diger-header">
     <a href="{{ url_for('index') }}" class="diger-logo">
         <img src="{{ url_for('static', filename='logo.png') }}" alt="Trust Consulting">
@@ -80,20 +36,23 @@
         {% endif %}
     </div>
 </header>
+{% endif %}
 
-<main>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            <div class="flash-container">
-                {% for category, message in messages %}
-                    <div class="flash {{ category }}">{{ message }}</div>
-                {% endfor %}
-            </div>
-        {% endif %}
-    {% endwith %}
-    {% block content %}{% endblock %}
-</main>
+<!-- ── TEK BLOCK CONTENT ── -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages and request.endpoint != 'index' %}
+        <div class="flash-container">
+            {% for category, message in messages %}
+                <div class="flash {{ category }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
 
+{% block content %}{% endblock %}
+
+<!-- ── FOOTER (ana sayfa hariç) ── -->
+{% if request.endpoint != 'index' %}
 {% if request.endpoint == 'hizmetler' %}
 <button class="fiyat-float-btn" onclick="fiyatAc()">
     💰 {% if dil_kodu == 'tr' %}Ücretler{% elif dil_kodu == 'ru' %}Цены{% else %}Bahalar{% endif %}
@@ -114,7 +73,6 @@
                 <a href="tel:+99361950920">📞 +993 61 95 09 20</a>
                 <a href="tel:+905530890598">📞 +90 553 089 05 98</a>
                 <a href="mailto:info@trustedutm.com">📧 info@trustedutm.com</a>
-                <a href="mailto:lebap@trustedutm.com">📧 lebap@trustedutm.com</a>
             </div>
         </div>
         <div class="footer-kolon">
@@ -146,7 +104,7 @@
 <div class="modal-overlay" id="kayit-modal" onclick="if(event.target===this)kayitFormKapat()">
 <div class="modal-kutu">
     <button class="modal-kapat-btn" onclick="kayitFormKapat()">✕</button>
-    <h2 style="color:white;font-size:1.15rem;margin-bottom:1.2rem;">
+    <h2 style="color:white;font-size:1.1rem;margin-bottom:1.2rem;">
         📝 {% if dil_kodu == 'tr' %}Kayıt Formu{% elif dil_kodu == 'ru' %}Форма регистрации{% else %}Hasaba alyş{% endif %}
     </h2>
     <form method="POST" action="{{ url_for('kayit_gonder') }}">
@@ -162,7 +120,7 @@
         </div>
         <div class="form-grid-2">
             <div class="form-grup">
-                <label>📞 {% if dil_kodu == 'tr' %}Telefon / WhatsApp{% elif dil_kodu == 'ru' %}Телефон{% else %}Telefon{% endif %}</label>
+                <label>📞 Telefon / WhatsApp</label>
                 <input type="tel" name="telefon" required>
             </div>
             <div class="form-grup">
