@@ -343,6 +343,20 @@ def index():
 def hakkimizda():
     return render_template('hakkimizda.html', baslik='Hakkımızda')
 
+
+@app.route('/sss')
+def sss():
+    return render_template('sss.html', baslik='SSS')
+
+@app.route('/yorumlar')
+def yorumlar_sayfa():
+    db = get_db()
+    yorumlar = []
+    if db:
+        yorumlar = db.execute('SELECT * FROM yorumlar WHERE onaylandi=1 ORDER BY id DESC').fetchall()
+        db.close()
+    return render_template('yorumlar.html', baslik='Yorumlar', onaylanan_yorumlar=yorumlar)
+
 @app.route('/universiteler')
 def universiteler():
     return render_template('universiteler.html', baslik='Üniversiteler')

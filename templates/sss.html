@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 class="section-title" style="margin-top:0.5rem;">
+    ❓ {% if dil_kodu == 'tr' %}Sık Sorulan Sorular{% elif dil_kodu == 'ru' %}Часто задаваемые вопросы{% else %}Köp soralýan soraglar{% endif %}
+</h1>
+
+<div class="sss-liste">
+
+    <div class="sss-item">
+        <button class="sss-soru" onclick="sssAc(this)">
+            <span class="sss-no">01</span>
+            <span>{% if dil_kodu == 'tr' %}Vize reddedilirse ne olur? Para iadesi var mı?{% elif dil_kodu == 'ru' %}Что будет если в визе откажут? Возврат средств?{% else %}Wiza ret edilse näme bolýar? Pul yzyna gaýtarylýarmy?{% endif %}</span>
+            <span class="sss-ikon">+</span>
+        </button>
+        <div class="sss-cevap">
+            {% if dil_kodu == 'tr' %}Ret durumunda size ret gerekçelerini detaylıca açıklıyor ve tekrar başvuru stratejisi belirliyoruz. Eksik veya hatalı belgeler varsa düzelterek yeniden başvuru yapılabilir. Ücret iadesi konusunda her durum ayrı değerlendirilir — lütfen danışmanlık öncesinde bu konuyu görüşün.
+            {% elif dil_kodu == 'ru' %}В случае отказа мы детально объясняем причины и разрабатываем стратегию повторной подачи. По вопросу возврата средств каждый случай рассматривается индивидуально — обсудите это до начала процесса.
+            {% else %}Ret ýagdaýynda ret sebäplerini jikme-jik düşündirýäris we gaýtadan ýüz tutmak strategiýasyny kesgitleýäris. Pul yzyna gaýtarmak meselesi her ýagdaý aýry seredilýär.{% endif %}
+        </div>
+    </div>
+
+    <div class="sss-item">
+        <button class="sss-soru" onclick="sssAc(this)">
+            <span class="sss-no">02</span>
+            <span>{% if dil_kodu == 'tr' %}Türkiye vizesi ne kadar sürer? Randevu almak zor mu?{% elif dil_kodu == 'ru' %}Сколько ждать визу в Турцию? Сложно записаться?{% else %}Türkiýe wizasy näçe wagt alýar? Randevu almak kynmy?{% endif %}</span>
+            <span class="sss-ikon">+</span>
+        </button>
+        <div class="sss-cevap">
+            {% if dil_kodu == 'tr' %}Türkiye vizesi ortalama <strong>2-4 hafta</strong> sürmektedir. Avrupa ülkeleri (Almanya, Belçika) için <strong>4-8 hafta</strong> planlayın. Randevu almakta zorluk yaşıyorsanız — bizim aracılığımızla çok daha hızlı halledebilirsiniz!
+            {% elif dil_kodu == 'ru' %}Виза в Турцию занимает в среднем <strong>2-4 недели</strong>. Для Европы планируйте <strong>4-8 недель</strong>. Если сложно записаться — через нас намного быстрее!
+            {% else %}Türkiýe wizasy ortaça <strong>2-4 hepde</strong> alýar. Ýewropa üçin <strong>4-8 hepde</strong> planlap bilersiňiz.{% endif %}
+        </div>
+    </div>
+
+    <div class="sss-item">
+        <button class="sss-soru" onclick="sssAc(this)">
+            <span class="sss-no">03</span>
+            <span>{% if dil_kodu == 'tr' %}Türkmenistan'dan başvuru yapabilir miyim? Ofise gelmem şart mı?{% elif dil_kodu == 'ru' %}Можно подать из Туркменистана? Обязательно приходить в офис?{% else %}Türkmenistandan ýüz tutup bolarmy? Ofise gelmek hökmänmi?{% endif %}</span>
+            <span class="sss-ikon">+</span>
+        </button>
+        <div class="sss-cevap">
+            {% if dil_kodu == 'tr' %}Evet! Türkmenistan'da 7 ofisimiz var — Dänew, Aşkabat, Kerki, Magdanlı, Döwletli, Köýten-Oba ve Köýtendag. WhatsApp üzerinden belgelerinizi iletip süreci uzaktan yönetebilirsiniz. İstanbul ofisimiz de hizmetinizdedir.
+            {% elif dil_kodu == 'ru' %}Да! У нас 7 офисов в Туркменистане — Дяньов, Ашхабад, Керки, Магданлы, Дёвлетли, Кёйтен-Оба и Кёйтендаг. Документы можно передать через WhatsApp. Стамбульский офис также к вашим услугам.
+            {% else %}Hawa! Türkmenistanda 7 ofisimiz bar — Dänew, Aşgabat, Kerki, Magdanly, Döwletli, Köýten-oba we Köýtendag. WhatsApp arkaly resminamalaryňyzy iberip bilersiňiz.{% endif %}
+        </div>
+    </div>
+
+    <div class="sss-item">
+        <button class="sss-soru" onclick="sssAc(this)">
+            <span class="sss-no">04</span>
+            <span>{% if dil_kodu == 'tr' %}Hangi belgeleri hazırlamam gerekiyor?{% elif dil_kodu == 'ru' %}Какие документы нужно подготовить?{% else %}Haýsy resminamalary taýýarlamaly?{% endif %}</span>
+            <span class="sss-ikon">+</span>
+        </button>
+        <div class="sss-cevap">
+            {% if dil_kodu == 'tr' %}Temel belgeler: <strong>Pasaport</strong> (en az 6 ay geçerli), <strong>2 adet biyometrik fotoğraf</strong> (5x6 cm), <strong>Sponsor belgesi</strong> (banka kaydı, iş belgesi), <strong>Doğum belgesi + tercüme</strong>, <strong>Evliyse nikah cüzdanı + tercüme</strong>. Vize türüne göre ek belgeler gerekebilir. Hizmetler sayfamızdan detaylı listeye ulaşabilirsiniz.
+            {% elif dil_kodu == 'ru' %}Основные документы: <strong>Паспорт</strong> (мин. 6 мес.), <strong>2 биометрических фото</strong> (5x6), <strong>Спонсорские документы</strong>, <strong>Свидетельство о рождении + перевод</strong>. Подробный список на странице Услуги.
+            {% else %}Esasy resminamalar: <strong>Pasport</strong> (iň az 6 aý), <strong>2 biometrik surat</strong> (5x6), <strong>Sponsor resminamasy</strong>, <strong>Dogluş şahadatnamasy + terjime</strong>. Hyzmatlar sahypasynda jikme-jik sanawy görüp bilersiňiz.{% endif %}
+        </div>
+    </div>
+
+    <div class="sss-item">
+        <button class="sss-soru" onclick="sssAc(this)">
+            <span class="sss-no">05</span>
+            <span>{% if dil_kodu == 'tr' %}Sponsor belgesi nedir? Kimden alınır?{% elif dil_kodu == 'ru' %}Что такое спонсорский документ?{% else %}Sponsor resminamasy näme?{% endif %}</span>
+            <span class="sss-ikon">+</span>
+        </button>
+        <div class="sss-cevap">
+            {% if dil_kodu == 'tr' %}Sponsor belgesi, vize süresince masraflarınızı karşılayacak kişinin maddi durumunu kanıtlayan evraktır. Genellikle <strong>iş yeri belgesi</strong>, <strong>son 3-6 aylık banka kaydı</strong>, <strong>noterden onaylı taahhütname</strong> içerir. Sponsorunuz yoksa — bizimle iletişime geçin, çözüm yolları bulabiliriz!
+            {% elif dil_kodu == 'ru' %}Спонсорский документ подтверждает финансовую состоятельность. Обычно включает <strong>справку с работы</strong>, <strong>выписку из банка за 3-6 мес.</strong>, <strong>нотариальное обязательство</strong>. Нет спонсора? — Свяжитесь с нами!
+            {% else %}Sponsor resminamasy, wiza möhletinde çykdajylaryňyzy öz üstüne alýan adamyň maddy ýagdaýyny tassyklaýar. Sponsor ýok bolsa — biz bilen habarlaşyň!{% endif %}
+        </div>
+    </div>
+
+    <div class="sss-item">
+        <button class="sss-soru" onclick="sssAc(this)">
+            <span class="sss-no">06</span>
+            <span>{% if dil_kodu == 'tr' %}Türkiye'de üniversiteye kaydolmak için ne yapmalıyım?{% elif dil_kodu == 'ru' %}Как поступить в университет в Турции?{% else %}Türkiýede uniwersitete ýazylmak üçin näme etmeli?{% endif %}</span>
+            <span class="sss-ikon">+</span>
+        </button>
+        <div class="sss-cevap">
+            {% if dil_kodu == 'tr' %}<strong>Depozitsiz</strong> seçenekler mevcuttur. İstanbul üniversiteleri için depozit gerekebilir — bu konuda size yardımcı oluyoruz. Davetiye alındıktan sonra öğrenci vizesi için başvuru yapılır. Bizimle iletişime geçin!
+            {% elif dil_kodu == 'ru' %}Есть варианты <strong>без депозита</strong>. Для стамбульских вузов депозит может понадобиться — мы помогаем. После получения приглашения подаётся студенческая виза.
+            {% else %}<strong>Depozitsiz</strong> wariantlar bar. Stambul uniwersitetleri üçin depozit gerek bolup biler — kömek edýäris. Çakylyk alynandan soň talyp wizasy üçin ýüz tutulýar.{% endif %}
+        </div>
+    </div>
+
+    <div class="sss-item">
+        <button class="sss-soru" onclick="sssAc(this)">
+            <span class="sss-no">07</span>
+            <span>{% if dil_kodu == 'tr' %}Tercüme ve fotokopi hizmetleri veriyor musunuz?{% elif dil_kodu == 'ru' %}Предоставляете услуги перевода и копирования?{% else %}Terjime we kseroks hyzmatlaryny berýärsiňizmi?{% endif %}</span>
+            <span class="sss-ikon">+</span>
+        </button>
+        <div class="sss-cevap">
+            {% if dil_kodu == 'tr' %}Evet! Türkmence-Türkçe, Türkmence-İngilizce ve Türkmence-Rusça tercüme hizmetleri sunuyoruz. Fotokopi ve tarama işlemleri de ofislerimizde yapılmaktadır.
+            {% elif dil_kodu == 'ru' %}Да! Предоставляем перевод туркменский-турецкий, туркменский-английский, туркменский-русский. А также ксерокопирование в наших офисах.
+            {% else %}Hawa! Türkmençe-Türkçe, Türkmençe-Iňlisçe we Türkmençe-Rusça terjime hyzmatlaryny hödürleýäris. Kseroks we skan hem bar.{% endif %}
+        </div>
+    </div>
+
+    <div class="sss-item">
+        <button class="sss-soru" onclick="sssAc(this)">
+            <span class="sss-no">08</span>
+            <span>{% if dil_kodu == 'tr' %}Ücretsiz danışmanlık nasıl alabilirim?{% elif dil_kodu == 'ru' %}Как получить бесплатную консультацию?{% else %}Mugt maslahaty nädip almaly?{% endif %}</span>
+            <span class="sss-ikon">+</span>
+        </button>
+        <div class="sss-cevap">
+            {% if dil_kodu == 'tr' %}3 yoldan ulaşabilirsiniz: <strong>1)</strong> WhatsApp (+90 542 546 85 64 veya +90 552 425 46 97), <strong>2)</strong> İletişim formunu doldurun, <strong>3)</strong> Ofisimize gelin. İlk görüşme tamamen ücretsiz!
+            {% elif dil_kodu == 'ru' %}3 способа: <strong>1)</strong> WhatsApp (+90 542 546 85 64 или +90 552 425 46 97), <strong>2)</strong> Форма обратной связи, <strong>3)</strong> Приходите в офис. Первая консультация бесплатно!
+            {% else %}3 ýol: <strong>1)</strong> WhatsApp (+90 542 546 85 64 ýa-da +90 552 425 46 97), <strong>2)</strong> Habarlaşmak formy, <strong>3)</strong> Ofisimize gelin. Ilkinji maslahat mugt!{% endif %}
+        </div>
+    </div>
+
+</div>
+
+<div style="text-align:center;margin-top:2rem;">
+    <a href="{{ url_for('iletisim') }}" class="cta-btn">
+        📞 {% if dil_kodu == 'tr' %}Hemen İletişime Geç{% elif dil_kodu == 'ru' %}Связаться с нами{% else %}Habarlaş{% endif %}
+    </a>
+</div>
+
+<script>
+function sssAc(btn) {
+    var item = btn.parentElement;
+    var acik = item.classList.contains('acik');
+    document.querySelectorAll('.sss-item.acik').forEach(function(el){
+        el.classList.remove('acik');
+        el.querySelector('.sss-ikon').textContent='+';
+    });
+    if(!acik){item.classList.add('acik');btn.querySelector('.sss-ikon').textContent='−';}
+}
+</script>
+{% endblock %}

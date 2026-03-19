@@ -48,7 +48,7 @@
             <span class="hn-ikon">🎓</span>
             <span class="hn-yazi">{% if dil_kodu == 'tr' %}Üniversiteler{% elif dil_kodu == 'ru' %}Университеты{% else %}Uniwersitetler{% endif %}</span>
         </a>
-        <a href="{{ url_for('index') }}#sss" class="hn-panel {% if request.endpoint == 'index' %}{% endif %}">
+        <a href="{{ url_for('sss') }}" class="hn-panel {% if request.endpoint == 'index' %}{% endif %}">
             <span class="hn-ikon">❓</span>
             <span class="hn-yazi">{% if dil_kodu == 'tr' %}Sık Sorulanlar{% elif dil_kodu == 'ru' %}FAQ{% else %}SSS{% endif %}</span>
         </a>
@@ -56,7 +56,7 @@
             <span class="hn-ikon">📞</span>
             <span class="hn-yazi">{% if dil_kodu == 'tr' %}İletişim{% elif dil_kodu == 'ru' %}Контакты{% else %}Habarlaşmak{% endif %}</span>
         </a>
-        <a href="{{ url_for('index') }}#yorumlar" class="hn-panel">
+        <a href="{{ url_for('yorumlar_sayfa') }}" class="hn-panel">
             <span class="hn-ikon">⭐</span>
             <span class="hn-yazi">{% if dil_kodu == 'tr' %}Yorumlar{% elif dil_kodu == 'ru' %}Отзывы{% else %}Teswirler{% endif %}</span>
         </a>
@@ -173,9 +173,9 @@
                 <a href="{{ url_for('hakkimizda') }}">{% if dil_kodu == 'tr' %}Hakkımızda{% elif dil_kodu == 'ru' %}О нас{% else %}Biz hakda{% endif %}</a>
                 <a href="{{ url_for('hizmetler') }}">{% if dil_kodu == 'tr' %}Hizmetler{% elif dil_kodu == 'ru' %}Услуги{% else %}Hyzmatlar{% endif %}</a>
                 <a href="{{ url_for('universiteler') }}">{% if dil_kodu == 'tr' %}Üniversiteler{% elif dil_kodu == 'ru' %}Университеты{% else %}Uniwersitetler{% endif %}</a>
-                <a href="{{ url_for('index') }}#sss">{% if dil_kodu == 'tr' %}Sık Sorulanlar{% elif dil_kodu == 'ru' %}FAQ{% else %}SSS{% endif %}</a>
+                <a href="{{ url_for('sss') }}">{% if dil_kodu == 'tr' %}Sık Sorulanlar{% elif dil_kodu == 'ru' %}FAQ{% else %}SSS{% endif %}</a>
                 <a href="{{ url_for('iletisim') }}">{% if dil_kodu == 'tr' %}İletişim{% elif dil_kodu == 'ru' %}Контакты{% else %}Habarlaşmak{% endif %}</a>
-                <a href="{{ url_for('index') }}#yorumlar">{% if dil_kodu == 'tr' %}Yorumlar{% elif dil_kodu == 'ru' %}Отзывы{% else %}Teswirler{% endif %}</a>
+                <a href="{{ url_for('yorumlar_sayfa') }}">{% if dil_kodu == 'tr' %}Yorumlar{% elif dil_kodu == 'ru' %}Отзывы{% else %}Teswirler{% endif %}</a>
             </nav>
         </div>
 

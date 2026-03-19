@@ -1,323 +1,69 @@
 {% extends 'base.html' %}
-
 {% block content %}
 
-<!-- HERO -->
-<div class="hero">
-    <h2>{{ t.index_baslik }}</h2>
-    <p>{{ t.index_alt_baslik }}</p>
-    <a href="{{ url_for('iletisim') }}" class="cta-btn">{{ t.index_cta }}</a>
-</div>
+<!-- ANA SAYFA: BÜYÜK PANEL KARTLAR -->
+<div class="anasayfa-paneller">
 
-<!-- ÜLKELER -->
-<h2 class="section-title">{{ t.index_ulkeler_baslik }}</h2>
-
-<div class="ulke-grid">
-    <a href="{{ url_for('hizmetler') }}" class="ulke-kart">
-        <span class="bayrak">🇹🇷</span>
-        <h3>{% if dil_kodu == 'tr' %}Türkiye{% elif dil_kodu == 'ru' %}Турция{% else %}Türkiýe{% endif %}</h3>
-        <p>{% if dil_kodu == 'tr' %}Öğrenci, Çalışma, Turist, Aile, Sağlık vizesi{% elif dil_kodu == 'ru' %}Студенческая, Рабочая, Туристическая, Семейная{% else %}Talyp, Iş, Syýahatçylyk, Maşgala, Saglyk{% endif %}</p>
+    <!-- HAKKIMIZDA PANELİ -->
+    <a href="{{ url_for('hakkimizda') }}" class="ap-kart ap-hakkimizda">
+        <div class="ap-ikon">🏢</div>
+        <div class="ap-yazi">
+            <h2>{% if dil_kodu == 'tr' %}Hakkımızda{% elif dil_kodu == 'ru' %}О нас{% else %}Biz hakda{% endif %}</h2>
+            <p>{% if dil_kodu == 'tr' %}500+ başarılı başvuru · %92 onay oranı · 3 ülkede ofis{% elif dil_kodu == 'ru' %}500+ успешных заявок · 92% одобрений · 3 офиса{% else %}500+ üstünlikli ýüz tutma · 92% tassyklama · 3 ofis{% endif %}</p>
+        </div>
+        <span class="ap-ok">→</span>
     </a>
-    <a href="{{ url_for('hizmetler') }}" class="ulke-kart">
-        <span class="bayrak">🇷🇺</span>
-        <h3>{% if dil_kodu == 'tr' %}Rusya{% elif dil_kodu == 'ru' %}Россия{% else %}Russiýa{% endif %}</h3>
-        <p>{% if dil_kodu == 'tr' %}E-viza, Turist, Öğrenci, 1-3 yıllık İş{% elif dil_kodu == 'ru' %}Э-виза, Туристическая, Студенческая, Рабочая{% else %}E-wiza, Syýahat, Talyp, 1-3 ýyllyk Iş{% endif %}</p>
+
+    <!-- HİZMETLER PANELİ -->
+    <a href="{{ url_for('hizmetler') }}" class="ap-kart ap-hizmetler">
+        <div class="ap-ikon">🛂</div>
+        <div class="ap-yazi">
+            <h2>{% if dil_kodu == 'tr' %}Hizmetler{% elif dil_kodu == 'ru' %}Услуги{% else %}Hyzmatlar{% endif %}</h2>
+            <p>{% if dil_kodu == 'tr' %}Türkiye · Rusya · Almanya · Dubai · ve daha fazlası{% elif dil_kodu == 'ru' %}Турция · Россия · Германия · Дубай · и другие{% else %}Türkiýe · Russiýa · Germaniýa · Dubaý · we başgalar{% endif %}</p>
+        </div>
+        <span class="ap-ok">→</span>
     </a>
-    <a href="{{ url_for('hizmetler') }}" class="ulke-kart">
-        <span class="bayrak">🇩🇪</span>
-        <h3>{% if dil_kodu == 'tr' %}Almanya{% elif dil_kodu == 'ru' %}Германия{% else %}Germaniýa{% endif %}</h3>
-        <p>{% if dil_kodu == 'tr' %}Turist, Öğrenci, İş vizesi{% elif dil_kodu == 'ru' %}Туристическая, Студенческая, Рабочая{% else %}Syýahat, Talyp, Iş wizasy{% endif %}</p>
+
+    <!-- ÜNİVERSİTELER PANELİ -->
+    <a href="{{ url_for('universiteler') }}" class="ap-kart ap-uni">
+        <div class="ap-ikon">🎓</div>
+        <div class="ap-yazi">
+            <h2>{% if dil_kodu == 'tr' %}Üniversiteler{% elif dil_kodu == 'ru' %}Университеты{% else %}Uniwersitetler{% endif %}</h2>
+            <p>{% if dil_kodu == 'tr' %}20+ ülke · 500+ üniversite · Türkmenistan onaylı listeler{% elif dil_kodu == 'ru' %}20+ стран · 500+ университетов · Одобренные списки{% else %}20+ ýurt · 500+ uniwersitet · Türkmenistan tassyklan{% endif %}</p>
+        </div>
+        <span class="ap-ok">→</span>
     </a>
-    <a href="{{ url_for('hizmetler') }}" class="ulke-kart">
-        <span class="bayrak">🇧🇪</span>
-        <h3>{% if dil_kodu == 'tr' %}Belçika{% elif dil_kodu == 'ru' %}Бельгия{% else %}Belgiýa{% endif %}</h3>
-        <p>{% if dil_kodu == 'tr' %}Turist, İş vizesi{% elif dil_kodu == 'ru' %}Туристическая, Рабочая{% else %}Syýahat, Iş wizasy{% endif %}</p>
+
+    <!-- SSS PANELİ -->
+    <a href="{{ url_for('sss') }}" class="ap-kart ap-sss">
+        <div class="ap-ikon">❓</div>
+        <div class="ap-yazi">
+            <h2>{% if dil_kodu == 'tr' %}Sık Sorulan Sorular{% elif dil_kodu == 'ru' %}Частые вопросы{% else %}Köp soralýan soraglar{% endif %}</h2>
+            <p>{% if dil_kodu == 'tr' %}Vize, süreç, belgeler hakkında merak ettikleriniz{% elif dil_kodu == 'ru' %}Вопросы о визах, процессе и документах{% else %}Wiza, proses we resminamalar barada soraglar{% endif %}</p>
+        </div>
+        <span class="ap-ok">→</span>
     </a>
-    <a href="{{ url_for('hizmetler') }}" class="ulke-kart">
-        <span class="bayrak">🇷🇴</span>
-        <h3>{% if dil_kodu == 'tr' %}Romanya{% elif dil_kodu == 'ru' %}Румыния{% else %}Rumyniýa{% endif %}</h3>
-        <p>{% if dil_kodu == 'tr' %}Turist, İş vizesi{% elif dil_kodu == 'ru' %}Туристическая, Рабочая{% else %}Syýahat, Iş wizasy{% endif %}</p>
+
+    <!-- İLETİŞİM PANELİ -->
+    <a href="{{ url_for('iletisim') }}" class="ap-kart ap-iletisim">
+        <div class="ap-ikon">📞</div>
+        <div class="ap-yazi">
+            <h2>{% if dil_kodu == 'tr' %}İletişim{% elif dil_kodu == 'ru' %}Контакты{% else %}Habarlaşmak{% endif %}</h2>
+            <p>{% if dil_kodu == 'tr' %}Türkmenistan (7 ofis) · İstanbul · WhatsApp · E-posta{% elif dil_kodu == 'ru' %}Туркменистан (7 офисов) · Стамбул · WhatsApp{% else %}Türkmenistan (7 ofis) · Stambul · WhatsApp{% endif %}</p>
+        </div>
+        <span class="ap-ok">→</span>
     </a>
-    <a href="{{ url_for('hizmetler') }}" class="ulke-kart">
-        <span class="bayrak">🇦🇪</span>
-        <h3>{% if dil_kodu == 'tr' %}Dubai / BAE{% elif dil_kodu == 'ru' %}Дубай / ОАЭ{% else %}Dubaý / BAE{% endif %}</h3>
-        <p>{% if dil_kodu == 'tr' %}30, 60 günlük E-viza, 3 yıllık İş{% elif dil_kodu == 'ru' %}30, 60-дневная Э-виза, 3-летняя Рабочая{% else %}30, 60 günlük E-wiza, 3 ýyllyk Iş{% endif %}</p>
+
+    <!-- YORUMLAR PANELİ -->
+    <a href="{{ url_for('yorumlar_sayfa') }}" class="ap-kart ap-yorumlar">
+        <div class="ap-ikon">⭐</div>
+        <div class="ap-yazi">
+            <h2>{% if dil_kodu == 'tr' %}Müşteri Yorumları{% elif dil_kodu == 'ru' %}Отзывы клиентов{% else %}Müşderi teswirler{% endif %}</h2>
+            <p>{% if dil_kodu == 'tr' %}Gerçek deneyimler · Siz de yorum bırakın{% elif dil_kodu == 'ru' %}Реальные отзывы · Оставьте свой отзыв{% else %}Hakyky tejribeler · Siz hem teswir goýuň{% endif %}</p>
+        </div>
+        <span class="ap-ok">→</span>
     </a>
-    <a href="{{ url_for('hizmetler') }}" class="ulke-kart">
-        <span class="bayrak">🇺🇿</span>
-        <h3>{% if dil_kodu == 'tr' %}Özbekistan{% elif dil_kodu == 'ru' %}Узбекистан{% else %}Özbegistan{% endif %}</h3>
-        <p>{% if dil_kodu == 'tr' %}10, 20, 30, 90 günlük vize{% elif dil_kodu == 'ru' %}10, 20, 30, 90-дневные визы{% else %}10, 20, 30, 90 günlük wizalar{% endif %}</p>
-    </a>
-    <a href="{{ url_for('hizmetler') }}" class="ulke-kart">
-        <span class="bayrak">🇦🇿🇰🇿</span>
-        <h3>{% if dil_kodu == 'tr' %}Azerbaycan & Kazakistan{% elif dil_kodu == 'ru' %}Азербайджан & Казахстан{% else %}Azerbaýjan & Gazagystan{% endif %}</h3>
-        <p>E-visa</p>
-    </a>
-</div>
-
-<!-- HIZLI HİZMETLER -->
-<h2 class="section-title">{{ t.index_hizmet_baslik }}</h2>
-
-<ul class="hizmet-liste">
-    <li onclick="window.location='{{ url_for('hizmetler') }}#mosaic-amallary'" style="cursor:pointer;">
-        <span class="icon">📅</span>
-        {% if dil_kodu == 'tr' %}Mosaic Vize İşlemleri (Randevu & Sonuç){% elif dil_kodu == 'ru' %}Операции с визой Mosaic{% else %}Mosaic Wiza Amallary{% endif %}
-        <span style="float:right;color:#2271b1;font-size:0.85rem;">→</span>
-    </li>
-    <li>
-        <span class="icon">🏨</span>
-        {% if dil_kodu == 'tr' %}Otel & Bilet Rezervasyonu{% elif dil_kodu == 'ru' %}Бронирование отеля и билетов{% else %}Otel we bilet bronlamak{% endif %}
-    </li>
-    <li>
-        <span class="icon">✈️</span>
-        {% if dil_kodu == 'tr' %}Uçak & Tren Biletleri{% elif dil_kodu == 'ru' %}Авиа и железнодорожные билеты{% else %}Uçar we otly biletleri{% endif %}
-    </li>
-    <li>
-        <span class="icon">🌐</span>
-        {% if dil_kodu == 'tr' %}Tercüme Hizmetleri (TKM-TR, TKM-ING, TKM-RU){% elif dil_kodu == 'ru' %}Переводческие услуги{% else %}Terjime hyzmatlary (TKM-TRK, TKM-ING, TKM-RUS){% endif %}
-    </li>
-    <li>
-        <span class="icon">🎓</span>
-        {% if dil_kodu == 'tr' %}Türkiye'de Üniversite Kaydı{% elif dil_kodu == 'ru' %}Поступление в университеты Турции{% else %}Türkiýede Uniwersitet Çakylyk{% endif %}
-    </li>
-    <li>
-        <span class="icon">📄</span>
-        {% if dil_kodu == 'tr' %}Sponsor & Belge Danışmanlığı{% elif dil_kodu == 'ru' %}Консультация по документам{% else %}Sponsor we resminamalary maslahat{% endif %}
-    </li>
-</ul>
-
-<!-- MÜŞTERİ YORUMLARI -->
-<div class="yorum-panel-baslik" onclick="yorumPanelAc(this)">
-    <span>⭐ {{ t.index_yorumlar_baslik }}</span>
-    <span class="yorum-panel-ikon">▼</span>
-</div>
-
-<div class="yorum-panel" id="yorum-panel">
-    <div class="yorumlar-liste">
-        <div class="yorum-kart">
-            <p class="yorum-metin">{% if dil_kodu == "tr" %}"Ofislerine gittim. İlgileri ve samimiyetleri harikaydı! İşlemlerinizi gönül rahatlığı ile yapabilirsiniz."{% elif dil_kodu == "ru" %}"Посетил офис. Внимание и искренность потрясающие! Смело доверяйте им свои документы."{% else %}"Ofislerine bardym. Üns berişleri ajaýypdy! Resminamalaryňyzy ynjalykly berip bilersiňiz."{% endif %}</p>
-            <div class="yorum-isim">— Merdan A., <span>Türkmenistan 🇹🇲</span></div>
-        </div>
-        <div class="yorum-kart">
-            <p class="yorum-metin">{% if dil_kodu == "tr" %}"Türkiye öğrenci vizemi çok hızlı ve sorunsuz aldım. Belgeleri eksiksiz hazırladılar. Kesinlikle tavsiye ederim!"{% elif dil_kodu == "ru" %}"Студенческую визу в Турцию получил быстро и без проблем. Очень рекомендую!"{% else %}"Türkiýe talyp wizamy gaty çalt aldym. Hökman maslahat berýärin!"{% endif %}</p>
-            <div class="yorum-isim">— Aýgül B., <span>Türkmenistan 🇹🇲</span></div>
-        </div>
-        <div class="yorum-kart">
-            <p class="yorum-metin">{% if dil_kodu == "tr" %}"WhatsApp üzerinden tüm süreç boyunca yardımcı oldular. Almanya vizem onaylandı! Güvenilir bir ekip."{% elif dil_kodu == "ru" %}"Сопровождали через WhatsApp. Немецкая виза одобрена! Надёжная команда."{% else %}"WhatsApp arkaly kömek etdiler. Germaniýa wizam tassyklandy!"{% endif %}</p>
-            <div class="yorum-isim">— Oraz Ý., <span>Türkmenistan 🇹🇲</span></div>
-        </div>
-        <div class="yorum-kart">
-            <p class="yorum-metin">{% if dil_kodu == "tr" %}"Rusya e-vizemi 3 günde hallettiler. Fiyatlar çok makul. Bir daha ihtiyacım olursa yine başvuracağım."{% elif dil_kodu == "ru" %}"Российскую э-визу оформили за 3 дня. Цены разумные. Обязательно обращусь снова."{% else %}"Russiýa e-wizamy 3 günde çözdüler. Hökman ýene ýüz tutaryn."{% endif %}</p>
-            <div class="yorum-isim">— Gülälek M., <span>Türkmenistan 🇹🇲</span></div>
-        </div>
-        <div class="yorum-kart">
-            <p class="yorum-metin">{% if dil_kodu == "tr" %}"Tercüme ve sponsor belgelerini de onlar hazırladı. Tek çatı altında her şeyi hallettik, çok pratik."{% elif dil_kodu == "ru" %}"Перевод и спонсорские документы тоже они подготовили. Всё под одной крышей — очень удобно."{% else %}"Terjime we sponsor resminamalary hem olar taýýarlady. Bir ýerde hemme zat — gaty amatly."{% endif %}</p>
-            <div class="yorum-isim">— Serdar K., <span>Türkmenistan 🇹🇲</span></div>
-        </div>
-        {% for yorum in onaylanan_yorumlar %}
-        <div class="yorum-kart">
-            <p class="yorum-metin">"{{ yorum.metin }}"</p>
-            <div class="yorum-isim">— {{ yorum.isim }}, <span>{{ yorum.sehir }}</span></div>
-        </div>
-        {% endfor %}
-    </div>
-
-    <!-- YORUM BIRAK FORMU -->
-    <div class="yorum-form-kart">
-        <h3>{% if dil_kodu == "tr" %}✍️ Siz de Yorum Bırakın{% elif dil_kodu == "ru" %}✍️ Оставьте отзыв{% else %}✍️ Siz hem teswir goýuň{% endif %}</h3>
-        <p style="font-size:0.85rem;color:#4a7a9b;margin-bottom:1rem;">{% if dil_kodu == "tr" %}Yorumunuz incelendikten sonra yayınlanacaktır.{% elif dil_kodu == "ru" %}Отзыв будет опубликован после проверки.{% else %}Teswir barlanandan soň çap ediler.{% endif %}</p>
-        <form method="POST" action="{{ url_for('yorum_gonder') }}">
-            <div class="yorum-form-satir">
-                <div class="form-grup">
-                    <label>👤 {% if dil_kodu == "tr" %}Adınız{% elif dil_kodu == "ru" %}Ваше имя{% else %}Adyňyz{% endif %}</label>
-                    <input type="text" name="isim" required placeholder="{% if dil_kodu == 'tr' %}Adınız{% elif dil_kodu == 'ru' %}Имя{% else %}Adyňyz{% endif %}">
-                </div>
-                <div class="form-grup">
-                    <label>📍 {% if dil_kodu == "tr" %}Şehir{% elif dil_kodu == "ru" %}Город{% else %}Şäher{% endif %}</label>
-                    <input type="text" name="sehir" required placeholder="{% if dil_kodu == 'tr' %}Örn: Dänew{% elif dil_kodu == 'ru' %}Напр: Ашхабад{% else %}Mysal: Dänew{% endif %}">
-                </div>
-            </div>
-            <div class="form-grup">
-                <label>💬 {% if dil_kodu == "tr" %}Yorumunuz{% elif dil_kodu == "ru" %}Отзыв{% else %}Teswiriňiz{% endif %}</label>
-                <textarea name="metin" required rows="3" placeholder="{% if dil_kodu == 'tr' %}Deneyiminizi paylaşın...{% elif dil_kodu == 'ru' %}Поделитесь опытом...{% else %}Tejribäňizi paýlaşyň...{% endif %}"></textarea>
-            </div>
-            <input type="hidden" name="yildiz" value="5">
-            <button type="submit" class="gonder-btn">{% if dil_kodu == "tr" %}📤 Gönder{% elif dil_kodu == "ru" %}📤 Отправить{% else %}📤 Ibermek{% endif %}</button>
-        </form>
-    </div>
-</div>
-
-
-<!-- SSS -->
-<h2 class="section-title">{{ t.index_sss_baslik }}</h2>
-
-<div class="sss-liste">
-
-    <div class="sss-item">
-        <button class="sss-soru" onclick="sssAc(this)">
-            <span class="sss-no">01</span>
-            <span>{% if dil_kodu == "tr" %}Vize reddedilirse ne olur? Para iadesi var mı?{% elif dil_kodu == "ru" %}Что будет если в визе откажут? Возврат средств?{% else %}Wiza ret edilse näme bolýar? Pul yzyna gaýtarylýarmy?{% endif %}</span>
-            <span class="sss-ikon">+</span>
-        </button>
-        <div class="sss-cevap">
-            {% if dil_kodu == "tr" %}
-            Ret durumunda panik yapmayın! Size ret gerekçelerini detaylıca açıklıyor ve tekrar başvuru stratejisi belirliyoruz. Eksik veya hatalı belgeler varsa düzelterek yeniden başvuru yapılabilir. Ücret iadesi konusunda her durum ayrı değerlendirilir — lütfen danışmanlık öncesinde bu konuyu görüşün.
-            {% elif dil_kodu == "ru" %}
-            Не паникуйте! В случае отказа мы детально объясняем причины и разрабатываем стратегию повторной подачи. По вопросу возврата средств каждый случай рассматривается индивидуально — обсудите это до начала процесса.
-            {% else %}
-            Alada etmäň! Ret ýagdaýynda ret sebäplerini jikme-jik düşündirýäris we gaýtadan ýüz tutmak strategiýasyny kesgitleýäris. Pul yzyna gaýtarmak meselesi her ýagdaý aýry seredilýär.
-            {% endif %}
-        </div>
-    </div>
-
-    <div class="sss-item">
-        <button class="sss-soru" onclick="sssAc(this)">
-            <span class="sss-no">02</span>
-            <span>{% if dil_kodu == "tr" %}Türkiye vizesi ne kadar sürer? Randevu almak zor mu?{% elif dil_kodu == "ru" %}Сколько ждать визу в Турцию? Сложно записаться?{% else %}Türkiýe wizasy näçe wagt alýar? Randevu almak kynmy?{% endif %}</span>
-            <span class="sss-ikon">+</span>
-        </button>
-        <div class="sss-cevap">
-            {% if dil_kodu == "tr" %}
-            Türkiye vizesi ortalama <strong>2-4 hafta</strong> sürmektedir. Randevu yoğunluğuna göre değişebilir. Avrupa ülkeleri (Almanya, Belçika) için <strong>4-8 hafta</strong> planlayın. Randevu almakta zorluk yaşıyorsanız — bizim aracılığımızla çok daha hızlı halledebilirsiniz!
-            {% elif dil_kodu == "ru" %}
-            Виза в Турцию занимает в среднем <strong>2-4 недели</strong>. Для Европы (Германия, Бельгия) планируйте <strong>4-8 недель</strong>. Если сложно записаться — через нас намного быстрее!
-            {% else %}
-            Türkiýe wizasy ortaça <strong>2-4 hepde</strong> alýar. Ýewropa üçin <strong>4-8 hepde</strong> planlap bilersiňiz. Randevu almakda kynçylyk çekýän bolsaňyz — biziň arkamyz bilen has çalt çözülýär!
-            {% endif %}
-        </div>
-    </div>
-
-    <div class="sss-item">
-        <button class="sss-soru" onclick="sssAc(this)">
-            <span class="sss-no">03</span>
-            <span>{% if dil_kodu == "tr" %}Türkmenistan'dan başvuru yapabilir miyim? Ofise gelmem şart mı?{% elif dil_kodu == "ru" %}Можно подать из Туркменистана? Обязательно приходить в офис?{% else %}Türkmenistandan ýüz tutup bolarmy? Ofise gelmek hökmänmi?{% endif %}</span>
-            <span class="sss-ikon">+</span>
-        </button>
-        <div class="sss-cevap">
-            {% if dil_kodu == "tr" %}
-            Evet! Dänew ve Aşkabat ofislerimiz ile Türkmenistan'dan tüm işlemlerinizi yürütebilirsiniz. WhatsApp üzerinden de belgelerinizi iletip süreci uzaktan yönetebilirsiniz. Türkiye'deyseniz İstanbul ofisimiz de hizmetinizdedir.
-            {% elif dil_kodu == "ru" %}
-            Да! Через наши офисы в Дяньове и Ашхабаде можно вести все процессы из Туркменистана. Документы можно передать через WhatsApp. Если вы в Турции — наш стамбульский офис к вашим услугам.
-            {% else %}
-            Hawa! Dänew we Aşgabat ofislerimiz arkaly Türkmenistandan ähli işleriňizi alyp baryp bilersiňiz. WhatsApp arkaly resminamalaryňyzy iberip uzakdan hem dolandyryp bilersiňiz.
-            {% endif %}
-        </div>
-    </div>
-
-    <div class="sss-item">
-        <button class="sss-soru" onclick="sssAc(this)">
-            <span class="sss-no">04</span>
-            <span>{% if dil_kodu == "tr" %}Hangi belgeleri hazırlamam gerekiyor?{% elif dil_kodu == "ru" %}Какие документы нужно подготовить?{% else %}Haýsy resminamalary taýýarlamaly?{% endif %}</span>
-            <span class="sss-ikon">+</span>
-        </button>
-        <div class="sss-cevap">
-            {% if dil_kodu == "tr" %}
-            Temel belgeler genellikle şunlardır: <strong>Pasaport</strong> (en az 6 ay geçerli), <strong>2 adet biyometrik fotoğraf</strong> (5x6 cm), <strong>Sponsor belgesi</strong> (banka kaydı, iş belgesi), <strong>Doğum belgesi + tercüme</strong>, <strong>Evli ise nikah cüzdanı + tercüme</strong>. Vize türüne göre ek belgeler gerekebilir. Hizmetler sayfamızdan detaylı listeye ulaşabilirsiniz.
-            {% elif dil_kodu == "ru" %}
-            Основные документы: <strong>Паспорт</strong> (мин. 6 мес.), <strong>2 биометрических фото</strong> (5x6), <strong>Спонсорские документы</strong>, <strong>Свидетельство о рождении + перевод</strong>, <strong>Если женаты — свидетельство о браке + перевод</strong>. Подробный список на странице Услуги.
-            {% else %}
-            Esasy resminamalar: <strong>Pasport</strong> (iň az 6 aý), <strong>2 biometrik surat</strong> (5x6), <strong>Sponsor resminamasy</strong>, <strong>Dogluş şahadatnamasy + terjime</strong>, <strong>Öýlenen bolsa nika şahadatnamasy + terjime</strong>. Hyzmatlar sahypasynda jikme-jik sanawy görüp bilersiňiz.
-            {% endif %}
-        </div>
-    </div>
-
-    <div class="sss-item">
-        <button class="sss-soru" onclick="sssAc(this)">
-            <span class="sss-no">05</span>
-            <span>{% if dil_kodu == "tr" %}Sponsor belgesi nedir? Kimden alınır?{% elif dil_kodu == "ru" %}Что такое спонсорский документ? У кого берётся?{% else %}Sponsor resminamasy näme? Kimden alynýar?{% endif %}</span>
-            <span class="sss-ikon">+</span>
-        </button>
-        <div class="sss-cevap">
-            {% if dil_kodu == "tr" %}
-            Sponsor belgesi, vize süresince masraflarınızı karşılayacak kişinin maddi durumunu kanıtlayan evraktır. Genellikle <strong>iş yeri belgesi</strong>, <strong>son 3-6 aylık banka kaydı</strong>, <strong>noterden onaylı taahhütname</strong> içerir. Sponsorunuz yoksa veya yeterli belgeniz yoksa — bizimle iletişime geçin, çözüm yolları bulabiliriz!
-            {% elif dil_kodu == "ru" %}
-            Спонсорский документ подтверждает финансовую состоятельность лица, которое берёт на себя ваши расходы. Обычно включает <strong>справку с работы</strong>, <strong>выписку из банка за 3-6 мес.</strong>, <strong>нотариальное обязательство</strong>. Нет спонсора? — Свяжитесь с нами, найдём решение!
-            {% else %}
-            Sponsor resminamasy, wiza möhletinde çykdajylaryňyzy öz üstüne alýan adamyň maddy ýagdaýyny tassyklaýan resminamadyr. Adatça <strong>iş ýerinden sprawka</strong>, <strong>soňky 3-6 aýlyk bank çykarmasy</strong>, <strong>notarial borçnama</strong> öz içine alýar.
-            {% endif %}
-        </div>
-    </div>
-
-    <div class="sss-item">
-        <button class="sss-soru" onclick="sssAc(this)">
-            <span class="sss-no">06</span>
-            <span>{% if dil_kodu == "tr" %}Türkiye'de üniversiteye kaydolmak için ne yapmalıyım?{% elif dil_kodu == "ru" %}Как поступить в университет в Турции?{% else %}Türkiýede uniwersitete ýazylmak üçin näme etmeli?{% endif %}</span>
-            <span class="sss-ikon">+</span>
-        </button>
-        <div class="sss-cevap">
-            {% if dil_kodu == "tr" %}
-            Türk üniversitelerine Türkmenistan'dan kayıt yaptırabilirsiniz. <strong>Depozitsiz</strong> seçenekler mevcuttur. İstanbul üniversiteleri için depozit gerekebilir — bu konuda size yardımcı oluyoruz. Davetiye alındıktan sonra öğrenci vizesi için başvuru yapılır. Detaylar için bizimle iletişime geçin!
-            {% elif dil_kodu == "ru" %}
-            Из Туркменистана можно поступить в турецкий университет. Есть варианты <strong>без депозита</strong>. Для стамбульских вузов депозит может понадобиться — мы помогаем в этом. После получения приглашения подаётся студенческая виза.
-            {% else %}
-            Türkmenistandan türk uniwersitetlerine ýazylmak bolýar. <strong>Depozitsiz</strong> wariantlar bar. Stambul uniwersitetleri üçin depozit gerek bolup biler — bu meselede kömek edýäris. Çakylyk alynandan soň talyp wizasy üçin ýüz tutulýar.
-            {% endif %}
-        </div>
-    </div>
-
-    <div class="sss-item">
-        <button class="sss-soru" onclick="sssAc(this)">
-            <span class="sss-no">07</span>
-            <span>{% if dil_kodu == "tr" %}Tercüme ve fotokopi hizmetleri de veriyor musunuz?{% elif dil_kodu == "ru" %}Вы также предоставляете услуги перевода и копирования?{% else %}Terjime we kseroks hyzmatlaryny hem berýärsiňizmi?{% endif %}</span>
-            <span class="sss-ikon">+</span>
-        </button>
-        <div class="sss-cevap">
-            {% if dil_kodu == "tr" %}
-            Evet! Türkmence-Türkçe, Türkmence-İngilizce ve Türkmence-Rusça tercüme hizmetleri sunuyoruz. Ayrıca fotokopi, tarama ve belge çoğaltma işlemleri de ofislerimizde yapılmaktadır. Tek çatı altında her şey!
-            {% elif dil_kodu == "ru" %}
-            Да! Предоставляем перевод туркменский-турецкий, туркменский-английский, туркменский-русский. А также ксерокопирование и сканирование документов в наших офисах. Всё под одной крышей!
-            {% else %}
-            Hawa! Türkmençe-Türkçe, Türkmençe-Iňlisçe we Türkmençe-Rusça terjime hyzmatlaryny hödürleýäris. Şeýle hem kseroks, skan we resminamalary köpeltmek ofislerimizde ýerine ýetirilýär.
-            {% endif %}
-        </div>
-    </div>
-
-    <div class="sss-item">
-        <button class="sss-soru" onclick="sssAc(this)">
-            <span class="sss-no">08</span>
-            <span>{% if dil_kodu == "tr" %}Ücretsiz danışmanlık nasıl alabilirim?{% elif dil_kodu == "ru" %}Как получить бесплатную консультацию?{% else %}Mugt maslahaty nädip almaly?{% endif %}</span>
-            <span class="sss-ikon">+</span>
-        </button>
-        <div class="sss-cevap">
-            {% if dil_kodu == "tr" %}
-            Çok kolay! 3 yoldan ulaşabilirsiniz: <strong>1)</strong> WhatsApp'tan mesaj atın (+90 542 546 85 64 veya +90 552 425 46 97), <strong>2)</strong> İletişim formunu doldurun, <strong>3)</strong> Ofisimize doğrudan gelin. İlk görüşme tamamen ücretsizdir, sizi doğru yönlendiriyoruz!
-            {% elif dil_kodu == "ru" %}
-            Очень просто! 3 способа: <strong>1)</strong> Напишите в WhatsApp (+90 542 546 85 64 или +90 552 425 46 97), <strong>2)</strong> Заполните форму обратной связи, <strong>3)</strong> Приходите в офис. Первая консультация бесплатно!
-            {% else %}
-            Gaty aňsat! 3 ýol bilen habarlaşyp bilersiňiz: <strong>1)</strong> WhatsApp-a ýazyň (+90 542 546 85 64 ýa-da +90 552 425 46 97), <strong>2)</strong> Habarlaşmak formuny dolduryň, <strong>3)</strong> Ofisimize gönüden geliň. Ilkinji maslahat mugt!
-            {% endif %}
-        </div>
-    </div>
 
 </div>
-
-<!-- CTA BÖLÜMÜ -->
-<div class="cta-bolum">
-    <h2>{{ t.index_cta2_baslik }}</h2>
-    <p>{{ t.index_cta2_alt }}</p>
-    <a href="{{ url_for('iletisim') }}" class="cta-btn cta-buyuk">{{ t.index_cta2_btn }}</a>
-</div>
-
-<script>
-function yorumPanelAc(el) {
-    var panel = document.getElementById('yorum-panel');
-    var acik = panel.classList.contains('acik');
-    panel.classList.toggle('acik');
-    el.querySelector('.yorum-panel-ikon').textContent = acik ? '▼' : '▲';
-}
-
-function sssAc(btn) {
-    var item = btn.parentElement;
-    var acik = item.classList.contains('acik');
-    document.querySelectorAll('.sss-item.acik').forEach(function(el) {
-        el.classList.remove('acik');
-        el.querySelector('.sss-ikon').textContent = '+';
-    });
-    if (!acik) {
-        item.classList.add('acik');
-        btn.querySelector('.sss-ikon').textContent = '−';
-    }
-}
-</script>
 
 {% endblock %}

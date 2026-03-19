@@ -298,3 +298,59 @@ footer{background:linear-gradient(150deg,#01263a 0%,#0d3d6e 100%);color:rgba(255
     .header-nav-paneller{grid-template-columns:repeat(3,1fr) auto;}
     .ulke-grid,.vize-grid,.uni-ulke-grid{grid-template-columns:repeat(2,1fr);}
 }
+
+/* ═══ ANA SAYFA PANELLERİ ═══ */
+.anasayfa-paneller {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 0 -1rem;
+}
+.ap-kart {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem 2rem;
+    text-decoration: none;
+    color: #1a2e45;
+    border-bottom: 1px solid #e8f0f8;
+    background: white;
+    transition: all 0.2s;
+    position: relative;
+}
+.ap-kart:first-child { border-radius: 0; }
+.ap-kart:hover {
+    background: #f0f7ff;
+    padding-left: 2.4rem;
+}
+.ap-kart:hover .ap-ok { opacity: 1; transform: translateX(4px); }
+.ap-ikon { font-size: 2.5rem; min-width: 56px; text-align: center; flex-shrink: 0; }
+.ap-yazi { flex: 1; }
+.ap-yazi h2 { font-size: 1.4rem; font-weight: 800; color: #01263a; margin-bottom: 0.3rem; }
+.ap-yazi p { font-size: 0.88rem; color: #5a7a9b; line-height: 1.5; }
+.ap-ok { font-size: 1.5rem; color: #2271b1; opacity: 0.4; transition: all 0.2s; flex-shrink: 0; }
+
+/* Farklı arka plan renkleri - çok hafif */
+.ap-hakkimizda:hover { background: #f0f7ff; }
+.ap-hizmetler:hover { background: #f0fff4; }
+.ap-uni:hover { background: #fffbf0; }
+.ap-sss:hover { background: #fff0f0; }
+.ap-iletisim:hover { background: #f0f4ff; }
+.ap-yorumlar:hover { background: #fff8f0; }
+
+/* Sol çizgi rengi */
+.ap-hakkimizda { border-left: 5px solid #2271b1; }
+.ap-hizmetler { border-left: 5px solid #27ae60; }
+.ap-uni { border-left: 5px solid #f59e0b; }
+.ap-sss { border-left: 5px solid #e74c3c; }
+.ap-iletisim { border-left: 5px solid #8e44ad; }
+.ap-yorumlar { border-left: 5px solid #e67e22; }
+
+@media (max-width: 768px) {
+    .anasayfa-paneller { margin: 0 -0.7rem; }
+    .ap-kart { padding: 1.5rem 1.2rem; gap: 1rem; }
+    .ap-kart:hover { padding-left: 1.5rem; }
+    .ap-ikon { font-size: 2rem; min-width: 44px; }
+    .ap-yazi h2 { font-size: 1.15rem; }
+    .ap-yazi p { font-size: 0.82rem; }
+}
