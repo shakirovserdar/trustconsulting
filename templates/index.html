@@ -1,67 +1,66 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<!-- ANA SAYFA: BÜYÜK PANEL KARTLAR -->
 <div class="anasayfa-paneller">
 
-    <!-- HAKKIMIZDA PANELİ -->
     <a href="{{ url_for('hakkimizda') }}" class="ap-kart ap-hakkimizda">
-        <div class="ap-ikon">🏢</div>
-        <div class="ap-yazi">
+        <div class="ap-ikon-alan">
+            <span class="ap-ikon">🏛️</span>
+        </div>
+        <div class="ap-alt">
             <h2>{% if dil_kodu == 'tr' %}Hakkımızda{% elif dil_kodu == 'ru' %}О нас{% else %}Biz hakda{% endif %}</h2>
-            <p>{% if dil_kodu == 'tr' %}500+ başarılı başvuru · %92 onay oranı · 3 ülkede ofis{% elif dil_kodu == 'ru' %}500+ успешных заявок · 92% одобрений · 3 офиса{% else %}500+ üstünlikli ýüz tutma · 92% tassyklama · 3 ofis{% endif %}</p>
+            <p>{% if dil_kodu == 'tr' %}500+ başvuru · %92 onay · 3 ülkede ofis{% elif dil_kodu == 'ru' %}500+ заявок · 92% одобрений{% else %}500+ ýüz tutma · 92% tassyklama{% endif %}</p>
         </div>
-        <span class="ap-ok">→</span>
     </a>
 
-    <!-- HİZMETLER PANELİ -->
     <a href="{{ url_for('hizmetler') }}" class="ap-kart ap-hizmetler">
-        <div class="ap-ikon">🛂</div>
-        <div class="ap-yazi">
+        <div class="ap-ikon-alan">
+            <span class="ap-ikon">🛂</span>
+        </div>
+        <div class="ap-alt">
             <h2>{% if dil_kodu == 'tr' %}Hizmetler{% elif dil_kodu == 'ru' %}Услуги{% else %}Hyzmatlar{% endif %}</h2>
-            <p>{% if dil_kodu == 'tr' %}Türkiye · Rusya · Almanya · Dubai · ve daha fazlası{% elif dil_kodu == 'ru' %}Турция · Россия · Германия · Дубай · и другие{% else %}Türkiýe · Russiýa · Germaniýa · Dubaý · we başgalar{% endif %}</p>
+            <p>{% if dil_kodu == 'tr' %}Türkiye · Rusya · Almanya · Dubai{% elif dil_kodu == 'ru' %}Турция · Россия · Германия · Дубай{% else %}Türkiýe · Russiýa · Germaniýa · Dubaý{% endif %}</p>
         </div>
-        <span class="ap-ok">→</span>
     </a>
 
-    <!-- ÜNİVERSİTELER PANELİ -->
     <a href="{{ url_for('universiteler') }}" class="ap-kart ap-uni">
-        <div class="ap-ikon">🎓</div>
-        <div class="ap-yazi">
+        <div class="ap-ikon-alan">
+            <span class="ap-ikon">🎓</span>
+        </div>
+        <div class="ap-alt">
             <h2>{% if dil_kodu == 'tr' %}Üniversiteler{% elif dil_kodu == 'ru' %}Университеты{% else %}Uniwersitetler{% endif %}</h2>
-            <p>{% if dil_kodu == 'tr' %}20+ ülke · 500+ üniversite · Türkmenistan onaylı listeler{% elif dil_kodu == 'ru' %}20+ стран · 500+ университетов · Одобренные списки{% else %}20+ ýurt · 500+ uniwersitet · Türkmenistan tassyklan{% endif %}</p>
+            <p>{% if dil_kodu == 'tr' %}20+ ülke · 500+ üniversite{% elif dil_kodu == 'ru' %}20+ стран · 500+ университетов{% else %}20+ ýurt · 500+ uniwersitet{% endif %}</p>
         </div>
-        <span class="ap-ok">→</span>
     </a>
 
-    <!-- SSS PANELİ -->
     <a href="{{ url_for('sss') }}" class="ap-kart ap-sss">
-        <div class="ap-ikon">❓</div>
-        <div class="ap-yazi">
-            <h2>{% if dil_kodu == 'tr' %}Sık Sorulan Sorular{% elif dil_kodu == 'ru' %}Частые вопросы{% else %}Köp soralýan soraglar{% endif %}</h2>
-            <p>{% if dil_kodu == 'tr' %}Vize, süreç, belgeler hakkında merak ettikleriniz{% elif dil_kodu == 'ru' %}Вопросы о визах, процессе и документах{% else %}Wiza, proses we resminamalar barada soraglar{% endif %}</p>
+        <div class="ap-ikon-alan">
+            <span class="ap-ikon">❓</span>
         </div>
-        <span class="ap-ok">→</span>
+        <div class="ap-alt">
+            <h2>{% if dil_kodu == 'tr' %}Sık Sorulanlar{% elif dil_kodu == 'ru' %}FAQ{% else %}Köp soralýanlar{% endif %}</h2>
+            <p>{% if dil_kodu == 'tr' %}Vize, süreç, belgeler{% elif dil_kodu == 'ru' %}Виза, процесс, документы{% else %}Wiza, proses, resminamalar{% endif %}</p>
+        </div>
     </a>
 
-    <!-- İLETİŞİM PANELİ -->
     <a href="{{ url_for('iletisim') }}" class="ap-kart ap-iletisim">
-        <div class="ap-ikon">📞</div>
-        <div class="ap-yazi">
-            <h2>{% if dil_kodu == 'tr' %}İletişim{% elif dil_kodu == 'ru' %}Контакты{% else %}Habarlaşmak{% endif %}</h2>
-            <p>{% if dil_kodu == 'tr' %}Türkmenistan (7 ofis) · İstanbul · WhatsApp · E-posta{% elif dil_kodu == 'ru' %}Туркменистан (7 офисов) · Стамбул · WhatsApp{% else %}Türkmenistan (7 ofis) · Stambul · WhatsApp{% endif %}</p>
+        <div class="ap-ikon-alan">
+            <span class="ap-ikon">📞</span>
         </div>
-        <span class="ap-ok">→</span>
+        <div class="ap-alt">
+            <h2>{% if dil_kodu == 'tr' %}İletişim{% elif dil_kodu == 'ru' %}Контакты{% else %}Habarlaşmak{% endif %}</h2>
+            <p>{% if dil_kodu == 'tr' %}7 ofis · İstanbul · WhatsApp{% elif dil_kodu == 'ru' %}7 офисов · Стамбул · WhatsApp{% else %}7 ofis · Stambul · WhatsApp{% endif %}</p>
+        </div>
     </a>
 
-    <!-- YORUMLAR PANELİ -->
     <a href="{{ url_for('yorumlar_sayfa') }}" class="ap-kart ap-yorumlar">
-        <div class="ap-ikon">⭐</div>
-        <div class="ap-yazi">
-            <h2>{% if dil_kodu == 'tr' %}Müşteri Yorumları{% elif dil_kodu == 'ru' %}Отзывы клиентов{% else %}Müşderi teswirler{% endif %}</h2>
-            <p>{% if dil_kodu == 'tr' %}Gerçek deneyimler · Siz de yorum bırakın{% elif dil_kodu == 'ru' %}Реальные отзывы · Оставьте свой отзыв{% else %}Hakyky tejribeler · Siz hem teswir goýuň{% endif %}</p>
+        <div class="ap-ikon-alan">
+            <span class="ap-ikon">⭐</span>
         </div>
-        <span class="ap-ok">→</span>
+        <div class="ap-alt">
+            <h2>{% if dil_kodu == 'tr' %}Yorumlar{% elif dil_kodu == 'ru' %}Отзывы{% else %}Teswirler{% endif %}</h2>
+            <p>{% if dil_kodu == 'tr' %}Gerçek deneyimler · Yorum bırakın{% elif dil_kodu == 'ru' %}Реальные отзывы · Оставьте отзыв{% else %}Hakyky tejribeler · Teswir goý{% endif %}</p>
+        </div>
     </a>
 
 </div>
