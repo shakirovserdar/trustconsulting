@@ -1,86 +1,89 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="anasayfa-paneller">
+<a href="{{ url_for('hakkimizda') }}" class="panel-kart">
+    <div class="pk-ikon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21h18M3 10h18M3 7l9-4 9 4M4 10v11M8 10v11M12 10v11M16 10v11M20 10v11"/>
+        </svg>
+    </div>
+    <div class="pk-yazi">
+        <h2>{% if dil_kodu == 'tr' %}Hakkımızda{% elif dil_kodu == 'ru' %}О нас{% else %}Biz hakda{% endif %}</h2>
+        <p>{% if dil_kodu == 'tr' %}500+ başvuru · %92 onay · 3 ülkede ofis{% elif dil_kodu == 'ru' %}500+ заявок · 92% одобрений{% else %}500+ ýüz tutma · 92% tassyklama{% endif %}</p>
+    </div>
+    <span class="pk-ok">→</span>
+</a>
 
-    <a href="{{ url_for('hakkimizda') }}" class="ap-kart ap-hakkimizda">
-        <div class="ap-ikon-alan">
-            <svg class="ap-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 21h18M3 10h18M3 7l9-4 9 4M4 10v11M8 10v11M12 10v11M16 10v11M20 10v11"/>
-            </svg>
-        </div>
-        <div class="ap-alt">
-            <h2>{% if dil_kodu == 'tr' %}Hakkımızda{% elif dil_kodu == 'ru' %}О нас{% else %}Biz hakda{% endif %}</h2>
-            <p>{% if dil_kodu == 'tr' %}500+ başvuru · %92 onay · 3 ülkede ofis{% elif dil_kodu == 'ru' %}500+ заявок · 92% одобрений{% else %}500+ ýüz tutma · 92% tassyklama{% endif %}</p>
-        </div>
-    </a>
+<a href="{{ url_for('hizmetler') }}" class="panel-kart">
+    <div class="pk-ikon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13" stroke="#f87171" stroke-width="1.8"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <line x1="10" y1="9" x2="8" y2="9"/>
+        </svg>
+    </div>
+    <div class="pk-yazi">
+        <h2>{% if dil_kodu == 'tr' %}Hizmetler{% elif dil_kodu == 'ru' %}Услуги{% else %}Hyzmatlar{% endif %}</h2>
+        <p>{% if dil_kodu == 'tr' %}Türkiye · Rusya · Almanya · Dubai{% elif dil_kodu == 'ru' %}Турция · Россия · Германия · Дубай{% else %}Türkiýe · Russiýa · Germaniýa · Dubaý{% endif %}</p>
+    </div>
+    <span class="pk-ok">→</span>
+</a>
 
-    <a href="{{ url_for('hizmetler') }}" class="ap-kart ap-hizmetler">
-        <div class="ap-ikon-alan">
-            <svg class="ap-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                <polyline points="14 2 14 8 20 8"/>
-                <line x1="16" y1="13" x2="8" y2="13"/>
-                <line x1="16" y1="17" x2="8" y2="17"/>
-                <line x1="10" y1="9" x2="8" y2="9"/>
-            </svg>
-        </div>
-        <div class="ap-alt">
-            <h2>{% if dil_kodu == 'tr' %}Hizmetler{% elif dil_kodu == 'ru' %}Услуги{% else %}Hyzmatlar{% endif %}</h2>
-            <p>{% if dil_kodu == 'tr' %}Türkiye · Rusya · Almanya · Dubai{% elif dil_kodu == 'ru' %}Турция · Россия · Германия · Дубай{% else %}Türkiýe · Russiýa · Germaniýa · Dubaý{% endif %}</p>
-        </div>
-    </a>
+<a href="{{ url_for('universiteler') }}" class="panel-kart">
+    <div class="pk-ikon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+        </svg>
+    </div>
+    <div class="pk-yazi">
+        <h2>{% if dil_kodu == 'tr' %}Üniversiteler{% elif dil_kodu == 'ru' %}Университеты{% else %}Uniwersitetler{% endif %}</h2>
+        <p>{% if dil_kodu == 'tr' %}20+ ülke · 500+ üniversite{% elif dil_kodu == 'ru' %}20+ стран · 500+ университетов{% else %}20+ ýurt · 500+ uniwersitet{% endif %}</p>
+    </div>
+    <span class="pk-ok">→</span>
+</a>
 
-    <a href="{{ url_for('universiteler') }}" class="ap-kart ap-uni">
-        <div class="ap-ikon-alan">
-            <svg class="ap-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-            </svg>
-        </div>
-        <div class="ap-alt">
-            <h2>{% if dil_kodu == 'tr' %}Üniversiteler{% elif dil_kodu == 'ru' %}Университеты{% else %}Uniwersitetler{% endif %}</h2>
-            <p>{% if dil_kodu == 'tr' %}20+ ülke · 500+ üniversite{% elif dil_kodu == 'ru' %}20+ стран · 500+ университетов{% else %}20+ ýurt · 500+ uniwersitet{% endif %}</p>
-        </div>
-    </a>
+<a href="{{ url_for('sss') }}" class="panel-kart">
+    <div class="pk-ikon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+    </div>
+    <div class="pk-yazi">
+        <h2>{% if dil_kodu == 'tr' %}Sık Sorulanlar{% elif dil_kodu == 'ru' %}FAQ{% else %}Köp soralýanlar{% endif %}</h2>
+        <p>{% if dil_kodu == 'tr' %}Vize, süreç, belgeler{% elif dil_kodu == 'ru' %}Виза, процесс, документы{% else %}Wiza, proses, resminamalar{% endif %}</p>
+    </div>
+    <span class="pk-ok">→</span>
+</a>
 
-    <a href="{{ url_for('sss') }}" class="ap-kart ap-sss">
-        <div class="ap-ikon-alan">
-            <svg class="ap-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-                <line x1="12" y1="17" x2="12.01" y2="17"/>
-            </svg>
-        </div>
-        <div class="ap-alt">
-            <h2>{% if dil_kodu == 'tr' %}Sık Sorulanlar{% elif dil_kodu == 'ru' %}FAQ{% else %}Köp soralýanlar{% endif %}</h2>
-            <p>{% if dil_kodu == 'tr' %}Vize, süreç, belgeler{% elif dil_kodu == 'ru' %}Виза, процесс, документы{% else %}Wiza, proses, resminamalar{% endif %}</p>
-        </div>
-    </a>
+<a href="{{ url_for('iletisim') }}" class="panel-kart">
+    <div class="pk-ikon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.42 2 2 0 0 1 3.62 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.84a16 16 0 0 0 6.29 6.29l1.87-1.87a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+    </div>
+    <div class="pk-yazi">
+        <h2>{% if dil_kodu == 'tr' %}İletişim{% elif dil_kodu == 'ru' %}Контакты{% else %}Habarlaşmak{% endif %}</h2>
+        <p>{% if dil_kodu == 'tr' %}7 ofis · İstanbul · WhatsApp{% elif dil_kodu == 'ru' %}7 офисов · Стамбул · WhatsApp{% else %}7 ofis · Stambul · WhatsApp{% endif %}</p>
+    </div>
+    <span class="pk-ok">→</span>
+</a>
 
-    <a href="{{ url_for('iletisim') }}" class="ap-kart ap-iletisim">
-        <div class="ap-ikon-alan">
-            <svg class="ap-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.42 2 2 0 0 1 3.62 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.84a16 16 0 0 0 6.29 6.29l1.87-1.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-            </svg>
-        </div>
-        <div class="ap-alt">
-            <h2>{% if dil_kodu == 'tr' %}İletişim{% elif dil_kodu == 'ru' %}Контакты{% else %}Habarlaşmak{% endif %}</h2>
-            <p>{% if dil_kodu == 'tr' %}7 ofis · İstanbul · WhatsApp{% elif dil_kodu == 'ru' %}7 офисов · Стамбул · WhatsApp{% else %}7 ofis · Stambul · WhatsApp{% endif %}</p>
-        </div>
-    </a>
+<a href="{{ url_for('yorumlar_sayfa') }}" class="panel-kart">
+    <div class="pk-ikon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+        </svg>
+    </div>
+    <div class="pk-yazi">
+        <h2>{% if dil_kodu == 'tr' %}Yorumlar{% elif dil_kodu == 'ru' %}Отзывы{% else %}Teswirler{% endif %}</h2>
+        <p>{% if dil_kodu == 'tr' %}Gerçek deneyimler · Yorum bırakın{% elif dil_kodu == 'ru' %}Реальные отзывы · Оставьте отзыв{% else %}Hakyky tejribeler · Teswir goý{% endif %}</p>
+    </div>
+    <span class="pk-ok">→</span>
+</a>
 
-    <a href="{{ url_for('yorumlar_sayfa') }}" class="ap-kart ap-yorumlar">
-        <div class="ap-ikon-alan">
-            <svg class="ap-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-            </svg>
-        </div>
-        <div class="ap-alt">
-            <h2>{% if dil_kodu == 'tr' %}Yorumlar{% elif dil_kodu == 'ru' %}Отзывы{% else %}Teswirler{% endif %}</h2>
-            <p>{% if dil_kodu == 'tr' %}Gerçek deneyimler · Yorum bırakın{% elif dil_kodu == 'ru' %}Реальные отзывы · Оставьте отзыв{% else %}Hakyky tejribeler · Teswir goý{% endif %}</p>
-        </div>
-    </a>
-
-</div>
 {% endblock %}

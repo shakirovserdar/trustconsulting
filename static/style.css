@@ -877,3 +877,222 @@ img.emoji {
     .header-logo-link img { width: 52px; height: 52px; }
     .header-baslik h1 { font-size: 1.25rem; }
 }
+
+/* ══════════════════════════════════════
+   ANA SAYFA — SKETCH LAYOUT
+   ══════════════════════════════════════ */
+
+/* Tüm sayfa tek sütun */
+.ana-layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── BÜYÜK BAŞLIK KARTI ── */
+.baslik-karti {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 2.5rem 2.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+    min-height: 200px;
+}
+
+.baslik-dil {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+}
+
+.baslik-merkez {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex: 1;
+}
+.baslik-merkez img {
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.08);
+    padding: 5px;
+    object-fit: contain;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.3);
+    flex-shrink: 0;
+}
+.baslik-merkez h1 {
+    color: white;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+.baslik-merkez p {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.75rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-top: 0.2rem;
+}
+
+/* Alt butonlar - sol ve sağ */
+.baslik-alt-butonlar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.baslik-alt-bos { flex: 1; }
+
+/* Kayıt Ol butonu */
+.kayit-ol-btn {
+    background: linear-gradient(135deg, #0f0c29, #302b63, #1a1a2e);
+    background-size: 200% 200%;
+    animation: kayit-gradient 4s ease infinite, kayit-glow 2.5s ease-in-out infinite;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 25px;
+    padding: 0.6rem 1.6rem;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.3px;
+    transition: transform 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+.kayit-ol-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    animation: sweep 3s ease-in-out infinite;
+    transform: translateX(-100%);
+}
+@keyframes sweep { 0%{transform:translateX(-100%)} 100%{transform:translateX(300%)} }
+@keyframes kayit-gradient { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+@keyframes kayit-glow {
+    0%,100% { box-shadow: 0 0 0 0 rgba(80,60,200,0.4); }
+    50% { box-shadow: 0 0 0 8px rgba(80,60,200,0); }
+}
+.kayit-ol-btn:hover { transform: scale(1.04); }
+
+/* ── PANEL KARTLAR CONTAINER ── */
+.panel-kartlar {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+/* ── TEK PANEL KART ── */
+.panel-kart {
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+    padding: 1.8rem 2.5rem;
+    text-decoration: none;
+    color: white;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    background: transparent;
+    transition: all 0.25s;
+    position: relative;
+    min-height: 110px;
+}
+.panel-kart:hover {
+    background: rgba(255,255,255,0.05);
+    padding-left: 3rem;
+}
+.panel-kart:hover .pk-ok {
+    opacity: 1;
+    transform: translateX(4px);
+}
+
+.pk-ikon {
+    width: 64px; height: 64px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pk-ikon svg {
+    width: 100%; height: 100%;
+    color: rgba(255,255,255,0.8);
+    transition: all 0.25s;
+}
+.panel-kart:hover .pk-ikon svg {
+    color: white;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+}
+
+.pk-yazi { flex: 1; }
+.pk-yazi h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.2rem;
+}
+.pk-yazi p {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.4);
+}
+
+.pk-ok {
+    font-size: 1.3rem;
+    color: rgba(255,255,255,0.3);
+    opacity: 0.5;
+    transition: all 0.25s;
+    flex-shrink: 0;
+}
+
+/* ── DİĞER SAYFALAR HEADER ── */
+.diger-header {
+    background: rgba(13,27,42,0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.diger-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    text-decoration: none;
+}
+.diger-logo img {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    padding: 3px;
+    object-fit: contain;
+}
+.diger-logo h1 { color: white; font-size: 1.35rem; font-weight: 800; }
+.diger-logo p { color: rgba(255,255,255,0.5); font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; }
+.diger-sag { display: flex; align-items: center; gap: 1rem; }
+.admin-link { color: rgba(255,200,80,0.8); font-size: 0.78rem; font-weight: 700; text-decoration: none; }
+
+/* MOBİL */
+@media (max-width: 768px) {
+    .baslik-karti { padding: 1.5rem 1.2rem 1.2rem; min-height: 160px; }
+    .baslik-merkez img { width: 65px; height: 65px; }
+    .baslik-merkez h1 { font-size: 1.5rem; }
+    .baslik-dil { top: 1rem; right: 1rem; }
+
+    .panel-kart { padding: 1.4rem 1.2rem; gap: 1.2rem; min-height: 90px; }
+    .panel-kart:hover { padding-left: 1.6rem; }
+    .pk-ikon { width: 48px; height: 48px; }
+    .pk-yazi h2 { font-size: 1.1rem; }
+    .pk-yazi p { font-size: 0.76rem; }
+
+    .diger-logo img { width: 44px; height: 44px; }
+    .diger-logo h1 { font-size: 1.1rem; }
+}
