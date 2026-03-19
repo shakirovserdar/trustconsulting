@@ -18,7 +18,7 @@ body {
 
 /* ── HEADER ── */
 header {
-    background: rgba(13,27,42,0.7);
+    background: rgba(13,27,42,0.75);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -29,40 +29,67 @@ header {
 
 .header-top {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-    padding: 1rem 1.5rem;
+    padding: 1.2rem 2rem;
     gap: 1rem;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
+}
+.header-logo-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
 }
 .header-logo-link {
     display: flex;
     align-items: center;
-    gap: 0.9rem;
+    gap: 1rem;
     text-decoration: none;
-    flex: 1;
 }
 .header-logo-link img {
-    width: 52px; height: 52px;
+    width: 72px; height: 72px;
     border-radius: 50%;
-    border: 2px solid rgba(255,255,255,0.25);
-    background: rgba(255,255,255,0.1);
-    padding: 3px;
+    border: 2px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.08);
+    padding: 4px;
     object-fit: contain;
     flex-shrink: 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 .header-baslik h1 {
     color: white;
-    font-size: 1.35rem;
+    font-size: 1.7rem;
     font-weight: 800;
     letter-spacing: 0.5px;
 }
 .header-baslik p {
-    color: rgba(255,255,255,0.55);
-    font-size: 0.7rem;
-    letter-spacing: 2px;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.72rem;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
+    margin-top: 0.15rem;
+}
+/* Ana Sayfa butonu */
+.anasayfa-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    padding: 0.35rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    transition: all 0.2s;
+    align-self: flex-start;
+}
+.anasayfa-btn:hover, .anasayfa-btn.aktif {
+    background: rgba(255,255,255,0.15);
+    color: white;
+    border-color: rgba(255,255,255,0.3);
 }
 
 /* DİL WİDGET */
@@ -114,79 +141,8 @@ header {
 .dil-secim:hover { background: rgba(255,255,255,0.08); color: white; }
 .dil-secim.secili { color: white; font-weight: 700; background: rgba(34,113,177,0.25); }
 
-/* NAV PANELLERİ */
-.header-nav-paneller {
-    display: grid;
-    grid-template-columns: repeat(6,1fr) auto;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    max-width: 100%;
-}
-.hn-panel {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.2rem;
-    padding: 0.7rem 0.3rem;
-    text-decoration: none;
-    color: rgba(255,255,255,0.55);
-    font-size: 0.72rem;
-    font-weight: 600;
-    border-right: 1px solid rgba(255,255,255,0.05);
-    transition: all 0.2s;
-    position: relative;
-    letter-spacing: 0.2px;
-}
-.hn-panel::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 2px;
-    background: rgba(255,255,255,0.7);
-    transform: scaleX(0);
-    transition: transform 0.2s;
-}
-.hn-panel:hover { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.05); }
-.hn-panel:hover::after, .hn-panel.aktif::after { transform: scaleX(1); }
-.hn-panel.aktif { color: white; background: rgba(255,255,255,0.07); }
-.hn-admin { color: rgba(255,200,80,0.8); }
-.hn-ikon { font-size: 1.1rem; line-height: 1; }
-
-/* PARLAYAN KAYIT OL */
-.kayit-ol-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.2rem;
-    padding: 0 1.3rem;
-    background: linear-gradient(135deg, #f59e0b, #e8650a);
-    color: white;
-    border: none;
-    font-size: 0.72rem;
-    font-weight: 800;
-    cursor: pointer;
-    font-family: inherit;
-    letter-spacing: 0.5px;
-    position: relative;
-    overflow: hidden;
-    animation: kayit-parla 2.5s ease-in-out infinite;
-}
-.kayit-ikon { font-size: 1.1rem; }
-@keyframes kayit-parla {
-    0%,100% { box-shadow: 0 0 0 0 rgba(245,158,11,0.5); }
-    50% { box-shadow: 0 0 0 6px rgba(245,158,11,0); }
-}
-.kayit-ol-btn::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
-    animation: sweep 2.8s ease-in-out infinite;
-    transform: translateX(-100%);
-}
-@keyframes sweep { 0%{transform:translateX(-100%)} 100%{transform:translateX(300%)} }
-.kayit-ol-btn:hover { opacity: 0.9; }
+/* Eski nav panelleri kaldırıldı */
+.hn-panel, .header-nav-paneller, .kayit-ol-btn { display: none; }
 
 /* ── MAIN ── */
 main {
@@ -827,3 +783,97 @@ img.emoji {
 
 /* Nav ikonları da outline SVG olsun */
 .hn-panel img.emoji { display: none; }
+
+/* ── SABİT KAYIT OL BUTONU (sağ alt) ── */
+.kayit-ol-sabit {
+    position: fixed;
+    bottom: 5.5rem;
+    right: 1.2rem;
+    z-index: 500;
+    background: linear-gradient(135deg,
+        #0f0c29,
+        #302b63,
+        #24243e,
+        #1a1a2e,
+        #16213e,
+        #0f3460
+    );
+    background-size: 300% 300%;
+    animation: kayit-gradient 4s ease infinite, kayit-glow 2.5s ease-in-out infinite;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 30px;
+    padding: 0.75rem 1.8rem;
+    font-size: 0.9rem;
+    font-weight: 800;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    transition: transform 0.2s;
+}
+@keyframes kayit-gradient {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+@keyframes kayit-glow {
+    0%,100% { box-shadow: 0 0 0 0 rgba(100,80,255,0.4), 0 4px 20px rgba(0,0,0,0.4); }
+    50%      { box-shadow: 0 0 0 8px rgba(100,80,255,0), 0 4px 25px rgba(0,0,0,0.5); }
+}
+.kayit-ol-sabit:hover { transform: translateY(-2px) scale(1.03); }
+
+/* ── ANA SAYFA KARTLARI — tek sütun, uzun ── */
+.anasayfa-paneller {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.ap-kart {
+    min-height: 200px !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    padding: 1.8rem 2rem !important;
+    gap: 2rem;
+    width: 100%;
+}
+.ap-ikon-alan {
+    padding: 0 !important;
+    flex: 0 0 auto;
+    width: auto;
+}
+.ap-ikon-alan::before { display: none; }
+.ap-svg {
+    width: 90px !important;
+    height: 90px !important;
+}
+.ap-alt {
+    padding: 0 !important;
+    flex: 1;
+}
+.ap-alt h2 { font-size: 1.5rem !important; }
+.ap-alt p  { font-size: 0.85rem !important; margin-top: 0.4rem !important; }
+.ap-kart::after { display: none; }
+
+/* Mobil — 2 kolon grid'e dön */
+@media (max-width: 768px) {
+    .anasayfa-paneller {
+        flex-direction: column !important;
+        max-width: 100%;
+    }
+    .ap-kart {
+        flex-direction: row !important;
+        min-height: 120px !important;
+        padding: 1.2rem 1.4rem !important;
+        gap: 1.2rem;
+    }
+    .ap-svg { width: 60px !important; height: 60px !important; }
+    .ap-alt h2 { font-size: 1.1rem !important; }
+    .ap-alt p { font-size: 0.78rem !important; }
+    .kayit-ol-sabit { font-size: 0.82rem; padding: 0.65rem 1.3rem; bottom: 4.8rem; right: 0.8rem; }
+    .header-top { padding: 1rem; }
+    .header-logo-link img { width: 52px; height: 52px; }
+    .header-baslik h1 { font-size: 1.25rem; }
+}
