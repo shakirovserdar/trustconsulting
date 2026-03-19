@@ -9,83 +9,64 @@
 </head>
 <body>
 
+<!-- ── DİL SEÇİCİ (SAĞ ÜST) ── -->
+<div class="dil-widget">
+    <button class="dil-aktif-btn" onclick="dilMenuAc(this)">
+        {% if dil_kodu == 'tr' %}🇹🇷 TR{% elif dil_kodu == 'ru' %}🇷🇺 RU{% else %}🇹🇲 TK{% endif %}
+        <span class="dil-ok">▾</span>
+    </button>
+    <div class="dil-dropdown" id="dil-dropdown">
+        <a href="?dil=tr" class="dil-secim {% if dil_kodu == 'tr' %}secili{% endif %}">🇹🇷 Türkçe</a>
+        <a href="?dil=ru" class="dil-secim {% if dil_kodu == 'ru' %}secili{% endif %}">🇷🇺 Русский</a>
+        <a href="?dil=tk" class="dil-secim {% if dil_kodu == 'tk' %}secili{% endif %}">🇹🇲 Türkmençe</a>
+    </div>
+</div>
+
 <header>
-    <!-- Arka plan dekorasyon sembolleri -->
-    <div class="header-deko" aria-hidden="true">
-
-        <!-- UÇAKLAR -->
-        <span class="hd hd-fly"  style="top:12%;left:-4%;font-size:4.5rem;animation-delay:0s;  animation-duration:18s;">&#x2708;&#xFE0F;</span>
-        <span class="hd hd-fly2" style="top:68%;left:-4%;font-size:3.2rem;animation-delay:7s;  animation-duration:22s;">&#x2708;&#xFE0F;</span>
-        <span class="hd hd-fly3" style="top:38%;left:-4%;font-size:2.8rem;animation-delay:13s; animation-duration:20s;">&#x2708;&#xFE0F;</span>
-
-        <!-- PASAPORT / VİZE -->
-        <span class="hd hd-float" style="top:10%;left:6%;  font-size:4rem;  animation-delay:0.5s; animation-duration:9s;">&#x1F6C2;</span>
-        <span class="hd hd-float" style="top:60%;right:6%; font-size:3.5rem;animation-delay:2s;  animation-duration:11s;">&#x1F4D8;</span>
-        <span class="hd hd-sway"  style="top:75%;left:16%; font-size:3rem;  animation-delay:1s;  animation-duration:8s;">&#x1F9FE;</span>
-
-        <!-- DÜNYA / HARİTA -->
-        <span class="hd hd-spin"  style="top:20%;left:42%; font-size:4rem;  animation-delay:0s;  animation-duration:25s;">&#x1F30D;</span>
-        <span class="hd hd-spin"  style="top:55%;right:40%;font-size:3.5rem;animation-delay:8s;  animation-duration:20s;">&#x1F30E;</span>
-        <span class="hd hd-float" style="top:5%; right:42%;font-size:3rem;  animation-delay:3s;  animation-duration:12s;">&#x1F5FA;&#xFE0F;</span>
-
-        <!-- EYFEL KULESİ -->
-        <span class="hd hd-sway"  style="top:5%; left:18%; font-size:5rem;  animation-delay:1.5s;animation-duration:10s;">&#x1F5FC;</span>
-        <span class="hd hd-sway"  style="top:50%;right:16%;font-size:4.5rem;animation-delay:4s;  animation-duration:13s;">&#x1F5FC;</span>
-
-        <!-- ÖZGÜRLÜK HEYKELİ -->
-        <span class="hd hd-float" style="top:15%;right:10%;font-size:4.5rem;animation-delay:2.5s;animation-duration:11s;">&#x1F5FD;</span>
-        <span class="hd hd-float" style="top:70%;left:30%; font-size:3.8rem;animation-delay:6s;  animation-duration:9s;">&#x1F5FD;</span>
-
-        <!-- TORII (Japon) / CAMİ -->
-        <span class="hd hd-sway"  style="top:8%; right:22%;font-size:4rem;  animation-delay:3.5s;animation-duration:14s;">&#x26E9;&#xFE0F;</span>
-        <span class="hd hd-float" style="top:62%;left:50%; font-size:3.8rem;animation-delay:1s;  animation-duration:10s;">&#x1F54C;</span>
-
-        <!-- ŞATO / BİNA -->
-        <span class="hd hd-float" style="top:35%;left:8%;  font-size:4rem;  animation-delay:5s;  animation-duration:12s;">&#x1F3F0;</span>
-        <span class="hd hd-sway"  style="top:25%;right:5%; font-size:3.5rem;animation-delay:0.8s;animation-duration:9s;">&#x1F3DB;&#xFE0F;</span>
-
-        <!-- YILDIZLAR -->
-        <span class="hd hd-twinkle" style="top:45%;left:26%; font-size:2.2rem;animation-delay:0s;  animation-duration:4s;">&#x2B50;</span>
-        <span class="hd hd-twinkle" style="top:30%;right:30%;font-size:1.8rem;animation-delay:1.5s;animation-duration:3.5s;">&#x2B50;</span>
-        <span class="hd hd-twinkle" style="top:80%;right:18%;font-size:2rem;  animation-delay:2.5s;animation-duration:5s;">&#x2B50;</span>
+    <!-- LOGO + BAŞLIK -->
+    <div class="header-logo-alan">
+        <a href="{{ url_for('index') }}" class="logo-link">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Trust Consulting">
+            <div class="logo-yazi">
+                <h1>Trust Consulting</h1>
+                <p>✈️ Travel &amp; Education Company</p>
+            </div>
+        </a>
     </div>
 
-    <div class="header-icerik">
-        <div class="logo">
-            <img src="{{ url_for('static', filename='logo.png') }}" alt="Trust Consulting Logo">
-            <h1>Trust Consulting</h1>
-            <p>&#x2708;&#xFE0F; Travel &amp; Education Company</p>
-        </div>
-
-        <nav>
-            <a href="{{ url_for('index') }}" {% if request.endpoint == 'index' %}class="aktif"{% endif %}>
-                &#x1F3E0; {{ t.menu_anasayfa }}
-            </a>
-            <a href="{{ url_for('hakkimizda') }}" {% if request.endpoint == 'hakkimizda' %}class="aktif"{% endif %}>
-                &#x1F3E2; {{ t.menu_hakkimizda }}
-            </a>
-            <a href="{{ url_for('hizmetler') }}" {% if request.endpoint == 'hizmetler' %}class="aktif"{% endif %}>
-                &#x1F4CB; {{ t.menu_hizmetler }}
-            </a>
-            <a href="{{ url_for('universiteler') }}" {% if request.endpoint == 'universiteler' %}class="aktif"{% endif %}>
-                &#x1F393; {% if dil_kodu == 'tr' %}Üniversiteler{% elif dil_kodu == 'ru' %}Университеты{% else %}Uniwersitetler{% endif %}
-            </a>
-            <a href="{{ url_for('iletisim') }}" {% if request.endpoint == 'iletisim' %}class="aktif"{% endif %}>
-                &#x1F4DE; {{ t.menu_iletisim }}
-            </a>
-            {% if session.get('admin_giris') %}
-            <a href="{{ url_for('admin_panel') }}" style="background:rgba(255,165,0,0.25);border-color:rgba(255,165,0,0.6);" {% if request.endpoint == 'admin_panel' %}class="aktif"{% endif %}>
-                🛡️ Admin
-            </a>
-            {% endif %}
-        </nav>
-
-        <div class="dil-butonlari">
-            <a href="?dil=tr" {% if dil_kodu == 'tr' %}class="aktif"{% endif %}>TR</a>
-            <a href="?dil=ru" {% if dil_kodu == 'ru' %}class="aktif"{% endif %}>RU</a>
-            <a href="?dil=tk" {% if dil_kodu == 'tk' %}class="aktif"{% endif %}>TK</a>
-        </div>
-    </div>
+    <!-- 6 NAV PANELİ -->
+    <nav class="nav-paneller">
+        <a href="{{ url_for('hizmetler') }}" class="nav-panel {% if request.endpoint == 'hizmetler' %}aktif{% endif %}">
+            <span class="np-ikon">🛂</span>
+            <span class="np-yazi">{% if dil_kodu == 'tr' %}Hizmetler{% elif dil_kodu == 'ru' %}Услуги{% else %}Hyzmatlar{% endif %}</span>
+        </a>
+        <a href="{{ url_for('hakkimizda') }}" class="nav-panel {% if request.endpoint == 'hakkimizda' %}aktif{% endif %}">
+            <span class="np-ikon">🏢</span>
+            <span class="np-yazi">{% if dil_kodu == 'tr' %}Hakkımızda{% elif dil_kodu == 'ru' %}О нас{% else %}Biz hakda{% endif %}</span>
+        </a>
+        <a href="{{ url_for('universiteler') }}" class="nav-panel {% if request.endpoint == 'universiteler' %}aktif{% endif %}">
+            <span class="np-ikon">🎓</span>
+            <span class="np-yazi">{% if dil_kodu == 'tr' %}Üniversiteler{% elif dil_kodu == 'ru' %}Университеты{% else %}Uniwersitetler{% endif %}</span>
+        </a>
+        <a href="{{ url_for('index') }}#sss" class="nav-panel">
+            <span class="np-ikon">❓</span>
+            <span class="np-yazi">{% if dil_kodu == 'tr' %}SSS{% elif dil_kodu == 'ru' %}FAQ{% else %}SSS{% endif %}</span>
+        </a>
+        <a href="{{ url_for('index') }}#yorumlar" class="nav-panel">
+            <span class="np-ikon">⭐</span>
+            <span class="np-yazi">{% if dil_kodu == 'tr' %}Yorumlar{% elif dil_kodu == 'ru' %}Отзывы{% else %}Teswirler{% endif %}</span>
+        </a>
+        <a href="{{ url_for('iletisim') }}" class="nav-panel {% if request.endpoint == 'iletisim' %}aktif{% endif %}">
+            <span class="np-ikon">📞</span>
+            <span class="np-yazi">{% if dil_kodu == 'tr' %}İletişim{% elif dil_kodu == 'ru' %}Контакты{% else %}Habarlaşmak{% endif %}</span>
+        </a>
+        {% if session.get('admin_giris') %}
+        <a href="{{ url_for('admin_panel') }}" class="nav-panel admin-panel {% if request.endpoint == 'admin_panel' %}aktif{% endif %}">
+            <span class="np-ikon">🛡️</span>
+            <span class="np-yazi">Admin</span>
+        </a>
+        {% endif %}
+    </nav>
 </header>
 
 <main>
@@ -102,25 +83,46 @@
     {% block content %}{% endblock %}
 </main>
 
-<!-- Fiyat Butonu (sabit, sağ alt) -->
 {% if request.endpoint == 'hizmetler' %}
 <button class="fiyat-float-btn" onclick="fiyatAc()">
-    &#x1F4B0; {% if dil_kodu == 'tr' %}Ücretler{% elif dil_kodu == 'ru' %}Цены{% else %}Bahalar{% endif %}
+    💰 {% if dil_kodu == 'tr' %}Ücretler{% elif dil_kodu == 'ru' %}Цены{% else %}Bahalar{% endif %}
 </button>
 {% endif %}
 
-<!-- WhatsApp Butonu (sabit) -->
 <a href="https://wa.me/905524254697" class="whatsapp-float" target="_blank" rel="noopener">
-    &#x1F4AC; WhatsApp
+    💬 WhatsApp
 </a>
 
 <footer>
     <p>{{ t.footer_telif }}</p>
     <p>
-        📧 <a href="/cdn-cgi/l/email-protection#90f9fef6ffd0e4e2e5e3e4f5f4e5e4fdbef3fffd"><span class="__cf_email__" data-cfemail="87eee9e1e8c7f3f5f2f4f3e2e3f2f3eaa9e4e8ea">[email&#160;protected]</span></a>
+        📧 <a href="mailto:info@trustedutm.com">info@trustedutm.com</a>
         &nbsp;|&nbsp;
         📞 <a href="tel:+905524254697">+90 552 425 46 97</a>
     </p>
     <p style="margin-top:0.4rem;font-size:0.8rem;color:#7ab5d8;">
         🌐 <a href="https://www.trustedutm.com">www.trustedutm.com</a>
         &nbsp;|&nbsp;
+        📸 <a href="https://instagram.com/trusttmconsulting" target="_blank">@trusttmconsulting</a>
+    </p>
+</footer>
+
+<script>
+function dilMenuAc(btn) {
+    var dd = document.getElementById('dil-dropdown');
+    dd.classList.toggle('acik');
+    btn.querySelector('.dil-ok').textContent = dd.classList.contains('acik') ? '▴' : '▾';
+}
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.dil-widget')) {
+        var dd = document.getElementById('dil-dropdown');
+        if (dd) {
+            dd.classList.remove('acik');
+            var btn = document.querySelector('.dil-aktif-btn .dil-ok');
+            if (btn) btn.textContent = '▾';
+        }
+    }
+});
+</script>
+</body>
+</html>
