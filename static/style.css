@@ -733,3 +733,27 @@ footer {
     .anasayfa-paneller { grid-template-columns: 1fr; }
     .ulke-grid, .vize-grid { grid-template-columns: repeat(2,1fr); }
 }
+
+/* ── TWEMOJİ İKON STİLİ ── */
+img.emoji {
+    height: 1em;
+    width: 1em;
+    margin: 0 0.05em 0 0.1em;
+    vertical-align: -0.1em;
+    display: inline-block;
+}
+/* Ana sayfa kartlarındaki büyük ikonlar */
+.ap-ikon img.emoji {
+    height: 4.5rem;
+    width: 4.5rem;
+    margin: 0;
+    vertical-align: middle;
+    filter: drop-shadow(0 4px 16px rgba(0,0,0,0.4));
+}
+/* Nav ikonları */
+.hn-ikon img.emoji {
+    height: 1.15rem;
+    width: 1.15rem;
+    margin: 0;
+    vertical-align: middle;
+}

@@ -6,8 +6,18 @@
     <meta name="description" content="Trust Consulting - Visa & Travel Consulting from Turkmenistan">
     <title>{{ baslik }} — Trust Consulting</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/twemoji.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        twemoji.parse(document.body, {
+            folder: 'svg',
+            ext: '.svg',
+            base: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/'
+        });
+    });
+</script>
 
 <header>
     <!-- ÜSTTE: Logo + Başlık -->
