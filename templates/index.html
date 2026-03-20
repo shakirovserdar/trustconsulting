@@ -17,11 +17,28 @@
 
         <div class="baslik-merkez">
             <img src="{{ url_for('static', filename='logo.png') }}" alt="Trust Consulting">
-            <div><h1>Trust Consulting</h1><p>✈️ Travel &amp; Education Company</p></div>
+            <div>
+                <h1>Trust Consulting</h1>
+                <p>✈️ Travel &amp; Education Company</p>
+            </div>
+            <p class="baslik-aciklama">
+                {% if dil_kodu == 'tr' %}Türkmenistan'dan dünyaya açılan kapınız. Vize, üniversite ve seyahat danışmanlığı.
+                {% elif dil_kodu == 'ru' %}Ваши ворота из Туркменистана в мир. Визы, университеты и путешествия.
+                {% else %}Türkmenistandan dünýä açylýan gapyňyz. Wiza, uniwersitet we syýahat maslahat.{% endif %}
+            </p>
+            <div class="baslik-stats">
+                <div class="bs-item"><div class="bs-sayi">500+</div><div class="bs-etiket">{% if dil_kodu == 'tr' %}Başarılı Başvuru{% elif dil_kodu == 'ru' %}Успешных заявок{% else %}Üstünlikli Ýüz tutma{% endif %}</div></div>
+                <div class="bs-ayirici"></div>
+                <div class="bs-item"><div class="bs-sayi">%92</div><div class="bs-etiket">{% if dil_kodu == 'tr' %}Onay Oranı{% elif dil_kodu == 'ru' %}Процент одобрений{% else %}Tassyklanma Derejesi{% endif %}</div></div>
+                <div class="bs-ayirici"></div>
+                <div class="bs-item"><div class="bs-sayi">8</div><div class="bs-etiket">{% if dil_kodu == 'tr' %}Ofis{% elif dil_kodu == 'ru' %}Офисов{% else %}Ofis{% endif %}</div></div>
+                <div class="bs-ayirici"></div>
+                <div class="bs-item"><div class="bs-sayi">10+</div><div class="bs-etiket">{% if dil_kodu == 'tr' %}Ülke{% elif dil_kodu == 'ru' %}Стран{% else %}Ýurt{% endif %}</div></div>
+            </div>
         </div>
 
         <div class="baslik-alt-butonlar">
-            <span></span>
+            <span class="anasayfa-btn">🏠 {% if dil_kodu == 'tr' %}Ana Sayfa{% elif dil_kodu == 'ru' %}Главная{% else %}Baş sahypa{% endif %}</span>
             <button class="kayit-ol-btn" onclick="kayitFormAc()">
                 📝 {% if dil_kodu == 'tr' %}Kayıt Ol{% elif dil_kodu == 'ru' %}Записаться{% else %}Hasaba al{% endif %}
             </button>
