@@ -153,6 +153,7 @@ body {
 
 /* ── DİĞER SAYFALAR HEADER ── */
 .diger-header {
+    position: relative !important;
     background: rgba(42,80,120,0.8);
     border-bottom: 1px solid rgba(255,255,255,0.08);display: flex;
     align-items: center;justify-content: space-between;padding: 1rem 1.5rem;
@@ -521,9 +522,39 @@ img.emoji { height: 1em;width: 1em;margin: 0 0.05em 0 0.1em;vertical-align: -0.1
     font-size: 0.78rem;
 }
 
-/* Header her zaman sabit kalsın (sticky) */
+
+/* ══════ V3 FIX3 ══════ */
+
+/* 1. Header sabit KALMASIN */
 .diger-header {
-    position: sticky !important;
-    top: 0 !important;
-    z-index: 100 !important;
+    position: relative !important;
+    top: auto !important;
+}
+
+/* 2. Vize kartları mobilde ortaya hizala */
+@media (max-width: 768px) {
+    .vize-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.6rem !important;
+        padding: 0 0.3rem !important;
+    }
+    .vize-kart {
+        padding: 0.9rem 0.5rem !important;
+    }
+    .vize-icon { font-size: 1.6rem !important; }
+    .vize-kart p { font-size: 0.72rem !important; }
+}
+
+/* 3. Ülke kartları glass container içinde (vize kartları gibi) */
+.ulke-grid {
+    background: rgba(255,255,255,0.05) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    border-radius: 18px !important;
+    padding: 1rem !important;
+}
+@media (max-width: 768px) {
+    .ulke-grid {
+        padding: 0.6rem !important;
+        gap: 0.6rem !important;
+    }
 }
