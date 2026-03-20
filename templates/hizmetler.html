@@ -123,7 +123,7 @@
 <div id="fiyat-panel" class="fiyat-panel" onclick="fiyatDis(event)">
     <div class="fiyat-icerik">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem;">
-            <h2 style="font-size:1.3rem;color:#01263a;margin:0;">
+            <h2 style="font-size:1.3rem;color:white;margin:0;">
                 &#x1F4B0; {% if dil_kodu == 'tr' %}Ücret Listesi{% elif dil_kodu == 'ru' %}Прейскурант{% else %}Baha Sanawy{% endif %}
             </h2>
             <button onclick="fiyatKapat()" class="modal-kapat-btn" style="position:static;">&#x2715;</button>
@@ -148,7 +148,7 @@
 
             <!-- VİZE -->
             <h3 class="fiyat-baslik" style="margin-top:1.4rem;">&#x1F6C2; {% if dil_kodu == 'tr' %}Vize Ücretleri{% elif dil_kodu == 'ru' %}Стоимость виз{% else %}Wiza bahalary{% endif %}</h3>
-            <p style="font-size:0.82rem;color:#e74c3c;margin-bottom:0.6rem;">
+            <p style="font-size:0.82rem;color:#fca5a5;margin-bottom:0.6rem;">
                 {% if dil_kodu == 'tr' %}Türkiye vize ücretleri danışmanlık kapsamında belirlenir — lütfen iletişime geçin.
                 {% elif dil_kodu == 'ru' %}Стоимость виз в Турцию определяется индивидуально — обратитесь к нам.
                 {% else %}Türkiýe wiza bahalary maslahatda kesgitlenýär — biz bilen habarlaşyň.{% endif %}
@@ -204,7 +204,7 @@
 
             <!-- ÇALIŞMA -->
             <h3 class="fiyat-baslik" style="margin-top:1.4rem;">&#x1F4BC; {% if dil_kodu == 'tr' %}Türkiye Çalışma Vizesi{% elif dil_kodu == 'ru' %}Рабочая виза Турция{% else %}Türkiýe Iş Wizasy{% endif %}</h3>
-            <p style="font-size:0.82rem;color:#2271b1;margin-bottom:0.6rem;">
+            <p style="font-size:0.82rem;color:#60b3f0;margin-bottom:0.6rem;">
                 {% if dil_kodu == 'tr' %}Başlangıç ücreti $500 (başvuruda), kalan tutar onay sonrası ödenir.
                 {% elif dil_kodu == 'ru' %}Начальный взнос $500 (при подаче), остаток — после одобрения.
                 {% else %}Ilkinji tölegi $500 (arzada), galan tölegi onaýdan soň alynýar.{% endif %}
@@ -218,7 +218,7 @@
                 <tr><td>Istanbul — {% if dil_kodu == 'tr' %}Ev hizmetleri (Kadın){% elif dil_kodu == 'ru' %}Домработница{% else %}Öý hyzmatlary (aýallar){% endif %}</td><td class="fiyat-deger">$500+1300</td></tr>
             </table>
 
-            <div style="background:#fff5f5;border-radius:8px;padding:0.7rem 1rem;margin-top:0.8rem;border-left:3px solid #e74c3c;font-size:0.82rem;color:#c0392b;">
+            <div style="background:rgba(239,68,68,0.1);border-radius:8px;padding:0.7rem 1rem;margin-top:0.8rem;border-left:3px solid #e74c3c;font-size:0.82rem;color:#fca5a5;">
                 &#x26A0;&#xFE0F; {% if dil_kodu == 'tr' %}İşçinin Türkiye veya Türkmenistan'da yasadışı geçmişi, deportu veya sicil problemi olmamalıdır.
                 {% elif dil_kodu == 'ru' %}У работника не должно быть проблем с законом, депортации или судимости.
                 {% else %}Işçiniň Türkiýede ýa-da TM-da bikanun taryhy, deporty ýa-da sijil meselesi bolmaly däldir.{% endif %}
@@ -354,15 +354,15 @@ function vizeAc(id) {
   if (!v) return;
   var d = dil in v.baslik ? dil : 'tr';
   document.getElementById('modal-baslik-alani').innerHTML =
-    '<h2 style="font-size:1.25rem;color:#01263a;margin-bottom:0.8rem;">' + v.baslik[d] + '</h2>';
+    '<h2 style="font-size:1.25rem;color:white;margin-bottom:0.8rem;">' + v.baslik[d] + '</h2>';
 
   var html = '';
   var evrakLabel = dil==='ru' ? '📋 Необходимые документы' : dil==='tk' ? '📋 Gerekli Resminamalar' : '📋 Gerekli Belgeler';
-  html += '<h4 style="color:#2271b1;margin-bottom:0.5rem;">' + evrakLabel + '</h4>';
+  html += '<h4 style="color:#60b3f0;margin-bottom:0.5rem;">' + evrakLabel + '</h4>';
   html += '<ul class="modal-evrak-liste">';
   v.evraklar.forEach(function(e) {
     if (e.startsWith('━━━')) {
-      html += '</ul><p style="font-weight:700;color:#01263a;margin:0.8rem 0 0.3rem;font-size:0.86rem;">' + e.replace('━━━ ','') + '</p><ul class="modal-evrak-liste">';
+      html += '</ul><p style="font-weight:700;color:white;margin:0.8rem 0 0.3rem;font-size:0.86rem;">' + e.replace('━━━ ','') + '</p><ul class="modal-evrak-liste">';
     } else if (e.startsWith('⚠️')) {
       html += '<li style="background:rgba(245,158,11,0.15);border-left-color:#f0a500;color:#ffd700;">' + e + '</li>';
     } else {
@@ -371,9 +371,9 @@ function vizeAc(id) {
   });
   html += '</ul>';
   var fiyatLabel = dil==='ru' ? '💰 Стоимость' : dil==='tk' ? '💰 Baha' : '💰 Ücret';
-  html += '<div style="background:#f0f7ff;border-radius:10px;padding:0.75rem 1rem;margin-top:1rem;border-left:4px solid #2271b1;">';
-  html += '<strong style="color:#2271b1;">' + fiyatLabel + ':</strong><br>';
-  html += '<span style="font-size:0.88rem;color:#34495e;">' + v.fiyat[d] + '</span></div>';
+  html += '<div style="background:rgba(34,113,177,0.15);border-radius:10px;padding:0.75rem 1rem;margin-top:1rem;border-left:4px solid #2271b1;">';
+  html += '<strong style="color:#60b3f0;">' + fiyatLabel + ':</strong><br>';
+  html += '<span style="font-size:0.88rem;color:rgba(255,255,255,0.75);">' + v.fiyat[d] + '</span></div>';
   document.getElementById('modal-govde').innerHTML = html;
   document.getElementById('vize-modal').classList.add('aktif');
   document.body.style.overflow = 'hidden';

@@ -40,7 +40,7 @@
 <!-- YORUM BIRAK -->
 <div class="yorum-form-kart" style="margin-top:1.5rem;">
     <h3>{% if dil_kodu == 'tr' %}✍️ Siz de Yorum Bırakın{% elif dil_kodu == 'ru' %}✍️ Оставьте отзыв{% else %}✍️ Siz hem teswir goýuň{% endif %}</h3>
-    <p style="font-size:0.83rem;color:#4a7a9b;margin-bottom:1rem;">{% if dil_kodu == 'tr' %}Yorumunuz incelendikten sonra yayınlanacaktır.{% elif dil_kodu == 'ru' %}Отзыв будет опубликован после проверки.{% else %}Teswir barlanandan soň çap ediler.{% endif %}</p>
+    <p style="font-size:0.83rem;color:rgba(255,255,255,0.5);margin-bottom:1rem;">{% if dil_kodu == 'tr' %}Yorumunuz incelendikten sonra yayınlanacaktır.{% elif dil_kodu == 'ru' %}Отзыв будет опубликован после проверки.{% else %}Teswir barlanandan soň çap ediler.{% endif %}</p>
     <form method="POST" action="{{ url_for('yorum_gonder') }}">
         <div class="yorum-form-satir">
             <div class="form-grup">

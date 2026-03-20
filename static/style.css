@@ -558,3 +558,77 @@ img.emoji { height: 1em;width: 1em;margin: 0 0.05em 0 0.1em;vertical-align: -0.1
         gap: 0.6rem !important;
     }
 }
+
+/* ══════ V3 FIX4 ══════ */
+
+/* 1. Tüm sayfada koyu/okunamayan yazıları beyaz yap */
+.modal-kutu h2, .modal-kutu h4,
+.fiyat-icerik h2, .fiyat-icerik h3,
+.section-title,
+.hakkimizda-kart h3,
+.iletisim-form-kart h3, .iletisim-bilgi-kart h3,
+.yorum-form-kart h3,
+.vize-kart p {
+    color: white !important;
+}
+
+/* Modal evrak başlık rengi */
+#modal-baslik-alani h2 {
+    color: white !important;
+}
+
+/* 2. Mobilde tüm içerik iki yandan boşluk - footer gibi */
+@media (max-width: 768px) {
+    main {
+        padding: 1rem 0.8rem 2.5rem !important;
+    }
+    .baslik-karti {
+        padding: 1.5rem 0.8rem !important;
+    }
+    .panel-kart {
+        margin: 0 0.4rem !important;
+    }
+    .section-title {
+        padding-left: 0.3rem !important;
+    }
+    /* Vize grid container */
+    .vize-grid {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    /* Ülke grid container */
+    .ulke-grid {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+
+/* 3. Ülke kartları her biri ayrı kare - vize kartları gibi görünsün */
+.ulke-kart {
+    background: rgba(255,255,255,0.05) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    border-radius: 14px !important;
+    padding: 1.1rem 0.8rem !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 110px !important;
+    transition: all 0.2s !important;
+}
+.ulke-kart:hover {
+    background: rgba(255,255,255,0.1) !important;
+    transform: translateY(-2px) !important;
+}
+.ulke-kart .bayrak {
+    font-size: 2.2rem !important;
+    margin-bottom: 0.4rem !important;
+}
+
+/* Ülke grid - glass container KALDIR, her kart ayrı */
+.ulke-grid {
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+}
