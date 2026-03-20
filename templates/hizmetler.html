@@ -147,16 +147,16 @@
 
 
 <!-- ═══ FİYAT PANELİ ═══ -->
-<div id="fiyat-panel" class="fiyat-panel-overlay" onclick="fiyatDis(event)">
-    <div class="fiyat-panel-kutu">
-        <div class="fiyat-panel-ust">
+<div id="fiyat-panel" class="fiyat-panel" onclick="fiyatDis(event)">
+    <div class="fiyat-icerik">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem;">
             <h2 style="font-size:1.3rem;color:#01263a;margin:0;">
                 &#x1F4B0; {% if dil_kodu == 'tr' %}Ücret Listesi{% elif dil_kodu == 'ru' %}Прейскурант{% else %}Baha Sanawy{% endif %}
             </h2>
             <button onclick="fiyatKapat()" class="modal-kapat-btn" style="position:static;">&#x2715;</button>
         </div>
 
-        <div class="fiyat-scroll">
+        <div>
 
             <!-- OFİS -->
             <h3 class="fiyat-baslik">&#x1F3E2; {% if dil_kodu == 'tr' %}Ofis Hizmetleri (TMT){% elif dil_kodu == 'ru' %}Офисные услуги (TMT){% else %}Ofis hyzmatlary (TMT){% endif %}</h3>
