@@ -9,14 +9,17 @@
 </head>
 <body class="sayfa-{{ request.endpoint }}">
 
+<!-- ── DİĞER SAYFALAR HEADER (ana sayfa hariç) ── -->
 {% if request.endpoint != 'index' %}
 <header class="diger-header">
     <a href="{{ url_for('index') }}" class="diger-logo">
         <img src="{{ url_for('static', filename='logo.png') }}" alt="Trust Consulting">
-        <div><h1>Trust Consulting</h1><p>✈️ Travel &amp; Education Company</p></div>
+        <div>
+            <h1>Trust Consulting</h1>
+            <p>✈️ Travel &amp; Education Company</p>
+        </div>
     </a>
     <div class="diger-sag">
-        <a href="{{ url_for('index') }}" class="geri-ana-btn">🏠 {% if dil_kodu == 'tr' %}Ana Sayfa{% elif dil_kodu == 'ru' %}Главная{% else %}Baş sahypa{% endif %}</a>
         <div class="dil-widget">
             <button class="dil-aktif-btn" onclick="dilMenuAc(this)">
                 {% if dil_kodu == 'tr' %}🇹🇷 TR{% elif dil_kodu == 'ru' %}🇷🇺 RU{% else %}🇹🇲 TK{% endif %}
@@ -35,6 +38,7 @@
 </header>
 {% endif %}
 
+<!-- ── TEK BLOCK CONTENT ── -->
 {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages and request.endpoint != 'index' %}
         <div class="flash-container">
@@ -45,16 +49,9 @@
     {% endif %}
 {% endwith %}
 
-{% if request.endpoint != 'index' %}
-<main>
-{% endif %}
-
 {% block content %}{% endblock %}
 
-{% if request.endpoint != 'index' %}
-</main>
-{% endif %}
-
+<!-- ── FOOTER (ana sayfa hariç) ── -->
 {% if request.endpoint != 'index' %}
 {% if request.endpoint == 'hizmetler' %}
 <button class="fiyat-float-btn" onclick="fiyatAc()">
@@ -62,6 +59,7 @@
 </button>
 {% endif %}
 
+<a href="https://wa.me/905524254697" class="whatsapp-float" target="_blank" rel="noopener">💬 WhatsApp</a>
 
 <footer>
     <div class="footer-ic">
@@ -74,7 +72,7 @@
                 <a href="tel:+99364489920">📞 +993 64 48 89 20</a>
                 <a href="tel:+99361950920">📞 +993 61 95 09 20</a>
                 <a href="tel:+905530890598">📞 +90 553 089 05 98</a>
-                <a href="/cdn-cgi/l/email-protection#e0898e868fa09492959394858495948dce838f8d">📧 <span class="__cf_email__" data-cfemail="3851565e57784c4a4d4b4c5d5c4d4c55165b5755">[email&#160;protected]</span></a>
+                <a href="mailto:info@trustedutm.com">📧 info@trustedutm.com</a>
             </div>
         </div>
         <div class="footer-kolon">
@@ -103,40 +101,90 @@
 {% endif %}
 
 <!-- KAYIT FORMU MODAL -->
-<div class="kayit-modal-overlay" id="kayit-modal" onclick="if(event.target===this)kayitFormKapat()">
-<div class="kayit-modal-kutu">
+<div class="modal-overlay" id="kayit-modal" onclick="if(event.target===this)kayitFormKapat()">
+<div class="modal-kutu">
     <button class="modal-kapat-btn" onclick="kayitFormKapat()">✕</button>
-    <h2>📝 {% if dil_kodu == 'tr' %}Kayıt Formu{% elif dil_kodu == 'ru' %}Форма регистрации{% else %}Hasaba alyş{% endif %}</h2>
+    <h2 style="color:white;font-size:1.1rem;margin-bottom:1.2rem;">
+        📝 {% if dil_kodu == 'tr' %}Kayıt Formu{% elif dil_kodu == 'ru' %}Форма регистрации{% else %}Hasaba alyş{% endif %}
+    </h2>
     <form method="POST" action="{{ url_for('kayit_gonder') }}">
         <div class="form-grid-2">
-            <div class="form-grup"><label>👤 {% if dil_kodu == 'tr' %}Ad Soyad{% elif dil_kodu == 'ru' %}Имя Фамилия{% else %}Ady Familiýa{% endif %}</label><input type="text" name="ad_soyad" required></div>
-            <div class="form-grup"><label>🌍 {% if dil_kodu == 'tr' %}Nereden?{% elif dil_kodu == 'ru' %}Откуда?{% else %}Nireden?{% endif %}</label><input type="text" name="nereden" required placeholder="{% if dil_kodu == 'tr' %}Örn: Kerki{% elif dil_kodu == 'ru' %}Напр: Керки{% else %}Mysal: Kerki{% endif %}"></div>
-        </div>
-        <div class="form-grid-2">
-            <div class="form-grup"><label>📞 Telefon / WhatsApp</label><input type="tel" name="telefon" required></div>
-            <div class="form-grup"><label>📧 E-mail</label><input type="email" name="email"></div>
-        </div>
-        <div class="form-grid-2">
-            <div class="form-grup"><label>🎂 {% if dil_kodu == 'tr' %}Yaş{% elif dil_kodu == 'ru' %}Возраст{% else %}Ýaş{% endif %}</label><input type="number" name="yas" min="15" max="60"></div>
-            <div class="form-grup"><label>✈️ {% if dil_kodu == 'tr' %}Vize Ülkesi{% elif dil_kodu == 'ru' %}Страна{% else %}Wiza ýurdy{% endif %}</label>
-                <select name="vize_ulke" required>
-                    <option value="" disabled selected>{% if dil_kodu == 'tr' %}Seçiniz{% elif dil_kodu == 'ru' %}Выберите{% else %}Saýlaň{% endif %}</option>
-                    <option value="Türkiye">🇹🇷 Türkiye</option><option value="Rusya">🇷🇺 Rusya</option><option value="Almanya">🇩🇪 Almanya</option>
-                    <option value="Dubai/BAE">🇦🇪 Dubai</option><option value="Belçika">🇧🇪 Belçika</option><option value="Romanya">🇷🇴 Romanya</option>
-                    <option value="Özbekistan">🇺🇿 Özbekistan</option><option value="Azerbaycan">🇦🇿 Azerbaycan</option><option value="Kazakistan">🇰🇿 Kazakistan</option><option value="Diger">{% if dil_kodu == 'tr' %}Diğer{% elif dil_kodu == 'ru' %}Другая{% else %}Başga{% endif %}</option>
-                </select>
+            <div class="form-grup">
+                <label>👤 {% if dil_kodu == 'tr' %}Ad Soyad{% elif dil_kodu == 'ru' %}Имя Фамилия{% else %}Ady Familiýa{% endif %}</label>
+                <input type="text" name="ad_soyad" required>
+            </div>
+            <div class="form-grup">
+                <label>🌍 {% if dil_kodu == 'tr' %}Nereden?{% elif dil_kodu == 'ru' %}Откуда?{% else %}Nireden?{% endif %}</label>
+                <input type="text" name="nereden" required>
             </div>
         </div>
-        <div class="form-grup"><label>🎓 {% if dil_kodu == 'tr' %}İstediğiniz Üniversite / Vize Türü{% elif dil_kodu == 'ru' %}Желаемый университет / тип визы{% else %}Isleýän uniwersitet / wiza görnüşi{% endif %}</label><input type="text" name="universite" placeholder="{% if dil_kodu == 'tr' %}Örn: Öğrenci vizesi, İstanbul Üni.{% elif dil_kodu == 'ru' %}Напр: Студенческая виза{% else %}Mysal: Talyp wizasy{% endif %}"></div>
-        <div class="form-grup"><label>💬 {% if dil_kodu == 'tr' %}Eklemek İstediğiniz Not{% elif dil_kodu == 'ru' %}Заметка{% else %}Bellik{% endif %}</label><textarea name="not" rows="2" placeholder="{% if dil_kodu == 'tr' %}Eklemek istediğiniz bilgi...{% elif dil_kodu == 'ru' %}Дополнительная информация...{% else %}Goşmaça maglumat...{% endif %}"></textarea></div>
+        <div class="form-grid-2">
+            <div class="form-grup">
+                <label>📞 Telefon / WhatsApp</label>
+                <input type="tel" name="telefon" required>
+            </div>
+            <div class="form-grup">
+                <label>📧 E-mail</label>
+                <input type="email" name="email">
+            </div>
+        </div>
+        <div class="form-grid-2">
+            <div class="form-grup">
+                <label>🎂 {% if dil_kodu == 'tr' %}Yaş{% elif dil_kodu == 'ru' %}Возраст{% else %}Ýaş{% endif %}</label>
+                <input type="number" name="yas" min="15" max="60">
+            </div>
+            <div class="form-grup">
+                <label>🎓 {% if dil_kodu == 'tr' %}İstediğiniz Üniversite/Ülke{% elif dil_kodu == 'ru' %}Желаемый универ/страна{% else %}Isleýän uniwersitet{% endif %}</label>
+                <input type="text" name="universite">
+            </div>
+        </div>
+        <div class="form-grup">
+            <label>💬 {% if dil_kodu == 'tr' %}Not{% elif dil_kodu == 'ru' %}Заметка{% else %}Not{% endif %}</label>
+            <textarea name="not" rows="2"></textarea>
+        </div>
         <button type="submit" class="gonder-btn">{% if dil_kodu == 'tr' %}📤 Gönder{% elif dil_kodu == 'ru' %}📤 Отправить{% else %}📤 Ibermek{% endif %}</button>
     </form>
 </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function dilMenuAc(btn){var dd=btn.closest('.dil-widget').querySelector('.dil-dropdown');dd.classList.toggle('acik');btn.querySelector('.dil-ok').textContent=dd.classList.contains('acik')?'▴':'▾';}
-document.addEventListener('click',function(e){if(!e.target.closest('.dil-widget')){document.querySelectorAll('.dil-dropdown').forEach(function(dd){dd.classList.remove('acik');});document.querySelectorAll('.dil-ok').forEach(function(ok){ok.textContent='▾';});}});
-function kayitFormAc(){document.getElementById('kayit-modal').classList.add('aktif');document.body.style.overflow='hidden';}
-function kayitFormKapat(){document.getElementById('kayit-modal').classList.remove('aktif');document.body.style.overflow='';}
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){kayitFormKapat();if(typeof fiyatKapat==='function')fiyatKapat();if(typeof modalKapat==='f
+<script>
+// Dil menüsü — btn.closest ile güvenli
+function dilMenuAc(btn) {
+    var widget = btn.closest('.dil-widget');
+    var dd = widget ? widget.querySelector('.dil-dropdown') : document.getElementById('dil-dropdown');
+    if (!dd) return;
+    var acikMi = dd.classList.contains('acik');
+    // Önce hepsini kapat
+    document.querySelectorAll('.dil-dropdown').forEach(function(d){ d.classList.remove('acik'); });
+    document.querySelectorAll('.dil-ok').forEach(function(o){ o.textContent='▾'; });
+    // Kapalıysa aç
+    if (!acikMi) {
+        dd.classList.add('acik');
+        btn.querySelector('.dil-ok').textContent = '▴';
+    }
+}
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.dil-widget')) {
+        document.querySelectorAll('.dil-dropdown').forEach(function(d){ d.classList.remove('acik'); });
+        document.querySelectorAll('.dil-ok').forEach(function(o){ o.textContent='▾'; });
+    }
+});
+
+// Kayıt formu
+function kayitFormAc() {
+    var m = document.getElementById('kayit-modal');
+    if (m) { m.classList.add('aktif'); document.body.style.overflow='hidden'; }
+}
+function kayitFormKapat() {
+    var m = document.getElementById('kayit-modal');
+    if (m) { m.classList.remove('aktif'); document.body.style.overflow=''; }
+}
+document.addEventListener('keydown', function(e) {
+    if (e.key==='Escape') { kayitFormKapat(); }
+});
+window.addEventListener('load', function() {
+    if(typeof twemoji !== 'undefined') twemoji.parse(document.body, {folder:'svg',ext:'.svg',base:'https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/'});
+});
+</script>
+</body>
+</html>
