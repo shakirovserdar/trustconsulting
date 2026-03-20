@@ -26,15 +26,6 @@
                 {% elif dil_kodu == 'ru' %}Ваши ворота из Туркменистана в мир. Визы, университеты и путешествия.
                 {% else %}Türkmenistandan dünýä açylýan gapyňyz. Wiza, uniwersitet we syýahat maslahat.{% endif %}
             </p>
-            <div class="baslik-stats">
-                <div class="bs-item"><div class="bs-sayi">500+</div><div class="bs-etiket">{% if dil_kodu == 'tr' %}Başarılı Başvuru{% elif dil_kodu == 'ru' %}Успешных заявок{% else %}Üstünlikli Ýüz tutma{% endif %}</div></div>
-                <div class="bs-ayirici"></div>
-                <div class="bs-item"><div class="bs-sayi">%92</div><div class="bs-etiket">{% if dil_kodu == 'tr' %}Onay Oranı{% elif dil_kodu == 'ru' %}Процент одобрений{% else %}Tassyklanma Derejesi{% endif %}</div></div>
-                <div class="bs-ayirici"></div>
-                <div class="bs-item"><div class="bs-sayi">8</div><div class="bs-etiket">{% if dil_kodu == 'tr' %}Ofis{% elif dil_kodu == 'ru' %}Офисов{% else %}Ofis{% endif %}</div></div>
-                <div class="bs-ayirici"></div>
-                <div class="bs-item"><div class="bs-sayi">10+</div><div class="bs-etiket">{% if dil_kodu == 'tr' %}Ülke{% elif dil_kodu == 'ru' %}Стран{% else %}Ýurt{% endif %}</div></div>
-            </div>
         </div>
 
         <div class="baslik-alt-butonlar">
@@ -53,7 +44,7 @@
         </a>
         <a href="{{ url_for('hizmetler') }}" class="panel-kart">
             <div class="pk-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-            <div class="pk-yazi"><h2>{% if dil_kodu == 'tr' %}Hizmetler{% elif dil_kodu == 'ru' %}Услуги{% else %}Hyzmatlar{% endif %}</h2><p>{% if dil_kodu == 'tr' %}Türkiye · Rusya · Almanya · Dubai · 10+ ülke{% elif dil_kodu == 'ru' %}Турция · Россия · Германия · Дубай{% else %}Türkiýe · Russiýa · Germaniýa · Dubaý{% endif %}</p></div>
+            <div class="pk-yazi"><h2>{% if dil_kodu == 'tr' %}Hizmetler{% elif dil_kodu == 'ru' %}Услуги{% else %}Hyzmatlar{% endif %}</h2><p>{% if dil_kodu == 'tr' %}Türkiye · Rusya · Almanya · Dubai · 20+ ülke{% elif dil_kodu == 'ru' %}Турция · Россия · Германия · Дубай{% else %}Türkiýe · Russiýa · Germaniýa · Dubaý{% endif %}</p></div>
             <span class="pk-ok">→</span>
         </a>
         <a href="{{ url_for('universiteler') }}" class="panel-kart">

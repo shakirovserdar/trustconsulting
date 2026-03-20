@@ -494,3 +494,36 @@ img.emoji { height: 1em;width: 1em;margin: 0 0.05em 0 0.1em;vertical-align: -0.1
     border: 1px solid rgba(255,255,255,0.2) !important;
     color: white !important;
 }
+
+/* ══════ V3 FIX2 — MOBİL & ÜLKE KARTLARI ══════ */
+
+/* Mobilde kartlara padding ekle */
+@media (max-width: 768px) {
+    main { padding: 1.2rem 1rem 2.5rem !important; }
+    .uni-ulke-kart { padding: 0.7rem 0.6rem !important; font-size: 0.78rem !important; }
+    .panel-kart { padding: 1.8rem 1.2rem !important; }
+    .section-title { margin: 1.2rem 0 0.8rem !important; font-size: 1.15rem !important; }
+}
+
+/* Ülke kartları — mor yazı düzelt, normal beyaz yap */
+.ulke-kart, a.ulke-kart {
+    color: white !important;
+    text-decoration: none !important;
+}
+.ulke-kart strong {
+    color: white !important;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 0.2rem;
+}
+.ulke-kart p {
+    color: rgba(255,255,255,0.5) !important;
+    font-size: 0.78rem;
+}
+
+/* Header her zaman sabit kalsın (sticky) */
+.diger-header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 100 !important;
+}
