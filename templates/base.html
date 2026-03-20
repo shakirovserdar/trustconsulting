@@ -135,8 +135,8 @@
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function dilMenuAc(btn){var dd=document.getElementById('dil-dropdown');dd.classList.toggle('acik');btn.querySelector('.dil-ok').textContent=dd.classList.contains('acik')?'▴':'▾';}
-document.addEventListener('click',function(e){if(!e.target.closest('.dil-widget')){var dd=document.getElementById('dil-dropdown');if(dd)dd.classList.remove('acik');var ok=document.querySelector('.dil-ok');if(ok)ok.textContent='▾';}});
+function dilMenuAc(btn){var dd=btn.closest('.dil-widget').querySelector('.dil-dropdown');dd.classList.toggle('acik');btn.querySelector('.dil-ok').textContent=dd.classList.contains('acik')?'▴':'▾';}
+document.addEventListener('click',function(e){if(!e.target.closest('.dil-widget')){document.querySelectorAll('.dil-dropdown').forEach(function(dd){dd.classList.remove('acik');});document.querySelectorAll('.dil-ok').forEach(function(ok){ok.textContent='▾';});}});
 function kayitFormAc(){document.getElementById('kayit-modal').classList.add('aktif');document.body.style.overflow='hidden';}
 function kayitFormKapat(){document.getElementById('kayit-modal').classList.remove('aktif');document.body.style.overflow='';}
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){kayitFormKapat();if(typeof fiyatKapat==='function')fiyatKapat();if(typeof modalKapat==='f

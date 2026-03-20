@@ -3,17 +3,6 @@
 
 <div class="ana-layout">
     <div class="baslik-karti">
-        <div class="dil-widget baslik-dil">
-            <button class="dil-aktif-btn" onclick="dilMenuAc(this)">
-                {% if dil_kodu == 'tr' %}🇹🇷 TR{% elif dil_kodu == 'ru' %}🇷🇺 RU{% else %}🇹🇲 TK{% endif %}
-                <span class="dil-ok">▾</span>
-            </button>
-            <div class="dil-dropdown" id="dil-dropdown">
-                <a href="?dil=tr" class="dil-secim {% if dil_kodu == 'tr' %}secili{% endif %}">🇹🇷 Türkçe</a>
-                <a href="?dil=ru" class="dil-secim {% if dil_kodu == 'ru' %}secili{% endif %}">🇷🇺 Русский</a>
-                <a href="?dil=tk" class="dil-secim {% if dil_kodu == 'tk' %}secili{% endif %}">🇹🇲 Türkmençe</a>
-            </div>
-        </div>
 
         <div class="baslik-merkez">
             <img src="{{ url_for('static', filename='logo.png') }}" alt="Trust Consulting">
@@ -29,7 +18,17 @@
         </div>
 
         <div class="baslik-alt-butonlar">
-            <span class="anasayfa-btn">🏠 {% if dil_kodu == 'tr' %}Ana Sayfa{% elif dil_kodu == 'ru' %}Главная{% else %}Baş sahypa{% endif %}</span>
+            <div class="dil-widget">
+                <button class="dil-aktif-btn" onclick="dilMenuAc(this)">
+                    {% if dil_kodu == 'tr' %}🇹🇷 TR{% elif dil_kodu == 'ru' %}🇷🇺 RU{% else %}🇹🇲 TK{% endif %}
+                    <span class="dil-ok">▾</span>
+                </button>
+                <div class="dil-dropdown dil-dropdown-yukari">
+                    <a href="?dil=tr" class="dil-secim {% if dil_kodu == 'tr' %}secili{% endif %}">🇹🇷 Türkçe</a>
+                    <a href="?dil=ru" class="dil-secim {% if dil_kodu == 'ru' %}secili{% endif %}">🇷🇺 Русский</a>
+                    <a href="?dil=tk" class="dil-secim {% if dil_kodu == 'tk' %}secili{% endif %}">🇹🇲 Türkmençe</a>
+                </div>
+            </div>
             <button class="kayit-ol-btn" onclick="kayitFormAc()">
                 📝 {% if dil_kodu == 'tr' %}Kayıt Ol{% elif dil_kodu == 'ru' %}Записаться{% else %}Hasaba al{% endif %}
             </button>

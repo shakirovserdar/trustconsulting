@@ -746,3 +746,21 @@ img.emoji { height: 1em;width: 1em;margin: 0 0.05em 0 0.1em;vertical-align: -0.1
         padding: 1.2rem 1rem 2.5rem !important;
     }
 }
+
+/* ══════ V3 FIX8 ══════ */
+
+/* 1. Logo küçült */
+.baslik-merkez img {
+    width: 220px !important;
+    height: 220px !important;
+    box-shadow: 0 0 0 5px rgba(40,120,220,0.08), 0 0 0 10px rgba(40,120,220,0.04), 0 8px 30px rgba(0,0,0,0.3) !important;
+}
+
+/* 2. Dil dropdown yukarı açılsın (sol alttaki için) */
+.dil-dropdown-yukari {
+    top: auto !important;
+    bottom: calc(100% + 8px) !important;
+}
+
+/* 3. Baslik-dil sağ üst pozisyonu kaldır (artık sol altta) */
+.baslik-dil { display: none; }
