@@ -739,3 +739,10 @@ img.emoji { height: 1em;width: 1em;margin: 0 0.05em 0 0.1em;vertical-align: -0.1
         padding-right: 1rem !important;
     }
 }
+
+/* ══════ V3 FIX7 — MAIN PADDING MOBİL ══════ */
+@media (max-width: 768px) {
+    main {
+        padding: 1.2rem 1rem 2.5rem !important;
+    }
+}
