@@ -7,7 +7,7 @@
 <!-- TÜRKİYE VİZE TÜRLERİ -->
 <h2 class="section-title">{{ t.hizmetler_turkiye_baslik }}</h2>
 
-<p style="font-size:0.88rem; color:#4a7a9b; margin-bottom:1rem; text-align:center;">
+<p style="font-size:1.05rem; color:rgba(255,255,255,0.6); margin-bottom:1rem; text-align:center;">
     {% if dil_kodu == 'tr' %}📌 Gerekli belgeleri ve bilgileri görmek için vize türüne tıklayın.
     {% elif dil_kodu == 'ru' %}📌 Нажмите на тип визы, чтобы увидеть необходимые документы.
     {% else %}📌 Gerekli resminamalary görmek üçin wiza görnüşine basyň.{% endif %}
@@ -51,43 +51,16 @@
 <!-- DİĞER ÜLKELER -->
 <h2 class="section-title">{{ t.hizmetler_diger_baslik }}</h2>
 
-<ul class="hizmet-liste">
-    <li>
-        <span class="icon">RU</span>
-        <div><strong>{% if dil_kodu == 'tr' %}Rusya{% elif dil_kodu == 'ru' %}Россия{% else %}Russiýa{% endif %}</strong><br>
-        <span style="font-size:0.82rem;color:#4a7a9b;">{% if dil_kodu == 'tr' %}E-viza · Turist · Öğrenci · 1–3 yıllık İş vizesi{% elif dil_kodu == 'ru' %}Э-виза · Туристическая · Студенческая · Рабочая 1–3 года{% else %}E-wiza · Syýahatçylyk · Talyp · 1–3 ýyllyk Iş wizasy{% endif %}</span></div>
-    </li>
-    <li>
-        <span class="icon">DE</span>
-        <div><strong>{% if dil_kodu == 'tr' %}Almanya{% elif dil_kodu == 'ru' %}Германия{% else %}Germaniýa{% endif %}</strong><br>
-        <span style="font-size:0.82rem;color:#4a7a9b;">{% if dil_kodu == 'tr' %}Turist · Öğrenci · İş vizesi{% elif dil_kodu == 'ru' %}Туристическая · Студенческая · Рабочая{% else %}Syýahat · Talyp · Iş wizasy{% endif %}</span></div>
-    </li>
-    <li>
-        <span class="icon">BE</span>
-        <div><strong>{% if dil_kodu == 'tr' %}Belçika{% elif dil_kodu == 'ru' %}Бельгия{% else %}Belgiýa{% endif %}</strong><br>
-        <span style="font-size:0.82rem;color:#4a7a9b;">{% if dil_kodu == 'tr' %}Turist · İş vizesi{% elif dil_kodu == 'ru' %}Туристическая · Рабочая{% else %}Syýahat · Iş wizasy{% endif %}</span></div>
-    </li>
-    <li>
-        <span class="icon">RO</span>
-        <div><strong>{% if dil_kodu == 'tr' %}Romanya{% elif dil_kodu == 'ru' %}Румыния{% else %}Rumyniýa{% endif %}</strong><br>
-        <span style="font-size:0.82rem;color:#4a7a9b;">{% if dil_kodu == 'tr' %}Turist · İş vizesi{% elif dil_kodu == 'ru' %}Туристическая · Рабочая{% else %}Syýahat · Iş wizasy{% endif %}</span></div>
-    </li>
-    <li>
-        <span class="icon">AE</span>
-        <div><strong>{% if dil_kodu == 'tr' %}Dubai / BAE{% elif dil_kodu == 'ru' %}Дубай / ОАЭ{% else %}Dubaý / BAE{% endif %}</strong><br>
-        <span style="font-size:0.82rem;color:#4a7a9b;">{% if dil_kodu == 'tr' %}30, 60 günlük E-viza · 3 yıllık İş vizesi{% elif dil_kodu == 'ru' %}30, 60-дн. Э-виза · Рабочая 3 года{% else %}30, 60 günlük E-wiza · 3 ýyllyk Iş wizasy{% endif %}</span></div>
-    </li>
-    <li>
-        <span class="icon">UZ</span>
-        <div><strong>{% if dil_kodu == 'tr' %}Özbekistan{% elif dil_kodu == 'ru' %}Узбекистан{% else %}Özbegistan{% endif %}</strong><br>
-        <span style="font-size:0.82rem;color:#4a7a9b;">{% if dil_kodu == 'tr' %}10, 20, 30, 90 günlük vize{% elif dil_kodu == 'ru' %}10, 20, 30, 90-дневные визы{% else %}10, 20, 30 we 90 günlük wizalar{% endif %}</span></div>
-    </li>
-    <li>
-        <span class="icon">AZ/KZ</span>
-        <div><strong>{% if dil_kodu == 'tr' %}Azerbaycan & Kazakistan ve diğerleri{% elif dil_kodu == 'ru' %}Азербайджан & Казахстан и др.{% else %}Azerbaýjan & Gazagystan we başg.{% endif %}</strong><br>
-        <span style="font-size:0.82rem;color:#4a7a9b;">E-visa</span></div>
-    </li>
-</ul>
+<div class="ulke-grid">
+    <a href="{{ url_for('universiteler') }}" class="ulke-kart"><span class="bayrak">🇷🇺</span><strong>{% if dil_kodu == 'tr' %}Rusya{% elif dil_kodu == 'ru' %}Россия{% else %}Russiýa{% endif %}</strong><p>E-viza · Turist · Öğrenci · İş</p></a>
+    <a href="{{ url_for('universiteler') }}" class="ulke-kart"><span class="bayrak">🇩🇪</span><strong>{% if dil_kodu == 'tr' %}Almanya{% elif dil_kodu == 'ru' %}Германия{% else %}Germaniýa{% endif %}</strong><p>Turist · Öğrenci · İş</p></a>
+    <a href="{{ url_for('universiteler') }}" class="ulke-kart"><span class="bayrak">🇧🇪</span><strong>{% if dil_kodu == 'tr' %}Belçika{% elif dil_kodu == 'ru' %}Бельгия{% else %}Belgiýa{% endif %}</strong><p>Turist · İş</p></a>
+    <a href="{{ url_for('universiteler') }}" class="ulke-kart"><span class="bayrak">🇷🇴</span><strong>{% if dil_kodu == 'tr' %}Romanya{% elif dil_kodu == 'ru' %}Румыния{% else %}Rumyniýa{% endif %}</strong><p>Turist · İş</p></a>
+    <a href="{{ url_for('universiteler') }}" class="ulke-kart"><span class="bayrak">🇦🇪</span><strong>{% if dil_kodu == 'tr' %}Dubai / BAE{% elif dil_kodu == 'ru' %}Дубай / ОАЭ{% else %}Dubaý / BAE{% endif %}</strong><p>30-60 gün E-viza · İş</p></a>
+    <a href="{{ url_for('universiteler') }}" class="ulke-kart"><span class="bayrak">🇺🇿</span><strong>{% if dil_kodu == 'tr' %}Özbekistan{% elif dil_kodu == 'ru' %}Узбекистан{% else %}Özbegistan{% endif %}</strong><p>10, 20, 30, 90 gün</p></a>
+    <a href="{{ url_for('universiteler') }}" class="ulke-kart"><span class="bayrak">🇦🇿</span><strong>{% if dil_kodu == 'tr' %}Azerbaycan{% elif dil_kodu == 'ru' %}Азербайджан{% else %}Azerbaýjan{% endif %}</strong><p>E-visa</p></a>
+    <a href="{{ url_for('universiteler') }}" class="ulke-kart"><span class="bayrak">🇰🇿</span><strong>{% if dil_kodu == 'tr' %}Kazakistan{% elif dil_kodu == 'ru' %}Казахстан{% else %}Gazagystan{% endif %}</strong><p>E-visa</p></a>
+</div>
 
 <!-- MOSAİC WİZA AMALLARY -->
 <div id="mosaic-amallary"></div>
@@ -391,7 +364,7 @@ function vizeAc(id) {
     if (e.startsWith('━━━')) {
       html += '</ul><p style="font-weight:700;color:#01263a;margin:0.8rem 0 0.3rem;font-size:0.86rem;">' + e.replace('━━━ ','') + '</p><ul class="modal-evrak-liste">';
     } else if (e.startsWith('⚠️')) {
-      html += '<li style="background:#fff8e1;border-left-color:#f0a500;">' + e + '</li>';
+      html += '<li style="background:rgba(245,158,11,0.15);border-left-color:#f0a500;color:#ffd700;">' + e + '</li>';
     } else {
       html += '<li>' + e + '</li>';
     }

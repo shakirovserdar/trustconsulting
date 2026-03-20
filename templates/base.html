@@ -16,6 +16,7 @@
         <div><h1>Trust Consulting</h1><p>✈️ Travel &amp; Education Company</p></div>
     </a>
     <div class="diger-sag">
+        <a href="{{ url_for('index') }}" class="geri-ana-btn">🏠 {% if dil_kodu == 'tr' %}Ana Sayfa{% elif dil_kodu == 'ru' %}Главная{% else %}Baş sahypa{% endif %}</a>
         <div class="dil-widget">
             <button class="dil-aktif-btn" onclick="dilMenuAc(this)">
                 {% if dil_kodu == 'tr' %}🇹🇷 TR{% elif dil_kodu == 'ru' %}🇷🇺 RU{% else %}🇹🇲 TK{% endif %}
@@ -53,7 +54,6 @@
 </button>
 {% endif %}
 
-<a href="https://wa.me/905524254697" class="whatsapp-float" target="_blank" rel="noopener">💬 WhatsApp</a>
 
 <footer>
     <div class="footer-ic">
