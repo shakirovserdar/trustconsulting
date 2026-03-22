@@ -785,3 +785,32 @@ main {
     right: auto !important;
     min-width: 155px;
 }
+
+/* ══════ V3 FIX10 ══════ */
+
+/* 1. Logo büyüt - masaüstü 200px, mobil 130px */
+.baslik-merkez img {
+    width: 370px !important;
+    height: 370px !important;
+}
+@media (max-width: 768px) {
+    .baslik-merkez img {
+        width: 230px !important;
+        height: 230px !important;
+    }
+}
+
+/* 2. Tüm kartlar kenara yapışmasın - main içeriğe padding */
+main {
+    padding: 2rem 3rem 4rem !important;
+}
+@media (max-width: 1200px) {
+    main {
+        padding: 2rem 2rem 4rem !important;
+    }
+}
+@media (max-width: 768px) {
+    main {
+        padding: 1.2rem 1.2rem 2.5rem !important;
+    }
+}
