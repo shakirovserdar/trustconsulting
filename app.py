@@ -248,7 +248,7 @@ def aktar_dil():
 
 def get_db():
     try:
-        conn = sqlite3.connect('site.db')
+        conn = sqlite3.connect('/tmp/site.db')
         conn.row_factory = sqlite3.Row
         return conn
     except Exception as e:
@@ -324,20 +324,26 @@ def init_db():
         finally:
             db.close()
 
-init_db()
+try:
+    init_db()
+except:
+    pass
 
 @app.route('/')
 def index():
+    yorumlar = []
     try:
         db = get_db()
-        yorumlar = []
         if db:
-            yorumlar = db.execute('SELECT * FROM yorumlar WHERE onaylandi=1 ORDER BY id DESC').fetchall()
-            db.close()
-        return render_template('index.html', baslik='Ana Sayfa', onaylanan_yorumlar=yorumlar)
-    except Exception as e:
-        logging.error(f"index hatası: {e}")
-        return "Bir hata oluştu", 500
+            try:
+                yorumlar = db.execute('SELECT * FROM yorumlar WHERE onaylandi=1 ORDER BY id DESC').fetchall()
+            except:
+                pass
+            finally:
+                db.close()
+    except:
+        pass
+    return render_template('index.html', baslik='Ana Sayfa', onaylanan_yorumlar=yorumlar)
 
 @app.route('/hakkimizda')
 def hakkimizda():
@@ -350,11 +356,18 @@ def sss():
 
 @app.route('/yorumlar')
 def yorumlar_sayfa():
-    db = get_db()
     yorumlar = []
-    if db:
-        yorumlar = db.execute('SELECT * FROM yorumlar WHERE onaylandi=1 ORDER BY id DESC').fetchall()
-        db.close()
+    try:
+        db = get_db()
+        if db:
+            try:
+                yorumlar = db.execute('SELECT * FROM yorumlar WHERE onaylandi=1 ORDER BY id DESC').fetchall()
+            except:
+                pass
+            finally:
+                db.close()
+    except:
+        pass
     return render_template('yorumlar.html', baslik='Yorumlar', onaylanan_yorumlar=yorumlar)
 
 @app.route('/universiteler')
@@ -524,11 +537,29 @@ def admin_cikis():
 @app.route('/admin')
 @admin_giris_gerekli
 def admin_panel():
-    db = get_db()
-    mesajlar  = db.execute('SELECT * FROM mesajlar ORDER BY id DESC').fetchall()
-    bekleyen  = db.execute('SELECT * FROM yorumlar WHERE onaylandi=0 ORDER BY id DESC').fetchall()
-    onaylanan = db.execute('SELECT * FROM yorumlar WHERE onaylandi=1 ORDER BY id DESC').fetchall()
-    db.close()
+    mesajlar = []
+    bekleyen = []
+    onaylanan = []
+    try:
+        db = get_db()
+        if db:
+            try:
+                db.execute('''CREATE TABLE IF NOT EXISTS mesajlar (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT, isim TEXT NOT NULL,
+                    telefon TEXT, email TEXT, ulke TEXT, vize_ulke TEXT, mesaj TEXT, tarih TEXT NOT NULL)''')
+                db.execute('''CREATE TABLE IF NOT EXISTS yorumlar (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT, isim TEXT NOT NULL, sehir TEXT,
+                    yildiz INTEGER DEFAULT 5, metin TEXT NOT NULL, onaylandi INTEGER DEFAULT 0, tarih TEXT NOT NULL)''')
+                db.commit()
+                mesajlar  = db.execute('SELECT * FROM mesajlar ORDER BY id DESC').fetchall()
+                bekleyen  = db.execute('SELECT * FROM yorumlar WHERE onaylandi=0 ORDER BY id DESC').fetchall()
+                onaylanan = db.execute('SELECT * FROM yorumlar WHERE onaylandi=1 ORDER BY id DESC').fetchall()
+            except Exception as e:
+                logging.error(f"Admin panel DB hatasi: {e}")
+            finally:
+                db.close()
+    except Exception as e:
+        logging.error(f"Admin panel hatasi: {e}")
     return render_template('admin_panel.html',
                            mesajlar=mesajlar,
                            bekleyen=bekleyen,
@@ -537,28 +568,40 @@ def admin_panel():
 @app.route('/admin/yorum-onayla/<int:yid>')
 @admin_giris_gerekli
 def admin_yorum_onayla(yid):
-    db = get_db()
-    db.execute('UPDATE yorumlar SET onaylandi=1 WHERE id=?', (yid,))
-    db.commit()
-    db.close()
+    try:
+        db = get_db()
+        if db:
+            db.execute('UPDATE yorumlar SET onaylandi=1 WHERE id=?', (yid,))
+            db.commit()
+            db.close()
+    except:
+        pass
     return redirect(url_for('admin_panel') + '#yorumlar')
 
 @app.route('/admin/yorum-sil/<int:yid>')
 @admin_giris_gerekli
 def admin_yorum_sil(yid):
-    db = get_db()
-    db.execute('DELETE FROM yorumlar WHERE id=?', (yid,))
-    db.commit()
-    db.close()
+    try:
+        db = get_db()
+        if db:
+            db.execute('DELETE FROM yorumlar WHERE id=?', (yid,))
+            db.commit()
+            db.close()
+    except:
+        pass
     return redirect(url_for('admin_panel') + '#yorumlar')
 
 @app.route('/admin/mesaj-sil/<int:mid>')
 @admin_giris_gerekli
 def admin_mesaj_sil(mid):
-    db = get_db()
-    db.execute('DELETE FROM mesajlar WHERE id=?', (mid,))
-    db.commit()
-    db.close()
+    try:
+        db = get_db()
+        if db:
+            db.execute('DELETE FROM mesajlar WHERE id=?', (mid,))
+            db.commit()
+            db.close()
+    except:
+        pass
     return redirect(url_for('admin_panel') + '#mesajlar')
 
 if __name__ == '__main__':
