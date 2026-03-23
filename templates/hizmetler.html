@@ -48,6 +48,9 @@
     </div>
 </div>
 
+<!-- TÜRKİYE ÜNİVERSİTE HARİTASI -->
+{% include 'turkey_harita.html' %}
+
 <!-- DİĞER ÜLKELER -->
 <h2 class="section-title">{{ t.hizmetler_diger_baslik }}</h2>
 
@@ -61,6 +64,9 @@
     <a href="{{ url_for('universiteler') }}" class="ulke-kart"><span class="bayrak">🇦🇿</span><strong>{% if dil_kodu == 'tr' %}Azerbaycan{% elif dil_kodu == 'ru' %}Азербайджан{% else %}Azerbaýjan{% endif %}</strong><p>E-visa</p></a>
     <a href="{{ url_for('universiteler') }}" class="ulke-kart"><span class="bayrak">🇰🇿</span><strong>{% if dil_kodu == 'tr' %}Kazakistan{% elif dil_kodu == 'ru' %}Казахстан{% else %}Gazagystan{% endif %}</strong><p>E-visa</p></a>
 </div>
+
+<!-- RUSYA ÜNİVERSİTE HARİTASI -->
+{% include 'russia_harita.html' %}
 
 <!-- MOSAİC WİZA AMALLARY -->
 <div id="mosaic-amallary"></div>

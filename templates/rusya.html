@@ -1,0 +1,123 @@
+<!-- RUSYA İNTERAKTİF ÜNİVERSİTE HARİTASI -->
+<div id="ru-harita-bolum" style="margin:1.5rem 0 2rem;">
+<h3 style="color:white;font-size:1.1rem;margin-bottom:1rem;">🗺️
+    {% if dil_kodu == 'tr' %}Rusya — Haritadan Şehir Seçin{% elif dil_kodu == 'ru' %}Россия — Выберите город на карте{% else %}Russiýa — Kartadan şäher saýlaň{% endif %}
+</h3>
+<div id="ru-harita-wrap" style="position:relative;width:100%;max-width:900px;margin:0 auto;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:1rem;overflow:hidden;">
+<svg viewBox="0 0 900 450" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+<!-- Rusya ana dış hat (basitleştirilmiş) -->
+<path d="M50,200 L80,180 L100,170 L120,175 L140,160 L170,155 L200,148 L230,152 L260,145 L290,140 L320,135 L350,132 L380,128 L420,125 L460,120 L500,115 L540,112 L580,108 L620,105 L660,102 L700,100 L740,105 L770,110 L800,120 L830,135 L850,155 L860,180 L855,210 L845,240 L830,260 L810,275 L785,285 L760,290 L730,295 L700,300 L670,305 L640,308 L610,312 L580,315 L550,318 L520,320 L490,322 L460,325 L430,328 L400,330 L370,332 L340,330 L310,328 L280,325 L250,322 L220,320 L190,318 L160,315 L130,310 L100,300 L80,285 L65,265 L55,240 L50,220 Z"
+fill="rgba(180,60,60,0.06)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+</svg>
+<div id="ru-sehir-noktalar" style="position:absolute;inset:0;"></div>
+</div>
+<!-- Seçili şehir üniversite listesi -->
+<div id="ru-harita-uni-panel" style="display:none;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:1.2rem;margin-top:1rem;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.8rem;">
+        <h4 id="ru-harita-sehir-adi" style="color:white;font-size:1rem;margin:0;"></h4>
+        <button onclick="ruPanelKapat()" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:0.85rem;">✕</button>
+    </div>
+    <div id="ru-harita-uni-liste" style="display:flex;flex-direction:column;gap:0.3rem;"></div>
+</div>
+</div>
+
+<style>
+.ru-pin {
+    position:absolute;display:flex;align-items:center;gap:4px;
+    cursor:pointer;transition:all 0.2s;z-index:2;
+    padding:3px 8px;border-radius:12px;
+    background:rgba(180,60,60,0.35);border:1px solid rgba(180,60,60,0.5);
+    font-size:0.65rem;font-weight:700;color:white;white-space:nowrap;
+}
+.ru-pin:hover {
+    background:rgba(180,60,60,0.7);transform:scale(1.12);z-index:10;
+    box-shadow:0 0 12px rgba(180,60,60,0.5);
+}
+.ru-pin.buyuk {
+    font-size:0.72rem;padding:4px 10px;
+    background:rgba(255,180,40,0.3);border-color:rgba(255,180,40,0.5);
+}
+.ru-pin.buyuk:hover {
+    background:rgba(255,180,40,0.6);box-shadow:0 0 14px rgba(255,180,40,0.4);
+}
+.ru-pin .pin-sayi {
+    background:rgba(255,255,255,0.2);border-radius:8px;padding:0 5px;
+    font-size:0.6rem;min-width:16px;text-align:center;
+}
+@media(max-width:768px){
+    .ru-pin { font-size:0.5rem;padding:2px 4px; }
+    .ru-pin.buyuk { font-size:0.55rem;padding:2px 6px; }
+}
+</style>
+
+<script>
+var ruUniVeri = {
+    "Москва":{x:12,y:48,u:["МГУ им. Ломоносова","МГТУ им. Баумана","МГИМО","МАИ","МПГУ","МИРЭА","ГУУ","ГУП","НИУ ВШЭ","МИФИ","РАНХиГС","РГАУ","РГГУ","РМУ","РУДН","РЭУ им. Плеханова","Всеросс. акад. внешн. торговли","Гос. инст. рус. языка им. Пушкина","Гос. пед. университет","Гос. гум.-тех. университет","Финансовый ун-т"]},
+    "Санкт-Петербург":{x:10,y:30,u:["СПбГУ","СПбПУ Петра Великого","СПб Горный университет","Балтийский ГТУ «ВОЕНМЕХ»","Балтийский ФУ им. Канта"]},
+    "Казань":{x:22,y:50,u:["Казанский ФУ","Казанский мед. ун-т","КНТУ — КАИ"]},
+    "Новосибирск":{x:52,y:70,u:["НГУ","НГТУ","Новосибирский ГМУ"]},
+    "Ростов-на-Дону":{x:14,y:68,u:["ЮФУ","Ростовский ГМУ","Донской ГТУ"]},
+    "Самара":{x:24,y:58,u:["Самарский ун-т","Самарский ГТУ","Самарский ГМУ","МУ «Реавиз»"]},
+    "Томск":{x:50,y:60,u:["ТГУ","ТПУ","Сибирский ГМУ"]},
+    "Краснодар":{x:12,y:72,u:["КубГУ","КубГТУ","КубГАУ"]},
+    "Волгоград":{x:18,y:62,u:["ВолгГУ","ВолгГТУ","ВолгГМУ"]},
+    "Воронеж":{x:15,y:55,u:["ВГУ","ВГТУ","ВГМУ им. Бурденко"]},
+    "Екатеринбург":{x:30,y:55,u:["УрФУ","Уральский ГМУ"]},
+    "Красноярск":{x:56,y:55,u:["Красноярский ГМУ","Сибирский ФУ"]},
+    "Барнаул":{x:48,y:68,u:["АлтГУ","АлтГТУ им. Ползунова"]},
+    "Астрахань":{x:20,y:68,u:["Астраханский ГМУ","Астраханский ГУ"]},
+    "Белгород":{x:14,y:58,u:["БелГУ","БГТУ"]},
+    "Владивосток":{x:88,y:65,u:["ДВФУ","ДВГМУ"]},
+    "Иваново":{x:16,y:42,u:["ИвГУ","ИГХТУ"]},
+    "Иркутск":{x:64,y:60,u:["ИГУ","ИРНИТУ"]},
+    "Омск":{x:40,y:60,u:["ОмГМУ","ОмГТУ"]},
+    "Пермь":{x:28,y:48,u:["ПермГМУ","ПермГУ"]},
+    "Тюмень":{x:34,y:52,u:["ТюмГМУ","ТюмГУ"]},
+    "Уфа":{x:26,y:55,u:["Башкирский ГМУ"]},
+    "Нальчик":{x:14,y:75,u:["КБГУ"]},
+    "Кемерово":{x:52,y:65,u:["КемГУ"]},
+    "Курск":{x:14,y:52,u:["Курский ГМУ"]},
+    "Саранск":{x:20,y:52,u:["МГУ им. Огарёва"]},
+    "Оренбург":{x:28,y:62,u:["ОГУ"]},
+    "Петрозаводск":{x:12,y:25,u:["ПетрГУ"]},
+    "Саратов":{x:20,y:58,u:["Саратовский ГМУ"]},
+    "Челябинск":{x:32,y:58,u:["ЮУрГУ"]},
+    "Магнитогорск":{x:30,y:62,u:["МГТУ им. Носова"]},
+    "Симферополь":{x:12,y:78,u:["КФУ им. Вернадского"]},
+};
+
+(function(){
+    var wrap = document.getElementById('ru-sehir-noktalar');
+    if(!wrap) return;
+    var buyuk = ['Москва','Санкт-Петербург','Казань','Новосибирск','Екатеринбург','Ростов-на-Дону','Самара','Краснодар','Красноярск','Томск'];
+    for(var s in ruUniVeri){
+        var v = ruUniVeri[s];
+        var div = document.createElement('div');
+        div.className = 'ru-pin' + (buyuk.indexOf(s)!==-1?' buyuk':'');
+        div.style.left = v.x + '%';
+        div.style.top = v.y + '%';
+        div.innerHTML = s + ' <span class="pin-sayi">' + v.u.length + '</span>';
+        div.setAttribute('data-sehir', s);
+        div.onclick = function(){ ruSehirSec(this.getAttribute('data-sehir')); };
+        wrap.appendChild(div);
+    }
+})();
+
+function ruSehirSec(sehir){
+    var v = ruUniVeri[sehir];
+    if(!v) return;
+    document.getElementById('ru-harita-sehir-adi').innerHTML = '🎓 ' + sehir + ' <span style="color:rgba(255,255,255,0.4);font-size:0.8rem;">(' + v.u.length + ' университет)</span>';
+    var html = '';
+    for(var i=0;i<v.u.length;i++){
+        html += '<div class="harita-uni-item"><span style="color:#60b3f0;font-size:0.75rem;min-width:20px;">' + (i+1) + '.</span> ' + v.u[i] + ' <span class="tm-badge">✅ TM</span></div>';
+    }
+    document.getElementById('ru-harita-uni-liste').innerHTML = html;
+    document.getElementById('ru-harita-uni-panel').style.display = 'block';
+    document.getElementById('ru-harita-uni-panel').scrollIntoView({behavior:'smooth',block:'nearest'});
+    document.querySelectorAll('.ru-pin').forEach(function(p){p.style.opacity=p.getAttribute('data-sehir')===sehir?'1':'0.4';});
+}
+function ruPanelKapat(){
+    document.getElementById('ru-harita-uni-panel').style.display='none';
+    document.querySelectorAll('.ru-pin').forEach(function(p){p.style.opacity='1';});
+}
+</script>
