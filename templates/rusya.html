@@ -21,7 +21,7 @@ fill="rgba(180,60,60,0.06)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
 </div>
 </div>
 
-<style>
+{% raw %}<style>
 .ru-pin {
     position:absolute;display:flex;align-items:center;gap:4px;
     cursor:pointer;transition:all 0.2s;z-index:2;
@@ -48,9 +48,9 @@ fill="rgba(180,60,60,0.06)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
     .ru-pin { font-size:0.5rem;padding:2px 4px; }
     .ru-pin.buyuk { font-size:0.55rem;padding:2px 6px; }
 }
-</style>
+</style>{% endraw %}
 
-<script>
+{% raw %}<script>
 var ruUniVeri = {
     "Москва":{x:12,y:48,u:["МГУ им. Ломоносова","МГТУ им. Баумана","МГИМО","МАИ","МПГУ","МИРЭА","ГУУ","ГУП","НИУ ВШЭ","МИФИ","РАНХиГС","РГАУ","РГГУ","РМУ","РУДН","РЭУ им. Плеханова","Всеросс. акад. внешн. торговли","Гос. инст. рус. языка им. Пушкина","Гос. пед. университет","Гос. гум.-тех. университет","Финансовый ун-т"]},
     "Санкт-Петербург":{x:10,y:30,u:["СПбГУ","СПбПУ Петра Великого","СПб Горный университет","Балтийский ГТУ «ВОЕНМЕХ»","Балтийский ФУ им. Канта"]},
@@ -120,4 +120,4 @@ function ruPanelKapat(){
     document.getElementById('ru-harita-uni-panel').style.display='none';
     document.querySelectorAll('.ru-pin').forEach(function(p){p.style.opacity='1';});
 }
-</script>
+</script>{% endraw %}
