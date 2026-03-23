@@ -790,13 +790,13 @@ main {
 
 /* 1. Logo büyüt - masaüstü 200px, mobil 130px */
 .baslik-merkez img {
-    width: 370px !important;
-    height: 370px !important;
+    width: 200px !important;
+    height: 200px !important;
 }
 @media (max-width: 768px) {
     .baslik-merkez img {
-        width: 230px !important;
-        height: 230px !important;
+        width: 130px !important;
+        height: 130px !important;
     }
 }
 
