@@ -11,26 +11,26 @@
 
 <!-- ÜLKE KARTLARI -->
 <div class="uni-ulke-grid">
-    <div class="uni-ulke-kart" onclick="ulkeAc('turkey')">🇹🇷 {% if dil_kodu == 'tr' %}Türkiye{% elif dil_kodu == 'ru' %}Турция{% else %}Türkiýe{% endif %} <span class="uni-sayi">109</span></div>
-    <div class="uni-ulke-kart" onclick="ulkeAc('russia')">🇷🇺 {% if dil_kodu == 'tr' %}Rusya{% elif dil_kodu == 'ru' %}Россия{% else %}Russiýa{% endif %} <span class="uni-sayi">154</span></div>
-    <div class="uni-ulke-kart" onclick="ulkeAc('germany')">🇩🇪 {% if dil_kodu == 'tr' %}Almanya{% elif dil_kodu == 'ru' %}Германия{% else %}Germaniýa{% endif %} <span class="uni-sayi">13</span></div>
-    <div class="uni-ulke-kart" onclick="ulkeAc('belgium')">🇧🇪 {% if dil_kodu == 'tr' %}Belçika{% elif dil_kodu == 'ru' %}Бельгия{% else %}Belgiýa{% endif %} <span class="uni-sayi">10</span></div>
-    <div class="uni-ulke-kart" onclick="ulkeAc('kazakhstan')">🇰🇿 {% if dil_kodu == 'tr' %}Kazakistan{% elif dil_kodu == 'ru' %}Казахстан{% else %}Gazagystan{% endif %} <span class="uni-sayi">13</span></div>
-    <div class="uni-ulke-kart" onclick="ulkeAc('czech')">🇨🇿 {% if dil_kodu == 'tr' %}Çekya{% elif dil_kodu == 'ru' %}Чехия{% else %}Çehiýa{% endif %} <span class="uni-sayi">19</span></div>
-    <div class="uni-ulke-kart" onclick="ulkeAc('netherlands')">🇳🇱 {% if dil_kodu == 'tr' %}Hollanda{% elif dil_kodu == 'ru' %}Нидерланды{% else %}Niderlandiýa{% endif %} <span class="uni-sayi">15</span></div>
-    <div class="uni-ulke-kart" onclick="ulkeAc('canada')">🇨🇦 {% if dil_kodu == 'tr' %}Kanada{% elif dil_kodu == 'ru' %}Канада{% else %}Kanada{% endif %} <span class="uni-sayi">36</span></div>
-    <div class="uni-ulke-kart" onclick="ulkeAc('japan')">🇯🇵 {% if dil_kodu == 'tr' %}Japonya{% elif dil_kodu == 'ru' %}Япония{% else %}Ýaponiýa{% endif %} <span class="uni-sayi">100</span></div>
-    <div class="uni-ulke-kart" onclick="ulkeAc('korea')">🇰🇷 {% if dil_kodu == 'tr' %}Güney Kore{% elif dil_kodu == 'ru' %}Южная Корея{% else %}Günorta Koreýa{% endif %} <span class="uni-sayi">47</span></div>
-    <div class="uni-ulke-kart" onclick="ulkeAc('italy')">🇮🇹 {% if dil_kodu == 'tr' %}İtalya{% elif dil_kodu == 'ru' %}Италия{% else %}Italiýa{% endif %} <span class="uni-sayi">30</span></div>
-    <div class="uni-ulke-kart" onclick="ulkeAc('austria')">🇦🇹 {% if dil_kodu == 'tr' %}Avusturya{% elif dil_kodu == 'ru' %}Австрия{% else %}Awstriýa{% endif %} <span class="uni-sayi">15</span></div>
-    <div class="uni-ulke-kart" onclick="ulkeAc('cyprus')">🇨🇾 {% if dil_kodu == 'tr' %}Kıbrıs{% elif dil_kodu == 'ru' %}Кипр{% else %}Kipr{% endif %} <span class="uni-sayi">6</span></div>
-    <div class="uni-ulke-kart" onclick="ulkeAc('kyrgyzstan')">🇰🇬 {% if dil_kodu == 'tr' %}Kırgızistan{% elif dil_kodu == 'ru' %}Киргизия{% else %}Gyrgyzystan{% endif %} <span class="uni-sayi">4</span></div>
-    <div class="uni-ulke-kart" onclick="ulkeAc('belarus')">🇧🇾 {% if dil_kodu == 'tr' %}Beyaz Rusya{% elif dil_kodu == 'ru' %}Беларусь{% else %}Belarus{% endif %} <span class="uni-sayi">11</span></div>
-    <div class="uni-ulke-kart" onclick="ulkeAc('azerbaijan')">🇦🇿 {% if dil_kodu == 'tr' %}Azerbaycan{% elif dil_kodu == 'ru' %}Азербайджан{% else %}Azerbaýjan{% endif %} <span class="uni-sayi">2</span></div>
-    <div class="uni-ulke-kart" onclick="ulkeAc('uzbekistan')">🇺🇿 {% if dil_kodu == 'tr' %}Özbekistan{% elif dil_kodu == 'ru' %}Узбекистан{% else %}Özbegistan{% endif %} <span class="uni-sayi">2</span></div>
-    <div class="uni-ulke-kart" onclick="ulkeAc('georgia')">🇬🇪 {% if dil_kodu == 'tr' %}Gürcistan{% elif dil_kodu == 'ru' %}Грузия{% else %}Gruziýa{% endif %} <span class="uni-sayi">2</span></div>
-    <div class="uni-ulke-kart" onclick="ulkeAc('thailand')">🇹🇭 {% if dil_kodu == 'tr' %}Tayland{% elif dil_kodu == 'ru' %}Таиланд{% else %}Tailand{% endif %} <span class="uni-sayi">10</span></div>
-    <div class="uni-ulke-kart" onclick="ulkeAc('vietnam')">🇻🇳 {% if dil_kodu == 'tr' %}Vietnam{% elif dil_kodu == 'ru' %}Вьетнам{% else %}Wýetnam{% endif %} <span class="uni-sayi">4</span></div>
+    <div class="uni-ulke-kart uni-ulke-kart--featured" onclick="ulkeAc('turkey')">🇹🇷 Türkiye <span class="uni-sayi" id="sayi-turkey">109</span></div>
+    <div class="uni-ulke-kart" onclick="ulkeAc('russia')">🇷🇺 Rusya <span class="uni-sayi" id="sayi-russia">85</span></div>
+    <div class="uni-ulke-kart" onclick="ulkeAc('germany')">🇩🇪 Almanya <span class="uni-sayi" id="sayi-germany">13</span></div>
+    <div class="uni-ulke-kart" onclick="ulkeAc('belgium')">🇧🇪 Belçika <span class="uni-sayi" id="sayi-belgium">10</span></div>
+    <div class="uni-ulke-kart" onclick="ulkeAc('kazakhstan')">🇰🇿 Kazakistan <span class="uni-sayi" id="sayi-kazakhstan">13</span></div>
+    <div class="uni-ulke-kart" onclick="ulkeAc('czech')">🇨🇿 Çekya <span class="uni-sayi" id="sayi-czech">19</span></div>
+    <div class="uni-ulke-kart" onclick="ulkeAc('netherlands')">🇳🇱 Hollanda <span class="uni-sayi" id="sayi-netherlands">15</span></div>
+    <div class="uni-ulke-kart" onclick="ulkeAc('canada')">🇨🇦 Kanada <span class="uni-sayi" id="sayi-canada">36</span></div>
+    <div class="uni-ulke-kart" onclick="ulkeAc('japan')">🇯🇵 Japonya <span class="uni-sayi" id="sayi-japan">100</span></div>
+    <div class="uni-ulke-kart" onclick="ulkeAc('korea')">🇰🇷 Güney Kore <span class="uni-sayi" id="sayi-korea">47</span></div>
+    <div class="uni-ulke-kart" onclick="ulkeAc('italy')">🇮🇹 İtalya <span class="uni-sayi" id="sayi-italy">30</span></div>
+    <div class="uni-ulke-kart" onclick="ulkeAc('austria')">🇦🇹 Avusturya <span class="uni-sayi" id="sayi-austria">15</span></div>
+    <div class="uni-ulke-kart" onclick="ulkeAc('cyprus')">🇨🇾 Kıbrıs <span class="uni-sayi" id="sayi-cyprus">6</span></div>
+    <div class="uni-ulke-kart" onclick="ulkeAc('kyrgyzstan')">🇰🇬 Kırgızistan <span class="uni-sayi" id="sayi-kyrgyzstan">4</span></div>
+    <div class="uni-ulke-kart" onclick="ulkeAc('belarus')">🇧🇾 Beyaz Rusya <span class="uni-sayi" id="sayi-belarus">11</span></div>
+    <div class="uni-ulke-kart" onclick="ulkeAc('azerbaijan')">🇦🇿 Azerbaycan <span class="uni-sayi" id="sayi-azerbaijan">2</span></div>
+    <div class="uni-ulke-kart" onclick="ulkeAc('uzbekistan')">🇺🇿 Özbekistan <span class="uni-sayi" id="sayi-uzbekistan">2</span></div>
+    <div class="uni-ulke-kart" onclick="ulkeAc('georgia')">🇬🇪 Gürcistan <span class="uni-sayi" id="sayi-georgia">2</span></div>
+    <div class="uni-ulke-kart" onclick="ulkeAc('thailand')">🇹🇭 Tayland <span class="uni-sayi" id="sayi-thailand">10</span></div>
+    <div class="uni-ulke-kart" onclick="ulkeAc('vietnam')">🇻🇳 Vietnam <span class="uni-sayi" id="sayi-vietnam">4</span></div>
 </div>
 
 <!-- ÜNİVERSİTE LİSTESİ PANELİ -->
@@ -39,8 +39,22 @@
         <h2 id="uni-panel-ulke"></h2>
         <button onclick="ulkeKapat()" class="uni-kapat-btn">✕ {% if dil_kodu == 'tr' %}Kapat{% elif dil_kodu == 'ru' %}Закрыть{% else %}Ýap{% endif %}</button>
     </div>
-    <input type="text" id="uni-arama" placeholder="{% if dil_kodu == 'tr' %}Üniversite ara...{% elif dil_kodu == 'ru' %}Поиск университета...{% else %}Uniwersitet gözle...{% endif %}" oninput="uniAra()" class="uni-arama">
+    <input type="text" id="uni-arama" placeholder="{% if dil_kodu == 'tr' %}Üniversite ara...{% elif dil_kodu == 'ru' %}Поиск...{% else %}Gözle...{% endif %}" oninput="uniAra()" class="uni-arama">
     <div id="uni-liste"></div>
+</div>
+
+<!-- ÜNİVERSİTE DETAY MODAL -->
+<div id="uni-modal-overlay" onclick="if(event.target===this)detayKapat()">
+    <div id="uni-modal-kutu">
+        <div id="uni-modal-header">
+            <h2 id="uni-modal-baslik">🎓</h2>
+            <button id="uni-modal-kapat" onclick="detayKapat()">✕</button>
+        </div>
+        <div id="uni-modal-icerik"></div>
+        <div class="uni-modal-footer">
+            <a href="https://wa.me/905524254697" class="uni-modal-wa-btn" target="_blank">💬 WhatsApp'tan Danış</a>
+        </div>
+    </div>
 </div>
 
 <div style="text-align:center;margin-top:2rem;">
@@ -49,13 +63,1135 @@
     </a>
 </div>
 
+<style>
+.uni-ulke-kart--featured { border: 2px solid #2271b1; font-weight: 600; }
+#uni-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 10000; align-items: center; justify-content: center; padding: 16px; }
+#uni-modal-overlay.acik { display: flex; }
+#uni-modal-kutu { background: #0f1e35; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; width: 100%; max-width: 680px; max-height: 85vh; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+#uni-modal-header { background: #1a3a5c; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+#uni-modal-baslik { color: white; font-size: 1rem; font-weight: 700; margin: 0; }
+#uni-modal-kapat { background: rgba(255,255,255,0.1); border: none; color: white; width: 32px; height: 32px; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+#uni-modal-kapat:hover { background: rgba(255,255,255,0.2); }
+#uni-modal-icerik { overflow-y: auto; padding: 16px 20px; flex: 1; }
+#uni-modal-icerik::-webkit-scrollbar { width: 6px; }
+#uni-modal-icerik::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 3px; }
+.uni-modal-not { background: rgba(255,200,50,0.12); border: 1px solid rgba(255,200,50,0.3); border-radius: 8px; padding: 10px 14px; font-size: 0.82rem; color: #f0d080; margin-bottom: 1rem; }
+.uni-modal-fakulte { background: #1a6fc4; color: white; padding: 6px 14px; border-radius: 6px; font-size: 0.82rem; font-weight: 600; margin: 1rem 0 0.4rem; display: inline-block; }
+.uni-modal-tablo { width: 100%; border-collapse: collapse; margin-bottom: 0.5rem; font-size: 0.85rem; }
+.uni-modal-tablo th { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.6); padding: 7px 12px; text-align: left; font-weight: 500; font-size: 0.78rem; }
+.uni-modal-tablo td { padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color: #d0dcea; }
+.uni-modal-tablo tr:last-child td { border-bottom: none; }
+.uni-modal-tablo tr:hover td { background: rgba(255,255,255,0.04); }
+.uni-modal-fiyat { color: #5bc4f5; font-weight: 600; }
+.uni-modal-footer { padding: 12px 20px; border-top: 1px solid rgba(255,255,255,0.08); flex-shrink: 0; display: flex; justify-content: center; }
+.uni-modal-wa-btn { background: #25D366; color: white; border: none; border-radius: 8px; padding: 10px 24px; font-size: 0.9rem; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+.uni-modal-wa-btn:hover { background: #1eb855; }
+.vakif-badge { background: rgba(255,160,50,0.15); color: #f0a030; font-size: 0.72rem; padding: 1px 7px; border-radius: 8px; margin-left: 6px; }
+.uni-row { padding: 7px 0; border-bottom: 1px solid #eaf0f7; font-size: 0.88rem; display: flex; align-items: center; gap: 6px; }
+.uni-num { color: #aaa; min-width: 24px; font-size: 0.8rem; }
+.uni-kart-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin: 1rem 0; }
+.uni-kart { background: white; border: 1px solid #d0e3f0; border-radius: 10px; padding: 14px 16px; cursor: pointer; transition: all 0.2s; }
+.uni-kart:hover { border-color: #2271b1; box-shadow: 0 3px 12px rgba(34,113,177,0.15); transform: translateY(-2px); }
+.uni-kart-adi { font-weight: 600; color: #1a3a5c; font-size: 0.95rem; margin-bottom: 4px; }
+.uni-kart-bilgi { font-size: 0.8rem; color: #4a7a9b; }
+.uni-kart-fiyat { font-size: 0.8rem; color: #2271b1; font-weight: 600; margin-top: 4px; }
+</style>
+
 <script>
+
+
+// ─── DETAYLI ÜNİVERSİTE VERİSİ ───
+var detayliUniversiteler = {
+
+  'istinye': {
+    ad: 'İstanbul İstinye Üniversitesi',
+    not: 'Depozito tüm bölümler için $1.750',
+    fakulteler: [
+      { ad: 'Tıp Fakültesi', bolumler: [
+        ['Tıp (Türkçe)', '$23.000'], ['Tıp (İngilizce)', '$29.000']
+      ]},
+      { ad: 'Diş Hekimliği Fakültesi', bolumler: [
+        ['Diş Hekimliği (Türkçe)', '$20.000'], ['Diş Hekimliği (İngilizce)', '$24.500']
+      ]},
+      { ad: 'Eczacılık Fakültesi', bolumler: [
+        ['Eczacılık (Türkçe)', '$14.000'], ['Eczacılık (İngilizce)', '$15.000']
+      ]},
+      { ad: 'İnsan ve Toplum Bilimleri', bolumler: [
+        ['Psikoloji (Türkçe)', '$8.000'], ['Psikoloji (İngilizce)', '$8.000'],
+        ['Türk Dili ve Edebiyatı', '$8.000'], ['İngiliz Dili ve Edebiyatı', '$8.000'],
+        ['İngilizce Mütercim Tercümanlık', '$8.000'], ['Felsefe (Türkçe)', '$8.000']
+      ]},
+      { ad: 'Güzel Sanatlar, Tasarım ve Mimarlık', bolumler: [
+        ['İç Mimarlık ve Çevre Tasarımı', '$8.000'], ['Mimarlık (Türkçe)', '$8.000'],
+        ['Mimarlık (İngilizce)', '$8.000'], ['Gastronomi (Türkçe)', '$8.000'],
+        ['Gastronomi (İngilizce)', '$8.000'], ['Tekstil Moda Tasarımı', '$7.000'],
+        ['Görsel İletişim Tasarımı', '$7.000']
+      ]},
+      { ad: 'Mühendislik ve Doğa Bilimleri', bolumler: [
+        ['Yazılım (Türkçe)', '$8.000'], ['Yazılım (İngilizce)', '$8.000'],
+        ['Makine Mühendisliği (İng)', '$8.000'], ['Bilgisayar Müh. (İng)', '$8.000'],
+        ['Bilgisayar Müh. (Türkçe)', '$8.000'], ['Elektrik-Elektronik Müh. (İng)', '$8.000'],
+        ['Endüstri Müh. (İng)', '$8.000'], ['Biyomedikal Müh. (İng)', '$8.000'],
+        ['Moleküler Biyoloji ve Genetik (İng)', '$8.000'], ['Matematik (İng)', '$8.000'],
+        ['Kimya (İng)', '$8.000']
+      ]},
+      { ad: 'İktisadi, İdari ve Sosyal Bilimler', bolumler: [
+        ['Ekonomi (İng)', '$8.000'], ['İşletme (İng)', '$8.000'],
+        ['Sağlık Yönetimi', '$8.000'], ['Siyaset Bilimi ve Kamu Yönetimi', '$8.000'],
+        ['Uluslararası İlişkiler (İng)', '$8.000'], ['Uluslararası Ticaret (İng)', '$8.000'],
+        ['YBS (Türkçe)', '$8.000'], ['YBS (İng)', '$8.000'], ['Lojistik Yönetimi', '$8.000'],
+        ['Yazılım Geliştirme', '$8.000']
+      ]},
+      { ad: 'İletişim Fakültesi', bolumler: [
+        ['Halkla İlişkiler ve Reklamcılık', '$7.000'], ['Yeni Medya (İng)', '$7.000'],
+        ['Radyo Televizyon Sinema (İng)', '$7.000']
+      ]},
+      { ad: 'Sağlık Bilimleri Fakültesi', bolumler: [
+        ['Beslenme ve Diyetik', '$8.000'], ['Çocuk Gelişimi', '$8.000'],
+        ['Dil ve Konuşma Terapisi', '$8.000'], ['Ebelik', '$8.000'],
+        ['Fizyoterapi (Türkçe)', '$8.000'], ['Fizyoterapi (İng)', '$8.000'],
+        ['Hemşirelik (Türkçe)', '$8.000'], ['Hemşirelik (İng)', '$8.000']
+      ]},
+      { ad: 'Hazırlık Eğitimi', bolumler: [
+        ['İngilizce Hazırlık', '$8.000'], ['Türkçe Hazırlık', '$3.000']
+      ]}
+    ]
+  },
+
+  'biruni': {
+    ad: 'İstanbul Biruni Üniversitesi',
+    not: 'Taksitli ve peşin fiyat seçeneği mevcuttur.',
+    fakulteler: [
+      { ad: 'Tıp Fakültesi', bolumler: [
+        ['Tıp (İngilizce) — Taksitli', '$21.000'], ['Tıp (İngilizce) — Peşin', '$18.900'],
+        ['Tıp (Türkçe) — Taksitli', '$19.000'], ['Tıp (Türkçe) — Peşin', '$17.100']
+      ]},
+      { ad: 'Diş Hekimliği Fakültesi', bolumler: [
+        ['Diş Hekimliği (İng) — Taksitli', '$21.000'], ['Diş Hekimliği (İng) — Peşin', '$18.900'],
+        ['Diş Hekimliği (Türkçe) — Taksitli', '$19.000'], ['Diş Hekimliği (Türkçe) — Peşin', '$17.100']
+      ]},
+      { ad: 'Eczacılık Fakültesi', bolumler: [
+        ['Eczacılık (İng) — Taksitli', '$12.000'], ['Eczacılık (İng) — Peşin', '$10.800'],
+        ['Eczacılık (Türkçe) — Taksitli', '$10.000'], ['Eczacılık (Türkçe) — Peşin', '$9.000']
+      ]},
+      { ad: 'Eğitim Fakültesi', bolumler: [
+        ['İlköğretim Matematik Öğretmenliği', '$4.000'], ['İngilizce Öğretmenliği', '$5.000'],
+        ['Okul Öncesi Öğretmenliği', '$5.000'], ['Özel Eğitim Öğretmenliği', '$5.000'],
+        ['Rehberlik ve Psikolojik Danışmanlık', '$4.000']
+      ]},
+      { ad: 'Mühendislik ve Doğa Bilimleri', bolumler: [
+        ['İç Mimarlık ve Çevre Tasarımı', '$5.000'], ['Mol. Biyoloji ve Genetik (İng)', '$5.000'],
+        ['Mol. Biyoloji ve Genetik (Türkçe)', '$5.000'], ['Bilgisayar Müh. (Türkçe)', '$5.000'],
+        ['Bilgisayar Müh. (İng)', '$5.000'], ['Biyomedikal Müh. (İng)', '$5.000'],
+        ['Elektrik-Elektronik Müh.', '$4.000'], ['Yazılım Mühendisliği', '$5.000'],
+        ['Endüstriyel Tasarım', '$4.000']
+      ]},
+      { ad: 'Sağlık Bilimleri Fakültesi', bolumler: [
+        ['Beslenme ve Diyetetik', '$4.000'], ['Çocuk Gelişimi', '$4.000'],
+        ['Dil ve Konuşma Terapisi (Türkçe)', '$4.000'], ['Dil ve Konuşma Terapisi (İng)', '$4.000'],
+        ['Ebelik', '$5.000'], ['Ergoterapi', '$4.000'],
+        ['Fizyoterapi (Türkçe)', '$5.000'], ['Fizyoterapi (İng)', '$5.000'],
+        ['Hemşirelik (İng)', '$5.000'], ['Hemşirelik (Türkçe)', '$5.000'], ['Odyoloji', '$4.000']
+      ]},
+      { ad: 'Uygulamalı Bilimler Fakültesi', bolumler: [
+        ['Gastronomi ve Mutfak Sanatları', '$4.000'], ['İng. Mütercim ve Tercümanlık', '$4.000'],
+        ['Yazılım Geliştirme', '$4.000']
+      ]},
+      { ad: 'Meslek Yüksek Okulu', bolumler: [
+        ['Acil Durum ve Afet Yönetimi', '$5.000'], ['Ağız ve Diş Sağlığı', '$5.000'],
+        ['Ameliyathane Hizmetleri', '$5.000'], ['Anestezi', '$5.000'],
+        ['Bilgisayar Programcılığı', '$5.000'], ['Biyomedikal Cihaz Teknolojileri', '$5.000'],
+        ['Çocuk Gelişimi (MYO)', '$5.000'], ['Diş Protez Teknolojisi', '$5.000'],
+        ['Diyaliz', '$5.000'], ['Eczane Hizmetleri', '$5.000'], ['Fizyoterapi (MYO)', '$5.000'],
+        ['İlk ve Acil Yardım', '$5.000'], ['Odyometri', '$5.000'], ['Optisyenlik', '$5.000'],
+        ['Patoloji Lab. Teknikleri', '$5.000'], ['Tıbbi Görüntüleme', '$5.000'],
+        ['Tıbbi Lab. Teknikleri', '$5.000'], ['Robotik ve Yapay Zeka', '$5.000']
+      ]}
+    ]
+  },
+
+  'beykent': {
+    ad: 'İstanbul Beykent Üniversitesi',
+    not: 'Depozito tüm bölümler için $1.000',
+    fakulteler: [
+      { ad: 'Tıp Fakültesi', bolumler: [['Tıp', '$11.000']] },
+      { ad: 'Diş Hekimliği Fakültesi', bolumler: [['Diş Hekimliği', '$11.000']] },
+      { ad: 'Hukuk Fakültesi', bolumler: [['Hukuk', '$2.500']] },
+      { ad: 'Fen Edebiyat Fakültesi', bolumler: [
+        ['İngiliz Dili ve Edebiyatı', '$2.500'], ['Matematik', '$2.500'],
+        ['Psikoloji (İng)', '$2.500'], ['Psikoloji', '$2.500'],
+        ['Sosyoloji', '$2.500'], ['Tarih', '$2.500'],
+        ['Türk Dili ve Edebiyatı', '$2.500'], ['İng. Mütercim Tercümanlık', '$2.500'],
+        ['Rusça Mütercim Tercümanlık', '$2.500'],
+        ['Bilişim Sistemleri Teknolojileri', '$2.500'], ['Yazılım Geliştirme', '$2.500']
+      ]},
+      { ad: 'Güzel Sanatlar Fakültesi', bolumler: [
+        ['Gastronomi ve Mutfak Sanatları', '$2.500'], ['İletişim ve Tasarımı', '$2.500'],
+        ['Radyo, Televizyon ve Sinema', '$2.500'], ['RTS (İng)', '$2.500'],
+        ['Oyunculuk', '$2.500'], ['Grafik Tasarımı (İng)', '$2.500'],
+        ['Grafik Tasarımı', '$2.500'], ['Tekstil ve Moda Tasarımı', '$2.500']
+      ]},
+      { ad: 'İktisat Fakültesi', bolumler: [
+        ['Finans ve Bankacılık', '$2.500'], ['Finans ve Bankacılık (İng)', '$2.500'],
+        ['İktisat', '$2.500'], ['İktisat (İng)', '$2.500'],
+        ['İşletme', '$2.500'], ['İşletme (İng)', '$2.700'],
+        ['Sermaye Piyasası', '$2.500'], ['Siyaset Bilimi ve Kamu Yönetimi', '$2.500'],
+        ['SBvKY (İng)', '$2.500'], ['Turizm İşletmeciliği', '$2.500'],
+        ['Uluslararası İlişkiler (İng)', '$2.500'],
+        ['Lojistik Yönetimi (İng)', '$2.500'], ['Lojistik Yönetimi', '$2.500'],
+        ['Uluslararası Ticaret ve Finans', '$2.500'], ['UTvF (İng)', '$2.500'],
+        ['YBS (İng)', '$2.500'], ['YBS', '$2.500']
+      ]},
+      { ad: 'İletişim Fakültesi', bolumler: [
+        ['Dijital Oyun Tasarımı (İng)', '$2.500'], ['Dijital Oyun Tasarımı', '$2.500'],
+        ['Görsel İletişim Tasarımı (İng)', '$2.500'], ['Görsel İletişim Tasarımı', '$2.500'],
+        ['Halkla İlişkiler ve Reklamcılık', '$2.500'], ['Medya ve İletişim', '$2.500'],
+        ['Yeni Medya', '$2.500'], ['Yeni Medya (İng)', '$2.500']
+      ]},
+      { ad: 'Mühendislik Fakültesi', bolumler: [
+        ['Elektrik-Elektronik Müh.', '$2.500'], ['Endüstri Mühendisliği', '$2.500'],
+        ['Endüstri Mühendisliği (İng)', '$2.500'], ['Endüstriyel Tasarım', '$2.500'],
+        ['Endüstriyel Tasarım (İng)', '$2.500'], ['İç Mimarlık', '$2.500'],
+        ['İç Mimarlık (İng)', '$2.500'], ['İnşaat Mühendisliği (İng)', '$2.500'],
+        ['Kimya Mühendisliği', '$2.500'], ['Makine Mühendisliği (İng)', '$2.500'],
+        ['Mimarlık', '$2.500'], ['Mimarlık (İng)', '$2.500'],
+        ['Bilgisayar Mühendisliği', '$2.700'], ['Bilgisayar Mühendisliği (İng)', '$2.700'],
+        ['Yazılım Mühendisliği', '$2.700']
+      ]},
+      { ad: 'Sağlık Bilimleri Fakültesi', bolumler: [
+        ['Çocuk Gelişimi', '$2.500'], ['Sağlık Yönetimi', '$2.500'],
+        ['Beslenme ve Diyetetik', '$2.700'], ['Ebelik', '$2.700'],
+        ['Fizyoterapi ve Rehabilitasyon', '$2.700'], ['Hemşirelik', '$2.700']
+      ]}
+    ]
+  },
+
+  'bahcesehir': {
+    ad: 'İstanbul Bahçeşehir Üniversitesi',
+    not: 'Depozito tüm bölümler için $1.000',
+    fakulteler: [
+      { ad: 'Konservatuar', bolumler: [
+        ['Sahne Sanatları (TR)', '$5.950'], ['Müzik (TR)', '$5.950'],
+        ['Müzik Teknolojisi (TR)', '$5.950'], ['Ses Eğitimi (TR)', '$5.950']
+      ]},
+      { ad: 'Uygulamalı Bilimler Fakültesi', bolumler: [
+        ['Pilotaj', '$9.000'], ['Gastronomi ve Mutfak Sanatları', '$5.950']
+      ]},
+      { ad: 'Mimarlık ve Tasarım Fakültesi', bolumler: [
+        ['İç Mimarlık ve Çevre Tasarımı', '$8.500'], ['Mimarlık', '$8.500'],
+        ['Endüstriyel Tasarım', '$8.500'], ['Tekstil ve Moda Tasarımı', '$8.500']
+      ]},
+      { ad: 'İletişim Fakültesi', bolumler: [
+        ['Sinema ve Televizyon', '$6.800'], ['Reklamcılık', '$6.800'],
+        ['Yeni Medya', '$6.800'], ['Dijital Oyun Tasarımı', '$6.800'],
+        ['Çizgi Film ve Animasyon', '$6.800'], ['Halkla İlişkiler ve Tanıtım', '$6.800'],
+        ['Görsel İletişim Tasarımı', '$6.800'], ['İng. Mütercim Tercümanlık', '$8.500']
+      ]},
+      { ad: 'Diş Hekimliği Fakültesi', bolumler: [['Diş Hekimliği', '$24.000']] },
+      { ad: 'İktisadi, İdari ve Sosyal Bilimler', bolumler: [
+        ['İşletme', '$8.500'], ['Siyaset Bilimi ve Uluslararası İlişkiler', '$8.500'],
+        ['Ekonomi', '$8.500'], ['Uluslararası Tic. ve İşletmecilik', '$8.500'],
+        ['Ekonomi ve Finans', '$8.500'], ['Lojistik Yönetimi', '$8.500'],
+        ['Sosyoloji', '$8.500'], ['Psikoloji', '$8.500'], ['Uluslararası Finans', '$8.500']
+      ]},
+      { ad: 'Eğitim Fakültesi', bolumler: [
+        ['İngilizce Öğretmenliği', '$5.950'], ['Rehberlik ve Psikolojik Danışmanlık', '$5.950'],
+        ['Okul Öncesi Öğretmenliği', '$5.950']
+      ]},
+      { ad: 'Mühendislik ve Doğa Bilimleri', bolumler: [
+        ['Bilgisayar Mühendisliği', '$9.000'], ['Elektrik-Elektronik Müh.', '$9.000'],
+        ['Endüstri Mühendisliği', '$9.000'], ['Mekatronik Mühendisliği', '$9.000'],
+        ['Yazılım Mühendisliği', '$9.000'], ['Enerji Sistemleri Müh.', '$9.000'],
+        ['Biyomedikal Mühendisliği', '$9.000'], ['İşletme Mühendisliği', '$9.000'],
+        ['İnşaat Mühendisliği', '$9.000'], ['Moleküler Biyoloji ve Genetik', '$9.000'],
+        ['Yapay Zeka Mühendisliği', '$12.000'], ['Bilgi Güvenliği Teknolojisi', '$9.000']
+      ]},
+      { ad: 'Sağlık Bilimleri Fakültesi', bolumler: [
+        ['Hemşirelik (TR)', '$6.375'], ['Fizyoterapi ve Rehabilitasyon', '$6.375'],
+        ['Fizyoterapi (TR)', '$6.375'], ['Beslenme ve Diyetetik (TR)', '$6.375'],
+        ['Beslenme ve Diyetetik', '$6.375'], ['Hemşirelik', '$6.375'],
+        ['Dil ve Konuşma Terapisi (TR)', '$6.375'], ['Odyoloji (TR)', '$6.375']
+      ]},
+      { ad: 'Hukuk Fakültesi', bolumler: [['Hukuk (TR)', '$10.000']] },
+      { ad: 'Tıp Fakültesi', bolumler: [['Tıp', '$28.000']] },
+      { ad: 'Eczacılık Fakültesi', bolumler: [['Eczacılık', '$15.000']] }
+    ]
+  },
+
+  'altinbas': {
+    ad: 'İstanbul Altınbaş Üniversitesi',
+    not: 'Depozito şartı: Kabul mektubunda $1.000 + Kayıt sırasında yıllık ödemenin %50\'sinden depozito çıkartılmış miktar',
+    fakulteler: [
+      { ad: 'Tıp Fakültesi', bolumler: [['Tıp (İngilizce)', '$25.000']] },
+      { ad: 'Diş Hekimliği Fakültesi', bolumler: [['Diş Hekimliği (%30 İng-%70 Türkçe)', '$22.000']] },
+      { ad: 'Eczacılık Fakültesi', bolumler: [['Eczacılık (İngilizce)', '$12.000']] },
+      { ad: 'Sağlık Bilimleri Fakültesi', bolumler: [
+        ['Hemşirelik', '$7.500'], ['Ebelik', '$7.500']
+      ]},
+      { ad: 'Hukuk Fakültesi', bolumler: [
+        ['Hukuk', '$6.500'],
+        ['Türk-Alman Hukuku (%50 Türkçe-%50 Almanca)', '$6.500']
+      ]},
+      { ad: 'İktisadi, İdari ve Sosyal Bilimler', bolumler: [
+        ['Ekonomi (İng)', '$5.000'], ['Uluslararası İlişkiler (İng)', '$5.000'],
+        ['Siyaset Bilimi ve Kamu Yönetimi (İng)', '$5.000'], ['Psikoloji (İng)', '$6.000'],
+        ['Sosyoloji', '$5.000']
+      ]},
+      { ad: 'Mühendislik ve Mimarlık Fakültesi', bolumler: [
+        ['Mimarlık (İng)', '$6.000'], ['İnşaat Mühendisliği (İng)', '$6.000'],
+        ['Bilgisayar Mühendisliği (İng)', '$6.000'], ['Elektrik Elektronik Müh. (İng)', '$6.000'],
+        ['Endüstri Mühendisliği (İng)', '$6.000'], ['İç Mimarlık ve Çevre Tasarımı (İng)', '$6.000'],
+        ['İç Mimarlık ve Çevre Tasarımı', '$5.000'], ['Mekanik Mühendisliği (İng)', '$6.000'],
+        ['Yazılım Mühendisliği (İng)', '$6.000']
+      ]},
+      { ad: 'İşletme Fakültesi', bolumler: [
+        ['İşletme (İng)', '$6.000'], ['Uluslararası Lojistik Yönetimi (İng)', '$5.000'],
+        ['Uluslararası Ticaret (İng)', '$5.000'], ['Pazarlama (İng)', '$6.000']
+      ]},
+      { ad: 'Uygulamalı Bilimler Fakültesi', bolumler: [
+        ['Gastronomi', '$5.000'], ['Sağlık Yönetimi', '$5.000'],
+        ['Kuyumculuk ve Mücevher Tasarımı', '$5.000'], ['YBS', '$5.000'], ['Yazılım Geliştirme', '$5.000']
+      ]},
+      { ad: 'İletişim Fakültesi', bolumler: [
+        ['Radyo, Televizyon ve Sinema', '$5.000'], ['Görsel İletişim Tasarımı', '$5.000'],
+        ['Halkla İlişkiler ve Reklamcılık', '$5.000']
+      ]}
+    ]
+  },
+
+  'gelisim': {
+    ad: 'İstanbul Gelişim Üniversitesi',
+    not: 'Depozito tüm bölümler için $2.000 (İng. bölümlerde $2.125)',
+    fakulteler: [
+      { ad: 'Diş Hekimliği Fakültesi', bolumler: [
+        ['Diş Hekimliği (İng)', '$17.250'], ['Diş Hekimliği (Türkçe)', '$13.500']
+      ]},
+      { ad: 'İktisadi, İdari ve Sosyal Bilimler', bolumler: [
+        ['Reklamcılık', '$4.000'], ['Havacılık Yönetimi (İng)', '$4.250'],
+        ['Havacılık Yönetimi', '$4.000'], ['İşletme (İng)', '$4.500'],
+        ['İşletme', '$4.000'], ['Ekonomi ve Finans (İng)', '$4.250'],
+        ['Ekonomi ve Finans', '$4.000'], ['İngiliz Dili ve Edebiyatı (İng)', '$4.250'],
+        ['İng. Mütercim Tercümanlık', '$4.250'], ['Uluslararası Ticaret ve İşletmecilik (İng)', '$4.250'],
+        ['Uluslararası Ticaret ve İşletmecilik', '$4.000'], ['Uluslararası Ticaret ve Finansman (İng)', '$4.250'],
+        ['Lojistik Yönetimi (İng)', '$4.250'], ['Lojistik Yönetimi', '$4.000'],
+        ['YBS (İng)', '$4.250'], ['YBS', '$4.000'], ['Yeni Medya ve İletişim', '$4.000'],
+        ['Siyaset Bilimi ve Uluslararası İlişkiler', '$4.000'], ['SBvUI (İng)', '$4.250'],
+        ['Siyaset Bilimi ve Kamu Yönetimi', '$4.000'], ['Psikoloji (İng)', '$4.250'],
+        ['Psikoloji', '$4.000'], ['Halkla İlişkiler ve Tanıtım', '$4.000'],
+        ['Radyo, Televizyon ve Sinema', '$4.000'], ['Sosyoloji', '$4.000'],
+        ['Turizm Rehberliği', '$4.000'], ['Türk Dili ve Edebiyatı', '$4.000']
+      ]},
+      { ad: 'Mühendislik ve Mimarlık', bolumler: [
+        ['Uçak Mühendisliği (İng)', '$6.000'], ['Uçak Mühendisliği', '$4.500'],
+        ['Bilgisayar Mühendisliği (İng)', '$5.500'], ['Bilgisayar Mühendisliği', '$4.500'],
+        ['Yazılım Mühendisliği (İng)', '$5.500'], ['Yazılım Mühendisliği', '$4.500'],
+        ['İnşaat Mühendisliği (İng)', '$4.750'], ['İnşaat Mühendisliği', '$4.500'],
+        ['Mimarlık (İng)', '$4.750'], ['Mimarlık', '$4.500'],
+        ['Elektrik Elektronik Müh. (İng)', '$4.750'], ['EEM (Türkçe)', '$4.500'],
+        ['Endüstri Mühendisliği', '$4.500'], ['Mekatronik Mühendisliği', '$4.500']
+      ]},
+      { ad: 'Güzel Sanatlar Fakültesi', bolumler: [
+        ['İç Mimarlık ve Çevre Tasarımı (İng)', '$4.250'], ['Gastronomi (Türkçe)', '$4.000'],
+        ['Grafik Tasarımı', '$4.000'], ['İç Mimarlık', '$4.000'],
+        ['İç Mimarlık ve Çevre Tasarımı', '$4.000'], ['Radyo Televizyon Sinema', '$4.000'],
+        ['Görsel İletişim Tasarımı', '$4.000']
+      ]},
+      { ad: 'Sağlık Bilimleri Fakültesi', bolumler: [
+        ['Hemşirelik (İng)', '$4.250'], ['Hemşirelik (Türkçe)', '$5.000'],
+        ['Çocuk Gelişimi (İng)', '$4.250'], ['Çocuk Gelişimi', '$4.000'],
+        ['Sağlık Yönetimi', '$4.000'], ['Odyoloji', '$4.000'],
+        ['Beslenme ve Diyetetik (İng)', '$4.250'], ['Beslenme ve Diyetetik', '$4.000'],
+        ['Ergoterapi', '$4.000'], ['Perfüzyon', '$4.000'],
+        ['Fizyoterapi (İng)', '$4.500'], ['Fizyoterapi', '$4.500'],
+        ['Sosyal Hizmet', '$4.000'], ['Dil ve Konuşma Terapisi', '$4.000']
+      ]},
+      { ad: 'Uygulamalı Bilimler Fakültesi', bolumler: [
+        ['İng. Mütercim Tercümanlık (İng-Türkçe)', '$4.250'], ['Uçak Bakım ve Onarım', '$4.000'],
+        ['Havacılık Yönetimi (İng)', '$4.250'], ['Havacılık Yönetimi', '$4.000'],
+        ['Havacılık Elektrik ve Elektroniği', '$4.000'], ['Bankacılık ve Sigortacılık', '$4.000'],
+        ['Elektronik Ticaret ve Yönetimi', '$4.000'], ['Gastronomi (İng)', '$4.250'],
+        ['Gastronomi (Türkçe)', '$4.000'], ['Bilişim Sistemleri ve Teknolojileri', '$4.000'],
+        ['YBS', '$4.000'], ['Yeni Medya ve İletişim (İng)', '$4.250'],
+        ['Yeni Medya ve İletişim', '$4.000'], ['Televizyon Haberciliği ve Programcılığı', '$4.000'],
+        ['Veri Bilim ve Analitiği', '$4.000'], ['Halkla İlişkiler ve Reklamcılık', '$4.000']
+      ]},
+      { ad: 'Spor Bilimleri Fakültesi', bolumler: [
+        ['Antrenörlük Eğitimi', '$4.000'], ['Antrenörlük Eğitimi (İng)', '$4.250'],
+        ['Egzersiz ve Spor Bilimleri', '$4.000'], ['Engellilerde Egzersiz ve Spor', '$4.000'],
+        ['Rekreasyon', '$4.000'], ['Spor Yöneticiliği', '$4.000']
+      ]}
+    ]
+  },
+
+  'okan': {
+    ad: 'İstanbul Okan Üniversitesi',
+    not: 'Depozito tüm bölümler için $1.000 (Tıp ve Diş için $2.500)',
+    fakulteler: [
+      { ad: 'Tıp Fakültesi', bolumler: [
+        ['Tıp (İngilizce)', '$22.500'], ['Tıp (Türkçe)', '$19.500']
+      ]},
+      { ad: 'Diş Hekimliği Fakültesi', bolumler: [
+        ['Diş Hekimliği (İng+Türkçe)', '$18.000'], ['Diş Hekimliği', '$15.000']
+      ]},
+      { ad: 'Eczacılık Fakültesi', bolumler: [
+        ['Eczacılık (İngilizce)', '$8.000'], ['Eczacılık', '$9.000']
+      ]},
+      { ad: 'Sağlık Bilimleri Fakültesi', bolumler: [
+        ['Çocuk Gelişimi', '$4.500'], ['Sağlık Yönetimi', '$4.500'],
+        ['Hemşirelik (İng)', '$5.000'], ['Hemşirelik', '$4.500'],
+        ['Beslenme ve Diyetetik (İng)', '$5.000'], ['Beslenme ve Diyetetik', '$4.500'],
+        ['Fizyoterapi (İng)', '$5.000'], ['Fizyoterapi', '$4.500']
+      ]},
+      { ad: 'Mühendislik ve Doğa Bilimleri', bolumler: [
+        ['Otomotiv Teknolojisi (İng)', '$5.000'], ['İnşaat Mühendisliği (İng)', '$5.000'],
+        ['İnşaat Mühendisliği', '$4.500'], ['Bilgisayar Mühendisliği (İng)', '$5.000'],
+        ['Elektrik Elektronik Müh. (İng)', '$5.000'], ['Genetik ve Biyomühendislik (İng)', '$5.000'],
+        ['Harita Mühendisliği (İng)', '$5.000'], ['Endüstri Mühendisliği (İng)', '$5.000'],
+        ['Makine Mühendisliği (İng)', '$5.000'], ['Mekatronik Mühendisliği (İng)', '$5.000'],
+        ['Yazılım Mühendisliği (İng)', '$5.000']
+      ]},
+      { ad: 'İşletme Fakültesi', bolumler: [
+        ['İşletme Yönetimi (İng)', '$5.000'], ['İşletme Yönetimi', '$4.500'],
+        ['Ekonomi ve Finans (İng)', '$5.000'], ['Uluslararası Finans ve Bankacılık', '$4.500'],
+        ['Uluslararası Ticaret (İng)', '$5.000'], ['Uluslararası Ticaret', '$4.500'],
+        ['Lojistik Yönetimi (İng)', '$5.000'], ['Siyaset Bilimi ve UI', '$4.500'],
+        ['SBvUI (İng)', '$5.000'], ['Havacılık Yönetimi', '$4.500'],
+        ['Pilotaj (İng)', '$8.000 + Flight School']
+      ]},
+      { ad: 'Güzel Sanatlar, Tasarım ve Mimarlık', bolumler: [
+        ['Mimarlık (İng)', '$5.000'], ['Mimarlık', '$4.500'],
+        ['Sinema ve Televizyon', '$4.500'], ['Dijital Oyun Tasarımı', '$4.500'],
+        ['İç Mimarlık ve Çevre Tasarımı (İng)', '$5.000'], ['İç Mimarlık', '$4.500'],
+        ['Tekstil ve Moda Tasarımı', '$4.500'], ['Görsel İletişim Tasarımı', '$4.500']
+      ]},
+      { ad: 'Uygulamalı Bilimler Fakültesi', bolumler: [
+        ['Gastronomi (İng)', '$5.000'], ['Gastronomi', '$4.500'],
+        ['Bilişim Sistemleri (İng)', '$5.000'], ['Bilişim Sistemleri', '$4.500'],
+        ['Yeni Medya ve İletişim', '$4.500'], ['Halkla İlişkiler ve Reklamcılık', '$4.500'],
+        ['Spor Yönetimi', '$4.500']
+      ]},
+      { ad: 'Hukuk Fakültesi', bolumler: [['Hukuk', '$4.500']] },
+      { ad: 'İnsan ve Toplum Bilimleri', bolumler: [
+        ['Çince Mütercim Tercümanlık', '$4.500'], ['İng. Mütercim Tercümanlık', '$5.000'],
+        ['Psikoloji', '$4.500'], ['Psikoloji (İng)', '$5.000'],
+        ['Rusça Mütercim Tercümanlık', '$4.500']
+      ]},
+      { ad: 'Eğitim Fakültesi', bolumler: [
+        ['İngilizce Öğretmenliği (İng)', '$5.000'], ['Okul Öncesi Öğretmenliği', '$4.500'],
+        ['Rehberlik ve Psikolojik Danışmanlık', '$4.500'], ['Özel Eğitim Öğretmenliği', '$4.500']
+      ]},
+      { ad: 'Konservatuar', bolumler: [['Müzik', '$4.500'], ['Tiyatro', '$4.500']] }
+    ]
+  },
+
+  'uskudar': {
+    ad: 'İstanbul Üsküdar Üniversitesi',
+    not: 'Depozito tüm bölümler için $1.500',
+    fakulteler: [
+      { ad: 'Tıp Fakültesi', bolumler: [
+        ['Tıp (İngilizce)', '$24.000'], ['Tıp (Türkçe)', '$18.000']
+      ]},
+      { ad: 'Diş Hekimliği Fakültesi', bolumler: [
+        ['Diş Hekimliği (İng)', '$22.000'], ['Diş Hekimliği (Türkçe)', '$16.000']
+      ]},
+      { ad: 'İletişim Fakültesi', bolumler: [
+        ['Reklamcılık (Türkçe)', '$4.200'], ['Çizgi Film ve Animasyon', '$4.200'],
+        ['Gazetecilik', '$4.200'], ['Yeni Medya ve İletişim (İng)', '$4.400'],
+        ['Yeni Medya ve İletişim', '$4.200'], ['Halkla İlişkiler ve Tanıtım', '$4.200'],
+        ['Radyo, Televizyon ve Sinema', '$4.200'], ['Görsel İletişim Tasarımı', '$4.200']
+      ]},
+      { ad: 'Beşeri ve Sosyal Bilimler Fakültesi', bolumler: [
+        ['İngilizce Çeviri ve Tercümanlık (İng)', '$4.400'], ['Tarih', '$4.200'],
+        ['Yönetim Bilgi Sistemleri', '$4.200'], ['Felsefe', '$4.200'],
+        ['Siyaset Bilimi ve Uluslararası İlişkiler (İng)', '$4.400'],
+        ['Siyaset Bilimi ve UI', '$4.200'], ['Psikoloji (İng)', '$5.600'],
+        ['Psikoloji', '$4.200'], ['Sosyoloji', '$4.200']
+      ]},
+      { ad: 'Mühendislik ve Doğa Bilimleri', bolumler: [
+        ['Biyomühendislik (İng)', '$5.000'], ['Kimya Mühendisliği (İng)', '$5.000'],
+        ['Bilgisayar Mühendisliği (İng)', '$5.600'], ['Elektrik-Elektronik Müh. (İng)', '$5.000'],
+        ['Adli Bilim', '$4.200'], ['Endüstri Mühendisliği (İng)', '$4.400'],
+        ['Mol. Biyoloji ve Genetik (İng)', '$5.000'], ['Mol. Biyoloji ve Genetik', '$4.200'],
+        ['Yazılım Mühendisliği (İng)', '$5.600']
+      ]},
+      { ad: 'Sağlık Bilimleri Fakültesi', bolumler: [
+        ['Odyoloji', '$4.200'], ['Çocuk Gelişimi', '$4.200'],
+        ['Sağlık Yönetimi', '$4.200'], ['Ebelik', '$4.200'],
+        ['Hemşirelik', '$4.200'], ['Beslenme ve Diyetetik', '$4.200'],
+        ['İş Sağlığı ve Güvenliği', '$4.200'], ['Mesleki Terapi', '$4.200'],
+        ['Perfüzyon', '$4.200'], ['Fizyoterapi ve Rehabilitasyon', '$4.200'],
+        ['Sosyal Hizmet', '$4.200'], ['Konuşma ve Dil Terapisi', '$4.200']
+      ]}
+    ]
+  },
+
+  'bilgi': {
+    ad: 'İstanbul Bilgi Üniversitesi',
+    not: 'Depozito şartı: Kabul mektubunda $1.000 + Kayıt sırasında $1.000',
+    fakulteler: [
+      { ad: 'Sosyal ve Beşeri Bilimler Fakültesi', bolumler: [
+        ['Uluslararası İlişkiler', '$5.000'], ['Siyaset Bilimi', '$6.600'],
+        ['Karşılaştırmalı Edebiyat', '$4.800'], ['Sosyoloji', '$4.800'],
+        ['Psikoloji', '$7.800'], ['Tarih', '$4.800'], ['Müzik', '$6.600'],
+        ['İngiliz Dili ve Edebiyatı', '$4.800']
+      ]},
+      { ad: 'Hukuk Fakültesi', bolumler: [['Hukuk', '$9.600']] },
+      { ad: 'İşletme Fakültesi', bolumler: [
+        ['Ekonomi', '$7.200'], ['İşletme', '$7.200'], ['Ekonomi Finans', '$7.200'],
+        ['Uluslararası Finans', '$7.200'], ['YBS', '$7.200'],
+        ['Uluslararası Ticaret ve İşletmecilik', '$7.200'], ['Pazarlama', '$7.200']
+      ]},
+      { ad: 'İletişim Fakültesi', bolumler: [
+        ['Yeni Medya ve İletişim', '$6.000'], ['Reklamcılık', '$6.000'],
+        ['Halkla İlişkiler', '$6.000'], ['Radyo, Televizyon ve Sinema', '$6.000'],
+        ['Görsel İletişim Tasarımı', '$6.000'], ['Televizyon Haberciliği ve Programcılığı', '$6.000'],
+        ['Sahne ve Gösteri Sanatları Yönetimi', '$6.000'],
+        ['Dijital Oyun Tasarımı', '$7.200'], ['İletişim Tasarımı ve Yönetimi', '$6.000']
+      ]},
+      { ad: 'Mimarlık Fakültesi', bolumler: [
+        ['Mimarlık', '$4.800'], ['İç Mimarlık', '$7.200'], ['Endüstri Ürünleri Tasarımı', '$7.200']
+      ]},
+      { ad: 'Mühendislik ve Doğa Bilimleri', bolumler: [
+        ['Matematik', '$4.800'], ['Bilgisayar Mühendisliği', '$7.800'],
+        ['Genetik ve Biyomühendislik', '$4.800'], ['Elektrik-Elektronik Müh.', '$4.800'],
+        ['Endüstri Mühendisliği', '$7.800'], ['Makina Mühendisliği', '$4.800'],
+        ['İnşaat Mühendisliği', '$4.800'], ['Mekatronik Mühendisliği', '$6.000']
+      ]},
+      { ad: 'Sağlık Bilimleri Fakültesi', bolumler: [
+        ['Beslenme ve Diyetetik', '$6.000'], ['Hemşirelik', '$6.000'],
+        ['Fizyoterapi ve Rehabilitasyon', '$6.000'], ['Çocuk Gelişimi', '$6.000']
+      ]},
+      { ad: 'Uygulamalı Bilimler Fakültesi', bolumler: [
+        ['Gastronomi ve Mutfak Sanatları', '$6.000'], ['Turizm ve Otel İşletmeciliği', '$6.000'],
+        ['Havacılık Yönetimi', '$6.000'], ['Lojistik Yönetimi', '$6.000'],
+        ['Tekstil ve Moda Tasarımı', '$6.000']
+      ]},
+      { ad: 'Bilişim Teknolojisi Yüksekokulu', bolumler: [['Yazılım Geliştirme', '$6.600']] }
+    ]
+  },
+
+  'medipol': {
+    ad: 'İstanbul Medipol Üniversitesi',
+    not: 'Depozito tüm bölümler için $1.500',
+    fakulteler: [
+      { ad: 'Tıp Fakültesi', bolumler: [
+        ['Uluslararası Tıp (%100 İng)', '$44.000'], ['Tıp (%100 İng)', '$40.000'],
+        ['Tıp (%30 İng-%70 Türkçe)', '$34.000']
+      ]},
+      { ad: 'Diş Hekimliği Fakültesi', bolumler: [
+        ['Diş Hekimliği (%100 İng)', '$36.000'], ['Diş Hekimliği (%30 İng-%70 Türkçe)', '$33.000']
+      ]},
+      { ad: 'Eczacılık Fakültesi', bolumler: [
+        ['Eczacılık (%100 İng)', '$18.000'], ['Eczacılık', '$15.000']
+      ]},
+      { ad: 'Hukuk Fakültesi', bolumler: [['Hukuk (%30 İng-%70 Türkçe)', '$8.000']] },
+      { ad: 'Sağlık Bilimleri Fakültesi', bolumler: [
+        ['Hemşirelik (%100 İng)', '$6.000'], ['Hemşirelik', '$8.750'],
+        ['Fizyoterapi (%100 İng)', '$9.000'], ['Fizyoterapi', '$8.500'],
+        ['Beslenme ve Diyetetik', '$4.500'], ['Sağlık Yönetimi (%100 İng)', '$4.500'],
+        ['Sağlık Yönetimi', '$6.500'], ['Odyoloji', '$6.500'],
+        ['Ortez ve Protez', '$5.000'], ['Çocuk Gelişimi', '$6.000'],
+        ['Ebelik', '$8.000'], ['Ergoterapi', '$4.500'], ['Sosyal Hizmetler', '$4.500'],
+        ['Konuşma ve Dil Terapisi (%100 İng)', '$4.750'], ['Konuşma ve Dil Terapisi', '$4.500']
+      ]},
+      { ad: 'Mühendislik ve Doğa Bilimleri', bolumler: [
+        ['Yapay Zeka Mühendisliği (%100 İng)', '$10.000'],
+        ['Elektrik ve Elektronik Müh. (%100 İng)', '$6.000'],
+        ['Biyomedikal Mühendisliği (%100 İng)', '$6.500'],
+        ['Endüstri Mühendisliği (%100 İng)', '$4.750'],
+        ['Bilgisayar Mühendisliği (%100 İng)', '$6.500'],
+        ['İnşaat Mühendisliği (%100 İng)', '$5.000'], ['İnşaat Mühendisliği', '$7.000']
+      ]},
+      { ad: 'İşletme Fakültesi', bolumler: [
+        ['İşletme (%100 İng)', '$5.500'], ['Ekonomi ve Finans (%100 İng)', '$4.500'],
+        ['Uluslararası Ticaret ve Finans (%100 İng)', '$4.500'], ['Uluslararası Ticaret ve Finans', '$6.500'],
+        ['YBS (%100 İng)', '$4.500'], ['YBS', '$6.500'],
+        ['Lojistik Yönetimi (%100 İng)', '$4.500'], ['Lojistik Yönetimi', '$6.500'],
+        ['İnsan Kaynakları Yönetimi', '$5.500'], ['Havacılık Yönetimi (%100 İng)', '$4.500'],
+        ['Havacılık Yönetimi', '$6.500'], ['Bankacılık ve Sigortacılık', '$6.500']
+      ]},
+      { ad: 'Beşeri ve Toplum Bilimleri Fakültesi', bolumler: [
+        ['Psikoloji (%100 İng)', '$5.500'], ['Psikoloji', '$6.500'],
+        ['Siyaset Bilimi ve UI (%100 İng)', '$5.500'], ['Siyaset Bilimi ve Kamu Yönetimi (%100 İng)', '$5.500'],
+        ['Siyaset Bilimi ve Kamu Yönetimi', '$6.000'], ['Tarih (%100 İng)', '$6.500']
+      ]},
+      { ad: 'Güzel Sanatlar, Tasarım ve Mimarlık', bolumler: [
+        ['Mimarlık (%100 İng)', '$5.000'], ['Mimarlık', '$6.500'],
+        ['Endüstriyel Tasarım', '$5.000'], ['İç Mimarlık ve Çevre Tasarımı (%100 İng)', '$5.000'],
+        ['İç Mimarlık ve Çevre Tasarımı', '$6.500'], ['Görsel İletişim Tasarımı', '$4.500'],
+        ['Türk Müzik Sanatı', '$5.000'], ['Gastronomi (%100 İng)', '$4.750'],
+        ['Gastronomi', '$6.000'], ['Kentsel Tasarım ve Peyzaj Mimarisi', '$4.500']
+      ]},
+      { ad: 'Eğitim Fakültesi', bolumler: [
+        ['Psikolojik Danışmanlık ve Rehberlik (%100 İng)', '$4.500'],
+        ['Psikolojik Danışmanlık ve Rehberlik', '$5.500'],
+        ['İngilizce Öğretimi (%100 İng)', '$5.500'], ['İlköğretim Matematik Öğretimi', '$5.500'],
+        ['Özel Eğitim Öğretimi', '$5.500'], ['Okul Öncesi Öğretimi', '$5.500']
+      ]},
+      { ad: 'İletişim Fakültesi', bolumler: [
+        ['Gazetecilik', '$4.500'], ['Halkla İlişkiler ve Reklamcılık (%100 İng)', '$4.500'],
+        ['Halkla İlişkiler ve Reklamcılık', '$5.500'], ['Medya ve Görsel Sanatlar', '$4.500'],
+        ['Yeni Medya ve İletişim Sistemleri', '$5.500'], ['Radyo, Televizyon ve Sinema', '$5.500']
+      ]},
+      { ad: 'Sağlık Bilimleri Fakültesi (Haliç Kampüsü)', bolumler: [
+        ['Beslenme ve Diyetetik', '$4.000'], ['Çocuk Gelişimi', '$5.500'],
+        ['Ebelik', '$8.000'], ['Hemşirelik', '$7.000'], ['Fizyoterapi ve Rehabilitasyon', '$7.000'],
+        ['Odyoloji', '$5.000'], ['Sosyal Hizmetler', '$4.000']
+      ]}
+    ]
+  }
+};
+
+
+// ─── DETAYLI ÜNİVERSİTE VERİSİ ───
+var detayliUniversiteler = {
+
+  'istinye': {
+    ad: 'İstanbul İstinye Üniversitesi',
+    not: 'Depozito tüm bölümler için $1.750',
+    fakulteler: [
+      { ad: 'Tıp Fakültesi', bolumler: [
+        ['Tıp (Türkçe)', '$23.000'], ['Tıp (İngilizce)', '$29.000']
+      ]},
+      { ad: 'Diş Hekimliği Fakültesi', bolumler: [
+        ['Diş Hekimliği (Türkçe)', '$20.000'], ['Diş Hekimliği (İngilizce)', '$24.500']
+      ]},
+      { ad: 'Eczacılık Fakültesi', bolumler: [
+        ['Eczacılık (Türkçe)', '$14.000'], ['Eczacılık (İngilizce)', '$15.000']
+      ]},
+      { ad: 'İnsan ve Toplum Bilimleri', bolumler: [
+        ['Psikoloji (Türkçe)', '$8.000'], ['Psikoloji (İngilizce)', '$8.000'],
+        ['Türk Dili ve Edebiyatı', '$8.000'], ['İngiliz Dili ve Edebiyatı', '$8.000'],
+        ['İngilizce Mütercim Tercümanlık', '$8.000'], ['Felsefe (Türkçe)', '$8.000']
+      ]},
+      { ad: 'Güzel Sanatlar, Tasarım ve Mimarlık', bolumler: [
+        ['İç Mimarlık ve Çevre Tasarımı', '$8.000'], ['Mimarlık (Türkçe)', '$8.000'],
+        ['Mimarlık (İngilizce)', '$8.000'], ['Gastronomi (Türkçe)', '$8.000'],
+        ['Gastronomi (İngilizce)', '$8.000'], ['Tekstil Moda Tasarımı', '$7.000'],
+        ['Görsel İletişim Tasarımı', '$7.000']
+      ]},
+      { ad: 'Mühendislik ve Doğa Bilimleri', bolumler: [
+        ['Yazılım (Türkçe)', '$8.000'], ['Yazılım (İngilizce)', '$8.000'],
+        ['Makine Mühendisliği (İng)', '$8.000'], ['Bilgisayar Müh. (İng)', '$8.000'],
+        ['Bilgisayar Müh. (Türkçe)', '$8.000'], ['Elektrik-Elektronik Müh. (İng)', '$8.000'],
+        ['Endüstri Müh. (İng)', '$8.000'], ['Biyomedikal Müh. (İng)', '$8.000'],
+        ['Moleküler Biyoloji ve Genetik (İng)', '$8.000'], ['Matematik (İng)', '$8.000'],
+        ['Kimya (İng)', '$8.000']
+      ]},
+      { ad: 'İktisadi, İdari ve Sosyal Bilimler', bolumler: [
+        ['Ekonomi (İng)', '$8.000'], ['İşletme (İng)', '$8.000'],
+        ['Sağlık Yönetimi', '$8.000'], ['Siyaset Bilimi ve Kamu Yönetimi', '$8.000'],
+        ['Uluslararası İlişkiler (İng)', '$8.000'], ['Uluslararası Ticaret (İng)', '$8.000'],
+        ['YBS (Türkçe)', '$8.000'], ['YBS (İng)', '$8.000'], ['Lojistik Yönetimi', '$8.000'],
+        ['Yazılım Geliştirme', '$8.000']
+      ]},
+      { ad: 'İletişim Fakültesi', bolumler: [
+        ['Halkla İlişkiler ve Reklamcılık', '$7.000'], ['Yeni Medya (İng)', '$7.000'],
+        ['Radyo Televizyon Sinema (İng)', '$7.000']
+      ]},
+      { ad: 'Sağlık Bilimleri Fakültesi', bolumler: [
+        ['Beslenme ve Diyetik', '$8.000'], ['Çocuk Gelişimi', '$8.000'],
+        ['Dil ve Konuşma Terapisi', '$8.000'], ['Ebelik', '$8.000'],
+        ['Fizyoterapi (Türkçe)', '$8.000'], ['Fizyoterapi (İng)', '$8.000'],
+        ['Hemşirelik (Türkçe)', '$8.000'], ['Hemşirelik (İng)', '$8.000']
+      ]},
+      { ad: 'Hazırlık Eğitimi', bolumler: [
+        ['İngilizce Hazırlık', '$8.000'], ['Türkçe Hazırlık', '$3.000']
+      ]}
+    ]
+  },
+
+  'biruni': {
+    ad: 'İstanbul Biruni Üniversitesi',
+    not: 'Taksitli ve peşin fiyat seçeneği mevcuttur.',
+    fakulteler: [
+      { ad: 'Tıp Fakültesi', bolumler: [
+        ['Tıp (İngilizce) — Taksitli', '$21.000'], ['Tıp (İngilizce) — Peşin', '$18.900'],
+        ['Tıp (Türkçe) — Taksitli', '$19.000'], ['Tıp (Türkçe) — Peşin', '$17.100']
+      ]},
+      { ad: 'Diş Hekimliği Fakültesi', bolumler: [
+        ['Diş Hekimliği (İng) — Taksitli', '$21.000'], ['Diş Hekimliği (İng) — Peşin', '$18.900'],
+        ['Diş Hekimliği (Türkçe) — Taksitli', '$19.000'], ['Diş Hekimliği (Türkçe) — Peşin', '$17.100']
+      ]},
+      { ad: 'Eczacılık Fakültesi', bolumler: [
+        ['Eczacılık (İng) — Taksitli', '$12.000'], ['Eczacılık (İng) — Peşin', '$10.800'],
+        ['Eczacılık (Türkçe) — Taksitli', '$10.000'], ['Eczacılık (Türkçe) — Peşin', '$9.000']
+      ]},
+      { ad: 'Eğitim Fakültesi', bolumler: [
+        ['İlköğretim Matematik Öğretmenliği', '$4.000'], ['İngilizce Öğretmenliği', '$5.000'],
+        ['Okul Öncesi Öğretmenliği', '$5.000'], ['Özel Eğitim Öğretmenliği', '$5.000'],
+        ['Rehberlik ve Psikolojik Danışmanlık', '$4.000']
+      ]},
+      { ad: 'Mühendislik ve Doğa Bilimleri', bolumler: [
+        ['İç Mimarlık ve Çevre Tasarımı', '$5.000'], ['Mol. Biyoloji ve Genetik (İng)', '$5.000'],
+        ['Mol. Biyoloji ve Genetik (Türkçe)', '$5.000'], ['Bilgisayar Müh. (Türkçe)', '$5.000'],
+        ['Bilgisayar Müh. (İng)', '$5.000'], ['Biyomedikal Müh. (İng)', '$5.000'],
+        ['Elektrik-Elektronik Müh.', '$4.000'], ['Yazılım Mühendisliği', '$5.000'],
+        ['Endüstriyel Tasarım', '$4.000']
+      ]},
+      { ad: 'Sağlık Bilimleri Fakültesi', bolumler: [
+        ['Beslenme ve Diyetetik', '$4.000'], ['Çocuk Gelişimi', '$4.000'],
+        ['Dil ve Konuşma Terapisi (Türkçe)', '$4.000'], ['Dil ve Konuşma Terapisi (İng)', '$4.000'],
+        ['Ebelik', '$5.000'], ['Ergoterapi', '$4.000'],
+        ['Fizyoterapi (Türkçe)', '$5.000'], ['Fizyoterapi (İng)', '$5.000'],
+        ['Hemşirelik (İng)', '$5.000'], ['Hemşirelik (Türkçe)', '$5.000'], ['Odyoloji', '$4.000']
+      ]},
+      { ad: 'Uygulamalı Bilimler Fakültesi', bolumler: [
+        ['Gastronomi ve Mutfak Sanatları', '$4.000'], ['İng. Mütercim ve Tercümanlık', '$4.000'],
+        ['Yazılım Geliştirme', '$4.000']
+      ]},
+      { ad: 'Meslek Yüksek Okulu', bolumler: [
+        ['Acil Durum ve Afet Yönetimi', '$5.000'], ['Ağız ve Diş Sağlığı', '$5.000'],
+        ['Ameliyathane Hizmetleri', '$5.000'], ['Anestezi', '$5.000'],
+        ['Bilgisayar Programcılığı', '$5.000'], ['Biyomedikal Cihaz Teknolojileri', '$5.000'],
+        ['Çocuk Gelişimi (MYO)', '$5.000'], ['Diş Protez Teknolojisi', '$5.000'],
+        ['Diyaliz', '$5.000'], ['Eczane Hizmetleri', '$5.000'], ['Fizyoterapi (MYO)', '$5.000'],
+        ['İlk ve Acil Yardım', '$5.000'], ['Odyometri', '$5.000'], ['Optisyenlik', '$5.000'],
+        ['Patoloji Lab. Teknikleri', '$5.000'], ['Tıbbi Görüntüleme', '$5.000'],
+        ['Tıbbi Lab. Teknikleri', '$5.000'], ['Robotik ve Yapay Zeka', '$5.000']
+      ]}
+    ]
+  },
+
+  'beykent': {
+    ad: 'İstanbul Beykent Üniversitesi',
+    not: 'Depozito tüm bölümler için $1.000',
+    fakulteler: [
+      { ad: 'Tıp Fakültesi', bolumler: [['Tıp', '$11.000']] },
+      { ad: 'Diş Hekimliği Fakültesi', bolumler: [['Diş Hekimliği', '$11.000']] },
+      { ad: 'Hukuk Fakültesi', bolumler: [['Hukuk', '$2.500']] },
+      { ad: 'Fen Edebiyat Fakültesi', bolumler: [
+        ['İngiliz Dili ve Edebiyatı', '$2.500'], ['Matematik', '$2.500'],
+        ['Psikoloji (İng)', '$2.500'], ['Psikoloji', '$2.500'],
+        ['Sosyoloji', '$2.500'], ['Tarih', '$2.500'],
+        ['Türk Dili ve Edebiyatı', '$2.500'], ['İng. Mütercim Tercümanlık', '$2.500'],
+        ['Rusça Mütercim Tercümanlık', '$2.500'],
+        ['Bilişim Sistemleri Teknolojileri', '$2.500'], ['Yazılım Geliştirme', '$2.500']
+      ]},
+      { ad: 'Güzel Sanatlar Fakültesi', bolumler: [
+        ['Gastronomi ve Mutfak Sanatları', '$2.500'], ['İletişim ve Tasarımı', '$2.500'],
+        ['Radyo, Televizyon ve Sinema', '$2.500'], ['RTS (İng)', '$2.500'],
+        ['Oyunculuk', '$2.500'], ['Grafik Tasarımı (İng)', '$2.500'],
+        ['Grafik Tasarımı', '$2.500'], ['Tekstil ve Moda Tasarımı', '$2.500']
+      ]},
+      { ad: 'İktisat Fakültesi', bolumler: [
+        ['Finans ve Bankacılık', '$2.500'], ['Finans ve Bankacılık (İng)', '$2.500'],
+        ['İktisat', '$2.500'], ['İktisat (İng)', '$2.500'],
+        ['İşletme', '$2.500'], ['İşletme (İng)', '$2.700'],
+        ['Sermaye Piyasası', '$2.500'], ['Siyaset Bilimi ve Kamu Yönetimi', '$2.500'],
+        ['SBvKY (İng)', '$2.500'], ['Turizm İşletmeciliği', '$2.500'],
+        ['Uluslararası İlişkiler (İng)', '$2.500'],
+        ['Lojistik Yönetimi (İng)', '$2.500'], ['Lojistik Yönetimi', '$2.500'],
+        ['Uluslararası Ticaret ve Finans', '$2.500'], ['UTvF (İng)', '$2.500'],
+        ['YBS (İng)', '$2.500'], ['YBS', '$2.500']
+      ]},
+      { ad: 'İletişim Fakültesi', bolumler: [
+        ['Dijital Oyun Tasarımı (İng)', '$2.500'], ['Dijital Oyun Tasarımı', '$2.500'],
+        ['Görsel İletişim Tasarımı (İng)', '$2.500'], ['Görsel İletişim Tasarımı', '$2.500'],
+        ['Halkla İlişkiler ve Reklamcılık', '$2.500'], ['Medya ve İletişim', '$2.500'],
+        ['Yeni Medya', '$2.500'], ['Yeni Medya (İng)', '$2.500']
+      ]},
+      { ad: 'Mühendislik Fakültesi', bolumler: [
+        ['Elektrik-Elektronik Müh.', '$2.500'], ['Endüstri Mühendisliği', '$2.500'],
+        ['Endüstri Mühendisliği (İng)', '$2.500'], ['Endüstriyel Tasarım', '$2.500'],
+        ['Endüstriyel Tasarım (İng)', '$2.500'], ['İç Mimarlık', '$2.500'],
+        ['İç Mimarlık (İng)', '$2.500'], ['İnşaat Mühendisliği (İng)', '$2.500'],
+        ['Kimya Mühendisliği', '$2.500'], ['Makine Mühendisliği (İng)', '$2.500'],
+        ['Mimarlık', '$2.500'], ['Mimarlık (İng)', '$2.500'],
+        ['Bilgisayar Mühendisliği', '$2.700'], ['Bilgisayar Mühendisliği (İng)', '$2.700'],
+        ['Yazılım Mühendisliği', '$2.700']
+      ]},
+      { ad: 'Sağlık Bilimleri Fakültesi', bolumler: [
+        ['Çocuk Gelişimi', '$2.500'], ['Sağlık Yönetimi', '$2.500'],
+        ['Beslenme ve Diyetetik', '$2.700'], ['Ebelik', '$2.700'],
+        ['Fizyoterapi ve Rehabilitasyon', '$2.700'], ['Hemşirelik', '$2.700']
+      ]}
+    ]
+  },
+
+  'bahcesehir': {
+    ad: 'İstanbul Bahçeşehir Üniversitesi',
+    not: 'Depozito tüm bölümler için $1.000',
+    fakulteler: [
+      { ad: 'Konservatuar', bolumler: [
+        ['Sahne Sanatları (TR)', '$5.950'], ['Müzik (TR)', '$5.950'],
+        ['Müzik Teknolojisi (TR)', '$5.950'], ['Ses Eğitimi (TR)', '$5.950']
+      ]},
+      { ad: 'Uygulamalı Bilimler Fakültesi', bolumler: [
+        ['Pilotaj', '$9.000'], ['Gastronomi ve Mutfak Sanatları', '$5.950']
+      ]},
+      { ad: 'Mimarlık ve Tasarım Fakültesi', bolumler: [
+        ['İç Mimarlık ve Çevre Tasarımı', '$8.500'], ['Mimarlık', '$8.500'],
+        ['Endüstriyel Tasarım', '$8.500'], ['Tekstil ve Moda Tasarımı', '$8.500']
+      ]},
+      { ad: 'İletişim Fakültesi', bolumler: [
+        ['Sinema ve Televizyon', '$6.800'], ['Reklamcılık', '$6.800'],
+        ['Yeni Medya', '$6.800'], ['Dijital Oyun Tasarımı', '$6.800'],
+        ['Çizgi Film ve Animasyon', '$6.800'], ['Halkla İlişkiler ve Tanıtım', '$6.800'],
+        ['Görsel İletişim Tasarımı', '$6.800'], ['İng. Mütercim Tercümanlık', '$8.500']
+      ]},
+      { ad: 'Diş Hekimliği Fakültesi', bolumler: [['Diş Hekimliği', '$24.000']] },
+      { ad: 'İktisadi, İdari ve Sosyal Bilimler', bolumler: [
+        ['İşletme', '$8.500'], ['Siyaset Bilimi ve Uluslararası İlişkiler', '$8.500'],
+        ['Ekonomi', '$8.500'], ['Uluslararası Tic. ve İşletmecilik', '$8.500'],
+        ['Ekonomi ve Finans', '$8.500'], ['Lojistik Yönetimi', '$8.500'],
+        ['Sosyoloji', '$8.500'], ['Psikoloji', '$8.500'], ['Uluslararası Finans', '$8.500']
+      ]},
+      { ad: 'Eğitim Fakültesi', bolumler: [
+        ['İngilizce Öğretmenliği', '$5.950'], ['Rehberlik ve Psikolojik Danışmanlık', '$5.950'],
+        ['Okul Öncesi Öğretmenliği', '$5.950']
+      ]},
+      { ad: 'Mühendislik ve Doğa Bilimleri', bolumler: [
+        ['Bilgisayar Mühendisliği', '$9.000'], ['Elektrik-Elektronik Müh.', '$9.000'],
+        ['Endüstri Mühendisliği', '$9.000'], ['Mekatronik Mühendisliği', '$9.000'],
+        ['Yazılım Mühendisliği', '$9.000'], ['Enerji Sistemleri Müh.', '$9.000'],
+        ['Biyomedikal Mühendisliği', '$9.000'], ['İşletme Mühendisliği', '$9.000'],
+        ['İnşaat Mühendisliği', '$9.000'], ['Moleküler Biyoloji ve Genetik', '$9.000'],
+        ['Yapay Zeka Mühendisliği', '$12.000'], ['Bilgi Güvenliği Teknolojisi', '$9.000']
+      ]},
+      { ad: 'Sağlık Bilimleri Fakültesi', bolumler: [
+        ['Hemşirelik (TR)', '$6.375'], ['Fizyoterapi ve Rehabilitasyon', '$6.375'],
+        ['Fizyoterapi (TR)', '$6.375'], ['Beslenme ve Diyetetik (TR)', '$6.375'],
+        ['Beslenme ve Diyetetik', '$6.375'], ['Hemşirelik', '$6.375'],
+        ['Dil ve Konuşma Terapisi (TR)', '$6.375'], ['Odyoloji (TR)', '$6.375']
+      ]},
+      { ad: 'Hukuk Fakültesi', bolumler: [['Hukuk (TR)', '$10.000']] },
+      { ad: 'Tıp Fakültesi', bolumler: [['Tıp', '$28.000']] },
+      { ad: 'Eczacılık Fakültesi', bolumler: [['Eczacılık', '$15.000']] }
+    ]
+  },
+
+  'altinbas': {
+    ad: 'İstanbul Altınbaş Üniversitesi',
+    not: 'Depozito şartı: Kabul mektubunda $1.000 + Kayıt sırasında yıllık ödemenin %50\'sinden depozito çıkartılmış miktar',
+    fakulteler: [
+      { ad: 'Tıp Fakültesi', bolumler: [['Tıp (İngilizce)', '$25.000']] },
+      { ad: 'Diş Hekimliği Fakültesi', bolumler: [['Diş Hekimliği (%30 İng-%70 Türkçe)', '$22.000']] },
+      { ad: 'Eczacılık Fakültesi', bolumler: [['Eczacılık (İngilizce)', '$12.000']] },
+      { ad: 'Sağlık Bilimleri Fakültesi', bolumler: [
+        ['Hemşirelik', '$7.500'], ['Ebelik', '$7.500']
+      ]},
+      { ad: 'Hukuk Fakültesi', bolumler: [
+        ['Hukuk', '$6.500'],
+        ['Türk-Alman Hukuku (%50 Türkçe-%50 Almanca)', '$6.500']
+      ]},
+      { ad: 'İktisadi, İdari ve Sosyal Bilimler', bolumler: [
+        ['Ekonomi (İng)', '$5.000'], ['Uluslararası İlişkiler (İng)', '$5.000'],
+        ['Siyaset Bilimi ve Kamu Yönetimi (İng)', '$5.000'], ['Psikoloji (İng)', '$6.000'],
+        ['Sosyoloji', '$5.000']
+      ]},
+      { ad: 'Mühendislik ve Mimarlık Fakültesi', bolumler: [
+        ['Mimarlık (İng)', '$6.000'], ['İnşaat Mühendisliği (İng)', '$6.000'],
+        ['Bilgisayar Mühendisliği (İng)', '$6.000'], ['Elektrik Elektronik Müh. (İng)', '$6.000'],
+        ['Endüstri Mühendisliği (İng)', '$6.000'], ['İç Mimarlık ve Çevre Tasarımı (İng)', '$6.000'],
+        ['İç Mimarlık ve Çevre Tasarımı', '$5.000'], ['Mekanik Mühendisliği (İng)', '$6.000'],
+        ['Yazılım Mühendisliği (İng)', '$6.000']
+      ]},
+      { ad: 'İşletme Fakültesi', bolumler: [
+        ['İşletme (İng)', '$6.000'], ['Uluslararası Lojistik Yönetimi (İng)', '$5.000'],
+        ['Uluslararası Ticaret (İng)', '$5.000'], ['Pazarlama (İng)', '$6.000']
+      ]},
+      { ad: 'Uygulamalı Bilimler Fakültesi', bolumler: [
+        ['Gastronomi', '$5.000'], ['Sağlık Yönetimi', '$5.000'],
+        ['Kuyumculuk ve Mücevher Tasarımı', '$5.000'], ['YBS', '$5.000'], ['Yazılım Geliştirme', '$5.000']
+      ]},
+      { ad: 'İletişim Fakültesi', bolumler: [
+        ['Radyo, Televizyon ve Sinema', '$5.000'], ['Görsel İletişim Tasarımı', '$5.000'],
+        ['Halkla İlişkiler ve Reklamcılık', '$5.000']
+      ]}
+    ]
+  },
+
+  'gelisim': {
+    ad: 'İstanbul Gelişim Üniversitesi',
+    not: 'Depozito tüm bölümler için $2.000 (İng. bölümlerde $2.125)',
+    fakulteler: [
+      { ad: 'Diş Hekimliği Fakültesi', bolumler: [
+        ['Diş Hekimliği (İng)', '$17.250'], ['Diş Hekimliği (Türkçe)', '$13.500']
+      ]},
+      { ad: 'İktisadi, İdari ve Sosyal Bilimler', bolumler: [
+        ['Reklamcılık', '$4.000'], ['Havacılık Yönetimi (İng)', '$4.250'],
+        ['Havacılık Yönetimi', '$4.000'], ['İşletme (İng)', '$4.500'],
+        ['İşletme', '$4.000'], ['Ekonomi ve Finans (İng)', '$4.250'],
+        ['Ekonomi ve Finans', '$4.000'], ['İngiliz Dili ve Edebiyatı (İng)', '$4.250'],
+        ['İng. Mütercim Tercümanlık', '$4.250'], ['Uluslararası Ticaret ve İşletmecilik (İng)', '$4.250'],
+        ['Uluslararası Ticaret ve İşletmecilik', '$4.000'], ['Uluslararası Ticaret ve Finansman (İng)', '$4.250'],
+        ['Lojistik Yönetimi (İng)', '$4.250'], ['Lojistik Yönetimi', '$4.000'],
+        ['YBS (İng)', '$4.250'], ['YBS', '$4.000'], ['Yeni Medya ve İletişim', '$4.000'],
+        ['Siyaset Bilimi ve Uluslararası İlişkiler', '$4.000'], ['SBvUI (İng)', '$4.250'],
+        ['Siyaset Bilimi ve Kamu Yönetimi', '$4.000'], ['Psikoloji (İng)', '$4.250'],
+        ['Psikoloji', '$4.000'], ['Halkla İlişkiler ve Tanıtım', '$4.000'],
+        ['Radyo, Televizyon ve Sinema', '$4.000'], ['Sosyoloji', '$4.000'],
+        ['Turizm Rehberliği', '$4.000'], ['Türk Dili ve Edebiyatı', '$4.000']
+      ]},
+      { ad: 'Mühendislik ve Mimarlık', bolumler: [
+        ['Uçak Mühendisliği (İng)', '$6.000'], ['Uçak Mühendisliği', '$4.500'],
+        ['Bilgisayar Mühendisliği (İng)', '$5.500'], ['Bilgisayar Mühendisliği', '$4.500'],
+        ['Yazılım Mühendisliği (İng)', '$5.500'], ['Yazılım Mühendisliği', '$4.500'],
+        ['İnşaat Mühendisliği (İng)', '$4.750'], ['İnşaat Mühendisliği', '$4.500'],
+        ['Mimarlık (İng)', '$4.750'], ['Mimarlık', '$4.500'],
+        ['Elektrik Elektronik Müh. (İng)', '$4.750'], ['EEM (Türkçe)', '$4.500'],
+        ['Endüstri Mühendisliği', '$4.500'], ['Mekatronik Mühendisliği', '$4.500']
+      ]},
+      { ad: 'Güzel Sanatlar Fakültesi', bolumler: [
+        ['İç Mimarlık ve Çevre Tasarımı (İng)', '$4.250'], ['Gastronomi (Türkçe)', '$4.000'],
+        ['Grafik Tasarımı', '$4.000'], ['İç Mimarlık', '$4.000'],
+        ['İç Mimarlık ve Çevre Tasarımı', '$4.000'], ['Radyo Televizyon Sinema', '$4.000'],
+        ['Görsel İletişim Tasarımı', '$4.000']
+      ]},
+      { ad: 'Sağlık Bilimleri Fakültesi', bolumler: [
+        ['Hemşirelik (İng)', '$4.250'], ['Hemşirelik (Türkçe)', '$5.000'],
+        ['Çocuk Gelişimi (İng)', '$4.250'], ['Çocuk Gelişimi', '$4.000'],
+        ['Sağlık Yönetimi', '$4.000'], ['Odyoloji', '$4.000'],
+        ['Beslenme ve Diyetetik (İng)', '$4.250'], ['Beslenme ve Diyetetik', '$4.000'],
+        ['Ergoterapi', '$4.000'], ['Perfüzyon', '$4.000'],
+        ['Fizyoterapi (İng)', '$4.500'], ['Fizyoterapi', '$4.500'],
+        ['Sosyal Hizmet', '$4.000'], ['Dil ve Konuşma Terapisi', '$4.000']
+      ]},
+      { ad: 'Uygulamalı Bilimler Fakültesi', bolumler: [
+        ['İng. Mütercim Tercümanlık (İng-Türkçe)', '$4.250'], ['Uçak Bakım ve Onarım', '$4.000'],
+        ['Havacılık Yönetimi (İng)', '$4.250'], ['Havacılık Yönetimi', '$4.000'],
+        ['Havacılık Elektrik ve Elektroniği', '$4.000'], ['Bankacılık ve Sigortacılık', '$4.000'],
+        ['Elektronik Ticaret ve Yönetimi', '$4.000'], ['Gastronomi (İng)', '$4.250'],
+        ['Gastronomi (Türkçe)', '$4.000'], ['Bilişim Sistemleri ve Teknolojileri', '$4.000'],
+        ['YBS', '$4.000'], ['Yeni Medya ve İletişim (İng)', '$4.250'],
+        ['Yeni Medya ve İletişim', '$4.000'], ['Televizyon Haberciliği ve Programcılığı', '$4.000'],
+        ['Veri Bilim ve Analitiği', '$4.000'], ['Halkla İlişkiler ve Reklamcılık', '$4.000']
+      ]},
+      { ad: 'Spor Bilimleri Fakültesi', bolumler: [
+        ['Antrenörlük Eğitimi', '$4.000'], ['Antrenörlük Eğitimi (İng)', '$4.250'],
+        ['Egzersiz ve Spor Bilimleri', '$4.000'], ['Engellilerde Egzersiz ve Spor', '$4.000'],
+        ['Rekreasyon', '$4.000'], ['Spor Yöneticiliği', '$4.000']
+      ]}
+    ]
+  },
+
+  'okan': {
+    ad: 'İstanbul Okan Üniversitesi',
+    not: 'Depozito tüm bölümler için $1.000 (Tıp ve Diş için $2.500)',
+    fakulteler: [
+      { ad: 'Tıp Fakültesi', bolumler: [
+        ['Tıp (İngilizce)', '$22.500'], ['Tıp (Türkçe)', '$19.500']
+      ]},
+      { ad: 'Diş Hekimliği Fakültesi', bolumler: [
+        ['Diş Hekimliği (İng+Türkçe)', '$18.000'], ['Diş Hekimliği', '$15.000']
+      ]},
+      { ad: 'Eczacılık Fakültesi', bolumler: [
+        ['Eczacılık (İngilizce)', '$8.000'], ['Eczacılık', '$9.000']
+      ]},
+      { ad: 'Sağlık Bilimleri Fakültesi', bolumler: [
+        ['Çocuk Gelişimi', '$4.500'], ['Sağlık Yönetimi', '$4.500'],
+        ['Hemşirelik (İng)', '$5.000'], ['Hemşirelik', '$4.500'],
+        ['Beslenme ve Diyetetik (İng)', '$5.000'], ['Beslenme ve Diyetetik', '$4.500'],
+        ['Fizyoterapi (İng)', '$5.000'], ['Fizyoterapi', '$4.500']
+      ]},
+      { ad: 'Mühendislik ve Doğa Bilimleri', bolumler: [
+        ['Otomotiv Teknolojisi (İng)', '$5.000'], ['İnşaat Mühendisliği (İng)', '$5.000'],
+        ['İnşaat Mühendisliği', '$4.500'], ['Bilgisayar Mühendisliği (İng)', '$5.000'],
+        ['Elektrik Elektronik Müh. (İng)', '$5.000'], ['Genetik ve Biyomühendislik (İng)', '$5.000'],
+        ['Harita Mühendisliği (İng)', '$5.000'], ['Endüstri Mühendisliği (İng)', '$5.000'],
+        ['Makine Mühendisliği (İng)', '$5.000'], ['Mekatronik Mühendisliği (İng)', '$5.000'],
+        ['Yazılım Mühendisliği (İng)', '$5.000']
+      ]},
+      { ad: 'İşletme Fakültesi', bolumler: [
+        ['İşletme Yönetimi (İng)', '$5.000'], ['İşletme Yönetimi', '$4.500'],
+        ['Ekonomi ve Finans (İng)', '$5.000'], ['Uluslararası Finans ve Bankacılık', '$4.500'],
+        ['Uluslararası Ticaret (İng)', '$5.000'], ['Uluslararası Ticaret', '$4.500'],
+        ['Lojistik Yönetimi (İng)', '$5.000'], ['Siyaset Bilimi ve UI', '$4.500'],
+        ['SBvUI (İng)', '$5.000'], ['Havacılık Yönetimi', '$4.500'],
+        ['Pilotaj (İng)', '$8.000 + Flight School']
+      ]},
+      { ad: 'Güzel Sanatlar, Tasarım ve Mimarlık', bolumler: [
+        ['Mimarlık (İng)', '$5.000'], ['Mimarlık', '$4.500'],
+        ['Sinema ve Televizyon', '$4.500'], ['Dijital Oyun Tasarımı', '$4.500'],
+        ['İç Mimarlık ve Çevre Tasarımı (İng)', '$5.000'], ['İç Mimarlık', '$4.500'],
+        ['Tekstil ve Moda Tasarımı', '$4.500'], ['Görsel İletişim Tasarımı', '$4.500']
+      ]},
+      { ad: 'Uygulamalı Bilimler Fakültesi', bolumler: [
+        ['Gastronomi (İng)', '$5.000'], ['Gastronomi', '$4.500'],
+        ['Bilişim Sistemleri (İng)', '$5.000'], ['Bilişim Sistemleri', '$4.500'],
+        ['Yeni Medya ve İletişim', '$4.500'], ['Halkla İlişkiler ve Reklamcılık', '$4.500'],
+        ['Spor Yönetimi', '$4.500']
+      ]},
+      { ad: 'Hukuk Fakültesi', bolumler: [['Hukuk', '$4.500']] },
+      { ad: 'İnsan ve Toplum Bilimleri', bolumler: [
+        ['Çince Mütercim Tercümanlık', '$4.500'], ['İng. Mütercim Tercümanlık', '$5.000'],
+        ['Psikoloji', '$4.500'], ['Psikoloji (İng)', '$5.000'],
+        ['Rusça Mütercim Tercümanlık', '$4.500']
+      ]},
+      { ad: 'Eğitim Fakültesi', bolumler: [
+        ['İngilizce Öğretmenliği (İng)', '$5.000'], ['Okul Öncesi Öğretmenliği', '$4.500'],
+        ['Rehberlik ve Psikolojik Danışmanlık', '$4.500'], ['Özel Eğitim Öğretmenliği', '$4.500']
+      ]},
+      { ad: 'Konservatuar', bolumler: [['Müzik', '$4.500'], ['Tiyatro', '$4.500']] }
+    ]
+  },
+
+  'uskudar': {
+    ad: 'İstanbul Üsküdar Üniversitesi',
+    not: 'Depozito tüm bölümler için $1.500',
+    fakulteler: [
+      { ad: 'Tıp Fakültesi', bolumler: [
+        ['Tıp (İngilizce)', '$24.000'], ['Tıp (Türkçe)', '$18.000']
+      ]},
+      { ad: 'Diş Hekimliği Fakültesi', bolumler: [
+        ['Diş Hekimliği (İng)', '$22.000'], ['Diş Hekimliği (Türkçe)', '$16.000']
+      ]},
+      { ad: 'İletişim Fakültesi', bolumler: [
+        ['Reklamcılık (Türkçe)', '$4.200'], ['Çizgi Film ve Animasyon', '$4.200'],
+        ['Gazetecilik', '$4.200'], ['Yeni Medya ve İletişim (İng)', '$4.400'],
+        ['Yeni Medya ve İletişim', '$4.200'], ['Halkla İlişkiler ve Tanıtım', '$4.200'],
+        ['Radyo, Televizyon ve Sinema', '$4.200'], ['Görsel İletişim Tasarımı', '$4.200']
+      ]},
+      { ad: 'Beşeri ve Sosyal Bilimler Fakültesi', bolumler: [
+        ['İngilizce Çeviri ve Tercümanlık (İng)', '$4.400'], ['Tarih', '$4.200'],
+        ['Yönetim Bilgi Sistemleri', '$4.200'], ['Felsefe', '$4.200'],
+        ['Siyaset Bilimi ve Uluslararası İlişkiler (İng)', '$4.400'],
+        ['Siyaset Bilimi ve UI', '$4.200'], ['Psikoloji (İng)', '$5.600'],
+        ['Psikoloji', '$4.200'], ['Sosyoloji', '$4.200']
+      ]},
+      { ad: 'Mühendislik ve Doğa Bilimleri', bolumler: [
+        ['Biyomühendislik (İng)', '$5.000'], ['Kimya Mühendisliği (İng)', '$5.000'],
+        ['Bilgisayar Mühendisliği (İng)', '$5.600'], ['Elektrik-Elektronik Müh. (İng)', '$5.000'],
+        ['Adli Bilim', '$4.200'], ['Endüstri Mühendisliği (İng)', '$4.400'],
+        ['Mol. Biyoloji ve Genetik (İng)', '$5.000'], ['Mol. Biyoloji ve Genetik', '$4.200'],
+        ['Yazılım Mühendisliği (İng)', '$5.600']
+      ]},
+      { ad: 'Sağlık Bilimleri Fakültesi', bolumler: [
+        ['Odyoloji', '$4.200'], ['Çocuk Gelişimi', '$4.200'],
+        ['Sağlık Yönetimi', '$4.200'], ['Ebelik', '$4.200'],
+        ['Hemşirelik', '$4.200'], ['Beslenme ve Diyetetik', '$4.200'],
+        ['İş Sağlığı ve Güvenliği', '$4.200'], ['Mesleki Terapi', '$4.200'],
+        ['Perfüzyon', '$4.200'], ['Fizyoterapi ve Rehabilitasyon', '$4.200'],
+        ['Sosyal Hizmet', '$4.200'], ['Konuşma ve Dil Terapisi', '$4.200']
+      ]}
+    ]
+  },
+
+  'bilgi': {
+    ad: 'İstanbul Bilgi Üniversitesi',
+    not: 'Depozito şartı: Kabul mektubunda $1.000 + Kayıt sırasında $1.000',
+    fakulteler: [
+      { ad: 'Sosyal ve Beşeri Bilimler Fakültesi', bolumler: [
+        ['Uluslararası İlişkiler', '$5.000'], ['Siyaset Bilimi', '$6.600'],
+        ['Karşılaştırmalı Edebiyat', '$4.800'], ['Sosyoloji', '$4.800'],
+        ['Psikoloji', '$7.800'], ['Tarih', '$4.800'], ['Müzik', '$6.600'],
+        ['İngiliz Dili ve Edebiyatı', '$4.800']
+      ]},
+      { ad: 'Hukuk Fakültesi', bolumler: [['Hukuk', '$9.600']] },
+      { ad: 'İşletme Fakültesi', bolumler: [
+        ['Ekonomi', '$7.200'], ['İşletme', '$7.200'], ['Ekonomi Finans', '$7.200'],
+        ['Uluslararası Finans', '$7.200'], ['YBS', '$7.200'],
+        ['Uluslararası Ticaret ve İşletmecilik', '$7.200'], ['Pazarlama', '$7.200']
+      ]},
+      { ad: 'İletişim Fakültesi', bolumler: [
+        ['Yeni Medya ve İletişim', '$6.000'], ['Reklamcılık', '$6.000'],
+        ['Halkla İlişkiler', '$6.000'], ['Radyo, Televizyon ve Sinema', '$6.000'],
+        ['Görsel İletişim Tasarımı', '$6.000'], ['Televizyon Haberciliği ve Programcılığı', '$6.000'],
+        ['Sahne ve Gösteri Sanatları Yönetimi', '$6.000'],
+        ['Dijital Oyun Tasarımı', '$7.200'], ['İletişim Tasarımı ve Yönetimi', '$6.000']
+      ]},
+      { ad: 'Mimarlık Fakültesi', bolumler: [
+        ['Mimarlık', '$4.800'], ['İç Mimarlık', '$7.200'], ['Endüstri Ürünleri Tasarımı', '$7.200']
+      ]},
+      { ad: 'Mühendislik ve Doğa Bilimleri', bolumler: [
+        ['Matematik', '$4.800'], ['Bilgisayar Mühendisliği', '$7.800'],
+        ['Genetik ve Biyomühendislik', '$4.800'], ['Elektrik-Elektronik Müh.', '$4.800'],
+        ['Endüstri Mühendisliği', '$7.800'], ['Makina Mühendisliği', '$4.800'],
+        ['İnşaat Mühendisliği', '$4.800'], ['Mekatronik Mühendisliği', '$6.000']
+      ]},
+      { ad: 'Sağlık Bilimleri Fakültesi', bolumler: [
+        ['Beslenme ve Diyetetik', '$6.000'], ['Hemşirelik', '$6.000'],
+        ['Fizyoterapi ve Rehabilitasyon', '$6.000'], ['Çocuk Gelişimi', '$6.000']
+      ]},
+      { ad: 'Uygulamalı Bilimler Fakültesi', bolumler: [
+        ['Gastronomi ve Mutfak Sanatları', '$6.000'], ['Turizm ve Otel İşletmeciliği', '$6.000'],
+        ['Havacılık Yönetimi', '$6.000'], ['Lojistik Yönetimi', '$6.000'],
+        ['Tekstil ve Moda Tasarımı', '$6.000']
+      ]},
+      { ad: 'Bilişim Teknolojisi Yüksekokulu', bolumler: [['Yazılım Geliştirme', '$6.600']] }
+    ]
+  },
+
+  'medipol': {
+    ad: 'İstanbul Medipol Üniversitesi',
+    not: 'Depozito tüm bölümler için $1.500',
+    fakulteler: [
+      { ad: 'Tıp Fakültesi', bolumler: [
+        ['Uluslararası Tıp (%100 İng)', '$44.000'], ['Tıp (%100 İng)', '$40.000'],
+        ['Tıp (%30 İng-%70 Türkçe)', '$34.000']
+      ]},
+      { ad: 'Diş Hekimliği Fakültesi', bolumler: [
+        ['Diş Hekimliği (%100 İng)', '$36.000'], ['Diş Hekimliği (%30 İng-%70 Türkçe)', '$33.000']
+      ]},
+      { ad: 'Eczacılık Fakültesi', bolumler: [
+        ['Eczacılık (%100 İng)', '$18.000'], ['Eczacılık', '$15.000']
+      ]},
+      { ad: 'Hukuk Fakültesi', bolumler: [['Hukuk (%30 İng-%70 Türkçe)', '$8.000']] },
+      { ad: 'Sağlık Bilimleri Fakültesi', bolumler: [
+        ['Hemşirelik (%100 İng)', '$6.000'], ['Hemşirelik', '$8.750'],
+        ['Fizyoterapi (%100 İng)', '$9.000'], ['Fizyoterapi', '$8.500'],
+        ['Beslenme ve Diyetetik', '$4.500'], ['Sağlık Yönetimi (%100 İng)', '$4.500'],
+        ['Sağlık Yönetimi', '$6.500'], ['Odyoloji', '$6.500'],
+        ['Ortez ve Protez', '$5.000'], ['Çocuk Gelişimi', '$6.000'],
+        ['Ebelik', '$8.000'], ['Ergoterapi', '$4.500'], ['Sosyal Hizmetler', '$4.500'],
+        ['Konuşma ve Dil Terapisi (%100 İng)', '$4.750'], ['Konuşma ve Dil Terapisi', '$4.500']
+      ]},
+      { ad: 'Mühendislik ve Doğa Bilimleri', bolumler: [
+        ['Yapay Zeka Mühendisliği (%100 İng)', '$10.000'],
+        ['Elektrik ve Elektronik Müh. (%100 İng)', '$6.000'],
+        ['Biyomedikal Mühendisliği (%100 İng)', '$6.500'],
+        ['Endüstri Mühendisliği (%100 İng)', '$4.750'],
+        ['Bilgisayar Mühendisliği (%100 İng)', '$6.500'],
+        ['İnşaat Mühendisliği (%100 İng)', '$5.000'], ['İnşaat Mühendisliği', '$7.000']
+      ]},
+      { ad: 'İşletme Fakültesi', bolumler: [
+        ['İşletme (%100 İng)', '$5.500'], ['Ekonomi ve Finans (%100 İng)', '$4.500'],
+        ['Uluslararası Ticaret ve Finans (%100 İng)', '$4.500'], ['Uluslararası Ticaret ve Finans', '$6.500'],
+        ['YBS (%100 İng)', '$4.500'], ['YBS', '$6.500'],
+        ['Lojistik Yönetimi (%100 İng)', '$4.500'], ['Lojistik Yönetimi', '$6.500'],
+        ['İnsan Kaynakları Yönetimi', '$5.500'], ['Havacılık Yönetimi (%100 İng)', '$4.500'],
+        ['Havacılık Yönetimi', '$6.500'], ['Bankacılık ve Sigortacılık', '$6.500']
+      ]},
+      { ad: 'Beşeri ve Toplum Bilimleri Fakültesi', bolumler: [
+        ['Psikoloji (%100 İng)', '$5.500'], ['Psikoloji', '$6.500'],
+        ['Siyaset Bilimi ve UI (%100 İng)', '$5.500'], ['Siyaset Bilimi ve Kamu Yönetimi (%100 İng)', '$5.500'],
+        ['Siyaset Bilimi ve Kamu Yönetimi', '$6.000'], ['Tarih (%100 İng)', '$6.500']
+      ]},
+      { ad: 'Güzel Sanatlar, Tasarım ve Mimarlık', bolumler: [
+        ['Mimarlık (%100 İng)', '$5.000'], ['Mimarlık', '$6.500'],
+        ['Endüstriyel Tasarım', '$5.000'], ['İç Mimarlık ve Çevre Tasarımı (%100 İng)', '$5.000'],
+        ['İç Mimarlık ve Çevre Tasarımı', '$6.500'], ['Görsel İletişim Tasarımı', '$4.500'],
+        ['Türk Müzik Sanatı', '$5.000'], ['Gastronomi (%100 İng)', '$4.750'],
+        ['Gastronomi', '$6.000'], ['Kentsel Tasarım ve Peyzaj Mimarisi', '$4.500']
+      ]},
+      { ad: 'Eğitim Fakültesi', bolumler: [
+        ['Psikolojik Danışmanlık ve Rehberlik (%100 İng)', '$4.500'],
+        ['Psikolojik Danışmanlık ve Rehberlik', '$5.500'],
+        ['İngilizce Öğretimi (%100 İng)', '$5.500'], ['İlköğretim Matematik Öğretimi', '$5.500'],
+        ['Özel Eğitim Öğretimi', '$5.500'], ['Okul Öncesi Öğretimi', '$5.500']
+      ]},
+      { ad: 'İletişim Fakültesi', bolumler: [
+        ['Gazetecilik', '$4.500'], ['Halkla İlişkiler ve Reklamcılık (%100 İng)', '$4.500'],
+        ['Halkla İlişkiler ve Reklamcılık', '$5.500'], ['Medya ve Görsel Sanatlar', '$4.500'],
+        ['Yeni Medya ve İletişim Sistemleri', '$5.500'], ['Radyo, Televizyon ve Sinema', '$5.500']
+      ]},
+      { ad: 'Sağlık Bilimleri Fakültesi (Haliç Kampüsü)', bolumler: [
+        ['Beslenme ve Diyetetik', '$4.000'], ['Çocuk Gelişimi', '$5.500'],
+        ['Ebelik', '$8.000'], ['Hemşirelik', '$7.000'], ['Fizyoterapi ve Rehabilitasyon', '$7.000'],
+        ['Odyoloji', '$5.000'], ['Sosyal Hizmetler', '$4.000']
+      ]}
+    ]
+  }
+};
+
+// ─── TAM ÜNİVERSİTE LİSTESİ ───
 var uniData = {
     turkey: {
-        ad: '🇹🇷 Türkiye / Турция / Türkiýe',
+        ad: '🇹🇷 Türkiye',
         onaylı: true,
+        detayli: ['istinye', 'biruni', 'beykent', 'bahcesehir', 'altinbas', 'gelisim', 'okan', 'uskudar', 'bilgi', 'medipol'],
         liste: [
-            // İSTANBUL
             'İSTANBUL — Sabancı Üniversitesi (Vakıf)',
             'İSTANBUL — Koç Üniversitesi (Vakıf)',
             'İSTANBUL — Altınbaş Üniversitesi (Vakıf)',
@@ -67,10 +1203,14 @@ var uniData = {
             'İSTANBUL — Yeditepe Üniversitesi (Vakıf)',
             'İSTANBUL — Bezmiâlem Vakıf Üniversitesi',
             'İSTANBUL — İstanbul Bilgi Üniversitesi (Vakıf)',
-            'İSTANBUL — İstanbul Medeniyet Üniversitesi',
+            'İSTANBUL — İstanbul Medeniyet Üniversitesi (Vakıf)',
             'İSTANBUL — Acıbadem Üniversitesi (Vakıf)',
             'İSTANBUL — İstanbul Aydın Üniversitesi (Vakıf)',
             'İSTANBUL — İstanbul Medipol Üniversitesi (Vakıf)',
+            'İSTANBUL — Üsküdar Üniversitesi (Vakıf)',
+            'İSTANBUL — Beykent Üniversitesi (Vakıf)',
+            'İSTANBUL — Biruni Üniversitesi (Vakıf)',
+            'İSTANBUL — Okan Üniversitesi (Vakıf)',
             'İSTANBUL — Sağlık Bilimleri Üniversitesi',
             'İSTANBUL — Marmara Üniversitesi',
             'İSTANBUL — İstanbul Üniversitesi-Cerrahpaşa',
@@ -78,7 +1218,6 @@ var uniData = {
             'İSTANBUL — Yıldız Teknik Üniversitesi',
             'İSTANBUL — Boğaziçi Üniversitesi',
             'İSTANBUL — İstanbul Teknik Üniversitesi',
-            // ANKARA
             'ANKARA — Atılım Üniversitesi (Vakıf)',
             'ANKARA — Bilkent Üniversitesi (Vakıf)',
             'ANKARA — Çankaya Üniversitesi (Vakıf)',
@@ -89,39 +1228,40 @@ var uniData = {
             'ANKARA — Ankara Üniversitesi',
             'ANKARA — Ankara Yıldırım Beyazıt Üniversitesi',
             'ANKARA — Hacettepe Üniversitesi',
-            // İZMİR
             'İZMİR — İzmir Ekonomi Üniversitesi (Vakıf)',
             'İZMİR — Yaşar Üniversitesi (Vakıf)',
             'İZMİR — Ege Üniversitesi',
             'İZMİR — İzmir Yüksek Teknoloji Enstitüsü',
             'İZMİR — Dokuz Eylül Üniversitesi',
-            // ESKİŞEHİR
+            'İZMİR — İzmir Katip Çelebi Üniversitesi',
             'ESKİŞEHİR — Eskişehir Teknik Üniversitesi',
             'ESKİŞEHİR — Anadolu Üniversitesi',
             'ESKİŞEHİR — Eskişehir Osmangazi Üniversitesi',
-            // BURSA
             'BURSA — Bursa Teknik Üniversitesi',
             'BURSA — Bursa Uludağ Üniversitesi',
-            // KONYA
             'KONYA — Konya Teknik Üniversitesi',
             'KONYA — Selçuk Üniversitesi',
             'KONYA — Necmettin Erbakan Üniversitesi',
-            // DİĞER
             'ADANA — Adana Alparslan Türkeş Bilim ve Tek. Ün.',
             'ADANA — Çukurova Üniversitesi',
             'ANTALYA — Akdeniz Üniversitesi',
+            'ALANYA — Alanya Alaaddin Keykubat Üniversitesi',
             'BARTIN — Bartın Üniversitesi',
             'ELAZIĞ — Fırat Üniversitesi',
             'ERZURUM — Atatürk Üniversitesi',
             'DÜZCE — Düzce Üniversitesi',
             'KAYSERİ — Erciyes Üniversitesi',
+            'KAYSERİ — Abdullah Gül Üniversitesi',
             'KOCAELİ — Gebze Teknik Üniversitesi',
             'KARABÜK — Karabük Üniversitesi',
             'SAKARYA — Sakarya Üniversitesi',
+            'SAKARYA — Sakarya Uygulamalı Bilimler Üniversitesi',
             'AKSARAY — Aksaray Üniversitesi',
             'BİLECİK — Bilecik Şeyh Edebali Üniversitesi',
             'BOLU — Bolu Abant İzzet Baysal Üniversitesi',
             'YOZGAT — Bozok Üniversitesi',
+            'BALIKESİR — Balıkesir Üniversitesi',
+            'ÇANAKKALE — Çanakkale Onsekiz Mart Üniversitesi',
             'ÇANKIRI — Çankırı Karatekin Üniversitesi',
             'MANİSA — Manisa Celal Bayar Üniversitesi',
             'DİYARBAKIR — Dicle Üniversitesi',
@@ -144,95 +1284,178 @@ var uniData = {
             'TOKAT — Tokat Gaziosmanpaşa Üniversitesi',
             'UŞAK — Uşak Üniversitesi',
             'VAN — Van Yüzüncü Yıl Üniversitesi',
+            'KARAMAN — Karamanoğlu Mehmetbey Üniversitesi',
             'ZONGULDAK — Zonguldak Bülent Ecevit Üniversitesi',
             'AFYON — Afyon Kocatepe Üniversitesi',
+            'AFYON — Afyon Karahisar Üniversitesi',
             'AYDIN — Aydın Adnan Menderes Üniversitesi',
             'BURDUR — Burdur Mehmet Akif Ersoy Üniversitesi',
             'MERSİN — Mersin Üniversitesi',
             'MUĞLA — Muğla Sıtkı Koçman Üniversitesi',
             'MUŞ — Muş Alparslan Üniversitesi',
             'EDİRNE — Trakya Üniversitesi',
-            'GAZİANTEP — Gaziantep Üniversitesi'
+            'GAZİANTEP — Gaziantep Üniversitesi',
+            'ADIYAMAN — Adıyaman Üniversitesi',
+            'GİRESUN — Giresun Üniversitesi',
+            'ŞANLIURFA — Harran Üniversitesi',
+            'HATAY — Hatay Mustafa Kemal Üniversitesi',
+            'SİNOP — Sinop Üniversitesi',
+            'TEKİRDAĞ — Tekirdağ Namık Kemal Üniversitesi'
         ]
     },
     russia: {
         onaylı: true,
-        ad: '🇷🇺 Rusya / Россия / Russiýa',
-        liste: ['Alтайский государственный медицинский университет','Алтайский государственный технический университет им. И.И. Ползунова','Алтайский государственный университет','Астраханский государственный медицинский университет','Астраханский государственный университет','Балтийский государственный технический университет «ВОЕНМЕХ»','Балтийский федеральный университет им. И.Канта','Башкирский государственный медицинский университет','Белгородский государственный национальный исследовательский университет','Белгородский государственный технологический университет','Волгоградский государственный медицинский университет','Волгоградский государственный технический университет','Волгоградский государственный университет','Воронежский государственный медицинский университет им. Н.Н. Бурденко','Воронежский государственный технический университет','Воронежский государственный университет','Всероссийская академия внешней торговли','Государственный гуманитарно-технический университет','Государственный институт русского языка им. А.С. Пушкина','Государственный педагогический университет','Государственный университет управления','Государственный университет просвещения','Дальневосточный государственный медицинский университет','Дальневосточный федеральный университет','Донской государственный технический университет','Ивановский государственный университет','Ивановский государственный химико-технологический университет','Иркутский государственный университет','Иркутский национальный исследовательский технический университет','Кабардино-Балкарский государственный университет','Казанский медицинский университет','Казанский национальный исследовательский технический университет – КАИ','Казанский федеральный университет','Кемеровский государственный университет','Красноярский государственный медицинский университет','Крымский федеральный университет им. В.И. Вернадского','Кубанский государственный аграрный университет','Кубанский государственный технологический университет','Кубанский государственный университет','Курский государственный медицинский университет','Магнитогорский государственный технический университет им. Г.И. Носова','Медицинский университет «Реавиз»','МИРЭА — Московский технологический университет','Мордовский государственный университет им. Н.П. Огарева','Московский авиационный институт','Московский государственный институт международных отношений (МГИМО)','Московский государственный технический университет имени Н. Э. Баумана','Московский государственный университет имени М. В. Ломоносова','Московский педагогический государственный университет','Национальный исследовательский университет «Высшая школа экономики» (НИУ ВШЭ)','Национальный исследовательский ядерный университет «МИФИ»','Новосибирский государственный медицинский университет','Новосибирский государственный технический университет','Новосибирский государственный университет','Омский государственный медицинский университет','Омский государственный технический университет','Оренбургский государственный университет','Пермский государственный медицинский университет','Пермский государственный университет','Петрозаводский государственный университет','Российская академия народного хозяйства и государственной службы (РАНХиГС)','Российский государственный аграрный университет','Российский государственный гуманитарный университет','Российский медицинский университет','Российский университет дружбы народов','Российский экономический университет им. Г.В. Плеханова','Ростовский государственный медицинский университет','Самарский государственный медицинский университет','Самарский государственный технический университет','Самарский университет','Санкт-Петербургский горный университет','Санкт-Петербургский государственный университет','Санкт-Петербургский политехнический университет Петра Великого','Саратовский государственный медицинский университет','Сибирский государственный медицинский университет','Сибирский федеральный университет','Томский государственный университет','Томский политехнический университет','Тюменский государственный медицинский университет','Тюменский государственный университет','Уральский государственный медицинский университет','Уральский федеральный университет','Финансовый университет при Правительстве Российской Федерации','Южно-Уральский государственный университет','Южный федеральный университет']
+        ad: '🇷🇺 Rusya',
+        liste: ['Алтайский государственный медицинский университет','Алтайский государственный технический университет им. И.И. Ползунова','Алтайский государственный университет','Астраханский государственный медицинский университет','Астраханский государственный университет','Балтийский государственный технический университет «ВОЕНМЕХ»','Балтийский федеральный университет им. И.Канта','Башкирский государственный медицинский университет','Белгородский государственный национальный исследовательский университет','Белгородский государственный технологический университет','Волгоградский государственный медицинский университет','Волгоградский государственный технический университет','Волгоградский государственный университет','Воронежский государственный медицинский университет им. Н.Н. Бурденко','Воронежский государственный технический университет','Воронежский государственный университет','Всероссийская академия внешней торговли','Государственный гуманитарно-технический университет','Государственный институт русского языка им. А.С. Пушкина','Государственный педагогический университет','Государственный университет управления','Государственный университет просвещения','Дальневосточный государственный медицинский университет','Дальневосточный федеральный университет','Донской государственный технический университет','Ивановский государственный университет','Ивановский государственный химико-технологический университет','Иркутский государственный университет','Иркутский национальный исследовательский технический университет','Кабардино-Балкарский государственный университет','Казанский медицинский университет','Казанский национальный исследовательский технический университет – КАИ','Казанский федеральный университет','Кемеровский государственный университет','Красноярский государственный медицинский университет','Крымский федеральный университет им. В.И. Вернадского','Кубанский государственный аграрный университет','Кубанский государственный технологический университет','Кубанский государственный университет','Курский государственный медицинский университет','Магнитогорский государственный технический университет им. Г.И. Носова','Медицинский университет «Реавиз»','МИРЭА — Московский технологический университет','Мордовский государственный университет им. Н.П. Огарева','Московский авиационный институт','Московский государственный институт международных отношений (МГИМО)','Московский государственный технический университет имени Н.Э. Баумана','Московский государственный университет имени М.В. Ломоносова','Московский педагогический государственный университет','Национальный исследовательский университет «Высшая школа экономики» (НИУ ВШЭ)','Национальный исследовательский ядерный университет «МИФИ»','Новосибирский государственный медицинский университет','Новосибирский государственный технический университет','Новосибирский государственный университет','Омский государственный медицинский университет','Омский государственный технический университет','Оренбургский государственный университет','Пермский государственный медицинский университет','Пермский государственный университет','Петрозаводский государственный университет','Российская академия народного хозяйства и государственной службы (РАНХиГС)','Российский государственный аграрный университет','Российский государственный гуманитарный университет','Российский медицинский университет','Российский университет дружбы народов','Российский экономический университет им. Г.В. Плеханова','Ростовский государственный медицинский университет','Самарский государственный медицинский университет','Самарский государственный технический университет','Самарский университет','Санкт-Петербургский горный университет','Санкт-Петербургский государственный университет','Санкт-Петербургский политехнический университет Петра Великого','Саратовский государственный медицинский университет','Сибирский государственный медицинский университет','Сибирский федеральный университет','Томский государственный университет','Томский политехнический университет','Тюменский государственный медицинский университет','Тюменский государственный университет','Уральский государственный медицинский университет','Уральский федеральный университет','Финансовый университет при Правительстве Российской Федерации','Южно-Уральский государственный университет','Южный федеральный университет']
     },
-    germany: {
-        onaylı: true, ad: '🇩🇪 Almanya / Германия / Germaniýa', liste: ['Боннский университет','Гейдельбергский университет','Гёттингенский университет','Гамбургский университет','Мюнхенский технический университет','Рейнско-Вестфальский технический университет г. Ахена','Свободный университет Берлина','Технологический институт Карлсруэ','Тюбингенский университет','Университет имени Гумбольдтов в Берлине','Университет Людвига-Максимилиана','Университет Фрайбурга','Штутгартский университет'] },
-    belgium: {
-        onaylı: true, ad: '🇧🇪 Belçika / Бельгия / Belgiýa', liste: ['Аббатство Камбр','Антверпенский университет','Брюссельский свободный университет','Гентский университет','Лёвенский католический университет','Лувенский католический университет','Университет Намюр','Университет Льеж','Университет Монс','Хассельтский университет'] },
-    kazakhstan: { ad: '🇰🇿 Kazakistan / Казахстан / Gazagystan', liste: ['Государственный медицинский университет г. Семей','Евразийский национальный университет имени Л. Н. Гумилёва','Казахский национальный аграрный университет','Казахский национальный медицинский университет имени Асфендиярова','Казахский национальный педагогический университет имени Абая','Казахский национальный университет имени аль-Фараби','Казахский национальный исследовательский технический университет','Карагандинский государственный медицинский университет','КИМЭП университет (KIMEP University)','Медицинский университет Астаны','Назарбаев Университет','Восточно-Казахстанский государственный технический университет им. Д. Серикбаева','Западно-Казахстанский государственный медицинский университет имени Марата Оспанова'] },
-    czech: {
-        onaylı: true, ad: '🇨🇿 Çekya / Чехия / Çehiýa', liste: ['Карлов университет','Остравский университет','Пражский университет химии и технологии','Пражский экономический университет','Технический университет в Либерце','Технический университет Остравы','Технологический университет Брно','Университет Градец-Кралове','Университет Западной Богемии','Университет имени Яна Евангелисты Пуркине в Усти-над-Лабем','Университет Масарика','Университет Менделя в Брно','Университет обороны Чешской Республики','Университет Палацкого в Оломоуце','Университет Пардубице','Университет Томаша Бати в Злине','Университет Южной Богемии','Чешский технический университет в Праге','Чешский университет естественных наук в Праге'] },
-    netherlands: {
-        onaylı: true, ad: '🇳🇱 Hollanda / Нидерланды / Niderlandiýa', liste: ['Амстердамский свободный университет','Амстердамский университет','Бреденский университет прикладных наук','Вагенингенский университет','Гронингенский университет','Делфтский технический университет','Лейденский университет','Маастрихтский университет','Роттердамский университет Эразма','Технический университет Эйндховена','Тилбургский университет','Университет Неймегена','Университет прикладных наук Саксион','Университет Твенте','Утрехтский университет'] },
-    canada: {
-        onaylı: true, ad: '🇨🇦 Kanada / Канада / Kanada', liste: ['Альбертский университет','Институт технологий Университета Онтарио','Мемориальный университет Ньюфаундленда','Монреальский университет','Северный университет Британской Колумбии','Торонто Метрополитен университет','Торонтский университет','Университет Британской Колумбии','Университет Брока','Университет Ватерлоо','Университет Вестерн','Университет Виктории','Университет Виндзора','Университет Гвельфа','Университет Далхаузи','Университет Йорка','Университет Калгари','Университет Карлтона','Университет Квебека','Университет Конкордия','Университет Куинс','Университет Лаваля','Университет Лейкхед','Университет Летбриджа','Университет Макгилла','Университет Макмастера','Университет Манитобы','Университет Маунт Эллисон','Университет Нью-Брансуика','Университет Оттавы','Университет Реджайны','Университет Саймона Фрейзера','Университет Саскачевана','Университет Святого Франциска Ксаверия','Университет Уилфрида Лорье','Университет Шербрука'] },
-    japan: {
-        onaylı: true, ad: '🇯🇵 Japonya / Япония / Ýaponiýa', liste: ['Городской университет Токио','Женский университет Отяномидзу','Институт технологии Сибаура','Йокогамский городской университет','Киотский технологический институт','Киотский университет','Кобский университет','Кюсюский институт технологий','Кюсюский университет','Медицинский университет Нара','Медицинский университет Сайтама','Медицинский университет Фудзита','Нагойский городской университет','Нагоянский технологический институт','Нагоянский технологический университет','Национальный университет Йокогамы','Осакский столичный университет','Осакский университет','Технологический институт Муроран','Технологический институт Тиба','Технологический университет Тоёхаси','Токийский медицинский и стоматологический университет','Токийский научный университет','Токийский столичный университет','Токийский технологический институт','Токийский университет','Токийский университет морских наук и технологий','Токийский университет сельского хозяйства','Токийский университет сельского хозяйства и технологий','Токийский электротехнический университет','Университет Айдзу','Университет Акита','Университет Аояма Гакуин','Университет Васэда','Университет Гифу','Университет Гумма','Университет Дзюнтэндо','Университет Досиса','Университет Ибараки','Университет Иватэ','Университет Кагава','Университет Кагосима','Университет Канагава','Университет Канадзава','Университет Кансай','Университет Кансэй Гакуин','Университет Киндай','Университет Киото Сангио','Университет Китасато','Университет Когакуин','Университет Коти','Университет Кумамото','Университет Курумэ','Университет Кэйо','Университет Миэ','Университет Миядзаки','Университет Мэйдзё','Университет Мэйдзи','Университет Нагасаки','Университет Ниигата','Университет Нихон','Университет Оита','Университет Окаяма','Университет Риккё','Университет Рицумэйкан','Университет Рюкю','Университет Сага','Университет Сайтама','Университет Сёва','Университет Сидзуока','Университет Симане','Университет Синсю','Университет София','Университет Тиба','Университет Тоё','Университет Токай','Университет Токусима','Университет Тоттори','Университет Тохо','Университет Тохоку','Университет Тояма','Университет Тэйкё','Университет Тюбу','Университет Тюо','Университет Фукуи','Университет Хёго','Университет Хиросимы','Университет Хитотсубаси','Университет Хосэй','Университет Цукуба','Университет электронных коммуникаций','Университет Эхимэ','Университет Ямагата','Университет Ямагути','Университет Яманаси','Хоккайдский университет'] },
-    korea: {
-        onaylı: true, ad: '🇰🇷 Güney Kore / Южная Корея / Günorta Koreýa', liste: ['Женский университет Ихва','Инчхонский национальный университет','Канвондский национальный университет','Католический университет Кореи','Кванджуский институт науки и технологий','Кёнбукский национальный университет','Кёнсанский национальный университет','Корейский продвинутый институт науки и технологий','Корейский университет','Национальный институт науки и технологий Ульсана','Пукёнский национальный университет','Пусанский национальный университет','Сеульский национальный университет','Сеульский национальный университет науки и технологий','Тэгуский университет','Университет Аджу','Университет Данкук','Университет Ённам','Университет Ёнсе','Университет Индже','Университет Инха','Университет Качхон','Университет Кванун','Университет Кемён','Университет Кёнхи','Университет Конкук','Университет Кукмин','Университет науки и технологий города Похан','Университет Пхочхон Ча','Университет Седжон','Университет Сеула','Университет Соган','Университет Сунгкюнгван','Университет Сунсиль','Университет Сунчонхян','Университет Тонгук','Университет Ульсана','Университет Халлим','Университет Ханян','Университет Хонгик','Университет Чун-Анг','Хангукский университет иностранных языков','Чеджуский национальный университет','Чонбукский национальный университет','Чоннамский национальный университет','Чхунбукский национальный университет','Чхуннамский национальный университет'] },
-    italy: {
-        onaylı: true, ad: '🇮🇹 İtalya / Италия / Italiýa', liste: ['Болонский университет','Высшая нормальная школа в Пизе','Генуэзский университет','Католический университет Святого Сердца','Миланский политехнический университет','Миланский университет','Миланский университет Бикокка','Пармский университет','Пизанский университет','Свободный университет Бозен-Больцано','Сиенский университет','Триестский университет','Туринский политехнический университет','Туринский университет','Университет Боккони','Университет Вита-Салуте Сан-Раффаэле','Университет Ка Фоскари в Венеции','Университет Луисс','Университет Модены и Реджо-Эмилии','Университет Неаполя имени Федерико II','Университет Павии','Университет Падуи','Университет Перуджи','Университет Рима Тор Вергата','Университет Сапиенца в Риме','Университет Терамо','Университет Тренто','Университет Удине','Университет Хьюманитас','Флорентийский университет'] },
-    austria: {
-        onaylı: true, ad: '🇦🇹 Avusturya / Австрия / Awstriýa', liste: ['Венский медицинский университет','Венский экономический университет','Венский технический университет','Венский университет','Венский университет природных ресурсов и прикладных наук','Венский ветеринарный университет','Грацский университет','Грацский технический университет','Грацский медицинский университет','Зальцбургский университет','Инсбрукский университет имени Леопольда и Франца','Леобенский университет','Университет имени Иоганна Кеплера','Университет Клагенфурта','Центрально-Европейский университет'] },
-    cyprus: {
-        onaylı: true, ad: '🇨🇾 Kıbrıs / Кипр / Kipr', liste: ['Кипрский технологический университет','Кипрский университет','Никосийский университет','Восточно-Средиземноморский университет','Европейский университет Кипра','Ближневосточный университет'] },
-    kyrgyzstan: {
-        onaylı: true, ad: '🇰🇬 Kırgızistan / Киргизия / Gyrgyzystan', liste: ['Кыргызско-Турецкий Университет Манас','Американский Университет Центральной Азии','Кыргызская Государственная Медицинская Академия','Кыргызско-Российский Славянский Университет'] },
-    belarus: {
-        onaylı: true, ad: '🇧🇾 Beyaz Rusya / Беларусь / Belarus', liste: ['Белорусский государственный университет','Белорусский государственный университет информатики и радиоэлектроники','Белорусский государственный медицинский университет','БНТУ (национально-технический)','Витебский государственный медицинский университет','Витебский государственный университет имени П.М. Машерова','Гродненский государственный университет им. Янки Купалы','Гомельский государственный университет им. Ф.Скорины','Гомельский государственный медицинский университет','Гродненский государственный медицинский университет','Полоцкий государственный университет имени Ефросинии Полоцкой'] },
-    azerbaijan: {
-        onaylı: true, ad: '🇦🇿 Azerbaycan / Азербайджан / Azerbaýjan', liste: ['Бакинский государственный университет','Университет Хазар'] },
-    uzbekistan: {
-        onaylı: true, ad: '🇺🇿 Özbekistan / Узбекистан / Özbegistan', liste: ['Национальный университет Узбекистана имени Мирзо Улугбека','Ташкентский институт инженеров ирригации и механизации сельского хозяйства'] },
-    georgia: {
-        onaylı: true, ad: '🇬🇪 Gürcistan / Грузия / Gruziýa', liste: ['Государственный университет Ильи','Тбилисский государственный университет'] },
-    thailand: {
-        onaylı: true, ad: '🇹🇭 Tayland / Таиланд / Tailand', liste: ['Университет Чулалонгкорна','Махидол университет','Чиангмайский университет','Университет Хон Каен','Университет Принца Сонгкла','Университет Таммасат','Университет Шринкхаринвирот','Университет Технологий Кинга Монгкута Тонбури','Университет Касертарта','Институт технологии имени короля Монгкута Ладкрабанг'] },
-    vietnam: {
-        onaylı: true, ad: '🇻🇳 Vietnam / Вьетнам / Wýetnam', liste: ['Национальный университет Вьетнама в Ханое','Национальный университет Вьетнама в Хошимине','Университет Зуй Тан','Университет Тон Дык Тханг'] }
+    germany: { onaylı: true, ad: '🇩🇪 Almanya', liste: ['Боннский университет','Гейдельбергский университет','Гёттингенский университет','Гамбургский университет','Мюнхенский технический университет','Рейнско-Вестфальский технический университет г. Ахена','Свободный университет Берлина','Технологический институт Карлсруэ','Тюбингенский университет','Университет имени Гумбольдтов в Берлине','Университет Людвига-Максимилиана','Университет Фрайбурга','Штутгартский университет'] },
+    belgium: { onaylı: true, ad: '🇧🇪 Belçika', liste: ['Аббатство Камбр','Антверпенский университет','Брюссельский свободный университет','Гентский университет','Лёвенский католический университет','Лувенский католический университет','Университет Намюр','Университет Льеж','Университет Монс','Хассельтский университет'] },
+    kazakhstan: { onaylı: true, ad: '🇰🇿 Kazakistan', liste: ['Государственный медицинский университет г. Семей','Евразийский национальный университет имени Л.Н. Гумилёва','Казахский национальный аграрный университет','Казахский национальный медицинский университет имени Асфендиярова','Казахский национальный педагогический университет имени Абая','Казахский национальный университет имени аль-Фараби','Казахский национальный исследовательский технический университет','Карагандинский государственный медицинский университет','КИМЭП университет (KIMEP University)','Медицинский университет Астаны','Назарбаев Университет','Восточно-Казахстанский государственный технический университет им. Д. Серикбаева','Западно-Казахстанский государственный медицинский университет имени Марата Оспанова'] },
+    czech: { onaylı: true, ad: '🇨🇿 Çekya', liste: ['Карлов университет','Остравский университет','Пражский университет химии и технологии','Пражский экономический университет','Технический университет в Либерце','Технический университет Остравы','Технологический университет Брно','Университет Градец-Кралове','Университет Западной Богемии','Университет имени Яна Евангелисты Пуркине в Усти-над-Лабем','Университет Масарика','Университет Менделя в Брно','Университет обороны Чешской Республики','Университет Палацкого в Оломоуце','Университет Пардубице','Университет Томаша Бати в Злине','Университет Южной Богемии','Чешский технический университет в Праге','Чешский университет естественных наук в Праге'] },
+    netherlands: { onaylı: true, ad: '🇳🇱 Hollanda', liste: ['Амстердамский свободный университет','Амстердамский университет','Бреденский университет прикладных наук','Вагенингенский университет','Гронингенский университет','Делфтский технический университет','Лейденский университет','Маастрихтский университет','Роттердамский университет Эразма','Технический университет Эйндховена','Тилбургский университет','Университет Неймегена','Университет прикладных наук Саксион','Университет Твенте','Утрехтский университет'] },
+    canada: { onaylı: true, ad: '🇨🇦 Kanada', liste: ['Альбертский университет','Институт технологий Университета Онтарио','Мемориальный университет Ньюфаундленда','Монреальский университет','Северный университет Британской Колумбии','Торонто Метрополитен университет','Торонтский университет','Университет Британской Колумбии','Университет Брока','Университет Ватерлоо','Университет Вестерн','Университет Виктории','Университет Виндзора','Университет Гвельфа','Университет Далхаузи','Университет Йорка','Университет Калгари','Университет Карлтона','Университет Квебека','Университет Конкордия','Университет Куинс','Университет Лаваля','Университет Лейкхед','Университет Летбриджа','Университет Макгилла','Университет Макмастера','Университет Манитобы','Университет Маунт Эллисон','Университет Нью-Брансуика','Университет Оттавы','Университет Реджайны','Университет Саймона Фрейзера','Университет Саскачевана','Университет Святого Франциска Ксаверия','Университет Уилфрида Лорье','Университет Шербрука'] },
+    japan: { onaylı: true, ad: '🇯🇵 Japonya', liste: ['Городской университет Токио','Женский университет Отяномидзу','Институт технологии Сибаура','Йокогамский городской университет','Киотский технологический институт','Киотский университет','Кобский университет','Кюсюский институт технологий','Кюсюский университет','Медицинский университет Нара','Медицинский университет Сайтама','Медицинский университет Фудзита','Нагойский городской университет','Нагоянский технологический институт','Нагоянский технологический университет','Национальный университет Йокогамы','Осакский столичный университет','Осакский университет','Технологический институт Муроран','Технологический институт Тиба','Технологический университет Тоёхаси','Токийский медицинский и стоматологический университет','Токийский научный университет','Токийский столичный университет','Токийский технологический институт','Токийский университет','Токийский университет морских наук и технологий','Токийский университет сельского хозяйства','Токийский университет сельского хозяйства и технологий','Токийский электротехнический университет','Университет Айдзу','Университет Акита','Университет Аояма Гакуин','Университет Васэда','Университет Гифу','Университет Гумма','Университет Дзюнтэндо','Университет Досиса','Университет Ибараки','Университет Иватэ','Университет Кагава','Университет Кагосима','Университет Канагава','Университет Канадзава','Университет Кансай','Университет Кансэй Гакуин','Университет Киндай','Университет Киото Сангио','Университет Китасато','Университет Когакуин','Университет Коти','Университет Кумамото','Университет Курумэ','Университет Кэйо','Университет Миэ','Университет Миядзаки','Университет Мэйдзё','Университет Мэйдзи','Университет Нагасаки','Университет Ниигата','Университет Нихон','Университет Оита','Университет Окаяма','Университет Риккё','Университет Рицумэйкан','Университет Рюкю','Университет Сага','Университет Сайтама','Университет Сёва','Университет Сидзуока','Университет Симане','Университет Синсю','Университет София','Университет Тиба','Университет Тоё','Университет Токай','Университет Токусима','Университет Тоттори','Университет Тохо','Университет Тохоку','Университет Тояма','Университет Тэйкё','Университет Тюбу','Университет Тюо','Университет Фукуи','Университет Хёго','Университет Хиросимы','Университет Хитотсубаси','Университет Хосэй','Университет Цукуба','Университет электронных коммуникаций','Университет Эхимэ','Университет Ямагата','Университет Ямагути','Университет Яманаси','Хоккайдский университет'] },
+    korea: { onaylı: true, ad: '🇰🇷 Güney Kore', liste: ['Женский университет Ихва','Инчхонский национальный университет','Канвондский национальный университет','Католический университет Кореи','Кванджуский институт науки и технологий','Кёнбукский национальный университет','Кёнсанский национальный университет','Корейский продвинутый институт науки и технологий','Корейский университет','Национальный институт науки и технологий Ульсана','Пукёнский национальный университет','Пусанский национальный университет','Сеульский национальный университет','Сеульский национальный университет науки и технологий','Тэгуский университет','Университет Аджу','Университет Данкук','Университет Ённам','Университет Ёнсе','Университет Индже','Университет Инха','Университет Качхон','Университет Кванун','Университет Кемён','Университет Кёнхи','Университет Конкук','Университет Кукмин','Университет науки и технологий города Похан','Университет Пхочхон Ча','Университет Седжон','Университет Сеула','Университет Соган','Университет Сунгкюнгван','Университет Сунсиль','Университет Сунчонхян','Университет Тонгук','Университет Ульсана','Университет Халлим','Университет Ханян','Университет Хонгик','Университет Чун-Анг','Хангукский университет иностранных языков','Чеджуский национальный университет','Чонбукский национальный университет','Чоннамский национальный университет','Чхунбукский национальный университет','Чхуннамский национальный университет'] },
+    italy: { onaylı: true, ad: '🇮🇹 İtalya', liste: ['Болонский университет','Высшая нормальная школа в Пизе','Генуэзский университет','Католический университет Святого Сердца','Миланский политехнический университет','Миланский университет','Миланский университет Бикокка','Пармский университет','Пизанский университет','Свободный университет Бозен-Больцано','Сиенский университет','Триестский университет','Туринский политехнический университет','Туринский университет','Университет Боккони','Университет Вита-Салуте Сан-Раффаэле','Университет Ка Фоскари в Венеции','Университет Луисс','Университет Модены и Реджо-Эмилии','Университет Неаполя имени Федерико II','Университет Павии','Университет Падуи','Университет Перуджи','Университет Рима Тор Вергата','Университет Сапиенца в Риме','Университет Терамо','Университет Тренто','Университет Удине','Университет Хьюманитас','Флорентийский университет'] },
+    austria: { onaylı: true, ad: '🇦🇹 Avusturya', liste: ['Венский медицинский университет','Венский экономический университет','Венский технический университет','Венский университет','Венский университет природных ресурсов и прикладных наук','Венский ветеринарный университет','Грацский университет','Грацский технический университет','Грацский медицинский университет','Зальцбургский университет','Инсбрукский университет имени Леопольда и Франца','Леобенский университет','Университет имени Иоганна Кеплера','Университет Клагенфурта','Центрально-Европейский университет'] },
+    cyprus: { onaylı: true, ad: '🇨🇾 Kıbrıs', liste: ['Кипрский технологический университет','Кипрский университет','Никосийский университет','Восточно-Средиземноморский университет','Европейский университет Кипра','Ближневосточный университет'] },
+    kyrgyzstan: { onaylı: true, ad: '🇰🇬 Kırgızistan', liste: ['Кыргызско-Турецкий Университет Манас','Американский Университет Центральной Азии','Кыргызская Государственная Медицинская Академия','Кыргызско-Российский Славянский Университет'] },
+    belarus: { onaylı: true, ad: '🇧🇾 Beyaz Rusya', liste: ['Белорусский государственный университет','Белорусский государственный университет информатики и радиоэлектроники','Белорусский государственный медицинский университет','БНТУ (национально-технический)','Витебский государственный медицинский университет','Витебский государственный университет имени П.М. Машерова','Гродненский государственный университет им. Янки Купалы','Гомельский государственный университет им. Ф.Скорины','Гомельский государственный медицинский университет','Гродненский государственный медицинский университет','Полоцкий государственный университет имени Ефросинии Полоцкой'] },
+    azerbaijan: { onaylı: true, ad: '🇦🇿 Azerbaycan', liste: ['Бакинский государственный университет','Университет Хазар'] },
+    uzbekistan: { onaylı: true, ad: '🇺🇿 Özbekistan', liste: ['Национальный университет Узбекистана имени Мирзо Улугбека','Ташкентский институт инженеров ирригации и механизации сельского хозяйства'] },
+    georgia: { onaylı: true, ad: '🇬🇪 Gürcistan', liste: ['Государственный университет Ильи','Тбилисский государственный университет'] },
+    thailand: { onaylı: true, ad: '🇹🇭 Tayland', liste: ['Университет Чулалонгкорна','Махидол университет','Чиангмайский университет','Университет Хон Каен','Университет Принца Сонгкла','Университет Таммасат','Университет Шринкхаринвирот','Университет Технологий Кинга Монгкута Тонбури','Университет Касертарта','Институт технологии имени короля Монгкута Ладкрабанг'] },
+    vietnam: { onaylı: true, ad: '🇻🇳 Vietnam', liste: ['Национальный университет Вьетнама в Ханое','Национальный университет Вьетнама в Хошимине','Университет Зуй Тан','Университет Тон Дык Тханг'] }
 };
 
 function ulkeAc(id) {
-    var data = uniData[id];
-    if (!data) return;
-    document.getElementById('uni-panel-ulke').textContent = data.ad;
-    document.getElementById('uni-arama').value = '';
-    renderListe(data.liste, data.onaylı || false);
-    document.getElementById('uni-panel').style.display = 'block';
-    document.getElementById('uni-panel').scrollIntoView({behavior:'smooth', block:'start'});
-    document.querySelectorAll('.uni-ulke-kart').forEach(function(k){ k.classList.remove('aktif'); });
-    event.currentTarget.classList.add('aktif');
+    var panel = document.getElementById('uni-panel');
+    var ulkeBaslik = document.getElementById('uni-panel-ulke');
+    var liste = document.getElementById('uni-liste');
+    detayKapat();
+
+    var ulke = uniData[id];
+    if (!ulke) return;
+
+    // Sayıyı gerçek liste uzunluğuna göre güncelle
+    var sayiEl = document.getElementById('sayi-' + id);
+    if (sayiEl) sayiEl.textContent = ulke.liste.length;
+
+    var tmBadge = ulke.onaylı ? ' <span style="background:#1a7a3a;color:white;font-size:0.7rem;padding:2px 8px;border-radius:10px;margin-left:6px;">✅ TM Onaylı</span>' : '';
+    ulkeBaslik.innerHTML = ulke.ad + tmBadge;
+    panel.style.display = 'block';
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    // Türkiye için detaylı kart görünümü
+    if (id === 'turkey' && ulke.detayli) {
+        var html = '<div style="margin-bottom:1rem;"><p style="color:#4a7a9b;font-size:0.85rem;margin-bottom:0.8rem;">📋 Fiyat bilgisi olan üniversiteler için karta tıklayın</p>';
+        html += '<div class="uni-kart-grid">';
+        ulke.detayli.forEach(function(key) {
+            var d = detayliUniversiteler[key];
+            if (!d) return;
+            var minFiyat = null;
+            d.fakulteler.forEach(function(f) {
+                f.bolumler.forEach(function(b) {
+                    var m = b[1].replace(/[^0-9]/g, '');
+                    if (m && (!minFiyat || parseInt(m) < minFiyat)) minFiyat = parseInt(m);
+                });
+            });
+            html += '<div class="uni-kart" onclick="detayAc(\'' + key + '\')">';
+            html += '<div class="uni-kart-adi">🎓 ' + d.ad + '</div>';
+            html += '<div class="uni-kart-bilgi">' + d.fakulteler.length + ' fakülte · Detaylı fiyat listesi</div>';
+            if (minFiyat) html += '<div class="uni-kart-fiyat">$' + minFiyat.toLocaleString() + '\'den başlayan fiyatlar</div>';
+            html += '</div>';
+        });
+        html += '</div></div>';
+        html += '<hr style="border:none;border-top:1px solid #d0e3f0;margin:1rem 0;">';
+        html += '<p style="color:#4a7a9b;font-size:0.85rem;margin-bottom:0.5rem;">📚 Tüm Türkiye üniversiteleri:</p>';
+        html += '<div id="uni-liste-metin"></div>';
+        liste.innerHTML = html;
+        renderTurkiyeListe(ulke.liste);
+    } else {
+        var html2 = '';
+        ulke.liste.forEach(function(u, i) {
+            html2 += '<div class="uni-row"><span class="uni-num">' + (i+1) + '.</span>🎓 ' + u + '</div>';
+        });
+        liste.innerHTML = html2;
+    }
 }
 
-function renderListe(liste, onaylı) {
+function renderTurkiyeListe(liste) {
+    var el = document.getElementById('uni-liste-metin');
+    if (!el) return;
     var html = '';
     liste.forEach(function(u, i) {
-        var badge = onaylı ? '<span class="tm-onay-badge">✅ TM Onaylı</span>' : '';
-        html += '<div class="uni-item"><span class="uni-no">' + (i+1) + '</span><span style="flex:1">' + u + '</span>' + badge + '</div>';
+        var isVakif = u.indexOf('(Vakıf)') !== -1 || u.indexOf('Vakıf Üniversitesi') !== -1;
+        var badge = isVakif ? '<span class="vakif-badge">Vakıf</span>' : '';
+        var name = u.replace(' (Vakıf)', '').replace('Vakıf Üniversitesi', 'Üniversitesi');
+        html += '<div class="uni-row"><span class="uni-num">' + (i+1) + '.</span>🎓 ' + name + badge + '</div>';
     });
-    document.getElementById('uni-liste').innerHTML = html;
+    el.innerHTML = html;
 }
 
-function uniAra() {
-    var q = document.getElementById('uni-arama').value.toLowerCase();
-    var aktifId = null;
-    document.querySelectorAll('.uni-ulke-kart.aktif').forEach(function(k){
-        aktifId = k.getAttribute('onclick').replace("ulkeAc('","").replace("')","");
+function renderGenelListe(liste) {
+    var el = document.getElementById('uni-liste');
+    if (!el) return;
+    var html = '';
+    liste.forEach(function(u, i) {
+        html += '<div style="padding:7px 0;border-bottom:1px solid #eaf0f7;font-size:0.88rem;"><span style=\"color:#aaa;margin-right:8px;\">' + (i+1) + '.</span>🎓 ' + u + '</div>';
     });
-    if (!aktifId) return;
-    var liste = uniData[aktifId].liste.filter(function(u){ return u.toLowerCase().includes(q); });
-    renderListe(liste, uniData[aktifId].onaylı || false);
+    el.innerHTML = html;
+}
+
+function detayAc(key) {
+    var d = detayliUniversiteler[key];
+    if (!d) return;
+
+    var overlay = document.getElementById('uni-modal-overlay');
+    var baslik = document.getElementById('uni-modal-baslik');
+    var icerik = document.getElementById('uni-modal-icerik');
+
+    baslik.textContent = '🎓 ' + d.ad;
+
+    var html = '';
+    if (d.not) html += '<div class="uni-modal-not">ℹ️ <span>' + d.not + '</span></div>';
+
+    d.fakulteler.forEach(function(f) {
+        html += '<div class="uni-modal-fakulte">' + f.ad + '</div>';
+        html += '<table class="uni-modal-tablo"><thead><tr><th>Bölüm</th><th>Yıllık Ücret</th></tr></thead><tbody>';
+        f.bolumler.forEach(function(b) {
+            html += '<tr><td>' + b[0] + '</td><td class="uni-modal-fiyat">' + b[1] + '</td></tr>';
+        });
+        html += '</tbody></table>';
+    });
+
+    icerik.innerHTML = html;
+    icerik.scrollTop = 0;
+    overlay.classList.add('acik');
+    document.body.style.overflow = 'hidden';
+}
+
+function detayKapat() {
+    document.getElementById('uni-modal-overlay').classList.remove('acik');
+    document.body.style.overflow = '';
 }
 
 function ulkeKapat() {
     document.getElementById('uni-panel').style.display = 'none';
-    document.querySelectorAll('.uni-ulke-kart').forEach(function(k){ k.classList.remove('aktif'); });
+    detayKapat();
 }
+
+function uniAra() {
+    var q = document.getElementById('uni-arama').value.toLowerCase();
+    var el = document.getElementById('uni-liste-metin');
+    if (!el) return;
+    var turkiyeListesi = uniData['turkey'].liste;
+    var filtered = turkiyeListesi.filter(function(u) { return u.toLowerCase().includes(q); });
+    var html = '';
+    filtered.forEach(function(u) {
+        html += '<div style="padding:7px 0;border-bottom:1px solid #eaf0f7;font-size:0.88rem;">🎓 ' + u + '</div>';
+    });
+    el.innerHTML = html;
+}
+
+
 </script>
 
 {% endblock %}
