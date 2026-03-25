@@ -310,7 +310,7 @@ def aktar_dil():
 
 def get_db():
     try:
-        conn = sqlite3.connect('site.db')
+        conn = sqlite3.connect('/tmp/site.db')
         conn.row_factory = sqlite3.Row
         return conn
     except Exception as e:
@@ -633,6 +633,11 @@ def admin_mesaj_sil(mid):
     except:
         pass
     return redirect(url_for('admin_panel') + '#mesajlar')
+
+
+@app.route('/OneSignalSDKWorker.js')
+def onesignal_worker():
+    return app.send_static_file('OneSignalSDKWorker.js')
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ baslik }} — Trust Consulting</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js" crossorigin="anonymous" defer></script>
 
     <!-- ONESİGNAL PUSH BİLDİRİM -->
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
@@ -45,13 +45,15 @@
         font-size: 24px;
         cursor: pointer;
         box-shadow: 0 4px 20px rgba(26,111,196,0.5);
-        z-index: 9999;
+        z-index: 9997;
         transition: transform 0.2s, background 0.2s;
         display: flex;
         align-items: center;
         justify-content: center;
     }
     #tc-chat-btn:hover { transform: scale(1.1); background: #1558a0; }
+    .sayfa-hizmetler #tc-chat-btn { bottom: 80px; }
+    .sayfa-hizmetler #tc-chat-kutu { bottom: 148px; }
     #tc-chat-kutu {
         position: fixed;
         bottom: 92px;
@@ -244,7 +246,9 @@
                 <a href="tel:+99364489920">📞 +993 64 48 89 20</a>
                 <a href="tel:+99361950920">📞 +993 61 95 09 20</a>
                 <a href="tel:+905530890598">📞 +90 553 089 05 98</a>
-                <a href="/cdn-cgi/l/email-protection#7a13141c153a0e080f090e1f1e0f0e1754191517">📧 <span class="__cf_email__" data-cfemail="4a23242c250a3e383f393e2f2e3f3e2764292527">[email&#160;protected]</span></a>
+                <a href="mailto:info@trustedutm.com" class="footer-email">📧 info@trustedutm.com</a>
+                <a href="mailto:lebap@trustedutm.com" class="footer-email">📧 lebap@trustedutm.com</a>
+                <a href="mailto:trustconsulting@trustedutm.com" class="footer-email">📧 trustconsulting@trustedutm.com</a>
             </div>
         </div>
         <div class="footer-kolon">
@@ -319,31 +323,6 @@
 </div>
 </div>
 
-<!-- CHATBOT WİDGET — TÜM SAYFALARDA -->
-<button id="tc-chat-btn" onclick="chatAcKapat()" title="Soru sor">💬</button>
-
-<div id="tc-chat-kutu">
-    <div id="tc-chat-header">
-        <div>
-            <span>🤖 Trust Danışman</span>
-            <small>{% if dil_kodu == 'ru' %}Онлайн — задайте вопрос{% elif dil_kodu == 'tk' %}Onlayn — sorag beriň{% else %}Çevrimiçi — sorun{% endif %}</small>
-        </div>
-        <button id="tc-chat-kapat" onclick="chatAcKapat()">✕</button>
-    </div>
-    <div id="tc-chat-mesajlar">
-        <div class="tc-msg bot">
-            {% if dil_kodu == 'ru' %}Привет! 👋 Задайте любой вопрос о Trust Consulting — визы, цены, документы.
-            {% elif dil_kodu == 'tk' %}Salam! 👋 Trust Consulting hakda islendik soragynyzy beriň.
-            {% else %}Merhaba! 👋 Vize türleri, ücretler veya belgeler hakkında her sorunuzu sorabilirsiniz.{% endif %}
-        </div>
-    </div>
-    <div id="tc-chat-input-alani">
-        <input type="text" id="tc-chat-input"
-            placeholder="{% if dil_kodu == 'ru' %}Напишите вопрос...{% elif dil_kodu == 'tk' %}Sorag ýazyň...{% else %}Sorunuzu yazın...{% endif %}"
-            onkeydown="if(event.key==='Enter'){event.preventDefault();mesajGonder();}">
-        <button id="tc-chat-gonder" onclick="mesajGonder()">➤</button>
-    </div>
-</div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function dilMenuAc(btn) {
@@ -435,3 +414,15 @@ function mesajGonder() {
     .catch(function() {
         yaziyorDiv.remove();
         mesaj
+        yaziyorDiv.remove();
+        mesajEkle('Baglanti hatasi. Lutfen tekrar deneyin.', 'bot');
+    })
+    .finally(function() {
+        chatYukluyor = false;
+        btn.disabled = false;
+        document.getElementById('tc-chat-input').focus();
+    });
+}
+</script>
+</body>
+</html>
