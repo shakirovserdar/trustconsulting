@@ -135,12 +135,27 @@ body.sayfa-index .tc-hero {
     color: white; width: 34px; height: 34px;
     display: flex; align-items: center; justify-content: center;
     cursor: pointer; font-size: 14px; flex-shrink: 0;
+    position: relative; z-index: 1101;
 }
 .tc-arama-alan {
-    position: absolute; right: 0; top: 50%; transform: translateY(-50%);
-    width: 0; overflow: hidden; transition: width 0.3s ease; z-index: 10;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 62px;
+    display: flex; align-items: center;
+    padding: 0 14px; gap: 10px;
+    background: linear-gradient(135deg,#0a1628,#0f2040);
+    z-index: 1100;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.2s ease;
 }
-.tc-arama-alan.acik { width: 190px; }
+.tc-arama-alan.acik {
+    opacity: 1; pointer-events: all;
+    width: auto;
+}
+.tc-arama-alan .tc-arama-input {
+    flex: 1; border-radius: 10px;
+    padding: 10px 16px; font-size: 0.88rem;
+}
 .tc-arama-input {
     width: 100%; background: #0f1e35;
     border: 1px solid rgba(255,255,255,0.2);
@@ -149,10 +164,11 @@ body.sayfa-index .tc-hero {
 }
 .tc-arama-input::placeholder { color: rgba(255,255,255,0.4); }
 .tc-arama-sonuc {
-    position: absolute; top: calc(100% + 8px); right: 0; width: 220px;
-    background: #0f1e35; border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 12px; overflow: hidden; display: none; z-index: 200;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    position: fixed; top: 62px; left: 0; right: 0;
+    background: #0f1e35; border-bottom: 1px solid rgba(255,255,255,0.12);
+    border-radius: 0 0 16px 16px; overflow: hidden; display: none; z-index: 1099;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    max-height: 60vh; overflow-y: auto;
 }
 .tc-arama-sonuc.acik { display: block; }
 .tc-arama-sonuc-item {
@@ -475,8 +491,9 @@ body.sayfa-index .tc-hero {
             <div class="tc-arama-wrapper">
                 <button class="tc-arama-ikon-btn" onclick="tcAramaToggle()">🔍</button>
                 <div class="tc-arama-alan" id="tcAramaAlan">
+                    <button onclick="tcAramaToggle()" style="background:none;border:none;color:rgba(255,255,255,0.7);font-size:1.1rem;cursor:pointer;flex-shrink:0;padding:0 4px;">✕</button>
                     <input type="text" class="tc-arama-input" id="tcArama"
-                        placeholder="{% if dil_kodu == 'tr' %}Ara...{% elif dil_kodu == 'ru' %}Поиск...{% else %}Gözle...{% endif %}"
+                        placeholder="{% if dil_kodu == 'tr' %}Ne aramak istiyorsunuz?{% elif dil_kodu == 'ru' %}Что ищете?{% else %}Näme gözleýärsiňiz?{% endif %}"
                         oninput="tcAra(this.value)" autocomplete="off">
                 </div>
                 <div class="tc-arama-sonuc" id="tcSonuc"></div>
