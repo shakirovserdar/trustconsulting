@@ -42,6 +42,45 @@ body.sayfa-index .tc-hero {
 }
 
 
+
+/* Hızlı erişim kartları - 3x2 grid */
+.tc-hizli-kart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 8px;
+    border-radius: 14px;
+    text-decoration: none;
+    transition: transform 0.2s, opacity 0.2s;
+    min-height: 76px;
+    position: relative;
+    overflow: hidden;
+}
+.tc-hizli-kart::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: rgba(255,255,255,0.08);
+    border-radius: 14px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+.tc-hizli-kart:hover { transform: scale(0.97); }
+.tc-hizli-kart:hover::before { opacity: 1; }
+.tc-hk-ikon {
+    font-size: 1.6rem;
+    margin-bottom: 6px;
+    display: block;
+}
+.tc-hk-yazi {
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.3;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+
 /* Hızlı erişim butonları */
 .tc-hizli-btn {
     display: inline-flex; align-items: center; gap: 5px;
@@ -494,33 +533,43 @@ body.sayfa-index .tc-hero {
     </div>
 
 
-    <!-- HIZLI ERİŞİM BUTONLARI -->
-    <div class="tc-hizli-erisim" style="background:#0d1b30;padding:14px 12px;border-bottom:1px solid rgba(255,255,255,0.06);">
-        <div style="color:rgba(255,255,255,0.45);font-size:0.62rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">
+    <!-- HIZLI ERİŞİM KARTLARI -->
+    <div class="tc-hizli-erisim" style="background:#0d1b30;padding:14px 12px 16px;border-bottom:1px solid rgba(255,255,255,0.06);">
+        <div style="color:rgba(255,255,255,0.45);font-size:0.62rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">
             {% if dil_kodu == 'tr' %}Hızlı Erişim{% elif dil_kodu == 'ru' %}Быстрый доступ{% else %}Çalt girişler{% endif %}
         </div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;">
-            <a href="{{ url_for('hizmetler') }}" class="tc-hizli-btn" style="background:linear-gradient(135deg,#c0392b,#e74c3c);">
-                🇹🇷 {% if dil_kodu == 'tr' %}Türkiye Vizesi{% elif dil_kodu == 'ru' %}Виза Турция{% else %}Türkiýe Wizasy{% endif %}
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+
+            <a href="{{ url_for('universiteler') }}#turkey" class="tc-hizli-kart" style="background:linear-gradient(145deg,#922b21,#e74c3c);">
+                <span class="tc-hk-ikon">🇹🇷</span>
+                <span class="tc-hk-yazi">{% if dil_kodu == 'tr' %}Türkiye Vizesi{% elif dil_kodu == 'ru' %}Виза Турция{% else %}Türkiýe Wizasy{% endif %}</span>
             </a>
-            <a href="{{ url_for('hizmetler') }}" class="tc-hizli-btn" style="background:linear-gradient(135deg,#1a5276,#2980b9);">
-                🇷🇺 {% if dil_kodu == 'tr' %}Rusya Vizesi{% elif dil_kodu == 'ru' %}Виза Россия{% else %}Russiýa Wizasy{% endif %}
+
+            <a href="{{ url_for('universiteler') }}#russia" class="tc-hizli-kart" style="background:linear-gradient(145deg,#154360,#2980b9);">
+                <span class="tc-hk-ikon">🇷🇺</span>
+                <span class="tc-hk-yazi">{% if dil_kodu == 'tr' %}Rusya Vizesi{% elif dil_kodu == 'ru' %}Виза Россия{% else %}Russiýa Wizasy{% endif %}</span>
             </a>
-            <a href="{{ url_for('universiteler') }}" class="tc-hizli-btn" style="background:linear-gradient(135deg,#7d6608,#d4ac0d);">
-                🎓 {% if dil_kodu == 'tr' %}Üniversiteler{% elif dil_kodu == 'ru' %}Университеты{% else %}Uniwersitetler{% endif %}
+
+            <a href="{{ url_for('universiteler') }}" class="tc-hizli-kart" style="background:linear-gradient(145deg,#7d6608,#d4ac0d);">
+                <span class="tc-hk-ikon">🎓</span>
+                <span class="tc-hk-yazi">{% if dil_kodu == 'tr' %}Üniversiteler{% elif dil_kodu == 'ru' %}Университеты{% else %}Uniwersitetler{% endif %}</span>
             </a>
-            <a href="{{ url_for('hizmetler') }}" class="tc-hizli-btn" style="background:linear-gradient(135deg,#1a6c2e,#27ae60);">
-                🇩🇪 {% if dil_kodu == 'tr' %}Almanya Vizesi{% elif dil_kodu == 'ru' %}Виза Германия{% else %}Germaniýa Wizasy{% endif %}
+
+            <a href="{{ url_for('iletisim') }}#mosaic" class="tc-hizli-kart" style="background:linear-gradient(145deg,#6c3483,#9b59b6);">
+                <span class="tc-hk-ikon">📅</span>
+                <span class="tc-hk-yazi">{% if dil_kodu == 'tr' %}Mosaic Randevu{% elif dil_kodu == 'ru' %}Запись Mosaic{% else %}Mosaic Randewy{% endif %}</span>
             </a>
-            <a href="{{ url_for('iletisim') }}" class="tc-hizli-btn" style="background:linear-gradient(135deg,#6c3483,#9b59b6);">
-                📅 {% if dil_kodu == 'tr' %}Mosaic Randevu{% elif dil_kodu == 'ru' %}Запись Mosaic{% else %}Mosaic Randewy{% endif %}
+
+            <a href="{{ url_for('hizmetler') }}#evraklar" class="tc-hizli-kart" style="background:linear-gradient(145deg,#1a5276,#1f618d);">
+                <span class="tc-hk-ikon">📋</span>
+                <span class="tc-hk-yazi">{% if dil_kodu == 'tr' %}Evraklar{% elif dil_kodu == 'ru' %}Документы{% else %}Resminamalar{% endif %}</span>
             </a>
-            <a href="{{ url_for('hizmetler') }}" class="tc-hizli-btn" style="background:linear-gradient(135deg,#1a5276,#1f618d);">
-                📋 {% if dil_kodu == 'tr' %}Evraklar{% elif dil_kodu == 'ru' %}Документы{% else %}Resminamalar{% endif %}
+
+            <a href="{{ url_for('iletisim') }}#ofisler" class="tc-hizli-kart" style="background:linear-gradient(145deg,#0e6655,#1abc9c);">
+                <span class="tc-hk-ikon">📍</span>
+                <span class="tc-hk-yazi">{% if dil_kodu == 'tr' %}Ofislerimiz{% elif dil_kodu == 'ru' %}Наши офисы{% else %}Ofislerimiz{% endif %}</span>
             </a>
-            <a href="{{ url_for('iletisim') }}" class="tc-hizli-btn" style="background:linear-gradient(135deg,#117a65,#1abc9c);">
-                📍 {% if dil_kodu == 'tr' %}Ofislerimiz{% elif dil_kodu == 'ru' %}Наши офисы{% else %}Ofislerimiz{% endif %}
-            </a>
+
         </div>
     </div>
 
@@ -574,7 +623,7 @@ body.sayfa-index .tc-hero {
     </div>
 
     <!-- KARTLAR -->
-    <div class="tc-kartlar" style="width:100%!important;max-width:100%!important;padding:0!important;margin:0!important;gap:2px!important;">
+    <div class="tc-kartlar" style="width:100%!important;max-width:100%!important;padding:0!important;margin:0!important;gap:0!important;">
 
         <!-- Hakkımızda -->
         <a href="{{ url_for('hakkimizda') }}" class="tc-kart" style="width:100%!important;margin:0!important;border-radius:0!important;">
@@ -725,18 +774,6 @@ body.sayfa-index .tc-hero {
 
 </main>
 
-<!-- SAĞ SABİT YUVARLAK BUTONLAR -->
-<div class="tc-float-bar">
-    <a href="https://wa.me/905524254697" class="tc-float-btn tc-float-wa" target="_blank" title="WhatsApp">
-        <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    </a>
-    <button class="tc-float-btn tc-float-ai" onclick="aiAc()" title="TRUST AI">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="9" cy="10" r="1.5" fill="white" stroke="none"/><circle cx="15" cy="10" r="1.5" fill="white" stroke="none"/><path d="M8 15s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="3" x2="9" y2="1"/><line x1="15" y1="3" x2="15" y2="1"/></svg>
-    </button>
-    <button class="tc-float-btn tc-float-kayit" onclick="kayitFormAc()" title="Kayıt Ol">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-    </button>
-</div>
 
 <!-- TRUST AI MODAL -->
 <div id="ai-modal-overlay" onclick="if(event.target===this)aiKapat()">
@@ -763,12 +800,22 @@ function tcDilMenuAc(btn) {
     var widget = btn.closest('.dil-widget');
     var dd = widget ? widget.querySelector('.dil-dropdown') : null;
     if (!dd) return;
-    var acik = dd.style.display === 'block';
-    document.querySelectorAll('.dil-dropdown').forEach(function(d){ d.style.display='none'; });
-    dd.style.display = acik ? 'none' : 'block';
-    document.addEventListener('click', function handler(e){
-        if(!e.target.closest('.dil-widget')){ dd.style.display='none'; document.removeEventListener('click',handler); }
-    });
+    var acik = dd.classList.contains('acik');
+    document.querySelectorAll('.dil-dropdown').forEach(function(d){ d.classList.remove('acik'); });
+    if (!acik) {
+        dd.classList.add('acik');
+        // Aşağı aç (yukarı değil)
+        dd.style.top = 'calc(100% + 6px)';
+        dd.style.bottom = 'auto';
+    }
+    setTimeout(function(){
+        document.addEventListener('click', function handler(e){
+            if(!e.target.closest('.dil-widget')){
+                dd.classList.remove('acik');
+                document.removeEventListener('click', handler);
+            }
+        });
+    }, 10);
 }
 function haberleriToggle() {
     var liste = document.getElementById('haber-liste');
