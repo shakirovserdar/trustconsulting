@@ -51,7 +51,7 @@
 
     <!-- OFİSLER -->
     <div class="iletisim-bilgi-kart">
-        <h3>{{ t.iletisim_adres_baslik }}</h3>
+        <h3 id="ofisler">{{ t.iletisim_adres_baslik }}</h3>
 
         <div class="ofis-liste">
             <div class="ofis-kart">
@@ -113,7 +113,7 @@
         </div>
 
         <!-- TELEFONLAR -->
-        <div class="iletisim-satir">
+        <div class="iletisim-satir" id="mosaic">
             <span class="ic">📞</span>
             <div>
                 <a href="tel:+99364489920">+993 64 48 89 20</a><br>
@@ -129,13 +129,26 @@
                 <a href="mailto:trustconsulting@trustedutm.com">trustconsulting@trustedutm.com</a>
             </div>
         </div>
-        <div class="sosyal-butonlar" style="margin-top:1rem;">
-            <a href="https://wa.me/905425468564" class="sosyal-btn wa-btn" target="_blank" style="font-size:0.85rem;padding:10px 16px;">WhatsApp: +90 542 546 85 64</a>
-            <a href="https://wa.me/905524254697" class="sosyal-btn wa-btn" target="_blank" style="font-size:0.85rem;padding:10px 16px;">WhatsApp: +90 552 425 46 97</a>
-            <a href="https://instagram.com/trusttmconsulting" class="sosyal-btn ig-btn" target="_blank" style="font-size:0.85rem;padding:10px 16px;">Instagram: @trusttmconsulting</a>
-            <a href="https://www.tiktok.com/@trusttmconsulting" class="sosyal-btn tt-btn" target="_blank" style="font-size:0.85rem;padding:10px 16px;">TikTok: @trusttmconsulting</a>
+        <div class="sosyal-butonlar">
+            <a href="https://wa.me/905425468564" class="sosyal-btn whatsapp-link" target="_blank">💬 WhatsApp: +90 542 546 85 64</a>
+            <a href="https://wa.me/905524254697" class="sosyal-btn whatsapp-link" target="_blank">💬 WhatsApp: +90 552 425 46 97</a>
+            <a href="https://www.tiktok.com/@trusttmconsulting" class="sosyal-btn tiktok-link" target="_blank">🎵 TikTok: @trusttmconsulting</a>
+            <a href="https://instagram.com/trusttmconsulting" class="sosyal-btn instagram-link" target="_blank">📸 Instagram: @trusttmconsulting</a>
         </div>
     </div>
 </div>
+
+<script>
+(function(){
+    var hash = window.location.hash.replace('#','');
+    if (!hash) return;
+    function scrollToHash(){
+        var el = document.getElementById(hash);
+        if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+    if (document.readyState==='complete') scrollToHash();
+    else window.addEventListener('load', scrollToHash);
+})();
+</script>
 
 {% endblock %}

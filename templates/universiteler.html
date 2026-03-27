@@ -1458,4 +1458,31 @@ function uniAra() {
 
 </script>
 
+
+
+<script>
+// URL hash ile otomatik ülke aç
+(function(){
+    function hashAc() {
+        var hash = window.location.hash.replace('#','').toLowerCase();
+        if (!hash) return;
+        // Tüm kartları tara
+        var kartlar = document.querySelectorAll('.uni-ulke-kart');
+        for (var i = 0; i < kartlar.length; i++) {
+            var onclick = kartlar[i].getAttribute('onclick') || '';
+            if (onclick.indexOf("'" + hash + "'") !== -1 || onclick.indexOf('"' + hash + '"') !== -1) {
+                var kart = kartlar[i];
+                setTimeout(function(k){ 
+                    k.click();
+                    k.scrollIntoView({behavior:'smooth', block:'start'});
+                }, 400, kart);
+                break;
+            }
+        }
+    }
+    if (document.readyState === 'complete') hashAc();
+    else window.addEventListener('load', hashAc);
+})();
+</script>
+
 {% endblock %}
