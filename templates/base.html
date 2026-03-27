@@ -154,13 +154,18 @@
 }
 .tc-gf-kayit { background: linear-gradient(135deg, #f59e0b, #ef4444); box-shadow: 0 4px 16px rgba(245,158,11,0.5); }
 /* Hizmetler sayfasında ücretler butonu için yukarı kaldır */
-body.sayfa-hizmetler .tc-global-float { bottom: 90px; }
+body.sayfa-hizmetler .tc-global-float { bottom: 90px; right: 70px; }
+body.sayfa-hizmetler .fiyat-float-btn { bottom: 90px; right: 14px; }
 
 /* Ücretler butonu - sol alt */
+
+.fiyat-float-btn:hover { transform: scale(1.1); }
+body.sayfa-hizmetler 
+
 .fiyat-float-btn {
     position: fixed;
     bottom: 24px;
-    left: 14px;
+    right: 14px;
     width: 50px; height: 50px;
     border-radius: 50%;
     background: linear-gradient(135deg, #f39c12, #e67e22);
@@ -169,12 +174,12 @@ body.sayfa-hizmetler .tc-global-float { bottom: 90px; }
     font-size: 1.3rem;
     cursor: pointer;
     box-shadow: 0 4px 16px rgba(243,156,18,0.5);
-    z-index: 997;
+    z-index: 1001;
     transition: transform 0.2s;
     display: flex; align-items: center; justify-content: center;
 }
 .fiyat-float-btn:hover { transform: scale(1.1); }
-body.sayfa-hizmetler .fiyat-float-btn { bottom: 24px; left: 14px; }
+
 </style>
 
 <style>
