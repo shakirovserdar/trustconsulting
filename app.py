@@ -639,6 +639,13 @@ def admin_mesaj_sil(mid):
 def onesignal_worker():
     return app.send_static_file('OneSignalSDKWorker.js')
 
+
+@app.route('/globe')
+def globe():
+    dil_kodu = session.get('dil', 'tr')
+    t = TERCUMELER.get(dil_kodu, TERCUMELER['tr'])
+    return render_template('globe.html', dil_kodu=dil_kodu, t=t)
+
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port, debug=True)
