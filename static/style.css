@@ -814,3 +814,32 @@ main {
         padding: 1.2rem 1.2rem 2.5rem !important;
     }
 }
+/* ══ ANA SAYFA TAM GENİŞLİK ══ */
+body.sayfa-index main.tc-main {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 62px 0 0 0 !important;
+}
+body.sayfa-index .tc-hero,
+body.sayfa-index .tc-kartlar,
+body.sayfa-index .tc-footer {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+body.sayfa-index .tc-kart {
+    width: 100% !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+}
+body.sayfa-index .tc-kartlar {
+    gap: 2px !important;
+    padding: 0 !important;
+}
+body.sayfa-index .tc-footer {
+    padding: 28px 16px 20px !important;
+}

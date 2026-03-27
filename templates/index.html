@@ -2,6 +2,45 @@
 {% block content %}
 
 <style>
+
+/* ══ TAM GENİŞLİK ZORLA ══ */
+html, body { overflow-x: hidden; }
+.tc-main { 
+    padding-top: 62px !important; 
+    padding-left: 0 !important; 
+    padding-right: 0 !important; 
+    margin: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+}
+.tc-hero, .tc-kartlar, .tc-footer {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+.tc-kart { width: 100% !important; }
+.tc-kartlar { padding: 0 !important; gap: 2px !important; margin: 0 !important; }
+/* Son kart ile footer arası boşluk yok */
+.tc-kartlar { padding-bottom: 0 !important; }
+.tc-footer { margin-top: 0 !important; }
+
+
+/* Ana sayfa tam genişlik override */
+body.sayfa-index,
+body.sayfa-index .tc-main,
+body.sayfa-index .tc-kartlar,
+body.sayfa-index .tc-footer,
+body.sayfa-index .tc-hero {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+}
+
 /* ══ SABİT HEADER ══ */
 .tc-header {
     position: fixed;
@@ -120,11 +159,12 @@
 }
 
 /* ══ ANA İÇERİK ══ */
-.tc-main { padding-top: 62px; min-height: 100vh; }
+.tc-main { padding-top: 62px; min-height: 100vh; margin: 0; padding-left: 0; padding-right: 0; }
 
 /* Başlık hero */
 .tc-hero {
     position: relative; height: 200px; overflow: hidden;
+    margin: 0; width: 100%;
 }
 .tc-hero-bg {
     position: absolute; inset: 0;
@@ -146,16 +186,19 @@
 /* ══ KARTLAR - tam genişlik ══ */
 .tc-kartlar {
     display: flex; flex-direction: column;
-    gap: 2px; padding: 2px 0; /* tam genişlik, padding 0 */
-    padding-bottom: 100px;
+    gap: 2px; padding: 0;
+    padding-bottom: 70px;
+    margin: 0;
+    width: 100%;
 }
 
 .tc-kart {
     position: relative; height: 115px;
-    border-radius: 0; /* tam genişlik için radius 0 */
+    border-radius: 0;
     overflow: hidden;
     text-decoration: none; display: flex; align-items: center;
     cursor: pointer; transition: transform 0.2s;
+    margin: 0; width: 100%;
 }
 .tc-kart:first-child { border-radius: 12px 12px 0 0; }
 .tc-kart:last-child  { border-radius: 0 0 12px 12px; }
@@ -253,7 +296,8 @@
     background: #060f1e;
     border-top: 1px solid rgba(255,255,255,0.07);
     padding: 28px 16px 20px;
-    margin-top: 2px;
+    margin: 0;
+    width: 100%;
 }
 .tc-footer-ust {
     display: flex; gap: 16px; margin-bottom: 20px;

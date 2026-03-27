@@ -180,6 +180,14 @@
 }
 .tt-btn:hover { box-shadow: 0 6px 28px rgba(0,0,0,0.9); }
 </style>
+
+<style>
+/* Ana sayfa tam genişlik */
+body.sayfa-index > * { padding: 0 !important; margin-left: 0 !important; margin-right: 0 !important; }
+body.sayfa-index .tc-kartlar, 
+body.sayfa-index .tc-hero,
+body.sayfa-index .tc-footer { width: 100% !important; max-width: none !important; margin: 0 !important; }
+</style>
 </head>
 <body class="sayfa-{{ request.endpoint }}">
 
@@ -246,9 +254,9 @@
                 <a href="tel:+99364489920">📞 +993 64 48 89 20</a>
                 <a href="tel:+99361950920">📞 +993 61 95 09 20</a>
                 <a href="tel:+905530890598">📞 +90 553 089 05 98</a>
-                <a href="mailto:info@trustedutm.com" class="footer-email">📧 info@trustedutm.com</a>
-                <a href="mailto:lebap@trustedutm.com" class="footer-email">📧 lebap@trustedutm.com</a>
-                <a href="mailto:trustconsulting@trustedutm.com" class="footer-email">📧 trustconsulting@trustedutm.com</a>
+                <a href="/cdn-cgi/l/email-protection#147d7a727b54606661676071706160793a777b79" class="footer-email">📧 <span class="__cf_email__" data-cfemail="f59c9b939ab581878086819091808198db969a98">[email&#160;protected]</span></a>
+                <a href="/cdn-cgi/l/email-protection#167a73747766566264636562737263627b3875797b" class="footer-email">📧 <span class="__cf_email__" data-cfemail="9bf7fef9faebdbefe9eee8effeffeeeff6b5f8f4f6">[email&#160;protected]</span></a>
+                <a href="/cdn-cgi/l/email-protection#0d797f787e796e62637e78617964636a4d797f787e796869787960236e6260" class="footer-email">📧 <span class="__cf_email__" data-cfemail="7e0a0c0b0d0a1d11100d0b120a1710193e0a0c0b0d0a1b1a0b0a13501d1113">[email&#160;protected]</span></a>
             </div>
         </div>
         <div class="footer-kolon">
@@ -324,7 +332,7 @@
 </div>
 
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function dilMenuAc(btn) {
     var widget = btn.closest('.dil-widget');
     var dd = widget ? widget.querySelector('.dil-dropdown') : document.getElementById('dil-dropdown');
@@ -406,23 +414,4 @@ function mesajGonder() {
     })
     .then(function(r) { return r.json(); })
     .then(function(data) {
-        yaziyorDiv.remove();
-        var cevap = data.cevap || 'Bir hata olustu, lutfen tekrar deneyin.';
-        mesajEkle(cevap, 'bot');
-        chatGecmis.push({ role: 'assistant', content: cevap });
-    })
-    .catch(function() {
-        yaziyorDiv.remove();
-        mesaj
-        yaziyorDiv.remove();
-        mesajEkle('Baglanti hatasi. Lutfen tekrar deneyin.', 'bot');
-    })
-    .finally(function() {
-        chatYukluyor = false;
-        btn.disabled = false;
-        document.getElementById('tc-chat-input').focus();
-    });
-}
-</script>
-</body>
-</html>
+        yaziyorDiv.remov
