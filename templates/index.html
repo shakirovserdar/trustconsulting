@@ -31,70 +31,40 @@
 .tc-logo-yazi p  { color: rgba(255,255,255,0.5); font-size: 0.58rem; letter-spacing: 0.5px; }
 
 /* Arama - sadece ikon, tıklayınca açılır */
-.tc-arama-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
+.tc-arama-wrapper { position: relative; display: flex; align-items: center; }
 .tc-arama-ikon-btn {
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.12);
     border-radius: 50%;
-    color: white;
-    width: 34px; height: 34px;
+    color: white; width: 34px; height: 34px;
     display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
-    font-size: 14px;
-    flex-shrink: 0;
-    transition: all 0.2s;
+    cursor: pointer; font-size: 14px; flex-shrink: 0;
 }
 .tc-arama-alan {
-    position: absolute;
-    right: 0;
-    top: 50%; transform: translateY(-50%);
-    width: 0;
-    overflow: hidden;
-    transition: width 0.3s ease;
-    z-index: 10;
+    position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+    width: 0; overflow: hidden; transition: width 0.3s ease; z-index: 10;
 }
-.tc-arama-alan.acik {
-    width: 200px;
-}
+.tc-arama-alan.acik { width: 190px; }
 .tc-arama-input {
-    width: 100%;
-    background: #0f1e35;
+    width: 100%; background: #0f1e35;
     border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 20px;
-    color: white;
-    padding: 7px 14px;
-    font-size: 0.78rem;
-    outline: none;
-    white-space: nowrap;
+    border-radius: 20px; color: white;
+    padding: 7px 14px; font-size: 0.78rem; outline: none;
 }
 .tc-arama-input::placeholder { color: rgba(255,255,255,0.4); }
 .tc-arama-sonuc {
-    position: absolute;
-    top: calc(100% + 8px);
-    right: 0;
-    width: 220px;
-    background: #0f1e35;
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 12px;
-    overflow: hidden;
-    display: none;
-    z-index: 200;
+    position: absolute; top: calc(100% + 8px); right: 0; width: 220px;
+    background: #0f1e35; border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px; overflow: hidden; display: none; z-index: 200;
     box-shadow: 0 8px 24px rgba(0,0,0,0.5);
 }
 .tc-arama-sonuc.acik { display: block; }
 .tc-arama-sonuc-item {
     display: flex; align-items: center; gap: 10px;
-    padding: 10px 14px;
-    color: rgba(255,255,255,0.85);
-    font-size: 0.82rem;
-    text-decoration: none;
+    padding: 10px 14px; color: rgba(255,255,255,0.85);
+    font-size: 0.82rem; text-decoration: none;
     border-bottom: 1px solid rgba(255,255,255,0.05);
-    cursor: pointer;
-    transition: background 0.15s;
+    cursor: pointer; transition: background 0.15s;
 }
 .tc-arama-sonuc-item:last-child { border-bottom: none; }
 .tc-arama-sonuc-item:hover { background: rgba(255,255,255,0.07); }
@@ -107,27 +77,28 @@
 }
 .tc-hamburger span { display: block; width: 22px; height: 2px; background: white; border-radius: 2px; }
 
+/* Dil dropdown AŞAĞI açılsın */
+.tc-header .dil-dropdown {
+    top: calc(100% + 6px) !important;
+    bottom: auto !important;
+}
+
 /* ══ HAMBURGER MENÜ ══ */
 .tc-menu-overlay {
     position: fixed; inset: 0;
-    background: rgba(0,0,0,0.6);
-    z-index: 1999; display: none;
-    backdrop-filter: blur(3px);
+    background: rgba(0,0,0,0.6); z-index: 1999; display: none;
 }
 .tc-menu-overlay.acik { display: block; }
 .tc-menu-panel {
-    position: fixed; top: 0; right: -290px;
-    width: 270px; height: 100vh;
+    position: fixed; top: 0; right: -290px; width: 270px; height: 100vh;
     background: linear-gradient(180deg, #0a1628, #0d1f3a);
-    z-index: 2000; transition: right 0.3s ease;
-    overflow-y: auto;
+    z-index: 2000; transition: right 0.3s ease; overflow-y: auto;
     border-left: 1px solid rgba(255,255,255,0.08);
 }
 .tc-menu-panel.acik { right: 0; }
 .tc-menu-header {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 18px 18px 14px;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 18px 18px 14px; border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 .tc-menu-header span { color: white; font-weight: 700; font-size: 0.95rem; }
 .tc-menu-kapat {
@@ -151,149 +122,186 @@
 /* ══ ANA İÇERİK ══ */
 .tc-main { padding-top: 62px; min-height: 100vh; }
 
-/* Başlık hero görseli */
+/* Başlık hero */
 .tc-hero {
-    position: relative;
-    height: 180px;
-    overflow: hidden;
+    position: relative; height: 200px; overflow: hidden;
 }
 .tc-hero-bg {
     position: absolute; inset: 0;
     background-image: url("{{ url_for('static', filename='baslik_bg.jpg') }}");
-    background-size: cover;
-    background-position: center 40%;
+    background-size: cover; background-position: center 40%;
 }
 .tc-hero-overlay {
     position: absolute; inset: 0;
-    background: linear-gradient(
-        to bottom,
-        rgba(10,22,40,0.3) 0%,
-        rgba(10,22,40,0.7) 70%,
-        rgba(10,22,40,1) 100%
-    );
+    background: linear-gradient(to bottom, rgba(10,22,40,0.25) 0%, rgba(10,22,40,0.65) 65%, rgba(10,22,40,1) 100%);
 }
 .tc-hero-ic {
-    position: relative; z-index: 1;
-    height: 100%;
+    position: relative; z-index: 1; height: 100%;
     display: flex; flex-direction: column;
-    justify-content: flex-end;
-    padding: 0 16px 16px;
+    justify-content: flex-end; padding: 0 16px 18px;
 }
-.tc-hero-ic h2 {
-    color: white; font-size: 1.3rem; font-weight: 800;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-    line-height: 1.2;
-}
-.tc-hero-ic p {
-    color: rgba(255,255,255,0.75);
-    font-size: 0.78rem;
-    margin-top: 4px;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
-}
+.tc-hero-ic h2 { color: white; font-size: 1.35rem; font-weight: 800; text-shadow: 0 2px 10px rgba(0,0,0,0.5); line-height: 1.2; }
+.tc-hero-ic p  { color: rgba(255,255,255,0.78); font-size: 0.8rem; margin-top: 5px; text-shadow: 0 1px 4px rgba(0,0,0,0.4); }
 
-/* ══ KARTLAR ══ */
+/* ══ KARTLAR - tam genişlik ══ */
 .tc-kartlar {
     display: flex; flex-direction: column;
-    gap: 3px; padding: 3px;
-    padding-bottom: 80px;
+    gap: 2px; padding: 2px 0; /* tam genişlik, padding 0 */
+    padding-bottom: 100px;
 }
 
 .tc-kart {
-    position: relative; height: 110px;
-    border-radius: 13px; overflow: hidden;
+    position: relative; height: 115px;
+    border-radius: 0; /* tam genişlik için radius 0 */
+    overflow: hidden;
     text-decoration: none; display: flex; align-items: center;
     cursor: pointer; transition: transform 0.2s;
 }
-.tc-kart:active { transform: scale(0.98); }
+.tc-kart:first-child { border-radius: 12px 12px 0 0; }
+.tc-kart:last-child  { border-radius: 0 0 12px 12px; }
+
 .tc-kart-bg {
     position: absolute; inset: 0;
     background-size: cover; background-position: center;
     transition: transform 0.4s;
 }
-.tc-kart:hover .tc-kart-bg { transform: scale(1.05); }
+.tc-kart:hover .tc-kart-bg { transform: scale(1.04); }
 .tc-kart-overlay {
     position: absolute; inset: 0;
-    background: linear-gradient(90deg,
-        rgba(5,15,35,0.88) 0%,
-        rgba(5,15,35,0.55) 65%,
-        rgba(5,15,35,0.1) 100%
-    );
+    background: linear-gradient(90deg, rgba(5,15,35,0.87) 0%, rgba(5,15,35,0.5) 60%, rgba(5,15,35,0.05) 100%);
 }
 .tc-kart-ic {
     position: relative; z-index: 1;
-    display: flex; align-items: center; gap: 13px;
-    padding: 0 16px; width: 100%;
+    display: flex; align-items: center; gap: 14px;
+    padding: 0 18px; width: 100%;
 }
+
+/* APP-STYLE İKONLAR - modern, renkli, pencere efekti */
 .tc-kart-ikon {
-    width: 46px; height: 46px; border-radius: 13px;
+    width: 52px; height: 52px; border-radius: 14px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 22px; flex-shrink: 0;
+    flex-shrink: 0;
+    position: relative; overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
+/* İkon içindeki parlaklık efekti */
+.tc-kart-ikon::before {
+    content: '';
+    position: absolute; top: -30%; left: -20%;
+    width: 70%; height: 55%;
+    background: rgba(255,255,255,0.25);
+    border-radius: 50%;
+    filter: blur(8px);
+}
+/* SVG ikonlar */
+.tc-kart-ikon svg { width: 28px; height: 28px; position: relative; z-index: 1; }
+
 .tc-kart-yazi { flex: 1; }
 .tc-kart-yazi h2 {
-    color: white; font-size: 1rem; font-weight: 700;
-    margin-bottom: 3px;
+    color: white; font-size: 1.02rem; font-weight: 700; margin-bottom: 4px;
     text-shadow: 0 2px 8px rgba(0,0,0,0.7);
 }
 .tc-kart-yazi p {
-    color: rgba(255,255,255,0.7); font-size: 0.73rem;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    color: rgba(255,255,255,0.72); font-size: 0.74rem;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6); line-height: 1.3;
 }
-.tc-kart-ok { color: rgba(255,255,255,0.5); font-size: 1.1rem; flex-shrink: 0; }
+.tc-kart-ok {
+    color: rgba(255,255,255,0.45); font-size: 1rem; flex-shrink: 0;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+}
 
-/* ══ SAĞ SABİT YUVARLAK BUTONLAR ══ */
+/* ══ SAĞ SABİT BUTONLAR - tam alta ══ */
 .tc-float-bar {
     position: fixed;
     right: 14px;
-    bottom: 50%;
-    transform: translateY(50%);
+    bottom: 24px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     z-index: 999;
+    align-items: center;
 }
 .tc-float-btn {
-    width: 48px; height: 48px;
-    border-radius: 50%;
-    border: none;
+    width: 52px; height: 52px;
+    border-radius: 50%; border: none;
     display: flex; align-items: center; justify-content: center;
-    font-size: 22px;
-    cursor: pointer;
-    text-decoration: none;
-    box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+    cursor: pointer; text-decoration: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
     transition: transform 0.2s, box-shadow 0.2s;
-    color: white;
+    overflow: hidden; position: relative;
 }
 .tc-float-btn:hover { transform: scale(1.1); }
-.tc-float-wa {
-    background: #25D366;
-    box-shadow: 0 3px 14px rgba(37,211,102,0.5);
-}
-.tc-float-ai {
+.tc-float-btn svg { width: 26px; height: 26px; position: relative; z-index: 1; }
+
+.tc-float-wa  { background: #25D366; box-shadow: 0 4px 16px rgba(37,211,102,0.5); }
+.tc-float-ai  {
     background: linear-gradient(135deg, #6a11cb, #2575fc);
-    box-shadow: 0 3px 14px rgba(100,50,200,0.5);
-    position: relative;
-    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(100,50,200,0.5);
 }
-@keyframes shine-btn {
-    0% { left: -100%; } 100% { left: 150%; }
-}
+@keyframes shine-btn { 0%{left:-100%} 100%{left:150%} }
 .tc-float-ai::before {
-    content: ''; position: absolute;
-    top: 0; left: -100%; width: 60%; height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+    content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+    background: linear-gradient(120deg,transparent,rgba(255,255,255,0.4),transparent);
     animation: shine-btn 2s infinite;
 }
-.tc-float-kayit {
-    background: linear-gradient(135deg, #f59e0b, #ef4444);
-    box-shadow: 0 3px 14px rgba(245,158,11,0.5);
+.tc-float-kayit { background: linear-gradient(135deg, #f59e0b, #ef4444); box-shadow: 0 4px 16px rgba(245,158,11,0.5); }
+
+/* ══ FOOTER ══ */
+.tc-footer {
+    background: #060f1e;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding: 28px 16px 20px;
+    margin-top: 2px;
+}
+.tc-footer-ust {
+    display: flex; gap: 16px; margin-bottom: 20px;
+}
+.tc-footer-logo {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
+}
+.tc-footer-logo img { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; }
+.tc-footer-logo-yazi strong { color: white; font-size: 0.9rem; display: block; }
+.tc-footer-logo-yazi span   { color: rgba(255,255,255,0.45); font-size: 0.65rem; }
+.tc-footer-iletisim a, .tc-footer-iletisim span {
+    display: flex; align-items: center; gap: 7px;
+    color: rgba(255,255,255,0.6); font-size: 0.75rem;
+    text-decoration: none; margin-bottom: 6px;
+}
+.tc-footer-iletisim a:hover { color: rgba(255,255,255,0.9); }
+.tc-footer-sol { flex: 1.2; }
+.tc-footer-sag { flex: 0.8; }
+.tc-footer-baslik {
+    color: rgba(255,255,255,0.5); font-size: 0.65rem;
+    text-transform: uppercase; letter-spacing: 1px;
+    margin-bottom: 10px; font-weight: 600;
+}
+.tc-footer-nav a {
+    display: block; color: rgba(255,255,255,0.65);
+    font-size: 0.78rem; text-decoration: none;
+    margin-bottom: 7px; transition: color 0.15s;
+}
+.tc-footer-nav a:hover { color: white; }
+.tc-footer-sosyal { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+.tc-footer-sosyal-btn {
+    width: 36px; height: 36px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; font-size: 16px;
+    transition: transform 0.2s;
+}
+.tc-footer-sosyal-btn:hover { transform: scale(1.1); }
+.tc-footer-alt {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 14px; margin-top: 4px;
+    color: rgba(255,255,255,0.3); font-size: 0.68rem;
+    text-align: center;
 }
 
 /* ══ AI MODAL ══ */
 @keyframes slideUp { from{transform:translateY(100%)} to{transform:translateY(0)} }
 @keyframes rainbow-anim { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
 @keyframes float-ikon { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
-
 #ai-modal-overlay {
     display: none; position: fixed; inset: 0;
     background: rgba(0,0,0,0.75); z-index: 10000;
@@ -309,10 +317,9 @@
 }
 #ai-mh {
     background: linear-gradient(270deg,#6a11cb,#2575fc,#00c9ff,#ff6fd8,#6a11cb);
-    background-size: 300% 300%;
-    animation: rainbow-anim 4s ease infinite;
-    padding: 13px 16px; display: flex;
-    align-items: center; justify-content: space-between; flex-shrink: 0;
+    background-size: 300% 300%; animation: rainbow-anim 4s ease infinite;
+    padding: 13px 16px; display: flex; align-items: center;
+    justify-content: space-between; flex-shrink: 0;
 }
 #ai-mh-ikon {
     width: 34px; height: 34px; border-radius: 50%;
@@ -323,24 +330,15 @@
 #ai-mh-title { color: white; font-weight: 800; font-size: 0.95rem; }
 #ai-mh-sub   { color: rgba(255,255,255,0.75); font-size: 0.72rem; }
 #ai-mh-kapat {
-    background: rgba(255,255,255,0.2); border: none;
-    color: white; width: 28px; height: 28px;
-    border-radius: 50%; font-size: 14px; cursor: pointer;
+    background: rgba(255,255,255,0.2); border: none; color: white;
+    width: 28px; height: 28px; border-radius: 50%;
+    font-size: 14px; cursor: pointer;
     display: flex; align-items: center; justify-content: center;
 }
-#ai-msgs {
-    flex: 1; overflow-y: auto; padding: 12px;
-    display: flex; flex-direction: column; gap: 9px;
-}
-#ai-msgs::-webkit-scrollbar { width: 4px; }
-#ai-msgs::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
-.ai-m {
-    max-width: 88%; padding: 8px 12px;
-    border-radius: 13px; font-size: 13px;
-    line-height: 1.5; word-wrap: break-word;
-}
-.ai-m.bot  { background: #1c2e45; color: #d0dcea; align-self: flex-start; border-bottom-left-radius: 3px; }
-.ai-m.user { background: linear-gradient(135deg,#2575fc,#6a11cb); color: white; align-self: flex-end; border-bottom-right-radius: 3px; }
+#ai-msgs { flex: 1; overflow-y: auto; padding: 12px; display: flex; flex-direction: column; gap: 9px; }
+.ai-m { max-width: 88%; padding: 8px 12px; border-radius: 13px; font-size: 13px; line-height: 1.5; word-wrap: break-word; }
+.ai-m.bot    { background: #1c2e45; color: #d0dcea; align-self: flex-start; border-bottom-left-radius: 3px; }
+.ai-m.user   { background: linear-gradient(135deg,#2575fc,#6a11cb); color: white; align-self: flex-end; border-bottom-right-radius: 3px; }
 .ai-m.typing { background: #1c2e45; color: #6a8aaa; align-self: flex-start; font-style: italic; font-size: 12px; }
 #ai-inp-area {
     display: flex; gap: 7px; padding: 9px 11px;
@@ -350,15 +348,13 @@
 #ai-inp {
     flex: 1; background: #1c2e45;
     border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 9px; color: white;
-    padding: 8px 12px; font-size: 13px;
-    outline: none; font-family: inherit;
+    border-radius: 9px; color: white; padding: 8px 12px;
+    font-size: 13px; outline: none; font-family: inherit;
 }
 #ai-inp::placeholder { color: #4a6a8a; }
 #ai-send {
-    background: linear-gradient(135deg,#2575fc,#6a11cb);
-    border: none; border-radius: 9px;
-    color: white; padding: 8px 13px;
+    background: linear-gradient(135deg,#2575fc,#6a11cb); border: none;
+    border-radius: 9px; color: white; padding: 8px 13px;
     cursor: pointer; font-size: 15px; flex-shrink: 0;
 }
 #ai-send:disabled { opacity: 0.4; }
@@ -374,11 +370,9 @@
                 <p>TRAVEL & EDUCATION</p>
             </div>
         </a>
-
         <div class="tc-header-sag">
-            <!-- Arama -->
             <div class="tc-arama-wrapper">
-                <button class="tc-arama-ikon-btn" onclick="tcAramaToggle()" id="tcAramaBtn">🔍</button>
+                <button class="tc-arama-ikon-btn" onclick="tcAramaToggle()">🔍</button>
                 <div class="tc-arama-alan" id="tcAramaAlan">
                     <input type="text" class="tc-arama-input" id="tcArama"
                         placeholder="{% if dil_kodu == 'tr' %}Ara...{% elif dil_kodu == 'ru' %}Поиск...{% else %}Gözle...{% endif %}"
@@ -386,21 +380,17 @@
                 </div>
                 <div class="tc-arama-sonuc" id="tcSonuc"></div>
             </div>
-
-            <!-- Dil -->
             <div class="dil-widget">
                 <button class="dil-aktif-btn" onclick="dilMenuAc(this)" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:20px;color:white;padding:6px 10px;font-size:0.75rem;cursor:pointer;display:flex;align-items:center;gap:4px;">
                     {% if dil_kodu == 'tr' %}🇹🇷 TR{% elif dil_kodu == 'ru' %}🇷🇺 RU{% else %}🇹🇲 TK{% endif %}
                     <span class="dil-ok">▾</span>
                 </button>
-                <div class="dil-dropdown dil-dropdown-yukari">
+                <div class="dil-dropdown" style="top:calc(100% + 6px);bottom:auto;">
                     <a href="?dil=tr" class="dil-secim {% if dil_kodu == 'tr' %}secili{% endif %}">🇹🇷 Türkçe</a>
                     <a href="?dil=ru" class="dil-secim {% if dil_kodu == 'ru' %}secili{% endif %}">🇷🇺 Русский</a>
                     <a href="?dil=tk" class="dil-secim {% if dil_kodu == 'tk' %}secili{% endif %}">🇹🇲 Türkmençe</a>
                 </div>
             </div>
-
-            <!-- Hamburger -->
             <button class="tc-hamburger" onclick="tcMenuAc()">
                 <span></span><span></span><span></span>
             </button>
@@ -417,7 +407,7 @@
     </div>
     <a href="{{ url_for('hakkimizda') }}" class="tc-menu-item"><div class="tc-menu-ikon" style="background:rgba(59,130,246,0.2);">🏛️</div>{% if dil_kodu == 'tr' %}Hakkımızda{% elif dil_kodu == 'ru' %}О нас{% else %}Biz hakda{% endif %}</a>
     <a href="{{ url_for('hizmetler') }}" class="tc-menu-item"><div class="tc-menu-ikon" style="background:rgba(16,185,129,0.2);">✈️</div>{% if dil_kodu == 'tr' %}Hizmetler{% elif dil_kodu == 'ru' %}Услуги{% else %}Hyzmatlar{% endif %}</a>
-    <a href="{{ url_for('universiteler') }}" class="tc-menu-item"><div class="tc-menu-ikon" style="background:rgba(245,158,11,0.2);">🎓</div>{% if dil_kodu == 'tr' %}Üniversiteler{% elif dil_kodu == 'ru' %}Университеты{% else %}Uniw.{% endif %}</a>
+    <a href="{{ url_for('universiteler') }}" class="tc-menu-item"><div class="tc-menu-ikon" style="background:rgba(245,158,11,0.2);">🎓</div>{% if dil_kodu == 'tr' %}Üniversiteler{% elif dil_kodu == 'ru' %}Университеты{% else %}Uniwersitetler{% endif %}</a>
     <a href="{{ url_for('sss') }}" class="tc-menu-item"><div class="tc-menu-ikon" style="background:rgba(139,92,246,0.2);">❓</div>{% if dil_kodu == 'tr' %}Sık Sorulanlar{% elif dil_kodu == 'ru' %}FAQ{% else %}SSS{% endif %}</a>
     <a href="{{ url_for('iletisim') }}" class="tc-menu-item"><div class="tc-menu-ikon" style="background:rgba(236,72,153,0.2);">📞</div>{% if dil_kodu == 'tr' %}İletişim{% elif dil_kodu == 'ru' %}Контакты{% else %}Habarlaşmak{% endif %}</a>
     <a href="{{ url_for('yorumlar_sayfa') }}" class="tc-menu-item"><div class="tc-menu-ikon" style="background:rgba(251,191,36,0.2);">⭐</div>{% if dil_kodu == 'tr' %}Yorumlar{% elif dil_kodu == 'ru' %}Отзывы{% else %}Teswirler{% endif %}</a>
@@ -431,7 +421,7 @@
 <!-- ANA İÇERİK -->
 <main class="tc-main">
 
-    <!-- BAŞLIK HERO GÖRSELİ -->
+    <!-- BAŞLIK HERO -->
     <div class="tc-hero">
         <div class="tc-hero-bg"></div>
         <div class="tc-hero-overlay"></div>
@@ -449,12 +439,14 @@
             <div class="tc-kart-bg" style="background-image:url('{{ url_for('static', filename='hakkimizda.png') }}');"></div>
             <div class="tc-kart-overlay"></div>
             <div class="tc-kart-ic">
-                <div class="tc-kart-ikon" style="background:rgba(59,130,246,0.35);border:1px solid rgba(59,130,246,0.4);">🏛️</div>
+                <div class="tc-kart-ikon" style="background:linear-gradient(145deg,#1e4bd8,#3b82f6);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M3 10h18M3 7l9-4 9 4M4 10v11M8 10v11M12 10v11M16 10v11M20 10v11"/></svg>
+                </div>
                 <div class="tc-kart-yazi">
                     <h2>{% if dil_kodu == 'tr' %}Hakkımızda{% elif dil_kodu == 'ru' %}О нас{% else %}Biz hakda{% endif %}</h2>
                     <p>{% if dil_kodu == 'tr' %}500+ başvuru · %92 onay · 8 ofis{% elif dil_kodu == 'ru' %}500+ заявок · 92% одобрений · 8 офисов{% else %}500+ ýüz tutma · 8 ofis{% endif %}</p>
                 </div>
-                <span class="tc-kart-ok">→</span>
+                <span class="tc-kart-ok">›</span>
             </div>
         </a>
 
@@ -463,12 +455,14 @@
             <div class="tc-kart-bg" style="background-image:url('{{ url_for('static', filename='hizmetler.png') }}');"></div>
             <div class="tc-kart-overlay"></div>
             <div class="tc-kart-ic">
-                <div class="tc-kart-ikon" style="background:rgba(16,185,129,0.35);border:1px solid rgba(16,185,129,0.4);">✈️</div>
+                <div class="tc-kart-ikon" style="background:linear-gradient(145deg,#047857,#10b981);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                </div>
                 <div class="tc-kart-yazi">
                     <h2>{% if dil_kodu == 'tr' %}Hizmetler{% elif dil_kodu == 'ru' %}Услуги{% else %}Hyzmatlar{% endif %}</h2>
                     <p>{% if dil_kodu == 'tr' %}Türkiye · Rusya · Almanya · Dubai · 20+ ülke{% elif dil_kodu == 'ru' %}Турция · Россия · Германия · Дубай{% else %}Türkiýe · Russiýa · Germaniýa{% endif %}</p>
                 </div>
-                <span class="tc-kart-ok">→</span>
+                <span class="tc-kart-ok">›</span>
             </div>
         </a>
 
@@ -477,12 +471,14 @@
             <div class="tc-kart-bg" style="background-image:url('{{ url_for('static', filename='universiteler.png') }}');"></div>
             <div class="tc-kart-overlay"></div>
             <div class="tc-kart-ic">
-                <div class="tc-kart-ikon" style="background:rgba(245,158,11,0.35);border:1px solid rgba(245,158,11,0.4);">🎓</div>
+                <div class="tc-kart-ikon" style="background:linear-gradient(145deg,#b45309,#f59e0b);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                </div>
                 <div class="tc-kart-yazi">
                     <h2>{% if dil_kodu == 'tr' %}Üniversiteler{% elif dil_kodu == 'ru' %}Университеты{% else %}Uniwersitetler{% endif %}</h2>
                     <p>{% if dil_kodu == 'tr' %}20 ülke · 600+ üniversite · TM onaylı{% elif dil_kodu == 'ru' %}20 стран · 600+ университетов{% else %}20 ýurt · 600+ uniwersitet{% endif %}</p>
                 </div>
-                <span class="tc-kart-ok">→</span>
+                <span class="tc-kart-ok">›</span>
             </div>
         </a>
 
@@ -491,12 +487,14 @@
             <div class="tc-kart-bg" style="background-image:url('{{ url_for('static', filename='sik_sorulanlar.png') }}');"></div>
             <div class="tc-kart-overlay"></div>
             <div class="tc-kart-ic">
-                <div class="tc-kart-ikon" style="background:rgba(139,92,246,0.35);border:1px solid rgba(139,92,246,0.4);">❓</div>
+                <div class="tc-kart-ikon" style="background:linear-gradient(145deg,#6d28d9,#8b5cf6);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </div>
                 <div class="tc-kart-yazi">
                     <h2>{% if dil_kodu == 'tr' %}Sık Sorulanlar{% elif dil_kodu == 'ru' %}FAQ{% else %}Köp soralýanlar{% endif %}</h2>
                     <p>{% if dil_kodu == 'tr' %}Vize, süreç, belgeler, ücretler{% elif dil_kodu == 'ru' %}Виза, процесс, документы{% else %}Wiza, proses, resminamalar{% endif %}</p>
                 </div>
-                <span class="tc-kart-ok">→</span>
+                <span class="tc-kart-ok">›</span>
             </div>
         </a>
 
@@ -505,12 +503,14 @@
             <div class="tc-kart-bg" style="background-image:url('{{ url_for('static', filename='iletisim.png') }}');"></div>
             <div class="tc-kart-overlay"></div>
             <div class="tc-kart-ic">
-                <div class="tc-kart-ikon" style="background:rgba(236,72,153,0.35);border:1px solid rgba(236,72,153,0.4);">📞</div>
+                <div class="tc-kart-ikon" style="background:linear-gradient(145deg,#be185d,#ec4899);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.42 2 2 0 0 1 3.62 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.84a16 16 0 0 0 6.29 6.29l1.87-1.87a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
                 <div class="tc-kart-yazi">
                     <h2>{% if dil_kodu == 'tr' %}İletişim{% elif dil_kodu == 'ru' %}Контакты{% else %}Habarlaşmak{% endif %}</h2>
                     <p>{% if dil_kodu == 'tr' %}8 ofis · İstanbul · WhatsApp{% elif dil_kodu == 'ru' %}8 офисов · Стамбул · WhatsApp{% else %}8 ofis · Stambul · WhatsApp{% endif %}</p>
                 </div>
-                <span class="tc-kart-ok">→</span>
+                <span class="tc-kart-ok">›</span>
             </div>
         </a>
 
@@ -519,23 +519,81 @@
             <div class="tc-kart-bg" style="background-image:url('{{ url_for('static', filename='yorumlar.png') }}');"></div>
             <div class="tc-kart-overlay"></div>
             <div class="tc-kart-ic">
-                <div class="tc-kart-ikon" style="background:rgba(251,191,36,0.35);border:1px solid rgba(251,191,36,0.4);">⭐</div>
+                <div class="tc-kart-ikon" style="background:linear-gradient(145deg,#92400e,#fbbf24);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
                 <div class="tc-kart-yazi">
                     <h2>{% if dil_kodu == 'tr' %}Yorumlar{% elif dil_kodu == 'ru' %}Отзывы{% else %}Teswirler{% endif %}</h2>
                     <p>{% if dil_kodu == 'tr' %}Gerçek deneyimler · Yorum bırakın{% elif dil_kodu == 'ru' %}Реальные отзывы{% else %}Hakyky tejribeler{% endif %}</p>
                 </div>
-                <span class="tc-kart-ok">→</span>
+                <span class="tc-kart-ok">›</span>
             </div>
         </a>
 
     </div>
+
+    <!-- FOOTER -->
+    <footer class="tc-footer">
+        <div class="tc-footer-ust">
+            <div class="tc-footer-sol">
+                <div class="tc-footer-logo">
+                    <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Trust Consulting">
+                    <div class="tc-footer-logo-yazi">
+                        <strong>Trust Consulting</strong>
+                        <span>Travel & Education</span>
+                    </div>
+                </div>
+                <div class="tc-footer-iletisim">
+                    <a href="tel:+99364489920"><span>📞</span> +993 64 48 89 20</a>
+                    <a href="tel:+99361950920"><span>📞</span> +993 61 95 09 20</a>
+                    <a href="tel:+905530890598"><span>📞</span> +90 553 089 05 98</a>
+                    <span><span>📧</span> info&#64;trustedutm&#46;com</span>
+                    <span><span>📧</span> lebap&#64;trustedutm&#46;com</span>
+                    <span><span>📧</span> trustconsulting&#64;trustedutm&#46;com</span>
+                </div>
+                <div class="tc-footer-sosyal">
+                    <a href="https://wa.me/905425468564" class="tc-footer-sosyal-btn" style="background:#25D366;" target="_blank">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
+                    <a href="https://instagram.com/trusttmconsulting" class="tc-footer-sosyal-btn" style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);" target="_blank">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@trusttmconsulting" class="tc-footer-sosyal-btn" style="background:#000;" target="_blank">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.78a4.85 4.85 0 01-1.02-.09z"/></svg>
+                    </a>
+                    <a href="https://wa.me/905524254697" class="tc-footer-sosyal-btn" style="background:#25D366;" target="_blank">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="tc-footer-sag">
+                <div class="tc-footer-baslik">{% if dil_kodu == 'tr' %}Menü{% elif dil_kodu == 'ru' %}Меню{% else %}Menyu{% endif %}</div>
+                <nav class="tc-footer-nav">
+                    <a href="{{ url_for('hakkimizda') }}">{% if dil_kodu == 'tr' %}Hakkımızda{% elif dil_kodu == 'ru' %}О нас{% else %}Biz hakda{% endif %}</a>
+                    <a href="{{ url_for('hizmetler') }}">{% if dil_kodu == 'tr' %}Hizmetler{% elif dil_kodu == 'ru' %}Услуги{% else %}Hyzmatlar{% endif %}</a>
+                    <a href="{{ url_for('universiteler') }}">{% if dil_kodu == 'tr' %}Üniversiteler{% elif dil_kodu == 'ru' %}Университеты{% else %}Uniw.{% endif %}</a>
+                    <a href="{{ url_for('sss') }}">{% if dil_kodu == 'tr' %}Sık Sorulanlar{% elif dil_kodu == 'ru' %}FAQ{% else %}SSS{% endif %}</a>
+                    <a href="{{ url_for('iletisim') }}">{% if dil_kodu == 'tr' %}İletişim{% elif dil_kodu == 'ru' %}Контакты{% else %}Habarlaşmak{% endif %}</a>
+                    <a href="{{ url_for('yorumlar_sayfa') }}">{% if dil_kodu == 'tr' %}Yorumlar{% elif dil_kodu == 'ru' %}Отзывы{% else %}Teswirler{% endif %}</a>
+                </nav>
+            </div>
+        </div>
+        <div class="tc-footer-alt">{{ t.footer_telif }}</div>
+    </footer>
+
 </main>
 
 <!-- SAĞ SABİT YUVARLAK BUTONLAR -->
 <div class="tc-float-bar">
-    <a href="https://wa.me/905524254697" class="tc-float-btn tc-float-wa" target="_blank" title="WhatsApp">💬</a>
-    <button class="tc-float-btn tc-float-ai" onclick="aiAc()" title="TRUST AI">🤖</button>
-    <button class="tc-float-btn tc-float-kayit" onclick="kayitFormAc()" title="{% if dil_kodu == 'tr' %}Kayıt Ol{% elif dil_kodu == 'ru' %}Записаться{% else %}Hasaba al{% endif %}">📝</button>
+    <a href="https://wa.me/905524254697" class="tc-float-btn tc-float-wa" target="_blank" title="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+    <button class="tc-float-btn tc-float-ai" onclick="aiAc()" title="TRUST AI">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="9" cy="10" r="1.5" fill="white" stroke="none"/><circle cx="15" cy="10" r="1.5" fill="white" stroke="none"/><path d="M8 15s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="3" x2="9" y2="1"/><line x1="15" y1="3" x2="15" y2="1"/></svg>
+    </button>
+    <button class="tc-float-btn tc-float-kayit" onclick="kayitFormAc()" title="Kayıt Ol">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+    </button>
 </div>
 
 <!-- TRUST AI MODAL -->
@@ -544,41 +602,28 @@
         <div id="ai-mh">
             <div style="display:flex;align-items:center;gap:9px;">
                 <div id="ai-mh-ikon">🤖</div>
-                <div>
-                    <div id="ai-mh-title">TRUST AI</div>
-                    <div id="ai-mh-sub">{% if dil_kodu == 'tr' %}Çevrimiçi{% elif dil_kodu == 'ru' %}Онлайн{% else %}Onlayn{% endif %}</div>
-                </div>
+                <div><div id="ai-mh-title">TRUST AI</div><div id="ai-mh-sub">{% if dil_kodu == 'tr' %}Çevrimiçi{% elif dil_kodu == 'ru' %}Онлайн{% else %}Onlayn{% endif %}</div></div>
             </div>
             <button id="ai-mh-kapat" onclick="aiKapat()">✕</button>
         </div>
         <div id="ai-msgs">
-            <div class="ai-m bot">{% if dil_kodu == 'tr' %}Merhaba! 👋 Vize, üniversite veya belgeler hakkında sorun.{% elif dil_kodu == 'ru' %}Привет! 👋 Задайте вопрос о визах, университетах или документах.{% else %}Salam! 👋 Wiza, uniwersitet ýa-da resminamalar barada soragy beriň.{% endif %}</div>
+            <div class="ai-m bot">{% if dil_kodu == 'tr' %}Merhaba! 👋 Vize, üniversite veya belgeler hakkında sorun.{% elif dil_kodu == 'ru' %}Привет! 👋 Задайте вопрос о визах, университетах.{% else %}Salam! 👋 Wiza, uniwersitet barada soragy beriň.{% endif %}</div>
         </div>
         <div id="ai-inp-area">
-            <input type="text" id="ai-inp"
-                placeholder="{% if dil_kodu == 'tr' %}Sorunuzu yazın...{% elif dil_kodu == 'ru' %}Напишите вопрос...{% else %}Soragy yazyn...{% endif %}"
-                onkeydown="if(event.key==='Enter'){event.preventDefault();aiGonder();}">
+            <input type="text" id="ai-inp" placeholder="{% if dil_kodu == 'tr' %}Sorunuzu yazın...{% elif dil_kodu == 'ru' %}Напишите вопрос...{% else %}Soragy yazyn...{% endif %}" onkeydown="if(event.key==='Enter'){event.preventDefault();aiGonder();}">
             <button id="ai-send" onclick="aiGonder()">➤</button>
         </div>
     </div>
 </div>
 
 <script>
-// Menü
 function tcMenuAc(){document.getElementById('tcMenuPanel').classList.add('acik');document.getElementById('tcMenuOverlay').classList.add('acik');document.body.style.overflow='hidden';}
 function tcMenuKapat(){document.getElementById('tcMenuPanel').classList.remove('acik');document.getElementById('tcMenuOverlay').classList.remove('acik');document.body.style.overflow='';}
 
-// Arama toggle
 function tcAramaToggle(){
-    var alan=document.getElementById('tcAramaAlan');
-    var inp=document.getElementById('tcArama');
-    if(alan.classList.contains('acik')){
-        alan.classList.remove('acik');
-        document.getElementById('tcSonuc').classList.remove('acik');
-    } else {
-        alan.classList.add('acik');
-        setTimeout(function(){inp.focus();},310);
-    }
+    var a=document.getElementById('tcAramaAlan'),inp=document.getElementById('tcArama');
+    if(a.classList.contains('acik')){a.classList.remove('acik');document.getElementById('tcSonuc').classList.remove('acik');}
+    else{a.classList.add('acik');setTimeout(function(){inp.focus();},310);}
 }
 document.addEventListener('click',function(e){
     if(!e.target.closest('.tc-arama-wrapper')){
@@ -588,17 +633,16 @@ document.addEventListener('click',function(e){
 });
 
 var aramaList=[
-    {ad:'{% if dil_kodu == "tr" %}Hakkımızda{% elif dil_kodu == "ru" %}О нас{% else %}Biz hakda{% endif %}',url:'{{ url_for("hakkimizda") }}',ikon:'🏛️'},
-    {ad:'{% if dil_kodu == "tr" %}Hizmetler{% elif dil_kodu == "ru" %}Услуги{% else %}Hyzmatlar{% endif %}',url:'{{ url_for("hizmetler") }}',ikon:'✈️'},
-    {ad:'{% if dil_kodu == "tr" %}Üniversiteler{% elif dil_kodu == "ru" %}Университеты{% else %}Uniwersitetler{% endif %}',url:'{{ url_for("universiteler") }}',ikon:'🎓'},
-    {ad:'{% if dil_kodu == "tr" %}Sık Sorulanlar{% elif dil_kodu == "ru" %}FAQ{% else %}SSS{% endif %}',url:'{{ url_for("sss") }}',ikon:'❓'},
-    {ad:'{% if dil_kodu == "tr" %}İletişim{% elif dil_kodu == "ru" %}Контакты{% else %}Habarlaşmak{% endif %}',url:'{{ url_for("iletisim") }}',ikon:'📞'},
-    {ad:'{% if dil_kodu == "tr" %}Yorumlar{% elif dil_kodu == "ru" %}Отзывы{% else %}Teswirler{% endif %}',url:'{{ url_for("yorumlar_sayfa") }}',ikon:'⭐'},
-    {ad:'TRUST AI',url:'#',ikon:'🤖',ai:true},
-    {ad:'{% if dil_kodu == "tr" %}Türkiye Vizesi{% elif dil_kodu == "ru" %}Виза Турция{% else %}Türkiýe wizasy{% endif %}',url:'{{ url_for("hizmetler") }}',ikon:'🇹🇷'},
-    {ad:'{% if dil_kodu == "tr" %}Öğrenci Vizesi{% elif dil_kodu == "ru" %}Студенческая виза{% else %}Talyp wizasy{% endif %}',url:'{{ url_for("hizmetler") }}',ikon:'🎓'},
-    {ad:'{% if dil_kodu == "tr" %}Rusya Vizesi{% elif dil_kodu == "ru" %}Виза Россия{% else %}Russiýa wizasy{% endif %}',url:'{{ url_for("hizmetler") }}',ikon:'🇷🇺'},
-    {ad:'{% if dil_kodu == "tr" %}Kayıt Ol{% elif dil_kodu == "ru" %}Записаться{% else %}Hasaba al{% endif %}',url:'#',ikon:'📝',kayit:true}
+    {ad:'{% if dil_kodu == "tr" %}Hakkımızda{% elif dil_kodu == "ru" %}О нас{% else %}Biz hakda{% endif %}',url:'{{ url_for("hakkimizda") }}'},
+    {ad:'{% if dil_kodu == "tr" %}Hizmetler{% elif dil_kodu == "ru" %}Услуги{% else %}Hyzmatlar{% endif %}',url:'{{ url_for("hizmetler") }}'},
+    {ad:'{% if dil_kodu == "tr" %}Üniversiteler{% elif dil_kodu == "ru" %}Университеты{% else %}Uniwersitetler{% endif %}',url:'{{ url_for("universiteler") }}'},
+    {ad:'{% if dil_kodu == "tr" %}Sık Sorulanlar{% elif dil_kodu == "ru" %}FAQ{% else %}SSS{% endif %}',url:'{{ url_for("sss") }}'},
+    {ad:'{% if dil_kodu == "tr" %}İletişim{% elif dil_kodu == "ru" %}Контакты{% else %}Habarlaşmak{% endif %}',url:'{{ url_for("iletisim") }}'},
+    {ad:'{% if dil_kodu == "tr" %}Yorumlar{% elif dil_kodu == "ru" %}Отзывы{% else %}Teswirler{% endif %}',url:'{{ url_for("yorumlar_sayfa") }}'},
+    {ad:'TRUST AI',ai:true},
+    {ad:'{% if dil_kodu == "tr" %}Türkiye Vizesi{% else %}Türkiýe wizasy{% endif %}',url:'{{ url_for("hizmetler") }}'},
+    {ad:'{% if dil_kodu == "tr" %}Öğrenci Vizesi{% else %}Talyp wizasy{% endif %}',url:'{{ url_for("hizmetler") }}'},
+    {ad:'{% if dil_kodu == "tr" %}Kayıt Ol{% else %}Hasaba al{% endif %}',kayit:true}
 ];
 function tcAra(q){
     var el=document.getElementById('tcSonuc');
@@ -606,14 +650,13 @@ function tcAra(q){
     var r=aramaList.filter(function(x){return x.ad.toLowerCase().indexOf(q.toLowerCase())!==-1;});
     if(!r.length){el.classList.remove('acik');return;}
     el.innerHTML=r.map(function(x){
-        if(x.ai) return '<div class="tc-arama-sonuc-item" onclick="aiAc();document.getElementById(\'tcSonuc\').classList.remove(\'acik\');document.getElementById(\'tcAramaAlan\').classList.remove(\'acik\');">'+x.ikon+' '+x.ad+'</div>';
-        if(x.kayit) return '<div class="tc-arama-sonuc-item" onclick="kayitFormAc();">'+x.ikon+' '+x.ad+'</div>';
-        return '<a class="tc-arama-sonuc-item" href="'+x.url+'">'+x.ikon+' '+x.ad+'</a>';
+        if(x.ai) return '<div class="tc-arama-sonuc-item" onclick="aiAc();document.getElementById(\'tcSonuc\').classList.remove(\'acik\');document.getElementById(\'tcAramaAlan\').classList.remove(\'acik\');">🤖 '+x.ad+'</div>';
+        if(x.kayit) return '<div class="tc-arama-sonuc-item" onclick="kayitFormAc();">📝 '+x.ad+'</div>';
+        return '<a class="tc-arama-sonuc-item" href="'+x.url+'">'+x.ad+'</a>';
     }).join('');
     el.classList.add('acik');
 }
 
-// AI Modal
 var aiG=[],aiL=false;
 function aiAc(){document.getElementById('ai-modal-overlay').classList.add('acik');document.body.style.overflow='hidden';setTimeout(function(){document.getElementById('ai-inp').focus();},300);}
 function aiKapat(){document.getElementById('ai-modal-overlay').classList.remove('acik');document.body.style.overflow='';}
@@ -625,7 +668,7 @@ function aiGonder(){
     aiEkle(s,'user');aiG.push({role:'user',content:s});inp.value='';aiL=true;btn.disabled=true;
     var yd=aiEkle('...','typing');
     fetch('/chatbot',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({mesajlar:aiG})})
-    .then(function(r){return r.json();}).then(function(d){yd.remove();var c=d.cevap||'...';aiEkle(c,'bot');aiG.push({role:'assistant',content:c});})
+    .then(function(r){return r.json();}).then(function(d){yd.remove();aiEkle(d.cevap||'...','bot');aiG.push({role:'assistant',content:d.cevap});})
     .catch(function(){yd.remove();aiEkle('Bağlantı hatası.','bot');})
     .finally(function(){aiL=false;btn.disabled=false;document.getElementById('ai-inp').focus();});
 }
