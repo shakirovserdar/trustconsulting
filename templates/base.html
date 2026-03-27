@@ -118,7 +118,8 @@
     }
     #tc-chat-gonder:hover { background: #1558a0; }
     #tc-chat-gonder:disabled { opacity: 0.5; cursor: not-allowed; }
-    </style>
+    .footer-email { display:flex; align-items:center; gap:6px; color:rgba(255,255,255,0.6); font-size:0.78rem; margin-bottom:4px; }
+</style>
 
 <style>
 @keyframes shine {
@@ -248,16 +249,26 @@ body.sayfa-index .tc-footer { width: 100% !important; max-width: none !important
         <div class="footer-kolon">
             <div class="footer-logo">
                 <img src="{{ url_for('static', filename='logo.jpg') }}" alt="">
-                <div><strong>Trust Consulting</strong><span>Travel &amp; Education</span></div>
+                <div><strong>Trust Consulting</strong><span style="display:block;font-size:0.62rem;letter-spacing:0.5px;opacity:0.55;margin-top:1px;">✈️ TRAVEL &amp; EDUCATION COMPANY</span></div>
             </div>
             <div class="footer-iletisim-liste">
                 <a href="tel:+99364489920">📞 +993 64 48 89 20</a>
                 <a href="tel:+99361950920">📞 +993 61 95 09 20</a>
                 <a href="tel:+905530890598">📞 +90 553 089 05 98</a>
-                <a href="/cdn-cgi/l/email-protection#147d7a727b54606661676071706160793a777b79" class="footer-email">📧 <span class="__cf_email__" data-cfemail="f59c9b939ab581878086819091808198db969a98">[email&#160;protected]</span></a>
-                <a href="/cdn-cgi/l/email-protection#167a73747766566264636562737263627b3875797b" class="footer-email">📧 <span class="__cf_email__" data-cfemail="9bf7fef9faebdbefe9eee8effeffeeeff6b5f8f4f6">[email&#160;protected]</span></a>
-                <a href="/cdn-cgi/l/email-protection#0d797f787e796e62637e78617964636a4d797f787e796869787960236e6260" class="footer-email">📧 <span class="__cf_email__" data-cfemail="7e0a0c0b0d0a1d11100d0b120a1710193e0a0c0b0d0a1b1a0b0a13501d1113">[email&#160;protected]</span></a>
-            </div>
+                <span class="footer-email" id="fe1"></span>
+                <span class="footer-email" id="fe2"></span>
+                <span class="footer-email" id="fe3"></span>
+                <script>
+                (function(){
+                    var d='trustedutm.com';
+                    var e=[['fe1','📧 info@'],['fe2','📧 lebap@'],['fe3','📧 trustconsulting@']];
+                    e.forEach(function(x){
+                        var el=document.getElementById(x[0]);
+                        if(el){el.textContent=x[1]+d;}
+                    });
+                })();
+                </script>
+                </div>
         </div>
         <div class="footer-kolon">
             <h4>{% if dil_kodu == 'tr' %}Menü{% elif dil_kodu == 'ru' %}Меню{% else %}Menyu{% endif %}</h4>
@@ -415,3 +426,21 @@ function mesajGonder() {
     .then(function(r) { return r.json(); })
     .then(function(data) {
         yaziyorDiv.remov
+        yaziyorDiv.remove();
+        var cevap = data.cevap || 'Bir hata oluştu, tekrar deneyin.';
+        mesajEkle(cevap, 'bot');
+        chatGecmis.push({ role: 'assistant', content: cevap });
+    })
+    .catch(function() {
+        yaziyorDiv.remove();
+        mesajEkle('Bağlantı hatası. Lütfen tekrar deneyin.', 'bot');
+    })
+    .finally(function() {
+        chatYukluyor = false;
+        document.getElementById('tc-chat-gonder').disabled = false;
+        document.getElementById('tc-chat-input').focus();
+    });
+}
+</script>
+</body>
+</html>

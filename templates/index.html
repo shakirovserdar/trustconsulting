@@ -20,7 +20,7 @@ html, body { overflow-x: hidden; }
     margin-right: 0 !important;
 }
 .tc-kart { width: 100% !important; }
-.tc-kartlar { padding: 0 !important; gap: 2px !important; margin: 0 !important; }
+.tc-kartlar { padding: 0 !important; gap: 0 !important; margin: 0 !important; }
 /* Son kart ile footer arası boşluk yok */
 .tc-kartlar { padding-bottom: 0 !important; }
 .tc-footer { margin-top: 0 !important; }
@@ -40,6 +40,24 @@ body.sayfa-index .tc-hero {
     max-width: 100% !important;
     box-sizing: border-box;
 }
+
+
+/* Hızlı erişim butonları */
+.tc-hizli-btn {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 7px 12px; border-radius: 20px;
+    color: white; font-size: 0.75rem; font-weight: 600;
+    text-decoration: none; transition: opacity 0.2s, transform 0.2s;
+    white-space: nowrap;
+}
+.tc-hizli-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+/* Haberler */
+.tc-haber-item { padding: 12px 16px; }
+.tc-haber-badge { font-size: 0.65rem; padding: 2px 8px; border-radius: 10px; font-weight: 600; }
+.tc-haber-tarih { color: rgba(255,255,255,0.35); font-size: 0.65rem; }
+.tc-haber-baslik { color: white; font-size: 0.85rem; font-weight: 600; margin-bottom: 4px; line-height: 1.3; }
+.tc-haber-aciklama { color: rgba(255,255,255,0.55); font-size: 0.74rem; line-height: 1.45; }
 
 /* ══ SABİT HEADER ══ */
 .tc-header {
@@ -425,7 +443,7 @@ body.sayfa-index .tc-hero {
                 <div class="tc-arama-sonuc" id="tcSonuc"></div>
             </div>
             <div class="dil-widget">
-                <button class="dil-aktif-btn" onclick="dilMenuAc(this)" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:20px;color:white;padding:6px 10px;font-size:0.75rem;cursor:pointer;display:flex;align-items:center;gap:4px;">
+                <button class="dil-aktif-btn" onclick="tcDilMenuAc(this)" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:20px;color:white;padding:6px 10px;font-size:0.75rem;cursor:pointer;display:flex;align-items:center;gap:4px;">
                     {% if dil_kodu == 'tr' %}🇹🇷 TR{% elif dil_kodu == 'ru' %}🇷🇺 RU{% else %}🇹🇲 TK{% endif %}
                     <span class="dil-ok">▾</span>
                 </button>
@@ -472,6 +490,86 @@ body.sayfa-index .tc-hero {
         <div class="tc-hero-ic">
             <h2>{% if dil_kodu == 'tr' %}Türkmenistan'dan Dünyaya{% elif dil_kodu == 'ru' %}Из Туркменистана в мир{% else %}Türkmenistandan dünýä{% endif %}</h2>
             <p>{% if dil_kodu == 'tr' %}Vize, üniversite ve seyahat danışmanlığı{% elif dil_kodu == 'ru' %}Визы, университеты и туристические услуги{% else %}Wiza, uniwersitet we syýahat maslahaty{% endif %}</p>
+        </div>
+    </div>
+
+
+    <!-- HIZLI ERİŞİM BUTONLARI -->
+    <div class="tc-hizli-erisim" style="background:#0d1b30;padding:14px 12px;border-bottom:1px solid rgba(255,255,255,0.06);">
+        <div style="color:rgba(255,255,255,0.45);font-size:0.62rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">
+            {% if dil_kodu == 'tr' %}Hızlı Erişim{% elif dil_kodu == 'ru' %}Быстрый доступ{% else %}Çalt girişler{% endif %}
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <a href="{{ url_for('hizmetler') }}" class="tc-hizli-btn" style="background:linear-gradient(135deg,#c0392b,#e74c3c);">
+                🇹🇷 {% if dil_kodu == 'tr' %}Türkiye Vizesi{% elif dil_kodu == 'ru' %}Виза Турция{% else %}Türkiýe Wizasy{% endif %}
+            </a>
+            <a href="{{ url_for('hizmetler') }}" class="tc-hizli-btn" style="background:linear-gradient(135deg,#1a5276,#2980b9);">
+                🇷🇺 {% if dil_kodu == 'tr' %}Rusya Vizesi{% elif dil_kodu == 'ru' %}Виза Россия{% else %}Russiýa Wizasy{% endif %}
+            </a>
+            <a href="{{ url_for('universiteler') }}" class="tc-hizli-btn" style="background:linear-gradient(135deg,#7d6608,#d4ac0d);">
+                🎓 {% if dil_kodu == 'tr' %}Üniversiteler{% elif dil_kodu == 'ru' %}Университеты{% else %}Uniwersitetler{% endif %}
+            </a>
+            <a href="{{ url_for('hizmetler') }}" class="tc-hizli-btn" style="background:linear-gradient(135deg,#1a6c2e,#27ae60);">
+                🇩🇪 {% if dil_kodu == 'tr' %}Almanya Vizesi{% elif dil_kodu == 'ru' %}Виза Германия{% else %}Germaniýa Wizasy{% endif %}
+            </a>
+            <a href="{{ url_for('iletisim') }}" class="tc-hizli-btn" style="background:linear-gradient(135deg,#6c3483,#9b59b6);">
+                📅 {% if dil_kodu == 'tr' %}Mosaic Randevu{% elif dil_kodu == 'ru' %}Запись Mosaic{% else %}Mosaic Randewy{% endif %}
+            </a>
+            <a href="{{ url_for('hizmetler') }}" class="tc-hizli-btn" style="background:linear-gradient(135deg,#1a5276,#1f618d);">
+                📋 {% if dil_kodu == 'tr' %}Evraklar{% elif dil_kodu == 'ru' %}Документы{% else %}Resminamalar{% endif %}
+            </a>
+            <a href="{{ url_for('iletisim') }}" class="tc-hizli-btn" style="background:linear-gradient(135deg,#117a65,#1abc9c);">
+                📍 {% if dil_kodu == 'tr' %}Ofislerimiz{% elif dil_kodu == 'ru' %}Наши офисы{% else %}Ofislerimiz{% endif %}
+            </a>
+        </div>
+    </div>
+
+    <!-- HABERLER - AÇILIP KAPANIR -->
+    <div class="tc-haberler-bolum" style="background:#0a1628;border-bottom:1px solid rgba(255,255,255,0.06);">
+        <div onclick="haberleriToggle()" style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;cursor:pointer;">
+            <div style="display:flex;align-items:center;gap:8px;">
+                <span style="background:linear-gradient(135deg,#e74c3c,#c0392b);color:white;font-size:0.58rem;padding:2px 7px;border-radius:10px;font-weight:700;">{% if dil_kodu == 'tr' %}YENİ{% elif dil_kodu == 'ru' %}НОВОЕ{% else %}TÄZE{% endif %}</span>
+                <span style="color:white;font-size:0.88rem;font-weight:600;">{% if dil_kodu == 'tr' %}Son Haberler{% elif dil_kodu == 'ru' %}Последние новости{% else %}Soňky habarlar{% endif %}</span>
+            </div>
+            <span id="haber-ok" style="color:rgba(255,255,255,0.5);font-size:1rem;transition:transform 0.3s;">▾</span>
+        </div>
+        <div id="haber-liste" style="display:none;border-top:1px solid rgba(255,255,255,0.06);">
+            <!-- Haber 1 -->
+            <div class="tc-haber-item">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+                    <span class="tc-haber-badge" style="background:rgba(231,76,60,0.2);color:#e74c3c;">🇹🇷 Türkiye</span>
+                    <span class="tc-haber-tarih">26 Mar 2026</span>
+                </div>
+                <div class="tc-haber-baslik">{% if dil_kodu == 'tr' %}Türkiye'ye Turistik Vize Muafiyeti Kaldırıldı{% elif dil_kodu == 'ru' %}Отменено безвизовое посещение Турции{% else %}Türkiýe üçin wiza ýeňilligi ýatyryldy{% endif %}</div>
+                <div class="tc-haber-aciklama">{% if dil_kodu == 'tr' %}Türkmenistan vatandaşlarının Türkiye'ye 30 günlük turistik vizesiz girişi artık geçerli değil. Türkiye vizesi zorunlu hale geldi.{% elif dil_kodu == 'ru' %}Туркменистанцы больше не могут въезжать в Турцию без визы на 30 дней. Виза теперь обязательна.{% else %}Türkmenistan raýatlary üçin Türkiýä 30 günlük wizasyz giriş indi geçerli däl.{% endif %}</div>
+            </div>
+            <!-- Haber 2 -->
+            <div class="tc-haber-item" style="border-top:1px solid rgba(255,255,255,0.05);">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+                    <span class="tc-haber-badge" style="background:rgba(39,174,96,0.2);color:#27ae60;">🎓 Üniversite</span>
+                    <span class="tc-haber-tarih">21 Mar 2026</span>
+                </div>
+                <div class="tc-haber-baslik">{% if dil_kodu == 'tr' %}2026-2027 TM Onaylı Üniversite Listesi Yayınlandı{% elif dil_kodu == 'ru' %}Опубликован список ВУЗов с признанием в Туркменистане 2026-2027{% else %}2026-2027 TM tassyklanan uniwersitetleriň sanawy çykdy{% endif %}</div>
+                <div class="tc-haber-aciklama">{% if dil_kodu == 'tr' %}Türkmenistan'da diploması geçerli üniversiteler listesi 2025-2026 yılı için güncellendi. Türkmen öğrenciler ATESTAT puanları ile sınavsız başvurabilir.{% elif dil_kodu == 'ru' %}Список университетов с признанием диплома в Туркменистане обновлён для 2025-2026 учебного года.{% else %}Türkmenistanda diplomy ykrar edilýän uniwersitetleriň sanawy täzelendi.{% endif %}</div>
+            </div>
+            <!-- Haber 3 -->
+            <div class="tc-haber-item" style="border-top:1px solid rgba(255,255,255,0.05);">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+                    <span class="tc-haber-badge" style="background:rgba(41,128,185,0.2);color:#2980b9;">🇷🇺 Rusya</span>
+                    <span class="tc-haber-tarih">18 Mar 2026</span>
+                </div>
+                <div class="tc-haber-baslik">{% if dil_kodu == 'tr' %}Rusya Öğrenci Vizesi Başvurularında Randevusuz Kabul{% elif dil_kodu == 'ru' %}Приём заявок на студенческую визу в Россию без записи{% else %}Russiýa talyp wiza üçin nobatsyz kabul edýär{% endif %}</div>
+                <div class="tc-haber-aciklama">{% if dil_kodu == 'tr' %}Öğrenci vizesi başvurusu yapan Türkmenistan vatandaşları, kabul mektubu ibraz etmek şartıyla randevusuz başvuru yapabiliyor.{% elif dil_kodu == 'ru' %}Граждане Туркменистана могут подать заявку на студенческую визу без записи при наличии письма о зачислении.{% else %}Kabul haty bilen talyp wizasyna nobatsyz ýüz tutup bolýar.{% endif %}</div>
+            </div>
+            <!-- Haber 4 -->
+            <div class="tc-haber-item" style="border-top:1px solid rgba(255,255,255,0.05);">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+                    <span class="tc-haber-badge" style="background:rgba(155,89,182,0.2);color:#9b59b6;">🗺️ Genel</span>
+                    <span class="tc-haber-tarih">15 Mar 2026</span>
+                </div>
+                <div class="tc-haber-baslik">{% if dil_kodu == 'tr' %}Mosaic Randevu Hizmetine Online Başvuru Başladı{% elif dil_kodu == 'ru' %}Открыта онлайн-запись на услугу Mosaic{% else %}Mosaic hyzmatyna onlaýn ýüz tutmak başlady{% endif %}</div>
+                <div class="tc-haber-aciklama">{% if dil_kodu == 'tr' %}Artık Trust Consulting üzerinden Mosaic randevusu alabilirsiniz. Hızlı, güvenli ve kolay kayıt.{% elif dil_kodu == 'ru' %}Теперь через Trust Consulting можно записаться на Mosaic. Быстро, безопасно и удобно.{% else %}Indi Trust Consulting arkaly Mosaic randewy alyp bolýar.{% endif %}</div>
+            </div>
         </div>
     </div>
 
@@ -661,6 +759,24 @@ body.sayfa-index .tc-hero {
 </div>
 
 <script>
+function tcDilMenuAc(btn) {
+    var widget = btn.closest('.dil-widget');
+    var dd = widget ? widget.querySelector('.dil-dropdown') : null;
+    if (!dd) return;
+    var acik = dd.style.display === 'block';
+    document.querySelectorAll('.dil-dropdown').forEach(function(d){ d.style.display='none'; });
+    dd.style.display = acik ? 'none' : 'block';
+    document.addEventListener('click', function handler(e){
+        if(!e.target.closest('.dil-widget')){ dd.style.display='none'; document.removeEventListener('click',handler); }
+    });
+}
+function haberleriToggle() {
+    var liste = document.getElementById('haber-liste');
+    var ok = document.getElementById('haber-ok');
+    var acik = liste.style.display === 'block';
+    liste.style.display = acik ? 'none' : 'block';
+    ok.style.transform = acik ? 'rotate(0deg)' : 'rotate(180deg)';
+}
 function tcMenuAc(){document.getElementById('tcMenuPanel').classList.add('acik');document.getElementById('tcMenuOverlay').classList.add('acik');document.body.style.overflow='hidden';}
 function tcMenuKapat(){document.getElementById('tcMenuPanel').classList.remove('acik');document.getElementById('tcMenuOverlay').classList.remove('acik');document.body.style.overflow='';}
 
@@ -677,16 +793,46 @@ document.addEventListener('click',function(e){
 });
 
 var aramaList=[
-    {ad:'{% if dil_kodu == "tr" %}Hakkımızda{% elif dil_kodu == "ru" %}О нас{% else %}Biz hakda{% endif %}',url:'{{ url_for("hakkimizda") }}'},
-    {ad:'{% if dil_kodu == "tr" %}Hizmetler{% elif dil_kodu == "ru" %}Услуги{% else %}Hyzmatlar{% endif %}',url:'{{ url_for("hizmetler") }}'},
-    {ad:'{% if dil_kodu == "tr" %}Üniversiteler{% elif dil_kodu == "ru" %}Университеты{% else %}Uniwersitetler{% endif %}',url:'{{ url_for("universiteler") }}'},
-    {ad:'{% if dil_kodu == "tr" %}Sık Sorulanlar{% elif dil_kodu == "ru" %}FAQ{% else %}SSS{% endif %}',url:'{{ url_for("sss") }}'},
-    {ad:'{% if dil_kodu == "tr" %}İletişim{% elif dil_kodu == "ru" %}Контакты{% else %}Habarlaşmak{% endif %}',url:'{{ url_for("iletisim") }}'},
-    {ad:'{% if dil_kodu == "tr" %}Yorumlar{% elif dil_kodu == "ru" %}Отзывы{% else %}Teswirler{% endif %}',url:'{{ url_for("yorumlar_sayfa") }}'},
-    {ad:'TRUST AI',ai:true},
-    {ad:'{% if dil_kodu == "tr" %}Türkiye Vizesi{% else %}Türkiýe wizasy{% endif %}',url:'{{ url_for("hizmetler") }}'},
-    {ad:'{% if dil_kodu == "tr" %}Öğrenci Vizesi{% else %}Talyp wizasy{% endif %}',url:'{{ url_for("hizmetler") }}'},
-    {ad:'{% if dil_kodu == "tr" %}Kayıt Ol{% else %}Hasaba al{% endif %}',kayit:true}
+    /* Sayfalar */
+    {ad:'{% if dil_kodu == "tr" %}Hakkımızda{% elif dil_kodu == "ru" %}О нас{% else %}Biz hakda{% endif %}',url:'{{ url_for("hakkimizda") }}',kat:'📄'},
+    {ad:'{% if dil_kodu == "tr" %}Hizmetler{% elif dil_kodu == "ru" %}Услуги{% else %}Hyzmatlar{% endif %}',url:'{{ url_for("hizmetler") }}',kat:'📄'},
+    {ad:'{% if dil_kodu == "tr" %}Üniversiteler{% elif dil_kodu == "ru" %}Университеты{% else %}Uniwersitetler{% endif %}',url:'{{ url_for("universiteler") }}',kat:'📄'},
+    {ad:'{% if dil_kodu == "tr" %}Sık Sorulanlar{% elif dil_kodu == "ru" %}FAQ{% else %}SSS{% endif %}',url:'{{ url_for("sss") }}',kat:'📄'},
+    {ad:'{% if dil_kodu == "tr" %}İletişim{% elif dil_kodu == "ru" %}Контакты{% else %}Habarlaşmak{% endif %}',url:'{{ url_for("iletisim") }}',kat:'📄'},
+    {ad:'{% if dil_kodu == "tr" %}Yorumlar{% elif dil_kodu == "ru" %}Отзывы{% else %}Teswirler{% endif %}',url:'{{ url_for("yorumlar_sayfa") }}',kat:'📄'},
+    /* Vize Türleri */
+    {ad:'{% if dil_kodu == "tr" %}Türkiye Öğrenci Vizesi{% elif dil_kodu == "ru" %}Студенческая виза Турция{% else %}Türkiýe talyp wizasy{% endif %}',url:'{{ url_for("hizmetler") }}',kat:'🇹🇷'},
+    {ad:'{% if dil_kodu == "tr" %}Türkiye Turist Vizesi{% elif dil_kodu == "ru" %}Туристическая виза Турция{% else %}Türkiýe turist wizasy{% endif %}',url:'{{ url_for("hizmetler") }}',kat:'🇹🇷'},
+    {ad:'{% if dil_kodu == "tr" %}Türkiye Çalışma Vizesi{% elif dil_kodu == "ru" %}Рабочая виза Турция{% else %}Türkiýe iş wizasy{% endif %}',url:'{{ url_for("hizmetler") }}',kat:'🇹🇷'},
+    {ad:'{% if dil_kodu == "tr" %}Türkiye İkamet İzni{% elif dil_kodu == "ru" %}ВНЖ Турция{% else %}Türkiýe ýaşamak rugsady{% endif %}',url:'{{ url_for("hizmetler") }}',kat:'🇹🇷'},
+    {ad:'{% if dil_kodu == "tr" %}Türkiye Tömer Vizesi{% elif dil_kodu == "ru" %}Виза Тёмер Турция{% else %}Türkiýe Tömer wizasy{% endif %}',url:'{{ url_for("hizmetler") }}',kat:'🇹🇷'},
+    {ad:'{% if dil_kodu == "tr" %}Rusya Öğrenci Vizesi{% elif dil_kodu == "ru" %}Студенческая виза Россия{% else %}Russiýa talyp wizasy{% endif %}',url:'{{ url_for("hizmetler") }}',kat:'🇷🇺'},
+    {ad:'{% if dil_kodu == "tr" %}Rusya Vizesi{% elif dil_kodu == "ru" %}Виза Россия{% else %}Russiýa wizasy{% endif %}',url:'{{ url_for("hizmetler") }}',kat:'🇷🇺'},
+    {ad:'{% if dil_kodu == "tr" %}Almanya Vizesi{% elif dil_kodu == "ru" %}Виза Германия{% else %}Germaniýa wizasy{% endif %}',url:'{{ url_for("hizmetler") }}',kat:'🇩🇪'},
+    {ad:'{% if dil_kodu == "tr" %}Belçika Vizesi{% elif dil_kodu == "ru" %}Виза Бельгия{% else %}Belgiýa wizasy{% endif %}',url:'{{ url_for("hizmetler") }}',kat:'🇧🇪'},
+    {ad:'{% if dil_kodu == "tr" %}Hollanda Vizesi{% elif dil_kodu == "ru" %}Виза Нидерланды{% else %}Niderlandiýa wizasy{% endif %}',url:'{{ url_for("hizmetler") }}',kat:'🇳🇱'},
+    {ad:'{% if dil_kodu == "tr" %}Kanada Vizesi{% elif dil_kodu == "ru" %}Виза Канада{% else %}Kanada wizasy{% endif %}',url:'{{ url_for("hizmetler") }}',kat:'🇨🇦'},
+    {ad:'{% if dil_kodu == "tr" %}Dubai BAE Vizesi{% elif dil_kodu == "ru" %}Виза Дубай ОАЭ{% else %}Dubaý BAE wizasy{% endif %}',url:'{{ url_for("hizmetler") }}',kat:'🇦🇪'},
+    {ad:'{% if dil_kodu == "tr" %}Japonya Vizesi{% elif dil_kodu == "ru" %}Виза Япония{% else %}Ýaponiýa wizasy{% endif %}',url:'{{ url_for("hizmetler") }}',kat:'🇯🇵'},
+    {ad:'{% if dil_kodu == "tr" %}Güney Kore Vizesi{% elif dil_kodu == "ru" %}Виза Южная Корея{% else %}Günorta Koreýa wizasy{% endif %}',url:'{{ url_for("hizmetler") }}',kat:'🇰🇷'},
+    {ad:'{% if dil_kodu == "tr" %}Aile Birleşimi Vizesi{% elif dil_kodu == "ru" %}Воссоединение семьи{% else %}Maşgala birleşme wizasy{% endif %}',url:'{{ url_for("hizmetler") }}',kat:'👨‍👩‍👧'},
+    {ad:'{% if dil_kodu == "tr" %}Sağlık Vizesi{% elif dil_kodu == "ru" %}Медицинская виза{% else %}Saglyk wizasy{% endif %}',url:'{{ url_for("hizmetler") }}',kat:'🏥'},
+    {ad:'{% if dil_kodu == "tr" %}Kabul Mektubu{% elif dil_kodu == "ru" %}Письмо о зачислении{% else %}Kabul haty{% endif %}',url:'{{ url_for("hizmetler") }}',kat:'📋'},
+    {ad:'{% if dil_kodu == "tr" %}Mosaic Randevu{% elif dil_kodu == "ru" %}Запись Mosaic{% else %}Mosaic Randewy{% endif %}',url:'{{ url_for("iletisim") }}',kat:'📅'},
+    /* Üniversiteler */
+    {ad:'{% if dil_kodu == "tr" %}TM Onaylı Üniversiteler{% elif dil_kodu == "ru" %}Признанные в ТМ университеты{% else %}TM tassyklanan uniwersitetler{% endif %}',url:'{{ url_for("universiteler") }}',kat:'🎓'},
+    {ad:'İstinye Üniversitesi',url:'{{ url_for("universiteler") }}',kat:'🎓'},
+    {ad:'Bahçeşehir Üniversitesi',url:'{{ url_for("universiteler") }}',kat:'🎓'},
+    {ad:'İstanbul Medipol Üniversitesi',url:'{{ url_for("universiteler") }}',kat:'🎓'},
+    {ad:'Altınbaş Üniversitesi',url:'{{ url_for("universiteler") }}',kat:'🎓'},
+    {ad:'Biruni Üniversitesi',url:'{{ url_for("universiteler") }}',kat:'🎓'},
+    /* İletişim */
+    {ad:'{% if dil_kodu == "tr" %}Dänew Ofisi{% elif dil_kodu == "ru" %}Офис Дяньов{% else %}Dänew ofisi{% endif %}',url:'{{ url_for("iletisim") }}',kat:'📍'},
+    {ad:'{% if dil_kodu == "tr" %}Kerki Ofisi{% elif dil_kodu == "ru" %}Офис Керки{% else %}Kerki ofisi{% endif %}',url:'{{ url_for("iletisim") }}',kat:'📍'},
+    {ad:'{% if dil_kodu == "tr" %}İstanbul Ofisi{% elif dil_kodu == "ru" %}Офис Стамбул{% else %}Stambul ofisi{% endif %}',url:'{{ url_for("iletisim") }}',kat:'📍'},
+    {ad:'WhatsApp',url:'https://wa.me/905524254697',kat:'💬'},
+    {ad:'TRUST AI',ai:true,kat:'🤖'},
+    {ad:'{% if dil_kodu == "tr" %}Kayıt Ol{% elif dil_kodu == "ru" %}Записаться{% else %}Hasaba al{% endif %}',kayit:true,kat:'📝'}
 ];
 function tcAra(q){
     var el=document.getElementById('tcSonuc');
