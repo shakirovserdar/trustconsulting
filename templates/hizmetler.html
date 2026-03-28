@@ -48,8 +48,30 @@
     </div>
 </div>
 
-<!-- TÜRKİYE ÜNİVERSİTE HARİTASI -->
-{% include 'turkey.html' %}
+<!-- ÜNİVERSİTE DÜNYA HARİTASI -->
+<div style="margin: 2rem 0;">
+    <h2 class="section-title">
+        🌍
+        {% if dil_kodu == 'tr' %}Üniversite Dünya Haritası
+        {% elif dil_kodu == 'ru' %}Карта университетов мира
+        {% else %}Dünýä Uniwersitet Kartasy{% endif %}
+    </h2>
+    <p style="text-align:center; color:rgba(255,255,255,0.6); font-size:0.9rem; margin-bottom:1rem;">
+        {% if dil_kodu == 'tr' %}📍 Şehre tıklayarak üniversiteleri görün
+        {% elif dil_kodu == 'ru' %}📍 Нажмите на город, чтобы увидеть университеты
+        {% else %}📍 Şäherlere basyp, uniwersitetleri görüň{% endif %}
+    </p>
+    <div style="border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
+        <iframe src="/globe" style="width:100%; height:520px; border:none; display:block;" loading="lazy" title="Üniversite Haritası"></iframe>
+    </div>
+    <div style="text-align:center; margin-top:0.75rem;">
+        <a href="/globe" target="_blank" style="color:#5bc4f5; font-size:0.82rem; text-decoration:none;">
+            🔗 {% if dil_kodu == 'tr' %}Tam ekran aç
+            {% elif dil_kodu == 'ru' %}Открыть на весь экран
+            {% else %}Doly ekranda aç{% endif %}
+        </a>
+    </div>
+</div>
 
 <!-- DİĞER ÜLKELER -->
 <h2 class="section-title">{{ t.hizmetler_diger_baslik }}</h2>
@@ -64,9 +86,6 @@
     <a href="{{ url_for('universiteler') }}" class="ulke-kart"><span class="bayrak">🇦🇿</span><strong>{% if dil_kodu == 'tr' %}Azerbaycan{% elif dil_kodu == 'ru' %}Азербайджан{% else %}Azerbaýjan{% endif %}</strong><p>E-visa</p></a>
     <a href="{{ url_for('universiteler') }}" class="ulke-kart"><span class="bayrak">🇰🇿</span><strong>{% if dil_kodu == 'tr' %}Kazakistan{% elif dil_kodu == 'ru' %}Казахстан{% else %}Gazagystan{% endif %}</strong><p>E-visa</p></a>
 </div>
-
-<!-- RUSYA ÜNİVERSİTE HARİTASI -->
-{% include 'rusya.html' %}
 
 <!-- MOSAİC WİZA AMALLARY -->
 <div id="mosaic-amallary"></div>
