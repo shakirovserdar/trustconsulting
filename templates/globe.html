@@ -2,16 +2,16 @@
 {% block content %}
 
 <style>
-.globe-sayfa {
-    padding: 0;
-    margin: 0;
-    background: #060f1e;
-}
-#map-container {
-    position: relative;
-    width: 100%;
-    height: calc(100vh - 62px);
-    background: #060f1e;
+/* Globe sayfasında header, footer, butonları gizle */
+.tc-header, footer, .tc-global-float, .fiyat-float-btn,
+.whatsapp-float, nav, .baslik-karti { display: none !important; }
+
+body { margin: 0; padding: 0; overflow: hidden; background: #020810; }
+
+#globe-wrap {
+    position: fixed;
+    inset: 0;
+    background: #020810;
 }
 #map {
     position: absolute;
@@ -20,483 +20,330 @@
     height: 100%;
 }
 
-/* Başlık */
-.globe-header {
-    position: absolute;
-    top: 14px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    background: rgba(10,22,40,0.88);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 50px;
-    padding: 8px 20px;
-    color: white;
-    font-size: 0.82rem;
-    font-weight: 600;
-    white-space: nowrap;
-    letter-spacing: 0.3px;
+/* Legend butonu - sol alt */
+.globe-legend-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 16px;
+    z-index: 100;
+    background: rgba(10,22,40,0.92);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50%;
+    width: 46px; height: 46px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+    transition: transform 0.2s;
 }
-.globe-header span { color: #5bc4f5; }
+.globe-legend-btn:hover { transform: scale(1.1); }
+
+/* Legend panel */
+.globe-legend-panel {
+    position: fixed;
+    bottom: 76px;
+    left: 16px;
+    z-index: 100;
+    background: rgba(8,18,35,0.95);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px;
+    padding: 12px 14px;
+    color: white;
+    font-size: 0.73rem;
+    min-width: 170px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    display: none;
+    animation: fadeIn 0.2s ease;
+}
+@keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+.globe-legend-panel.acik { display: block; }
+
+.legend-baslik {
+    color: rgba(255,255,255,0.45);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 9px;
+    font-weight: 600;
+}
+.legend-item {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 6px; font-size: 0.73rem; color: rgba(255,255,255,0.85);
+}
+.legend-renk {
+    width: 11px; height: 11px;
+    border-radius: 50%; flex-shrink: 0;
+}
 
 /* Popup */
 .mapboxgl-popup-content {
-    background: rgba(10,22,40,0.97) !important;
+    background: rgba(8,18,35,0.97) !important;
     border: 1px solid rgba(255,255,255,0.15) !important;
     border-radius: 14px !important;
     padding: 0 !important;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.6) !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.7) !important;
     color: white !important;
     max-width: 260px !important;
 }
+.mapboxgl-popup-tip { display: none !important; }
 .mapboxgl-popup-close-button {
     color: rgba(255,255,255,0.6) !important;
-    font-size: 18px !important;
-    padding: 8px 12px !important;
+    font-size: 16px !important;
+    right: 6px !important; top: 6px !important;
 }
-.mapboxgl-popup-tip { display: none !important; }
 .mapboxgl-popup-close-button:hover { color: white !important; background: none !important; }
-
-.popup-ic {
-    padding: 14px 16px;
-}
-.popup-ulke {
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 4px;
-    display: flex;
-    align-items: center;
-    gap: 7px;
-}
-.popup-sehir {
-    color: rgba(255,255,255,0.6);
-    font-size: 0.75rem;
-    margin-bottom: 10px;
-}
-.popup-say {
-    background: rgba(37,117,252,0.2);
-    border: 1px solid rgba(37,117,252,0.3);
-    border-radius: 8px;
-    padding: 6px 10px;
-    font-size: 0.78rem;
-    color: #5bc4f5;
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-.popup-unis {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    font-size: 0.76rem;
-    color: rgba(255,255,255,0.8);
-    max-height: 160px;
-    overflow-y: auto;
-}
-.popup-unis li {
-    padding: 4px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-.popup-unis li:last-child { border-bottom: none; }
-.popup-unis li::before {
-    content: '';
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: #5bc4f5;
-    flex-shrink: 0;
-}
-.popup-unis::-webkit-scrollbar { width: 3px; }
-.popup-unis::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 2px; }
-
-.popup-btn {
-    display: block;
-    text-align: center;
-    padding: 8px;
-    background: linear-gradient(135deg, #2575fc, #6a11cb);
-    color: white !important;
-    font-size: 0.78rem;
-    font-weight: 700;
-    text-decoration: none;
-    border-radius: 0 0 14px 14px;
-    transition: opacity 0.2s;
-}
-.popup-btn:hover { opacity: 0.85; }
-
-/* Legend */
-.globe-legend {
-    position: absolute;
-    bottom: 30px;
-    left: 14px;
-    z-index: 10;
-    background: rgba(10,22,40,0.88);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 12px;
-    padding: 10px 14px;
-    color: white;
-    font-size: 0.72rem;
-    max-width: 160px;
-}
-.legend-title {
-    color: rgba(255,255,255,0.5);
-    font-size: 0.62rem;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    margin-bottom: 8px;
-}
-.legend-item {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    margin-bottom: 5px;
-    font-size: 0.72rem;
-}
-.legend-dot {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-}
-
-/* Kontrol ipucu */
-.globe-tip {
-    position: absolute;
-    bottom: 30px;
-    right: 14px;
-    z-index: 10;
-    color: rgba(255,255,255,0.3);
-    font-size: 0.68rem;
-    text-align: right;
-    line-height: 1.6;
-}
+.popup-ic { padding: 14px 16px; }
+.popup-ulke { font-size: 1rem; font-weight: 700; margin-bottom: 3px; }
+.popup-sehir { color: rgba(255,255,255,0.55); font-size: 0.73rem; margin-bottom: 8px; }
+.popup-say { background: rgba(37,117,252,0.2); border: 1px solid rgba(37,117,252,0.3); border-radius: 8px; padding: 5px 10px; font-size: 0.76rem; color: #5bc4f5; font-weight: 600; margin-bottom: 8px; }
+.popup-unis { list-style:none; margin:0; padding:0; font-size:0.74rem; color:rgba(255,255,255,0.8); max-height:150px; overflow-y:auto; }
+.popup-unis li { padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,0.06); display:flex; align-items:center; gap:6px; }
+.popup-unis li:last-child { border-bottom:none; }
+.popup-unis li::before { content:''; width:5px; height:5px; border-radius:50%; background:#5bc4f5; flex-shrink:0; }
+.popup-btn { display:block; text-align:center; padding:8px; background:linear-gradient(135deg,#2575fc,#6a11cb); color:white !important; font-size:0.76rem; font-weight:700; text-decoration:none; border-radius:0 0 14px 14px; }
 </style>
 
 <link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet">
 <script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
 
-<div class="globe-sayfa">
-<div id="map-container">
+<div id="globe-wrap">
     <div id="map"></div>
-
-    <div class="globe-header">
-        🌍 <span>Trust Consulting</span> — Üniversite Haritası
-    </div>
-
-    <div class="globe-legend">
-        <div class="legend-title">Üniversite Bölgeleri</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#e74c3c"></div> Türkiye</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#3498db"></div> Rusya</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#f39c12"></div> Almanya / AT / CZ</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#9b59b6"></div> Belçika / NL</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#27ae60"></div> İtalya</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#e67e22"></div> Kanada</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#e91e8c"></div> Japonya / Kore</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#1abc9c"></div> Orta Asya</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#00bcd4"></div> Güneydoğu Asya</div>
-    </div>
-
-    <div class="globe-tip">
-        🖱 Sürükle · Scroll zoom<br>
-        📍 Şehre tıkla
-    </div>
 </div>
+
+<!-- 🌍 Legend Butonu -->
+<button class="globe-legend-btn" onclick="legendToggle()" title="Ülkeler">🌍</button>
+<div class="globe-legend-panel" id="legendPanel">
+    <div class="legend-baslik">Üniversiteli Ülkeler</div>
+    <div class="legend-item"><div class="legend-renk" style="background:#e74c3c"></div> Türkiye</div>
+    <div class="legend-item"><div class="legend-renk" style="background:#3498db"></div> Rusya</div>
+    <div class="legend-item"><div class="legend-renk" style="background:#f39c12"></div> Almanya · Avusturya · Çekya</div>
+    <div class="legend-item"><div class="legend-renk" style="background:#9b59b6"></div> Belçika · Hollanda</div>
+    <div class="legend-item"><div class="legend-renk" style="background:#27ae60"></div> İtalya</div>
+    <div class="legend-item"><div class="legend-renk" style="background:#e67e22"></div> Kanada</div>
+    <div class="legend-item"><div class="legend-renk" style="background:#e91e8c"></div> Japonya · Güney Kore</div>
+    <div class="legend-item"><div class="legend-renk" style="background:#ffc107"></div> Kıbrıs</div>
+    <div class="legend-item"><div class="legend-renk" style="background:#1abc9c"></div> Orta Asya</div>
+    <div class="legend-item"><div class="legend-renk" style="background:#00bcd4"></div> G.D. Asya</div>
 </div>
 
 <script>
+function legendToggle(){
+    document.getElementById('legendPanel').classList.toggle('acik');
+}
+document.addEventListener('click', function(e){
+    if(!e.target.closest('.globe-legend-btn') && !e.target.closest('.globe-legend-panel')){
+        document.getElementById('legendPanel').classList.remove('acik');
+    }
+});
+
 mapboxgl.accessToken = '{{ mapbox_token }}';
 
-const map = new mapboxgl.Map({
+// Mobil için pixel ratio düşür
+var isMobile = window.innerWidth < 768;
+
+var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/dark-v11',
     projection: 'globe',
-    zoom: 1.8,
-    center: [40, 40],
-    pitch: 0,
-    bearing: 0,
-    antialias: true
+    zoom: isMobile ? 1.2 : 1.8,
+    center: [45, 35],
+    antialias: !isMobile,
+    fadeDuration: 0,
+    maxTileCacheSize: isMobile ? 20 : 60
 });
 
-map.addControl(new mapboxgl.NavigationControl({showCompass: true}), 'top-right');
-map.addControl(new mapboxgl.ScaleControl(), 'bottom-right');
+map.addControl(new mapboxgl.NavigationControl({showCompass:false}), 'top-right');
 
-// Atmosphere (uzay efekti)
-map.on('style.load', () => {
+if(!isMobile){
+    map.addControl(new mapboxgl.ScaleControl(), 'bottom-right');
+}
+
+map.on('style.load', function(){
     map.setFog({
-        color: 'rgb(4, 12, 26)',
-        'high-color': 'rgb(15, 30, 60)',
+        color: 'rgb(4,12,26)',
+        'high-color': 'rgb(15,30,60)',
         'horizon-blend': 0.04,
-        'space-color': 'rgb(2, 6, 16)',
-        'star-intensity': 0.8
+        'space-color': 'rgb(2,6,16)',
+        'star-intensity': isMobile ? 0.4 : 0.8
     });
 
-    // Ülke highlight layer
     map.addSource('country-fills', {
         type: 'vector',
         url: 'mapbox://mapbox.country-boundaries-v1'
     });
 
-    // Üniversiteli ülkeler
-    const UNI_ULKELER = {
-        'TR': '#e74c3c',  // Türkiye
-        'RU': '#3498db',  // Rusya
-        'DE': '#f39c12',  // Almanya
-        'AT': '#f39c12',  // Avusturya
-        'CZ': '#f39c12',  // Çekya
-        'BE': '#9b59b6',  // Belçika
-        'NL': '#9b59b6',  // Hollanda
-        'IT': '#27ae60',  // İtalya
-        'CA': '#e67e22',  // Kanada
-        'JP': '#e91e8c',  // Japonya
-        'KR': '#e91e8c',  // Güney Kore
-        'KZ': '#1abc9c',  // Kazakistan
-        'KG': '#1abc9c',  // Kırgızistan
-        'BY': '#1abc9c',  // Beyaz Rusya
-        'AZ': '#1abc9c',  // Azerbaycan
-        'UZ': '#1abc9c',  // Özbekistan
-        'GE': '#1abc9c',  // Gürcistan
-        'CY': '#ffc107',  // Kıbrıs
-        'TH': '#00bcd4',  // Tayland
-        'VN': '#00bcd4',  // Vietnam
+    var UNI_COUNTRIES = {
+        'TR':'#e74c3c','RU':'#3498db','DE':'#f39c12','AT':'#f39c12','CZ':'#f39c12',
+        'BE':'#9b59b6','NL':'#9b59b6','IT':'#27ae60','CA':'#e67e22',
+        'JP':'#e91e8c','KR':'#e91e8c','KZ':'#1abc9c','KG':'#1abc9c',
+        'BY':'#1abc9c','AZ':'#1abc9c','UZ':'#1abc9c','GE':'#1abc9c',
+        'CY':'#ffc107','TH':'#00bcd4','VN':'#00bcd4'
     };
+    var countryList = Object.keys(UNI_COUNTRIES);
 
-    const countryList = Object.keys(UNI_ULKELER);
-
-    // Tüm ülkeler hafif görünsün
-    map.addLayer({
-        id: 'country-bg',
-        type: 'fill',
-        source: 'country-fills',
-        'source-layer': 'country_boundaries',
-        paint: {
-            'fill-color': 'rgba(255,255,255,0.03)',
-            'fill-opacity': 1
-        }
-    }, 'waterway-label');
-
-    // Üniversiteli ülkeler renkli
-    const colorExpr = ['match', ['get', 'iso_3166_1']];
-    countryList.forEach(code => {
-        colorExpr.push(code, UNI_ULKELER[code]);
-    });
+    var colorExpr = ['match', ['get','iso_3166_1']];
+    countryList.forEach(function(c){ colorExpr.push(c, UNI_COUNTRIES[c]); });
     colorExpr.push('transparent');
 
-    const opacityExpr = ['match', ['get', 'iso_3166_1'],
-        countryList, 0.35,
-        0
-    ];
-
     map.addLayer({
-        id: 'uni-countries',
-        type: 'fill',
-        source: 'country-fills',
-        'source-layer': 'country_boundaries',
-        paint: {
+        id:'uni-countries', type:'fill',
+        source:'country-fills', 'source-layer':'country_boundaries',
+        paint:{
             'fill-color': colorExpr,
-            'fill-opacity': opacityExpr
+            'fill-opacity': ['match',['get','iso_3166_1'], countryList, 0.32, 0]
         }
     }, 'waterway-label');
 
-    // Ülke sınır çizgileri (üniversitelilerin)
     map.addLayer({
-        id: 'uni-borders',
-        type: 'line',
-        source: 'country-fills',
-        'source-layer': 'country_boundaries',
-        filter: ['in', ['get', 'iso_3166_1'], ['literal', countryList]],
-        paint: {
-            'line-color': colorExpr,
-            'line-width': 1.2,
-            'line-opacity': 0.7
-        }
+        id:'uni-borders', type:'line',
+        source:'country-fills', 'source-layer':'country_boundaries',
+        filter:['in',['get','iso_3166_1'],['literal',countryList]],
+        paint:{'line-color':colorExpr,'line-width':1.2,'line-opacity':0.65}
     });
 
-    // Şehir noktaları
-    const sehirler = {
-        type: 'FeatureCollection',
-        features: [
-            // TÜRKİYE
-            {type:'Feature',geometry:{type:'Point',coordinates:[29.0,41.0]},properties:{n:'İstanbul',flag:'🇹🇷',color:'#e74c3c',cnt:'22 üniversite',unis:['İstinye Üniversitesi','Bahçeşehir Üniversitesi','İstanbul Medipol (Vakıf)','İstanbul Gelişim (Vakıf)','Altınbaş Üniversitesi','Biruni Üniversitesi','Beykent Üniversitesi','Okan Üniversitesi','Üsküdar Üniversitesi','İstanbul Bilgi (Vakıf)','Marmara Üniversitesi','Boğaziçi Üniversitesi','İTÜ','Yıldız Teknik','İstanbul Üniversitesi','Cerrahpaşa + 6 daha'],href:'/universiteler#turkey'}},
-            {type:'Feature',geometry:{type:'Point',coordinates:[32.8,39.9]},properties:{n:'Ankara',flag:'🇹🇷',color:'#e74c3c',cnt:'6 üniversite',unis:['ODTÜ','Gazi Üniversitesi','Hacettepe Üniversitesi','Bilkent (Vakıf)','Atılım (Vakıf)','Çankaya (Vakıf)'],href:'/universiteler#turkey'}},
-            {type:'Feature',geometry:{type:'Point',coordinates:[27.1,38.4]},properties:{n:'İzmir',flag:'🇹🇷',color:'#e74c3c',cnt:'6 üniversite',unis:['Ege Üniversitesi','Dokuz Eylül Üniversitesi','İzmir Katip Çelebi','İzmir YTE','İzmir Ekonomi (Vakıf)','Yaşar (Vakıf)'],href:'/universiteler#turkey'}},
-            {type:'Feature',geometry:{type:'Point',coordinates:[32.5,37.9]},properties:{n:'Konya',flag:'🇹🇷',color:'#e74c3c',cnt:'3 üniversite',unis:['Selçuk Üniversitesi','Necmettin Erbakan','Konya Teknik'],href:'/universiteler#turkey'}},
-            {type:'Feature',geometry:{type:'Point',coordinates:[29.1,40.2]},properties:{n:'Bursa',flag:'🇹🇷',color:'#e74c3c',cnt:'2 üniversite',unis:['Bursa Uludağ','Bursa Teknik'],href:'/universiteler#turkey'}},
-            // RUSYA
-            {type:'Feature',geometry:{type:'Point',coordinates:[37.6,55.75]},properties:{n:'Moskova',flag:'🇷🇺',color:'#3498db',cnt:'21 üniversite',unis:['MGU (Lomonosov)','Bauman MSTU','MGIMO','НИУ ВШЭ','RUDN','МИФИ','РАНХиГС','MAI','Plekhanov','Финансовый университет + 11 daha'],href:'/universiteler#russia'}},
-            {type:'Feature',geometry:{type:'Point',coordinates:[30.3,59.95]},properties:{n:'Sankt-Peterburg',flag:'🇷🇺',color:'#3498db',cnt:'5 üniversite',unis:['SPbGU','Politeknik (Pyotr)','Gorny Üniversitesi','Baltiyskiy Federal Ü.','ИТМО'],href:'/universiteler#russia'}},
-            {type:'Feature',geometry:{type:'Point',coordinates:[82.9,55.0]},properties:{n:'Novosibirsk',flag:'🇷🇺',color:'#3498db',cnt:'3 üniversite',unis:['Novosibirsk Devlet Ü.','NSTU','Tıp Üniversitesi'],href:'/universiteler#russia'}},
-            {type:'Feature',geometry:{type:'Point',coordinates:[60.6,56.8]},properties:{n:'Yekaterinburg',flag:'🇷🇺',color:'#3498db',cnt:'2 üniversite',unis:['Ural Federal Üniversitesi','Ural Tıp Üniversitesi'],href:'/universiteler#russia'}},
-            {type:'Feature',geometry:{type:'Point',coordinates:[49.1,55.8]},properties:{n:'Kazan',flag:'🇷🇺',color:'#3498db',cnt:'3 üniversite',unis:['Kazan Federal Ü.','Kazan Tıp Ü.','KAI-KNRTU'],href:'/universiteler#russia'}},
-            // ALMANYA
-            {type:'Feature',geometry:{type:'Point',coordinates:[13.4,52.5]},properties:{n:'Berlin',flag:'🇩🇪',color:'#f39c12',cnt:'3 üniversite',unis:['FU Berlin','Humboldt Üniversitesi','TU Berlin'],href:'/universiteler#germany'}},
-            {type:'Feature',geometry:{type:'Point',coordinates:[11.6,48.1]},properties:{n:'Münih',flag:'🇩🇪',color:'#f39c12',cnt:'2 üniversite',unis:['TU Münih','LMU Münih'],href:'/universiteler#germany'}},
-            {type:'Feature',geometry:{type:'Point',coordinates:[8.7,50.1]},properties:{n:'Frankfurt',flag:'🇩🇪',color:'#f39c12',cnt:'2 üniversite',unis:['Goethe Üniversitesi','TU Darmstadt'],href:'/universiteler#germany'}},
-            // BELÇİKA
-            {type:'Feature',geometry:{type:'Point',coordinates:[4.4,50.8]},properties:{n:'Brüksel',flag:'🇧🇪',color:'#9b59b6',cnt:'4 üniversite',unis:['KU Leuven','ULB (Brüksel)','Gent Üniversitesi','Mons Üniversitesi'],href:'/universiteler#belgium'}},
-            // HOLLANDA
-            {type:'Feature',geometry:{type:'Point',coordinates:[4.9,52.4]},properties:{n:'Amsterdam',flag:'🇳🇱',color:'#9b59b6',cnt:'2 üniversite',unis:['Amsterdam Üniversitesi','VU Amsterdam'],href:'/universiteler#netherlands'}},
-            {type:'Feature',geometry:{type:'Point',coordinates:[4.4,52.0]},properties:{n:'Delft',flag:'🇳🇱',color:'#9b59b6',cnt:'1 üniversite',unis:['TU Delft (Teknik Üniversite)'],href:'/universiteler#netherlands'}},
-            {type:'Feature',geometry:{type:'Point',coordinates:[5.4,52.1]},properties:{n:'Utrecht',flag:'🇳🇱',color:'#9b59b6',cnt:'2 üniversite',unis:['Utrecht Üniversitesi','Eindhoven TU'],href:'/universiteler#netherlands'}},
-            // İTALYA
-            {type:'Feature',geometry:{type:'Point',coordinates:[9.2,45.5]},properties:{n:'Milano',flag:'🇮🇹',color:'#27ae60',cnt:'4 üniversite',unis:['Politecnico di Milano','Bocconi','Bicocca','Milano Üniversitesi'],href:'/universiteler#italy'}},
-            {type:'Feature',geometry:{type:'Point',coordinates:[12.5,41.9]},properties:{n:'Roma',flag:'🇮🇹',color:'#27ae60',cnt:'3 üniversite',unis:['Sapienza Roma','Tor Vergata','LUISS'],href:'/universiteler#italy'}},
-            {type:'Feature',geometry:{type:'Point',coordinates:[11.3,44.5]},properties:{n:'Bologna',flag:'🇮🇹',color:'#27ae60',cnt:'1 üniversite',unis:['Bologna Üniversitesi (Avrupa\'nın en eskisi)'],href:'/universiteler#italy'}},
-            // AVUSTURYA
-            {type:'Feature',geometry:{type:'Point',coordinates:[16.4,48.2]},properties:{n:'Viyana',flag:'🇦🇹',color:'#f39c12',cnt:'6 üniversite',unis:['Viyana Üniversitesi','TU Viyana','Tıp Üniversitesi','Vet. Üniversitesi','WU Wien','BOKU Wien'],href:'/universiteler#austria'}},
-            // ÇEKYA
-            {type:'Feature',geometry:{type:'Point',coordinates:[14.4,50.1]},properties:{n:'Prag',flag:'🇨🇿',color:'#f39c12',cnt:'4 üniversite',unis:['Karlova Üniversitesi','ČVUT (Teknik)','Masaryk','Prag Ekonomi Ü.'],href:'/universiteler#czech'}},
-            // KIBRIS
-            {type:'Feature',geometry:{type:'Point',coordinates:[33.4,35.2]},properties:{n:'Lefkoşa',flag:'🇨🇾',color:'#ffc107',cnt:'3 üniversite',unis:['Kıbrıs Üniversitesi','Yakın Doğu Üniversitesi','Avrupa Kıbrıs Ü.'],href:'/universiteler#cyprus'}},
-            // KANADA
-            {type:'Feature',geometry:{type:'Point',coordinates:[-79.4,43.7]},properties:{n:'Toronto',flag:'🇨🇦',color:'#e67e22',cnt:'4 üniversite',unis:['U of Toronto','York Üniversitesi','McMaster','Ryerson (TMU)'],href:'/universiteler#canada'}},
-            {type:'Feature',geometry:{type:'Point',coordinates:[-73.6,45.5]},properties:{n:'Montréal',flag:'🇨🇦',color:'#e67e22',cnt:'4 üniversite',unis:['McGill Üniversitesi','Montréal Üniversitesi','Concordia','Laval'],href:'/universiteler#canada'}},
-            {type:'Feature',geometry:{type:'Point',coordinates:[-123.1,49.3]},properties:{n:'Vancouver',flag:'🇨🇦',color:'#e67e22',cnt:'3 üniversite',unis:['UBC','Simon Fraser','Victoria'],href:'/universiteler#canada'}},
-            {type:'Feature',geometry:{type:'Point',coordinates:[-75.7,45.4]},properties:{n:'Ottawa',flag:'🇨🇦',color:'#e67e22',cnt:'2 üniversite',unis:['Ottawa Üniversitesi','Carleton Üniversitesi'],href:'/universiteler#canada'}},
-            // JAPONYA
-            {type:'Feature',geometry:{type:'Point',coordinates:[139.7,35.7]},properties:{n:'Tokyo',flag:'🇯🇵',color:'#e91e8c',cnt:'14 üniversite',unis:['Tokyo Üniversitesi','Waseda','Keio','TIT','Hitotsubashi','Tokyo Med-Dent + 8 daha'],href:'/universiteler#japan'}},
-            {type:'Feature',geometry:{type:'Point',coordinates:[135.5,34.7]},properties:{n:'Osaka',flag:'🇯🇵',color:'#e91e8c',cnt:'3 üniversite',unis:['Osaka Üniversitesi','Osaka Şehir Ü.','Kansai Üniversitesi'],href:'/universiteler#japan'}},
-            {type:'Feature',geometry:{type:'Point',coordinates:[135.8,35.0]},properties:{n:'Kyoto',flag:'🇯🇵',color:'#e91e8c',cnt:'3 üniversite',unis:['Kyoto Üniversitesi','Ritsumeikan','Doshisha'],href:'/universiteler#japan'}},
-            {type:'Feature',geometry:{type:'Point',coordinates:[130.4,33.6]},properties:{n:'Fukuoka',flag:'🇯🇵',color:'#e91e8c',cnt:'2 üniversite',unis:['Kyushu Üniversitesi','Kyushu Teknoloji Enst.'],href:'/universiteler#japan'}},
-            // GÜNEY KORE
-            {type:'Feature',geometry:{type:'Point',coordinates:[127.0,37.6]},properties:{n:'Seul',flag:'🇰🇷',color:'#e91e8c',cnt:'12 üniversite',unis:['Seoul National U.','KAIST','Yonsei','Korea Ü.','POSTECH','Sungkyunkwan + 6 daha'],href:'/universiteler#korea'}},
-            {type:'Feature',geometry:{type:'Point',coordinates:[129.1,35.1]},properties:{n:'Busan',flag:'🇰🇷',color:'#e91e8c',cnt:'2 üniversite',unis:['Pusan Milli Ü.','Dong-A Üniversitesi'],href:'/universiteler#korea'}},
-            // KAZAKİSTAN
-            {type:'Feature',geometry:{type:'Point',coordinates:[76.9,43.2]},properties:{n:'Almatı',flag:'🇰🇿',color:'#1abc9c',cnt:'3 üniversite',unis:['KazNU (al-Farabi)','KIMEP Üniversitesi','Tıp Üniversitesi'],href:'/universiteler#kazakhstan'}},
-            {type:'Feature',geometry:{type:'Point',coordinates:[71.4,51.2]},properties:{n:'Astana',flag:'🇰🇿',color:'#1abc9c',cnt:'2 üniversite',unis:['Nazarbayev Üniversitesi','Astana Tıp Ü.'],href:'/universiteler#kazakhstan'}},
-            // KIRGIZİSTAN
-            {type:'Feature',geometry:{type:'Point',coordinates:[74.6,42.9]},properties:{n:'Bişkek',flag:'🇰🇬',color:'#1abc9c',cnt:'2 üniversite',unis:['KTÜ Manas (Türk-Kırgız)','AUCA (Amerikan Ü.)'],href:'/universiteler#kyrgyzstan'}},
-            // BEYAZ RUSYA
-            {type:'Feature',geometry:{type:'Point',coordinates:[27.6,53.9]},properties:{n:'Minsk',flag:'🇧🇾',color:'#1abc9c',cnt:'5 üniversite',unis:['BSU (Belarus Dev. Ü.)','BNTU (Teknik)','Minsk Tıp Ü.','Vitebsk Devlet','Grodna Devlet'],href:'/universiteler#belarus'}},
-            // AZERBAYCAN
-            {type:'Feature',geometry:{type:'Point',coordinates:[49.9,40.4]},properties:{n:'Bakü',flag:'🇦🇿',color:'#1abc9c',cnt:'2 üniversite',unis:['Bakü Devlet Üniversitesi','Khazar Üniversitesi'],href:'/universiteler#azerbaijan'}},
-            // ÖZBEKİSTAN
-            {type:'Feature',geometry:{type:'Point',coordinates:[69.3,41.3]},properties:{n:'Taşkent',flag:'🇺🇿',color:'#1abc9c',cnt:'2 üniversite',unis:['NUUz (Mirzo Ulugbek)','Taşkent Sulama Enst.'],href:'/universiteler#uzbekistan'}},
-            // GÜRCİSTAN
-            {type:'Feature',geometry:{type:'Point',coordinates:[44.8,41.7]},properties:{n:'Tiflis',flag:'🇬🇪',color:'#1abc9c',cnt:'2 üniversite',unis:['TSU (Tiflis Dev. Ü.)','İlya Devlet Üniversitesi'],href:'/universiteler#georgia'}},
-            // TAYLAND
-            {type:'Feature',geometry:{type:'Point',coordinates:[100.5,13.75]},properties:{n:'Bangkok',flag:'🇹🇭',color:'#00bcd4',cnt:'4 üniversite',unis:['Chulalongkorn Üniversitesi','Mahidol Üniversitesi','Kasetsart Ü.','KMUTT'],href:'/universiteler#thailand'}},
-            {type:'Feature',geometry:{type:'Point',coordinates:[98.99,18.8]},properties:{n:'Chiang Mai',flag:'🇹🇭',color:'#00bcd4',cnt:'1 üniversite',unis:['Chiang Mai Üniversitesi'],href:'/universiteler#thailand'}},
-            // VİETNAM
-            {type:'Feature',geometry:{type:'Point',coordinates:[105.8,21.0]},properties:{n:'Hanoi',flag:'🇻🇳',color:'#ef5350',cnt:'2 üniversite',unis:['VNU Hanoi','Duy Tan Üniversitesi'],href:'/universiteler#vietnam'}},
-            {type:'Feature',geometry:{type:'Point',coordinates:[106.7,10.8]},properties:{n:'Ho Chi Minh',flag:'🇻🇳',color:'#ef5350',cnt:'2 üniversite',unis:['VNU Ho Chi Minh','Ton Duc Thang Ü.'],href:'/universiteler#vietnam'}},
-        ]
-    };
+    // Şehir verileri - SADECE bizim üniversitelerimiz
+    var sehirler = {type:'FeatureCollection',features:[
+        // TÜRKİYE
+        {type:'Feature',geometry:{type:'Point',coordinates:[29.0,41.0]},properties:{n:'İstanbul',flag:'🇹🇷',color:'#e74c3c',cnt:'22 üniversite',unis:['İstinye Üniversitesi','Biruni Üniversitesi','Beykent Üniversitesi','Bahçeşehir Üniversitesi','Altınbaş Üniversitesi','Gelişim Üniversitesi','Okan Üniversitesi','Üsküdar Üniversitesi','Bilgi Üniversitesi','Medipol Üniversitesi','Aydın Üniversitesi','Sabancı Üniversitesi','Koç Üniversitesi','Marmara Ün. ve diğerleri'],href:'/universiteler#turkey'}},
+        {type:'Feature',geometry:{type:'Point',coordinates:[32.8,39.9]},properties:{n:'Ankara',flag:'🇹🇷',color:'#e74c3c',cnt:'6 üniversite',unis:['ODTÜ','Gazi Üniversitesi','Hacettepe','Bilkent (Vakıf)','Atılım (Vakıf)','Çankaya (Vakıf)'],href:'/universiteler#turkey'}},
+        {type:'Feature',geometry:{type:'Point',coordinates:[27.1,38.4]},properties:{n:'İzmir',flag:'🇹🇷',color:'#e74c3c',cnt:'6 üniversite',unis:['Ege Üniversitesi','Dokuz Eylül Üniversitesi','İzmir Katip Çelebi','İzmir YTE','İzmir Ekonomi (Vakıf)','Yaşar Üniversitesi'],href:'/universiteler#turkey'}},
+        {type:'Feature',geometry:{type:'Point',coordinates:[32.5,37.9]},properties:{n:'Konya',flag:'🇹🇷',color:'#e74c3c',cnt:'3 üniversite',unis:['Selçuk Üniversitesi','Necmettin Erbakan','Konya Teknik'],href:'/universiteler#turkey'}},
+        {type:'Feature',geometry:{type:'Point',coordinates:[29.1,40.2]},properties:{n:'Bursa',flag:'🇹🇷',color:'#e74c3c',cnt:'2 üniversite',unis:['Bursa Uludağ','Bursa Teknik'],href:'/universiteler#turkey'}},
+        {type:'Feature',geometry:{type:'Point',coordinates:[30.7,36.9]},properties:{n:'Antalya',flag:'🇹🇷',color:'#e74c3c',cnt:'2 üniversite',unis:['Akdeniz Üniversitesi','Alanya AÜ'],href:'/universiteler#turkey'}},
+        {type:'Feature',geometry:{type:'Point',coordinates:[35.3,37.0]},properties:{n:'Adana',flag:'🇹🇷',color:'#e74c3c',cnt:'2 üniversite',unis:['Çukurova Üniversitesi','Adana Alparslan Türkeş'],href:'/universiteler#turkey'}},
+        // RUSYA
+        {type:'Feature',geometry:{type:'Point',coordinates:[37.6,55.75]},properties:{n:'Moskova',flag:'🇷🇺',color:'#3498db',cnt:'21 üniversite',unis:['MGU Lomonosov','Bauman MSTU','MGIMO','HSE','RUDN','МИФИ','РАНХиГС','MAI','Plekhanov','Финансовый и diğerleri'],href:'/universiteler#russia'}},
+        {type:'Feature',geometry:{type:'Point',coordinates:[30.3,59.95]},properties:{n:'Sankt-Peterburg',flag:'🇷🇺',color:'#3498db',cnt:'5 üniversite',unis:['SPbGU','Politeknik Ün.','Gorny Ün.','Baltiyskiy Federal','ИТМО'],href:'/universiteler#russia'}},
+        {type:'Feature',geometry:{type:'Point',coordinates:[82.9,55.0]},properties:{n:'Novosibirsk',flag:'🇷🇺',color:'#3498db',cnt:'3 üniversite',unis:['Novosibirsk Devlet Ün.','NSTU','Tıp Üniversitesi'],href:'/universiteler#russia'}},
+        {type:'Feature',geometry:{type:'Point',coordinates:[60.6,56.8]},properties:{n:'Yekaterinburg',flag:'🇷🇺',color:'#3498db',cnt:'2 üniversite',unis:['Ural Federal Üniversitesi','Ural Tıp Üniversitesi'],href:'/universiteler#russia'}},
+        {type:'Feature',geometry:{type:'Point',coordinates:[49.1,55.8]},properties:{n:'Kazan',flag:'🇷🇺',color:'#3498db',cnt:'3 üniversite',unis:['Kazan Federal Ün.','Kazan Tıp Ün.','KAI-KNRTU'],href:'/universiteler#russia'}},
+        {type:'Feature',geometry:{type:'Point',coordinates:[44.0,56.3]},properties:{n:'Nizhny Novgorod',flag:'🇷🇺',color:'#3498db',cnt:'2 üniversite',unis:['Lobachevsky Devlet Ün.','NNSTU'],href:'/universiteler#russia'}},
+        // ALMANYA
+        {type:'Feature',geometry:{type:'Point',coordinates:[13.4,52.5]},properties:{n:'Berlin',flag:'🇩🇪',color:'#f39c12',cnt:'3 üniversite',unis:['FU Berlin','Humboldt Üniversitesi','TU Berlin'],href:'/universiteler#germany'}},
+        {type:'Feature',geometry:{type:'Point',coordinates:[11.6,48.1]},properties:{n:'Münih',flag:'🇩🇪',color:'#f39c12',cnt:'2 üniversite',unis:['TU Münih','LMU Münih'],href:'/universiteler#germany'}},
+        // AVUSTURYA
+        {type:'Feature',geometry:{type:'Point',coordinates:[16.4,48.2]},properties:{n:'Viyana',flag:'🇦🇹',color:'#f39c12',cnt:'6 üniversite',unis:['Viyana Üniversitesi','TU Viyana','Tıp Üniversitesi','Vet. Üniversitesi','WU Wien','BOKU Wien'],href:'/universiteler#austria'}},
+        // ÇEKYA
+        {type:'Feature',geometry:{type:'Point',coordinates:[14.4,50.1]},properties:{n:'Prag',flag:'🇨🇿',color:'#f39c12',cnt:'4 üniversite',unis:['Karlova Üniversitesi','ČVUT (Teknik)','Masaryk','Prag Ekonomi Ün.'],href:'/universiteler#czech'}},
+        // BELÇİKA
+        {type:'Feature',geometry:{type:'Point',coordinates:[4.4,50.8]},properties:{n:'Brüksel',flag:'🇧🇪',color:'#9b59b6',cnt:'4 üniversite',unis:['KU Leuven','ULB','Gent Üniversitesi','Mons Üniversitesi'],href:'/universiteler#belgium'}},
+        // HOLLANDA
+        {type:'Feature',geometry:{type:'Point',coordinates:[4.9,52.4]},properties:{n:'Amsterdam',flag:'🇳🇱',color:'#9b59b6',cnt:'2 üniversite',unis:['Amsterdam Üniversitesi','VU Amsterdam'],href:'/universiteler#netherlands'}},
+        {type:'Feature',geometry:{type:'Point',coordinates:[4.4,52.0]},properties:{n:'Delft',flag:'🇳🇱',color:'#9b59b6',cnt:'1 üniversite',unis:['TU Delft'],href:'/universiteler#netherlands'}},
+        // İTALYA
+        {type:'Feature',geometry:{type:'Point',coordinates:[9.2,45.5]},properties:{n:'Milano',flag:'🇮🇹',color:'#27ae60',cnt:'4 üniversite',unis:['Politecnico di Milano','Bocconi','Bicocca','Milano Üniversitesi'],href:'/universiteler#italy'}},
+        {type:'Feature',geometry:{type:'Point',coordinates:[12.5,41.9]},properties:{n:'Roma',flag:'🇮🇹',color:'#27ae60',cnt:'3 üniversite',unis:['Sapienza Roma','Tor Vergata','LUISS'],href:'/universiteler#italy'}},
+        // KIBRIS
+        {type:'Feature',geometry:{type:'Point',coordinates:[33.4,35.2]},properties:{n:'Lefkoşa',flag:'🇨🇾',color:'#ffc107',cnt:'3 üniversite',unis:['Kıbrıs Üniversitesi','Yakın Doğu Üniversitesi','Avrupa Kıbrıs Ün.'],href:'/universiteler#cyprus'}},
+        // KANADA
+        {type:'Feature',geometry:{type:'Point',coordinates:[-79.4,43.7]},properties:{n:'Toronto',flag:'🇨🇦',color:'#e67e22',cnt:'4 üniversite',unis:['U of Toronto','York Üniversitesi','McMaster','Ryerson (TMU)'],href:'/universiteler#canada'}},
+        {type:'Feature',geometry:{type:'Point',coordinates:[-73.6,45.5]},properties:{n:'Montréal',flag:'🇨🇦',color:'#e67e22',cnt:'4 üniversite',unis:['McGill Üniversitesi','Montréal Üniversitesi','Concordia','Laval'],href:'/universiteler#canada'}},
+        {type:'Feature',geometry:{type:'Point',coordinates:[-123.1,49.3]},properties:{n:'Vancouver',flag:'🇨🇦',color:'#e67e22',cnt:'3 üniversite',unis:['UBC','Simon Fraser','Victoria'],href:'/universiteler#canada'}},
+        // JAPONYA
+        {type:'Feature',geometry:{type:'Point',coordinates:[139.7,35.7]},properties:{n:'Tokyo',flag:'🇯🇵',color:'#e91e8c',cnt:'14 üniversite',unis:['Tokyo Üniversitesi','Waseda','Keio','TIT','Hitotsubashi ve diğerleri'],href:'/universiteler#japan'}},
+        {type:'Feature',geometry:{type:'Point',coordinates:[135.5,34.7]},properties:{n:'Osaka',flag:'🇯🇵',color:'#e91e8c',cnt:'3 üniversite',unis:['Osaka Üniversitesi','Osaka Şehir Ün.','Kansai Ün.'],href:'/universiteler#japan'}},
+        // GÜNEY KORE
+        {type:'Feature',geometry:{type:'Point',coordinates:[127.0,37.6]},properties:{n:'Seul',flag:'🇰🇷',color:'#e91e8c',cnt:'12 üniversite',unis:['Seoul National U.','KAIST','Yonsei','Korea Ün.','POSTECH ve diğerleri'],href:'/universiteler#korea'}},
+        // KAZAKİSTAN
+        {type:'Feature',geometry:{type:'Point',coordinates:[76.9,43.2]},properties:{n:'Almatı',flag:'🇰🇿',color:'#1abc9c',cnt:'3 üniversite',unis:['KazNU (al-Farabi)','KIMEP Üniversitesi','Tıp Üniversitesi'],href:'/universiteler#kazakhstan'}},
+        {type:'Feature',geometry:{type:'Point',coordinates:[71.4,51.2]},properties:{n:'Astana',flag:'🇰🇿',color:'#1abc9c',cnt:'2 üniversite',unis:['Nazarbayev Üniversitesi','Astana Tıp Ün.'],href:'/universiteler#kazakhstan'}},
+        // KIRGIZİSTAN
+        {type:'Feature',geometry:{type:'Point',coordinates:[74.6,42.9]},properties:{n:'Bişkek',flag:'🇰🇬',color:'#1abc9c',cnt:'2 üniversite',unis:['KTÜ Manas (Türk-Kırgız)','AUCA (Amerikan Ün.)'],href:'/universiteler#kyrgyzstan'}},
+        // BEYAZ RUSYA
+        {type:'Feature',geometry:{type:'Point',coordinates:[27.6,53.9]},properties:{n:'Minsk',flag:'🇧🇾',color:'#1abc9c',cnt:'5 üniversite',unis:['BSU','BNTU (Teknik)','Minsk Tıp Ün.','Vitebsk Devlet','Grodna Devlet'],href:'/universiteler#belarus'}},
+        // AZERBAYCAN
+        {type:'Feature',geometry:{type:'Point',coordinates:[49.9,40.4]},properties:{n:'Bakü',flag:'🇦🇿',color:'#1abc9c',cnt:'2 üniversite',unis:['Bakü Devlet Üniversitesi','Khazar Üniversitesi'],href:'/universiteler#azerbaijan'}},
+        // ÖZBEKİSTAN
+        {type:'Feature',geometry:{type:'Point',coordinates:[69.3,41.3]},properties:{n:'Taşkent',flag:'🇺🇿',color:'#1abc9c',cnt:'2 üniversite',unis:['NUUz (Mirzo Ulugbek)','Taşkent Sulama Enst.'],href:'/universiteler#uzbekistan'}},
+        // GÜRCİSTAN
+        {type:'Feature',geometry:{type:'Point',coordinates:[44.8,41.7]},properties:{n:'Tiflis',flag:'🇬🇪',color:'#1abc9c',cnt:'2 üniversite',unis:['TSU (Tiflis Dev. Ün.)','İlya Devlet Üniversitesi'],href:'/universiteler#georgia'}},
+        // TAYLAND
+        {type:'Feature',geometry:{type:'Point',coordinates:[100.5,13.75]},properties:{n:'Bangkok',flag:'🇹🇭',color:'#00bcd4',cnt:'4 üniversite',unis:['Chulalongkorn Üniversitesi','Mahidol Üniversitesi','Kasetsart','KMUTT'],href:'/universiteler#thailand'}},
+        // VİETNAM
+        {type:'Feature',geometry:{type:'Point',coordinates:[105.8,21.0]},properties:{n:'Hanoi',flag:'🇻🇳',color:'#00bcd4',cnt:'2 üniversite',unis:['VNU Hanoi','Duy Tan Üniversitesi'],href:'/universiteler#vietnam'}},
+        {type:'Feature',geometry:{type:'Point',coordinates:[106.7,10.8]},properties:{n:'Ho Chi Minh',flag:'🇻🇳',color:'#00bcd4',cnt:'2 üniversite',unis:['VNU Ho Chi Minh','Ton Duc Thang'],href:'/universiteler#vietnam'}}
+    ]};
 
-    map.addSource('sehirler', {type: 'geojson', data: sehirler});
+    map.addSource('sehirler', {type:'geojson', data:sehirler});
 
-    // Dış halka (pulse)
+    // Pulse
     map.addLayer({
-        id: 'sehir-pulse',
-        type: 'circle',
-        source: 'sehirler',
-        paint: {
-            'circle-radius': 14,
-            'circle-color': ['get', 'color'],
-            'circle-opacity': 0.2,
-            'circle-stroke-width': 0
+        id:'sehir-pulse', type:'circle', source:'sehirler',
+        paint:{'circle-radius':14,'circle-color':['get','color'],'circle-opacity':0.15}
+    });
+    // Nokta
+    map.addLayer({
+        id:'sehir-nokta', type:'circle', source:'sehirler',
+        paint:{
+            'circle-radius':['interpolate',['linear'],['zoom'],1,5,5,8,10,12],
+            'circle-color':['get','color'],
+            'circle-stroke-width':1.8,
+            'circle-stroke-color':'rgba(255,255,255,0.6)',
+            'circle-opacity':0.95
         }
     });
-
-    // Ana nokta
+    // İsimler
     map.addLayer({
-        id: 'sehir-nokta',
-        type: 'circle',
-        source: 'sehirler',
-        paint: {
-            'circle-radius': ['interpolate', ['linear'], ['zoom'], 1, 5, 6, 8, 10, 12],
-            'circle-color': ['get', 'color'],
-            'circle-stroke-width': 2,
-            'circle-stroke-color': 'rgba(255,255,255,0.6)',
-            'circle-opacity': 0.95
-        }
-    });
-
-    // Şehir ismi (yakınlaştıkça görünür)
-    map.addLayer({
-        id: 'sehir-label',
-        type: 'symbol',
-        source: 'sehirler',
-        layout: {
-            'text-field': ['get', 'n'],
-            'text-size': ['interpolate', ['linear'], ['zoom'], 3, 9, 6, 11, 10, 13],
-            'text-offset': [0, 1.5],
-            'text-anchor': 'top',
-            'text-font': ['DIN Offc Pro Bold', 'Arial Unicode MS Bold'],
+        id:'sehir-label', type:'symbol', source:'sehirler',
+        layout:{
+            'text-field':['get','n'],
+            'text-size':['interpolate',['linear'],['zoom'],3,0,4,10,10,13],
+            'text-offset':[0,1.4], 'text-anchor':'top',
+            'text-font':['DIN Offc Pro Bold','Arial Unicode MS Bold']
         },
-        paint: {
-            'text-color': '#ffffff',
-            'text-halo-color': 'rgba(0,0,0,0.7)',
-            'text-halo-width': 1.5,
-            'text-opacity': ['interpolate', ['linear'], ['zoom'], 2, 0, 3, 1]
-        }
+        paint:{'text-color':'#fff','text-halo-color':'rgba(0,0,0,0.75)','text-halo-width':1.5}
     });
 
-    // Tıklama popup
-    map.on('click', 'sehir-nokta', (e) => {
-        const p = e.features[0].properties;
-        const unis = JSON.parse(p.unis);
-
-        const liItems = unis.map(u => `<li>${u}</li>`).join('');
-
-        new mapboxgl.Popup({offset: 10, closeButton: true, maxWidth: '260px'})
+    // Tıklama
+    map.on('click','sehir-nokta', function(e){
+        var p = e.features[0].properties;
+        var unis = JSON.parse(p.unis);
+        var liHtml = unis.map(function(u){ return '<li>'+u+'</li>'; }).join('');
+        new mapboxgl.Popup({offset:10, closeButton:true, maxWidth:'260px'})
             .setLngLat(e.features[0].geometry.coordinates)
-            .setHTML(`
-                <div class="popup-ic">
-                    <div class="popup-ulke">${p.flag} ${p.n}</div>
-                    <div class="popup-sehir">${p.cnt}</div>
-                    <div class="popup-say">🎓 ${p.cnt}</div>
-                    <ul class="popup-unis">${liItems}</ul>
-                </div>
-                <a href="${p.href}" class="popup-btn">Tüm listeyi gör →</a>
-            `)
+            .setHTML('<div class="popup-ic"><div class="popup-ulke">'+p.flag+' '+p.n+'</div><div class="popup-say">🎓 '+p.cnt+'</div><ul class="popup-unis">'+liHtml+'</ul></div><a href="'+p.href+'" class="popup-btn">Tüm listeyi gör →</a>')
             .addTo(map);
     });
 
-    // Hover cursor
-    map.on('mouseenter', 'sehir-nokta', () => { map.getCanvas().style.cursor = 'pointer'; });
-    map.on('mouseleave', 'sehir-nokta', () => { map.getCanvas().style.cursor = ''; });
+    map.on('mouseenter','sehir-nokta',function(){ map.getCanvas().style.cursor='pointer'; });
+    map.on('mouseleave','sehir-nokta',function(){ map.getCanvas().style.cursor=''; });
 
-    // Pulse animasyonu
-    let r = 0, growing = true;
-    setInterval(() => {
-        if(growing) r += 0.5; else r -= 0.5;
-        if(r >= 8) growing = false;
-        if(r <= 0) growing = true;
-        if(map.getLayer('sehir-pulse')){
-            map.setPaintProperty('sehir-pulse', 'circle-radius', 14 + r);
-            map.setPaintProperty('sehir-pulse', 'circle-opacity', 0.2 - r * 0.018);
-        }
-    }, 50);
+    // Pulse animasyon - mobilde daha hafif
+    if(!isMobile){
+        var r=0, grow=true;
+        setInterval(function(){
+            if(grow) r+=0.4; else r-=0.4;
+            if(r>=7) grow=false; if(r<=0) grow=true;
+            if(map.getLayer('sehir-pulse')){
+                map.setPaintProperty('sehir-pulse','circle-radius',14+r);
+                map.setPaintProperty('sehir-pulse','circle-opacity',0.15-r*0.015);
+            }
+        },60);
+    }
 });
 
-// Globe döndürme butonu
-map.on('load', () => {
-    let spinning = true;
-    const btn = document.createElement('button');
-    btn.innerHTML = '⏸';
-    btn.title = 'Otomatik dönüşü durdur/başlat';
-    btn.style.cssText = 'position:absolute;top:14px;right:52px;z-index:10;background:rgba(10,22,40,0.88);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;padding:6px 10px;cursor:pointer;font-size:14px;backdrop-filter:blur(8px);';
-    document.getElementById('map-container').appendChild(btn);
+// Otomatik dönüş - mobilde daha yavaş
+map.on('load', function(){
+    var spinning = true;
+    var deg = 45;
+    var speed = isMobile ? 0.025 : 0.04;
 
-    let deg = 0;
-    function spinGlobe(){
+    function spin(){
         if(!spinning) return;
-        deg = (deg + 0.04) % 360;
-        map.setCenter([deg < 180 ? deg : deg - 360, 30]);
-        requestAnimationFrame(spinGlobe);
+        deg = (deg + speed) % 360;
+        map.setCenter([deg < 180 ? deg : deg-360, 30]);
+        requestAnimationFrame(spin);
     }
 
-    map.on('mousedown', () => { spinning = false; btn.innerHTML = '▶'; });
-    map.on('touchstart', () => { spinning = false; btn.innerHTML = '▶'; });
-
-    btn.addEventListener('click', () => {
-        spinning = !spinning;
-        btn.innerHTML = spinning ? '⏸' : '▶';
-        if(spinning) spinGlobe();
+    map.on('mousedown', function(){ spinning = false; });
+    map.on('touchstart', function(){ spinning = false; });
+    map.on('mouseup', function(){
+        setTimeout(function(){ spinning = true; spin(); }, 3000);
     });
 
-    spinGlobe();
+    spin();
 });
 </script>
 

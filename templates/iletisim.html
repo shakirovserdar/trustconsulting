@@ -1,7 +1,53 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1 class="section-title" style="margin-top:0.5rem;">{{ t.iletisim_baslik }}</h1>
+<style>
+.ofis-kart {
+    background: rgba(255,255,255,0.07) !important;
+    border: 1px solid rgba(255,255,255,0.15) !important;
+    border-radius: 14px !important;
+    padding: 1.1rem 1.3rem !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 1rem !important;
+    border-left: 3px solid rgba(37,117,252,0.7) !important;
+    margin-bottom: 10px !important;
+}
+.ofis-bilgi h4 {
+    color: #7bc8f0 !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 4px !important;
+}
+.ofis-bilgi p {
+    color: rgba(255,255,255,0.8) !important;
+    font-size: 0.82rem !important;
+    line-height: 1.5 !important;
+    margin: 0 0 6px !important;
+}
+.ofis-tel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 6px;
+}
+.ofis-tel a {
+    display: inline-block;
+    background: rgba(37,117,252,0.2);
+    border: 1px solid rgba(37,117,252,0.4);
+    border-radius: 20px;
+    padding: 4px 12px;
+    color: #7bc8f0 !important;
+    font-size: 0.82rem !important;
+    font-weight: 600;
+    text-decoration: none;
+}
+.ofis-tel a:hover { background: rgba(37,117,252,0.35); }
+.ofis-bayrak { font-size: 1.8rem !important; flex-shrink: 0; }
+</style>
+
+
+<h1 class="section-title" style="margin-top:0.5rem;">{% if dil_kodu == 'tr' %}Çalıştığımız Firmalar ve İletişim{% elif dil_kodu == 'ru' %}Наши партнёры и контакты{% else %}Hyzmatdaşlarymyz we habarlaşmak{% endif %}</h1>
 
 <div class="iletisim-dikey">
 
@@ -51,69 +97,102 @@
 
     <!-- OFİSLER -->
     <div class="iletisim-bilgi-kart">
-        <h3 id="ofisler">{{ t.iletisim_adres_baslik }}</h3>
+        <h3>{{ t.iletisim_adres_baslik }}</h3>
 
-        <div class="ofis-liste">
-            <div class="ofis-kart">
-                <span class="ofis-bayrak">🇹🇲</span>
-                <div>
-                    <h4>{% if dil_kodu == 'tr' %}Dänew Ofisi{% elif dil_kodu == 'ru' %}Офис Дяньов{% else %}Dänew ofisi{% endif %}</h4>
-                    <p>Dänew etraby, Dänew şäheri, S.A.Nyýazow köçesi, 5-nji çagalar bagynyň garşysy</p>
-                </div>
-            </div>
-            <div class="ofis-kart">
-                <span class="ofis-bayrak">🇹🇲</span>
-                <div>
-                    <h4>{% if dil_kodu == 'tr' %}Aşkabat Ofisi{% elif dil_kodu == 'ru' %}Офис Ашхабад{% else %}Aşgabat ofisi{% endif %}</h4>
-                    <p>{% if dil_kodu == 'tr' %}Aşkabat, Arkaç Alışveriş Merkezi, 2. kat{% elif dil_kodu == 'ru' %}Ашхабад, ТЦ Аркач, 2-й этаж{% else %}Aşgabat, Arkaç sowda merkezi, 2-nji gaty{% endif %}</p>
-                </div>
-            </div>
-            <div class="ofis-kart">
-                <span class="ofis-bayrak">🇹🇲</span>
-                <div>
-                    <h4>{% if dil_kodu == 'tr' %}Kerki Merkez Ofis{% elif dil_kodu == 'ru' %}Центральный офис Керки{% else %}Kerki merkez ofisi{% endif %}</h4>
-                    <p>Lebap welaýatynyň Kerki şäheriniň, S. Niyazow köçesiniň 98-nji jaýy</p>
-                </div>
-            </div>
-            <div class="ofis-kart">
-                <span class="ofis-bayrak">🇹🇲</span>
-                <div>
-                    <h4>{% if dil_kodu == 'tr' %}Magdanlı Ofisi{% elif dil_kodu == 'ru' %}Офис Магданлы{% else %}Magdanly ofisi{% endif %}</h4>
-                    <p>Lebap welaýatynyň Köýtendag etrabynyň Magdanly şäheri, Garaşsyzlyk köçesiniň 1-nji jaýy</p>
-                </div>
-            </div>
-            <div class="ofis-kart">
-                <span class="ofis-bayrak">🇹🇲</span>
-                <div>
-                    <h4>{% if dil_kodu == 'tr' %}Döwletli Ofisi{% elif dil_kodu == 'ru' %}Офис Дёвлетли{% else %}Döwletli ofisi{% endif %}</h4>
-                    <p>Döwletli etrap Döwletli şäherçe, Ärsarybaba ýolunyň ugryndaky Kerim Gurbannepesow köçe 58-nji jaý</p>
-                </div>
-            </div>
-            <div class="ofis-kart">
-                <span class="ofis-bayrak">🇹🇲</span>
-                <div>
-                    <h4>{% if dil_kodu == 'tr' %}Köýten-Oba Ofisi{% elif dil_kodu == 'ru' %}Офис Кёйтен-Оба{% else %}Köýten-oba ofisi{% endif %}</h4>
-                    <p>Lebap welaýatynyň Köýtendag etrabynyň Köýtendag geňeşligi, A.Nyýazow köçe N 46</p>
-                </div>
-            </div>
-            <div class="ofis-kart">
-                <span class="ofis-bayrak">🇹🇲</span>
-                <div>
-                    <h4>{% if dil_kodu == 'tr' %}Köýtendag Ofisi{% elif dil_kodu == 'ru' %}Офис Кёйтендаг{% else %}Köýtendag ofisi{% endif %}</h4>
-                    <p>Koytendag etrap, Koytendag şähercesi, Bilim bölümüniň çep tarapy</p>
-                </div>
-            </div>
-            <div class="ofis-kart">
-                <span class="ofis-bayrak">🇹🇷</span>
-                <div>
-                    <h4>İstanbul {% if dil_kodu == 'tr' %}Ofisi{% elif dil_kodu == 'ru' %}Офис{% else %}ofisi{% endif %}</h4>
-                    <p>Aksaray mah. Valide Cami sk. No: 8 Kat: 5 OFİS No: 52, FATİH / İSTANBUL</p>
-                </div>
-            </div>
+        <div class="ofis-liste" id="ofisler">
+
+    <!-- İstanbul -->
+    <div class="ofis-kart">
+        <span class="ofis-bayrak">🇹🇷</span>
+        <div class="ofis-bilgi">
+            <h4>{% if dil_kodu == 'tr' %}İstanbul Ofisi{% elif dil_kodu == 'ru' %}Стамбульский офис{% else %}Stambul ofisi{% endif %}</h4>
+            <p>Aksaray mah. Valide Cami sk. No: 8 Kat: 5 OFİS No: 52, FATİH / İSTANBUL</p>
+            <div class="ofis-tel"><a href="tel:+905530890598">📞 +90 553 089 05 98</a> <a href="tel:+905524254697">📞 +90 552 425 46 97</a></div>
         </div>
+    </div>
 
-        <!-- TELEFONLAR -->
-        <div class="iletisim-satir" id="mosaic">
+    <!-- Aşkabat -->
+    <div class="ofis-kart">
+        <span class="ofis-bayrak">🇹🇲</span>
+        <div class="ofis-bilgi">
+            <h4>{% if dil_kodu == 'tr' %}Aşkabat Ofisi{% elif dil_kodu == 'ru' %}Офис Ашхабад{% else %}Aşgabat ofisi{% endif %}</h4>
+            <p>{% if dil_kodu == 'tr' %}Aşkabat, Arkaç Alışveriş Merkezi, 2. kat{% elif dil_kodu == 'ru' %}Ашхабад, ТЦ Аркач, 2-й этаж{% else %}Aşgabat, Arkaç sowda merkezi, 2-nji gaty{% endif %}</p>
+            <div class="ofis-tel"><a href="tel:+99361950920">📞 +993 61 95 09 20</a></div>
+        </div>
+    </div>
+
+    <!-- Mary -->
+    <div class="ofis-kart">
+        <span class="ofis-bayrak">🇹🇲</span>
+        <div class="ofis-bilgi">
+            <h4>{% if dil_kodu == 'tr' %}Mary Ofisi{% elif dil_kodu == 'ru' %}Офис Мары{% else %}Mary ofisi{% endif %}</h4>
+            <p>Mary şäheri, Agzybirlik köçesi, peduçilişanyň garşy tarapy</p>
+            <div class="ofis-tel"><a href="tel:+99363028067">📞 +993 63 02 80 67</a></div>
+        </div>
+    </div>
+
+    <!-- Kerki -->
+    <div class="ofis-kart">
+        <span class="ofis-bayrak">🇹🇲</span>
+        <div class="ofis-bilgi">
+            <h4>{% if dil_kodu == 'tr' %}Kerki Merkez Ofis{% elif dil_kodu == 'ru' %}Центральный офис Керки{% else %}Kerki merkez ofisi{% endif %}</h4>
+            <p>Lebap welaýatynyň Kerki şäheriniň, S. Niyazow köçesiniň 98-nji jaýy</p>
+            <div class="ofis-tel"><a href="tel:+99371476324">📞 +993 71 47 63 24</a></div>
+        </div>
+    </div>
+
+    <!-- Köytendag -->
+    <div class="ofis-kart">
+        <span class="ofis-bayrak">🇹🇲</span>
+        <div class="ofis-bilgi">
+            <h4>{% if dil_kodu == 'tr' %}Köytendag Ofisi{% elif dil_kodu == 'ru' %}Офис Кёйтендаг{% else %}Köýtendag ofisi{% endif %}</h4>
+            <p>Koytendag etrap, Koytendag şähercesi, Bilim bölümüniň çep tarapy</p>
+            <div class="ofis-tel"><a href="tel:+99364759980">📞 +993 64 75 99 80</a></div>
+        </div>
+    </div>
+
+    <!-- Dänew -->
+    <div class="ofis-kart">
+        <span class="ofis-bayrak">🇹🇲</span>
+        <div class="ofis-bilgi">
+            <h4>{% if dil_kodu == 'tr' %}Dänew Ofisi{% elif dil_kodu == 'ru' %}Офис Дяньов{% else %}Dänew ofisi{% endif %}</h4>
+            <p>Dänew etraby, Dänew şäheri, S.A.Nyýazow köçesi, 5-nji çagalar bagynyň garşysy</p>
+            <div class="ofis-tel"><a href="tel:+99364489920">📞 +993 64 48 89 20</a></div>
+        </div>
+    </div>
+
+    <!-- Döwletli -->
+    <div class="ofis-kart">
+        <span class="ofis-bayrak">🇹🇲</span>
+        <div class="ofis-bilgi">
+            <h4>{% if dil_kodu == 'tr' %}Döwletli Ofisi{% elif dil_kodu == 'ru' %}Офис Дёвлетли{% else %}Döwletli ofisi{% endif %}</h4>
+            <p>Döwletli etrap Döwletli şäherçe, Ärsarybaba ýolunyň ugryndaky Kerim Gurbannepesow köçe 58-nji jaý</p>
+            <div class="ofis-tel"><a href="tel:+99361476324">📞 +993 61 47 63 24</a></div>
+        </div>
+    </div>
+
+    <!-- Köyten-Oba -->
+    <div class="ofis-kart">
+        <span class="ofis-bayrak">🇹🇲</span>
+        <div class="ofis-bilgi">
+            <h4>{% if dil_kodu == 'tr' %}Köyten-Oba Ofisi{% elif dil_kodu == 'ru' %}Офис Кёйтен-Оба{% else %}Köýten-oba ofisi{% endif %}</h4>
+            <p>Lebap welaýatynyň Köýtendag etrabynyň Köýtendag geňeşligi, A.Nyýazow köçe N 46</p>
+            <div class="ofis-tel"><a href="tel:+99364759980">📞 +993 64 75 99 80</a></div>
+        </div>
+    </div>
+
+    <!-- Magdanlı -->
+    <div class="ofis-kart">
+        <span class="ofis-bayrak">🇹🇲</span>
+        <div class="ofis-bilgi">
+            <h4>{% if dil_kodu == 'tr' %}Magdanlı Ofisi{% elif dil_kodu == 'ru' %}Офис Магданлы{% else %}Magdanly ofisi{% endif %}</h4>
+            <p>Lebap welaýatynyň Köýtendag etrabynyň Magdanly şäheri, Garaşsyzlyk köçesiniň 1-nji jaýy</p>
+            <div class="ofis-tel"><a href="tel:+99371596324">📞 +993 71 59 63 24</a></div>
+        </div>
+    </div>
+
+</div><!-- TELEFONLAR -->
+        <div class="iletisim-satir">
             <span class="ic">📞</span>
             <div>
                 <a href="tel:+99364489920">+993 64 48 89 20</a><br>
@@ -137,18 +216,5 @@
         </div>
     </div>
 </div>
-
-<script>
-(function(){
-    var hash = window.location.hash.replace('#','');
-    if (!hash) return;
-    function scrollToHash(){
-        var el = document.getElementById(hash);
-        if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
-    }
-    if (document.readyState==='complete') scrollToHash();
-    else window.addEventListener('load', scrollToHash);
-})();
-</script>
 
 {% endblock %}

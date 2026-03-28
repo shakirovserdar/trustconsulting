@@ -77,19 +77,34 @@
     {% else %}Mosaic Wiza Amallary{% endif %}
 </h2>
 
-<div class="mosaic-btn-wrap">
-    <a href="https://appointment.mosaicvisa.com/mission/5" target="_blank" rel="noopener" class="mosaic-btn-dark">
-        &#x1F4C5;
-        {% if dil_kodu == 'tr' %}Randevu Al (Oçert)
-        {% elif dil_kodu == 'ru' %}Записаться на приём
-        {% else %}Oçert Al (Randevu){% endif %}
-    </a>
-    <a href="https://appointment.mosaicvisa.com/application/" target="_blank" rel="noopener" class="mosaic-btn-light">
-        &#x1F50D;
-        {% if dil_kodu == 'tr' %}Başvuru Sonucunu Öğren
-        {% elif dil_kodu == 'ru' %}Узнать результат заявки
-        {% else %}Netijäňi Bil (Başvuru){% endif %}
-    </a>
+<div class="mosaic-btn-wrap" style="position:relative;border-radius:16px;overflow:hidden;padding:0;">
+    <!-- Mosaic arka plan -->
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,#002d6e 0%,#0a5c9e 50%,#0e8a7e 100%);opacity:0.95;z-index:0;"></div>
+    <!-- Mosaic logo -->
+    <div style="position:relative;z-index:1;text-align:center;padding:20px 16px 8px;">
+        <div style="font-size:1.1rem;font-weight:800;color:white;letter-spacing:1px;">
+            <span style="color:#4fc3d4;">m</span><span style="color:#4fc3d4;font-size:1.3rem;vertical-align:middle;">◉</span><span style="color:white;">saic</span>
+            <span style="display:block;font-size:0.7rem;letter-spacing:3px;color:rgba(255,255,255,0.7);margin-top:2px;">VISA</span>
+        </div>
+    </div>
+    <!-- 3 Buton pencere gibi -->
+    <div style="position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:8px 12px 16px;">
+        <a href="https://appointment.mosaicvisa.com/mission/5" target="_blank" rel="noopener"
+           style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);border-radius:12px;padding:14px 8px;text-decoration:none;color:white;font-size:0.78rem;font-weight:700;text-align:center;gap:6px;backdrop-filter:blur(4px);transition:all 0.2s;">
+            <span style="font-size:1.5rem;">📅</span>
+            {% if dil_kodu == 'tr' %}Randevu Al{% elif dil_kodu == 'ru' %}Записаться{% else %}Oçert Al{% endif %}
+        </a>
+        <a href="https://appointment.mosaicvisa.com/appointment/status?" target="_blank" rel="noopener"
+           style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);border-radius:12px;padding:14px 8px;text-decoration:none;color:white;font-size:0.78rem;font-weight:700;text-align:center;gap:6px;backdrop-filter:blur(4px);transition:all 0.2s;">
+            <span style="font-size:1.5rem;">🔍</span>
+            {% if dil_kodu == 'tr' %}Randevu Durumu{% elif dil_kodu == 'ru' %}Статус записи{% else %}Oçert ýagdaýy{% endif %}
+        </a>
+        <a href="https://appointment.mosaicvisa.com/application/" target="_blank" rel="noopener"
+           style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);border-radius:12px;padding:14px 8px;text-decoration:none;color:white;font-size:0.78rem;font-weight:700;text-align:center;gap:6px;backdrop-filter:blur(4px);transition:all 0.2s;">
+            <span style="font-size:1.5rem;">📋</span>
+            {% if dil_kodu == 'tr' %}Vize Sonucu{% elif dil_kodu == 'ru' %}Результат визы{% else %}Wiza netijesi{% endif %}
+        </a>
+    </div>
 </div>
 
 <!-- TÜRKİYE'DE EĞİTİM -->
@@ -381,6 +396,63 @@ function vizeAc(id) {
   html += '<strong style="color:#60b3f0;">' + fiyatLabel + ':</strong><br>';
   html += '<span style="font-size:0.88rem;color:rgba(255,255,255,0.75);">' + v.fiyat[d] + '</span></div>';
   document.getElementById('modal-govde').innerHTML = html;
+  
+  // Öğrenci vizesi için şema ekle
+  if (id === 'talyp') {
+    var schemaHtml = '<div style="margin-top:1.2rem;">' +
+      '<h4 style="color:#60b3f0;margin-bottom:0.8rem;font-size:0.9rem;">📊 ' +
+      (dil==='tr' ? 'Öğrenci Vizesi Süreci' : dil==='ru' ? 'Процесс студенческой визы' : 'Talyp wizasy prosesi') + '</h4>' +
+      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">' +
+      
+      '<div style="background:rgba(220,38,38,0.1);border:1px solid rgba(220,38,38,0.3);border-radius:12px;padding:10px;">' +
+      '<div style="color:#f87171;font-weight:700;font-size:0.82rem;margin-bottom:8px;text-align:center;">⬅ ' + (dil==='tr'?'Depozitli':dil==='ru'?'С депозитом':'Depozitli') + '</div>' +
+      '<div style="font-size:0.72rem;color:rgba(255,255,255,0.85);line-height:1.85;">' +
+      '1️⃣ ' + (dil==='tr'?'Evraklar üniversiteye':dil==='ru'?'Документы в университет':'Resminamalar uniwersitete') + '<br>' +
+      '2️⃣ ' + (dil==='tr'?'Teklif mektubu çıkar':dil==='ru'?'Выходит предложение':'Teklip haty çykýar') + '<br>' +
+      '3️⃣ ' + (dil==='tr'?'Depozito ödenir':dil==='ru'?'Депозит оплачивается':'Depozit tölenýär') + '<br>' +
+      '4️⃣ ' + (dil==='tr'?'Kabul mektubu çıkar':dil==='ru'?'Выходит письмо о зачислении':'Kabul haty çykýar') + '<br>' +
+      '5️⃣ ' + (dil==='tr'?'Vize sırası alınır':dil==='ru'?'Берётся очередь на визу':'Wiza üçin nobat') + '<br>' +
+      '6️⃣ ' + (dil==='tr'?'Vizeye başvurulur':dil==='ru'?'Подаётся на визу':'Wizä ýüz tutulýar') + '<br>' +
+      '7️⃣ ' + (dil==='tr'?"Türkiye'ye gidilir":dil==='ru'?'Едут в Турцию':'Türkiýä gidilýär') + '<br>' +
+      '8️⃣ ' + (dil==='tr'?'Üniversiteye kayıt':dil==='ru'?'Зачисление в вуз':'Uniwersitete ýazgy') + '<br>' +
+      '9️⃣ ' + (dil==='tr'?'Kimliğe başvuru':dil==='ru'?'Заявление на ВНЖ':'Kimlige ýüz tutmak') + '<br>' +
+      '🔟 ' + (dil==='tr'?'Tömer → 1.sınıf':dil==='ru'?'Тёмер → 1 курс':'Tömer → 1. synp') + '<br>' +
+      '1️⃣1️⃣ ' + (dil==='tr'?'Invoice + öğrenci belgesi':dil==='ru'?'Invoice + справка студента':'Invoice + talyp haty') + '<br>' +
+      '1️⃣2️⃣ ' + (dil==='tr'?'Konsolosluk onayı':dil==='ru'?'Подтверждение в консульстве':'Konsullyk tassyklaýar') + '<br>' +
+      '1️⃣3️⃣ ' + (dil==='tr'?'Asıllar memlekete':dil==='ru'?'Оригиналы на родину':'Asyllar öýe') + '<br>' +
+      '1️⃣4️⃣ ' + (dil==='tr'?'Yıllık ödeme yapılır':dil==='ru'?'Годовая оплата':'Ýyllyk töleg') + '<br>' +
+      '1️⃣5️⃣ ' + (dil==='tr'?'Ödeme → Depozito iade':dil==='ru'?'Оплата → Депозит возвращается':'Töleg → Depozit yzyna') + '<br>' +
+      '1️⃣6️⃣ ' + (dil==='tr'?'Denklik belgesi yapılır':dil==='ru'?'Оформляется эквивалент':'Deňlik resminamasy') + '<br>' +
+      '1️⃣7️⃣ ' + (dil==='tr'?'Adres kaydı yapılır':dil==='ru'?'Регистрация адреса':'Adres ýazgysy') + '</div></div>' +
+      
+      '<div style="background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.3);border-radius:12px;padding:10px;">' +
+      '<div style="color:#60a5fa;font-weight:700;font-size:0.82rem;margin-bottom:8px;text-align:center;">' + (dil==='tr'?'Depozitsiz':dil==='ru'?'Без депозита':'Depozitsiz') + ' ➡</div>' +
+      '<div style="font-size:0.72rem;color:rgba(255,255,255,0.85);line-height:1.85;">' +
+      '1️⃣ ' + (dil==='tr'?'Evraklar üniversiteye':dil==='ru'?'Документы в вуз':'Resminamalar') + '<br>' +
+      '2️⃣ ' + (dil==='tr'?'Başvuru ücreti yatırılır':dil==='ru'?'Оплата взноса':'Başvuru tölenýär') + '<br>' +
+      '3️⃣ ' + (dil==='tr'?'Kabul mektubu çıkar':dil==='ru'?'Письмо о зачислении':'Kabul haty çykýar') + '<br>' +
+      '4️⃣ ' + (dil==='tr'?'Vize sırası + evraklar':dil==='ru'?'Очередь + документы':'Nobat + resminamalar') + '<br>' +
+      '5️⃣ ' + (dil==='tr'?'Vizeye başvurulur':dil==='ru'?'Подача на визу':'Wizä ýüz tutmak') + '<br>' +
+      '6️⃣ ' + (dil==='tr'?"Türkiye'ye gidilir":dil==='ru'?'Едут в Турцию':'Türkiýä gidilýär') + '<br>' +
+      '<span style="color:#fbbf24;font-size:0.7rem;">▸ ' + (dil==='tr'?'Kabul aldığı üniversiteye kayıt:':dil==='ru'?'Зачисление в вуз приёма:':'Kabul alan uniwersitete ýazgy:') + '</span><br>' +
+      '&nbsp;&nbsp;→ ' + (dil==='tr'?'Yıllık/6aylık ödeme':dil==='ru'?'Годовая/6-мес. оплата':'Ýyllyk/6aýlyk töleg') + '<br>' +
+      '&nbsp;&nbsp;→ ' + (dil==='tr'?'Kimliğe başvuru':dil==='ru'?'Заявл. на ВНЖ':'Kimlige ýüz tutmak') + '<br>' +
+      '&nbsp;&nbsp;→ Tömer → 1.' + (dil==='tr'?'sınıf':dil==='ru'?'курс':'synp') + '<br>' +
+      '&nbsp;&nbsp;→ Invoice + ' + (dil==='tr'?'öğrenci belgesi':dil==='ru'?'справка':'talyp haty') + '<br>' +
+      '&nbsp;&nbsp;→ ' + (dil==='tr'?'Adres kaydı':dil==='ru'?'Рег. адреса':'Adres ýazgysy') + '<br>' +
+      '<span style="color:#fbbf24;font-size:0.7rem;">▸ ' + (dil==='tr'?'Ya başka üniversite seçilirse:':dil==='ru'?'Или выбирается другой вуз:':'Ýa başga uniwersitet saýlananda:') + '</span><br>' +
+      '&nbsp;&nbsp;→ ' + (dil==='tr'?'Depozito yatırılır':dil==='ru'?'Депозит вносится':'Depozit tölenýär') + '<br>' +
+      '&nbsp;&nbsp;→ ' + (dil==='tr'?'Kimliğe başvuru':dil==='ru'?'Заявл. на ВНЖ':'Kimlige') + '<br>' +
+      '&nbsp;&nbsp;→ Tömer → Invoice<br>' +
+      '&nbsp;&nbsp;→ ' + (dil==='tr'?'Konsolosluk onayı':dil==='ru'?'Конс. подтвержд.':'Konsullyk') + '<br>' +
+      '&nbsp;&nbsp;→ ' + (dil==='tr'?'Asıllar memlekete':dil==='ru'?'Оригиналы на родину':'Asyllar öýe') + '<br>' +
+      '&nbsp;&nbsp;→ ' + (dil==='tr'?'Ödeme → Depozito iade':dil==='ru'?'Оплата → Депозит':'Töleg → Depozit') + '<br>' +
+      '&nbsp;&nbsp;→ ' + (dil==='tr'?'Denklik + adres kaydı':dil==='ru'?'Эквив. + рег.':'Deňlik + adres') + '</div></div>' +
+      
+      '</div></div>';
+    document.getElementById('modal-govde').innerHTML += schemaHtml;
+  }
+  
   document.getElementById('vize-modal').classList.add('aktif');
   document.body.style.overflow = 'hidden';
 }
@@ -404,21 +476,6 @@ function fiyatDis(e) { if(e.target===document.getElementById('fiyat-panel')) fiy
 document.addEventListener('keydown', function(e) {
   if(e.key==='Escape') { modalKapat(); fiyatKapat(); }
 });
-</script>
-
-<script>
-(function(){
-    var hash = window.location.hash.replace('#','');
-    if (!hash) return;
-    function scrollToHash(){
-        var el = document.getElementById(hash);
-        if (el) {
-            el.scrollIntoView({behavior:'smooth', block:'start'});
-        }
-    }
-    if (document.readyState === 'complete') scrollToHash();
-    else window.addEventListener('load', scrollToHash);
-})();
 </script>
 
 {% endblock %}
