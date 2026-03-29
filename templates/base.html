@@ -13,7 +13,7 @@
 {% if request.endpoint != 'index' %}
 <header class="diger-header">
     <a href="{{ url_for('index') }}" class="diger-logo">
-        <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Trust Consulting">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Trust Consulting">
         <div>
             <h1>Trust Consulting</h1>
             <p>✈️ Travel &amp; Education Company</p>
@@ -65,16 +65,14 @@
     <div class="footer-ic">
         <div class="footer-kolon">
             <div class="footer-logo">
-                <img src="{{ url_for('static', filename='logo.jpg') }}" alt="">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="">
                 <div><strong>Trust Consulting</strong><span>Travel &amp; Education</span></div>
             </div>
             <div class="footer-iletisim-liste">
-                <a href="tel:+99364759980">📞 +993 64 75 99 80</a>
-                <a href="tel:+99361476324">📞 +993 61 47 63 24</a>
+                <a href="tel:+99364489920">📞 +993 64 48 89 20</a>
+                <a href="tel:+99361950920">📞 +993 61 95 09 20</a>
                 <a href="tel:+905530890598">📞 +90 553 089 05 98</a>
-                <span class="footer-email" id="fe1"></span>
-                <script>(function(){var el=document.getElementById("fe1");if(el){el.textContent="📧 info@trustedutm.com";}})();</script>
-                
+                <a href="mailto:info@trustedutm.com">📧 info@trustedutm.com</a>
             </div>
         </div>
         <div class="footer-kolon">
@@ -149,40 +147,25 @@
 </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// Dil menüsü — btn.closest ile güvenli
+<script>
 function dilMenuAc(btn) {
-    var widget = btn.closest('.dil-widget');
-    var dd = widget ? widget.querySelector('.dil-dropdown') : document.getElementById('dil-dropdown');
-    if (!dd) return;
-    var acikMi = dd.classList.contains('acik');
-    // Önce hepsini kapat
-    document.querySelectorAll('.dil-dropdown').forEach(function(d){ d.classList.remove('acik'); });
-    document.querySelectorAll('.dil-ok').forEach(function(o){ o.textContent='▾'; });
-    // Kapalıysa aç
-    if (!acikMi) {
-        dd.classList.add('acik');
-        btn.querySelector('.dil-ok').textContent = '▴';
-    }
+    var dd = document.getElementById('dil-dropdown');
+    dd.classList.toggle('acik');
+    btn.querySelector('.dil-ok').textContent = dd.classList.contains('acik') ? '▴' : '▾';
 }
 document.addEventListener('click', function(e) {
     if (!e.target.closest('.dil-widget')) {
-        document.querySelectorAll('.dil-dropdown').forEach(function(d){ d.classList.remove('acik'); });
-        document.querySelectorAll('.dil-ok').forEach(function(o){ o.textContent='▾'; });
+        var dd = document.getElementById('dil-dropdown');
+        if (dd) dd.classList.remove('acik');
+        var ok = document.querySelector('.dil-ok');
+        if (ok) ok.textContent = '▾';
     }
 });
-
-// Kayıt formu
-function kayitFormAc() {
-    var m = document.getElementById('kayit-modal');
-    if (m) { m.classList.add('aktif'); document.body.style.overflow='hidden'; }
-}
-function kayitFormKapat() {
-    var m = document.getElementById('kayit-modal');
-    if (m) { m.classList.remove('aktif'); document.body.style.overflow=''; }
-}
-document.addEventListener('keydown', function(e) {
-    if (e.key==='Escape') { kayitFormKapat(); }
+function kayitFormAc() { document.getElementById('kayit-modal').classList.add('aktif'); document.body.style.overflow='hidden'; }
+function kayitFormKapat() { document.getElementById('kayit-modal').classList.remove('aktif'); document.body.style.overflow=''; }
+document.addEventListener('keydown', function(e) { if(e.key==='Escape') kayitFormKapat(); });
+window.addEventListener('load', function() {
+    if(typeof twemoji !== 'undefined') twemoji.parse(document.body, {folder:'svg',ext:'.svg',base:'https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/'});
 });
 </script>
 </body>
