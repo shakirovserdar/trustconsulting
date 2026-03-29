@@ -686,6 +686,27 @@ function aiGonder(){
 function tcGlobalAiAc(){ aiAc(); }
 
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){aiKapat();tcMenuKapat();}});
+
+// Dil menüsü
+function dilMenuAc(btn) {
+    var widget = btn.closest('.dil-widget');
+    var dd = widget ? widget.querySelector('.dil-dropdown') : document.getElementById('dil-dropdown');
+    if (!dd) return;
+    var acikMi = dd.classList.contains('acik');
+    document.querySelectorAll('.dil-dropdown').forEach(function(d){ d.classList.remove('acik'); });
+    document.querySelectorAll('.dil-ok').forEach(function(o){ o.textContent='▾'; });
+    if (!acikMi) {
+        dd.classList.add('acik');
+        var ok = btn.querySelector('.dil-ok');
+        if (ok) ok.textContent = '▴';
+    }
+}
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.dil-widget')) {
+        document.querySelectorAll('.dil-dropdown').forEach(function(d){ d.classList.remove('acik'); });
+        document.querySelectorAll('.dil-ok').forEach(function(o){ o.textContent='▾'; });
+    }
+});
 </script>
 
 {% endblock %}
