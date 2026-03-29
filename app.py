@@ -13,7 +13,6 @@ import urllib.error
 import json
 
 RESEND_API_KEY = os.environ.get('RESEND_API_KEY', '')
-MAPBOX_TOKEN = os.environ.get('MAPBOX_TOKEN', '')
 BILDIRIM_EMAIL = 'shakirovserdar7@gmail.com'
 
 def mail_gonder(isim, telefon, ulke, vize_ulke, mesaj, tarih):
@@ -644,7 +643,10 @@ def onesignal_worker():
 @app.route('/globe')
 def globe():
     dil_kodu = session.get('dil', 'tr')
-    return render_template('globe.html', dil_kodu=dil_kodu, mapbox_token=MAPBOX_TOKEN)
+    t = TERCUMELER.get(dil_kodu, TERCUMELER['tr'])
+    import os
+    mapbox_token = os.environ.get('MAPBOX_TOKEN', '')
+    return render_template('globe.html', dil_kodu=dil_kodu, t=t, mapbox_token=mapbox_token)
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
