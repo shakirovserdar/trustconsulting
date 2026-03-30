@@ -54,77 +54,10 @@
 <!-- ── FOOTER (ana sayfa hariç) ── -->
 {% if request.endpoint != 'index' %}
 {% if request.endpoint == 'hizmetler' %}
-<button class="fiyat-float-btn" onclick="fiyatAc()">
-    💰 {% if dil_kodu == 'tr' %}Ücretler{% elif dil_kodu == 'ru' %}Цены{% else %}Bahalar{% endif %}
-</button>
+<button class="fiyat-float-btn" onclick="fiyatAc()" title="Ücretler">💰</button>
 {% endif %}
 
-<!-- SAĞ ALT 3 FLOAT BUTON -->
-<div class="tc-float-grup">
-    <a href="https://wa.me/905524254697" class="tc-float-btn tc-float-wp" target="_blank" rel="noopener" title="WhatsApp">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.531 5.845L.057 23.571a.5.5 0 0 0 .609.609l5.726-1.474A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.857a9.833 9.833 0 0 1-5.013-1.375l-.36-.214-3.732.96.988-3.609-.235-.372A9.833 9.833 0 0 1 2.143 12C2.143 6.55 6.55 2.143 12 2.143S21.857 6.55 21.857 12 17.45 21.857 12 21.857z"/></svg>
-    </a>
-    <button class="tc-float-btn tc-float-ai" onclick="tcGlobalAiAc()" title="Trust AI">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M9 11a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m6 0a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2z"/></svg>
-    </button>
-    <button class="tc-float-btn tc-float-kayit" onclick="kayitFormAc()" title="{% if dil_kodu == 'tr' %}Kayıt Ol{% elif dil_kodu == 'ru' %}Записаться{% else %}Hasaba al{% endif %}">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11zM8 15h8v2H8v-2zm0-4h8v2H8v-2z"/></svg>
-    </button>
-</div>
-
-<style>
-.tc-float-grup {
-    position: fixed;
-    bottom: 24px;
-    right: 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    z-index: 999;
-}
-.tc-float-btn {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    transition: transform 0.2s, box-shadow 0.2s;
-    text-decoration: none;
-}
-.tc-float-btn:hover {
-    transform: scale(1.15);
-    box-shadow: 0 6px 25px rgba(0,0,0,0.4);
-}
-.tc-float-wp {
-    background: #25D366;
-    box-shadow: 0 4px 15px rgba(37,211,102,0.4);
-}
-.tc-float-wp:hover {
-    box-shadow: 0 6px 25px rgba(37,211,102,0.7);
-}
-.tc-float-ai {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    box-shadow: 0 4px 15px rgba(102,126,234,0.4);
-}
-.tc-float-ai:hover {
-    box-shadow: 0 6px 25px rgba(102,126,234,0.7);
-}
-.tc-float-kayit {
-    background: linear-gradient(135deg, #f59e0b, #ef4444);
-    box-shadow: 0 4px 15px rgba(245,158,11,0.4);
-}
-.tc-float-kayit:hover {
-    box-shadow: 0 6px 25px rgba(245,158,11,0.7);
-}
-/* Hizmetler sayfasında ücretler butonunun üstüne çıkmasın */
-body.sayfa-hizmetler .tc-float-grup {
-    bottom: 80px;
-}
-</style>
+<a href="https://wa.me/905524254697" class="whatsapp-float" target="_blank" rel="noopener">💬 WhatsApp</a>
 
 <footer>
     <div class="footer-ic">
@@ -137,7 +70,7 @@ body.sayfa-hizmetler .tc-float-grup {
                 <a href="tel:+99364489920">📞 +993 64 48 89 20</a>
                 <a href="tel:+99361950920">📞 +993 61 95 09 20</a>
                 <a href="tel:+905530890598">📞 +90 553 089 05 98</a>
-                <a href="/cdn-cgi/l/email-protection#7f161119103f0b0d0a0c0b1a1b0a0b12511c1012">📧 <span class="__cf_email__" data-cfemail="3d54535b527d494f484e495859484950135e5250">[email&#160;protected]</span></a>
+                <a href="/cdn-cgi/l/email-protection#f39a9d959cb38781868087969786879edd909c9e">📧 <span class="__cf_email__" data-cfemail="4d24232b220d393f383e392829383920632e2220">[email&#160;protected]</span></a>
             </div>
         </div>
         <div class="footer-kolon">
@@ -154,11 +87,22 @@ body.sayfa-hizmetler .tc-float-grup {
         <div class="footer-kolon">
             <h4>{% if dil_kodu == 'tr' %}Sosyal Medya{% elif dil_kodu == 'ru' %}Соцсети{% else %}Sosial media{% endif %}</h4>
             <div class="footer-sosyal">
-                <a href="https://wa.me/905425468564" class="fs-wa" target="_blank">💬 WhatsApp 1</a>
-                <a href="https://wa.me/905524254697" class="fs-wa" target="_blank">💬 WhatsApp 2</a>
-                <a href="https://instagram.com/trusttmconsulting" class="fs-ig" target="_blank">📸 Instagram</a>
-                <a href="https://www.tiktok.com/@trusttmconsulting" class="fs-tt" target="_blank">🎵 TikTok</a>
+                <a href="https://wa.me/905425468564" class="fs-wa" target="_blank">WhatsApp 1</a>
+                <a href="https://wa.me/905524254697" class="fs-wa" target="_blank">WhatsApp 2</a>
+                <a href="https://instagram.com/trusttmconsulting" class="fs-ig" target="_blank">Instagram</a>
+                <a href="https://www.tiktok.com/@trusttmconsulting" class="fs-tt" target="_blank">TikTok</a>
             </div>
+            <style>
+            .footer-sosyal { display:flex; flex-direction:column; gap:8px; margin-top:0.5rem; }
+            .footer-sosyal a { display:block; padding:8px 14px; border-radius:10px; font-size:0.82rem; font-weight:700; text-decoration:none; text-align:center; transition:transform 0.2s,box-shadow 0.2s,filter 0.2s; }
+            .footer-sosyal a:hover { transform:translateY(-2px) scale(1.03); filter:brightness(1.15); }
+            .fs-wa { background:#25D366 !important; color:white !important; box-shadow:0 3px 12px rgba(37,211,102,0.35); }
+            .fs-wa:hover { box-shadow:0 5px 20px rgba(37,211,102,0.6) !important; }
+            .fs-ig { background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888) !important; color:white !important; box-shadow:0 3px 12px rgba(220,39,67,0.35); }
+            .fs-ig:hover { box-shadow:0 5px 20px rgba(220,39,67,0.6) !important; }
+            .fs-tt { background:#010101 !important; color:white !important; box-shadow:0 3px 12px rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.1); }
+            .fs-tt:hover { box-shadow:0 5px 20px rgba(105,201,208,0.4) !important; }
+            </style>
         </div>
     </div>
     <div class="footer-alt">{{ t.footer_telif }}</div>
@@ -212,7 +156,7 @@ body.sayfa-hizmetler .tc-float-grup {
 </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 function dilMenuAc(btn) {
     var dd = document.getElementById('dil-dropdown');
     dd.classList.toggle('acik');
