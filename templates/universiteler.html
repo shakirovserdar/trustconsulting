@@ -303,6 +303,60 @@ function ulkeKapat() {
     document.getElementById('uni-panel').style.display = 'none';
     document.querySelectorAll('.uni-ulke-kart').forEach(function(k){ k.classList.remove('aktif'); });
 }
+
+// Üniversite detay verileri
+var uniDetayData = {
+    istinye:   { ad: 'İstanbul İstinye Üniversitesi', fiyat: '$3.000\'den başlayan', bilgi: 'Vakıf üniversitesi · 10 fakülte · Tıp, Diş Hekimliği, Mühendislik, İşletme ve daha fazlası.' },
+    biruni:    { ad: 'İstanbul Biruni Üniversitesi', fiyat: '$4.000\'den başlayan', bilgi: 'Vakıf üniversitesi · 8 fakülte · Sağlık bilimleri ağırlıklı.' },
+    beykent:   { ad: 'İstanbul Beykent Üniversitesi', fiyat: '$2.500\'den başlayan', bilgi: 'Vakıf üniversitesi · 9 fakülte · Mimarlık, Mühendislik, Sanat.' },
+    bahcesehir:{ ad: 'İstanbul Bahçeşehir Üniversitesi', fiyat: '$5.950\'den başlayan', bilgi: 'Vakıf üniversitesi · 12 fakülte · Uluslararası tanınırlık.' },
+    altinbas:  { ad: 'İstanbul Altınbaş Üniversitesi', fiyat: '$5.000\'den başlayan', bilgi: 'Vakıf üniversitesi · 10 fakülte · Modern kampüs.' },
+    gelisim:   { ad: 'İstanbul Gelişim Üniversitesi', fiyat: '$4.000\'den başlayan', bilgi: 'Vakıf üniversitesi · 7 fakülte · Geniş bölüm yelpazesi.' },
+    okan:      { ad: 'İstanbul Okan Üniversitesi', fiyat: '$4.500\'den başlayan', bilgi: 'Vakıf üniversitesi · 12 fakülte · Havacılık ve Mühendislik.' },
+    uskudar:   { ad: 'İstanbul Üsküdar Üniversitesi', fiyat: '$4.200\'den başlayan', bilgi: 'Vakıf üniversitesi · 6 fakülte · Psikoloji ve Sağlık odaklı.' },
+    bilgi:     { ad: 'İstanbul Bilgi Üniversitesi', fiyat: '$4.800\'den başlayan', bilgi: 'Vakıf üniversitesi · 9 fakülte · Hukuk, İletişim, Mühendislik.' },
+    medipol:   { ad: 'İstanbul Medipol Üniversitesi', fiyat: '$4.000\'den başlayan', bilgi: 'Vakıf üniversitesi · 12 fakülte · Sağlık bilimleri.' },
+    aydin:     { ad: 'İstanbul Aydın Üniversitesi', fiyat: '$5.000\'den başlayan', bilgi: 'Vakıf üniversitesi · 14 fakülte · Büyük ve köklü vakıf üniversitesi.' }
+};
+
+function uniDetayAc(id) {
+    var data = uniDetayData[id];
+    if (!data) return;
+    var mevcut = document.getElementById('uni-detay-modal');
+    if (mevcut) mevcut.remove();
+    var modal = document.createElement('div');
+    modal.id = 'uni-detay-modal';
+    modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:10001;display:flex;align-items:center;justify-content:center;padding:16px;';
+    modal.innerHTML = '<div style="background:#0f1e35;border-radius:16px;padding:24px;max-width:420px;width:100%;position:relative;">' +
+        '<button onclick="document.getElementById(\'uni-detay-modal\').remove()" style="position:absolute;top:12px;right:12px;background:rgba(255,255,255,0.1);border:none;color:white;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:14px;">✕</button>' +
+        '<h3 style="color:white;margin:0 0 12px;font-size:1rem;">🎓 ' + data.ad + '</h3>' +
+        '<p style="color:rgba(255,255,255,0.7);font-size:0.85rem;margin:0 0 12px;">' + data.bilgi + '</p>' +
+        '<div style="background:linear-gradient(135deg,#1e3a5f,#2575fc22);border:1px solid rgba(37,117,252,0.3);border-radius:10px;padding:12px;margin-bottom:16px;">' +
+        '<div style="color:#60a5fa;font-size:0.75rem;margin-bottom:4px;">💰 Başlangıç Fiyatı</div>' +
+        '<div style="color:white;font-weight:700;font-size:1.1rem;">' + data.fiyat + '</div>' +
+        '</div>' +
+        '<button onclick="document.getElementById(\'uni-detay-modal\').remove();setTimeout(function(){if(typeof kayitFormAc===\'function\')kayitFormAc();},50);" style="width:100%;padding:11px;background:linear-gradient(135deg,#f59e0b,#ef4444);border:none;border-radius:10px;color:white;font-weight:700;font-size:0.88rem;cursor:pointer;">📝 Kayıt Formu</button>' +
+        '</div>';
+    modal.addEventListener('click', function(e){ if(e.target===modal) modal.remove(); });
+    document.body.appendChild(modal);
+}
+
+// === GLOBAL FONKSİYONLAR (base.html ile uyumlu) ===
+function dilMenuAc(btn) {
+    var dd = document.getElementById('dil-dropdown');
+    if (!dd) return;
+    dd.classList.toggle('acik');
+    var ok = btn.querySelector('.dil-ok');
+    if (ok) ok.textContent = dd.classList.contains('acik') ? '▴' : '▾';
+}
+function kayitFormAc() {
+    var m = document.getElementById('kayit-modal');
+    if (m) { m.classList.add('aktif'); document.body.style.overflow='hidden'; }
+}
+function aiModalAc() {
+    var m = document.getElementById('ai-modal-overlay');
+    if (m) { m.classList.add('acik'); document.body.style.overflow='hidden'; }
+}
 </script>
 
 

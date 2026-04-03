@@ -534,42 +534,45 @@ body.sayfa-index .tc-hero {
 
 
     <!-- HIZLI ERİŞİM KARTLARI -->
-    <div class="tc-hizli-erisim" style="background:#0d1b30;padding:14px 12px 16px;border-bottom:1px solid rgba(255,255,255,0.06);">
-        <div style="color:rgba(255,255,255,0.45);font-size:0.62rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">
+    <div class="tc-hizli-erisim" style="position:relative;padding:14px 12px 16px;border-bottom:1px solid rgba(255,255,255,0.06);overflow:hidden;">
+        <div style="position:absolute;inset:0;background-image:url('/static/az_logo.jpg');background-size:cover;background-position:center;filter:brightness(0.3) blur(1px);z-index:0;"></div>
+        <div style="position:relative;z-index:1;">
+        <div style="color:rgba(255,255,255,0.65);font-size:0.62rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">
             {% if dil_kodu == 'tr' %}Hızlı Erişim{% elif dil_kodu == 'ru' %}Быстрый доступ{% else %}Çalt girişler{% endif %}
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
 
-            <a href="{{ url_for('universiteler') }}#turkey" class="tc-hizli-kart" style="background:linear-gradient(145deg,#922b21,#e74c3c);">
+            <a href="{{ url_for('hizmetler') }}#turkiye" class="tc-hizli-kart" style="background:rgba(146,43,33,0.5);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(231,76,60,0.5);">
                 <span class="tc-hk-ikon">🇹🇷</span>
                 <span class="tc-hk-yazi">{% if dil_kodu == 'tr' %}Türkiye Vizesi{% elif dil_kodu == 'ru' %}Виза Турция{% else %}Türkiýe Wizasy{% endif %}</span>
             </a>
 
-            <a href="{{ url_for('universiteler') }}#russia" class="tc-hizli-kart" style="background:linear-gradient(145deg,#154360,#2980b9);">
+            <a href="{{ url_for('hizmetler') }}#rusya" class="tc-hizli-kart" style="background:rgba(21,67,96,0.5);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(41,128,185,0.5);">
                 <span class="tc-hk-ikon">🇷🇺</span>
                 <span class="tc-hk-yazi">{% if dil_kodu == 'tr' %}Rusya Vizesi{% elif dil_kodu == 'ru' %}Виза Россия{% else %}Russiýa Wizasy{% endif %}</span>
             </a>
 
-            <a href="{{ url_for('universiteler') }}" class="tc-hizli-kart" style="background:linear-gradient(145deg,#7d6608,#d4ac0d);">
+            <a href="{{ url_for('universiteler') }}" class="tc-hizli-kart" style="background:rgba(125,102,8,0.5);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(212,172,13,0.5);">
                 <span class="tc-hk-ikon">🎓</span>
                 <span class="tc-hk-yazi">{% if dil_kodu == 'tr' %}Üniversiteler{% elif dil_kodu == 'ru' %}Университеты{% else %}Uniwersitetler{% endif %}</span>
             </a>
 
-            <a href="{{ url_for('iletisim') }}#mosaic" class="tc-hizli-kart" style="background:linear-gradient(145deg,#6c3483,#9b59b6);">
+            <a href="{{ url_for('hizmetler') }}#mosaic" class="tc-hizli-kart" style="background:rgba(108,52,131,0.5);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(155,89,182,0.5);">
                 <span class="tc-hk-ikon">📅</span>
                 <span class="tc-hk-yazi">{% if dil_kodu == 'tr' %}Mosaic Randevu{% elif dil_kodu == 'ru' %}Запись Mosaic{% else %}Mosaic Randewy{% endif %}</span>
             </a>
 
-            <a href="{{ url_for('hizmetler') }}#evraklar" class="tc-hizli-kart" style="background:linear-gradient(145deg,#1a5276,#1f618d);">
+            <a href="{{ url_for('hizmetler') }}#evraklar" class="tc-hizli-kart" style="background:rgba(26,82,118,0.5);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(31,97,141,0.5);">
                 <span class="tc-hk-ikon">📋</span>
                 <span class="tc-hk-yazi">{% if dil_kodu == 'tr' %}Evraklar{% elif dil_kodu == 'ru' %}Документы{% else %}Resminamalar{% endif %}</span>
             </a>
 
-            <a href="{{ url_for('iletisim') }}#ofisler" class="tc-hizli-kart" style="background:linear-gradient(145deg,#0e6655,#1abc9c);">
+            <a href="{{ url_for('iletisim') }}#ofisler" class="tc-hizli-kart" style="background:rgba(14,102,85,0.5);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(26,188,156,0.5);">
                 <span class="tc-hk-ikon">📍</span>
                 <span class="tc-hk-yazi">{% if dil_kodu == 'tr' %}Ofislerimiz{% elif dil_kodu == 'ru' %}Наши офисы{% else %}Ofislerimiz{% endif %}</span>
             </a>
 
+        </div>
         </div>
     </div>
 
