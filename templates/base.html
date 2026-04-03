@@ -356,4 +356,7 @@ document.addEventListener('click', function(e) {
 });
 function kayitFormAc() { document.getElementById('kayit-modal').classList.add('aktif'); document.body.style.overflow='hidden'; }
 function kayitFormKapat() { document.getElementById('kayit-modal').classList.remove('aktif'); document.body.style.overflow=''; }
-document.addEventListener('keydown', function(e) { if(e.key==='Escape') kayitFo
+document.addEventListener('keydown', function(e) { if(e.key==='Escape') { kayitFormKapat(); aiKapat(); } });
+</script>
+</body>
+</html>
