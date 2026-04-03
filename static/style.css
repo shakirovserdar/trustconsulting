@@ -843,3 +843,42 @@ body.sayfa-index .tc-kartlar {
 body.sayfa-index .tc-footer {
     padding: 28px 16px 20px !important;
 }
+/* ── SAĞ ALT FLOAT BUTONLAR ── */
+.tc-float-bar {
+    position: fixed;
+    bottom: 24px;
+    right: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 9999;
+}
+.tc-float-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+}
+.tc-float-btn:hover {
+    transform: scale(1.15);
+}
+.tc-float-wa {
+    background: #25D366;
+    box-shadow: 0 4px 15px rgba(37,211,102,0.4);
+}
+.tc-float-wa:hover {
+    box-shadow: 0 6px 25px rgba(37,211,102,0.7);
+}
+.tc-float-ai {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+.tc-float-kayit {
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+}
