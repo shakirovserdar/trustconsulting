@@ -2,246 +2,387 @@
 {% block content %}
 
 <style>
-.ofis-kart {
-    background: rgba(255,255,255,0.07) !important;
-    border: 1px solid rgba(255,255,255,0.15) !important;
-    border-radius: 14px !important;
-    padding: 1.1rem 1.3rem !important;
-    display: flex !important;
-    align-items: flex-start !important;
-    gap: 1rem !important;
-    border-left: 3px solid rgba(37,117,252,0.7) !important;
-    margin-bottom: 10px !important;
+.ilts-wrap { padding: 0 0 40px; }
+
+/* ══ HERO ══ */
+.ilts-hero {
+    background: linear-gradient(135deg, #060f1e 0%, #0d1f3c 50%, #0a1628 100%);
+    padding: 28px 16px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
 }
-.ofis-bilgi h4 {
-    color: #7bc8f0 !important;
-    font-size: 0.95rem !important;
-    font-weight: 700 !important;
-    margin-bottom: 4px !important;
+.ilts-hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: 50%; transform: translateX(-50%);
+    width: 340px; height: 340px;
+    background: radial-gradient(circle, rgba(37,117,252,0.12) 0%, transparent 70%);
+    pointer-events: none;
 }
-.ofis-bilgi p {
-    color: rgba(255,255,255,0.8) !important;
-    font-size: 0.82rem !important;
-    line-height: 1.5 !important;
-    margin: 0 0 6px !important;
+.ilts-hero h1 { color: white; font-size: 1.3rem; font-weight: 800; margin: 0 0 6px; }
+.ilts-hero p { color: rgba(255,255,255,0.5); font-size: 0.8rem; margin: 0 0 20px; }
+.ilts-stats { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.ilts-stat {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px; padding: 10px 18px; text-align: center;
 }
-.ofis-tel {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 6px;
+.ilts-stat-sayi { color: #60a5fa; font-size: 1.3rem; font-weight: 800; display: block; line-height: 1; }
+.ilts-stat-etiket { color: rgba(255,255,255,0.45); font-size: 0.63rem; display: block; margin-top: 3px; }
+
+/* ══ BÖLÜM BAŞLIĞI ══ */
+.ilts-bolum-baslik {
+    color: rgba(255,255,255,0.4);
+    font-size: 0.6rem; text-transform: uppercase;
+    letter-spacing: 1.2px; margin-bottom: 12px; font-weight: 600;
 }
-.ofis-tel a {
-    display: inline-block;
-    background: rgba(37,117,252,0.2);
-    border: 1px solid rgba(37,117,252,0.4);
-    border-radius: 20px;
-    padding: 4px 12px;
-    color: #7bc8f0 !important;
-    font-size: 0.82rem !important;
-    font-weight: 600;
-    text-decoration: none;
+
+/* ══ ÜLKE CHİPLERİ ══ */
+.ilts-ulkeler { padding: 18px 14px 14px; background: #080f1c; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.ilts-ulke-grid { display: flex; flex-wrap: wrap; gap: 7px; }
+.ilts-ulke-chip {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px; padding: 6px 13px; font-size: 0.78rem;
+    color: rgba(255,255,255,0.75); cursor: pointer; transition: all 0.2s;
+    display: flex; align-items: center; gap: 5px; font-weight: 500;
 }
-.ofis-tel a:hover { background: rgba(37,117,252,0.35); }
-.ofis-bayrak { font-size: 1.8rem !important; flex-shrink: 0; }
+.ilts-ulke-chip:hover, .ilts-ulke-chip.aktif {
+    background: rgba(37,117,252,0.25); border-color: rgba(37,117,252,0.6); color: #93c5fd;
+}
+
+/* ══ FORM ══ */
+.ilts-form-bolum { padding: 18px 14px; background: #080f1c; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.ilts-form-baslik { color: white; font-size: 1rem; font-weight: 700; margin: 0 0 14px; }
+.ilts-form { display: flex; flex-direction: column; gap: 10px; }
+.ilts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.ilts-grup label {
+    display: block; color: rgba(255,255,255,0.5); font-size: 0.7rem;
+    font-weight: 600; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.ilts-grup input, .ilts-grup select, .ilts-grup textarea {
+    width: 100%; background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;
+    color: white; padding: 10px 13px; font-size: 0.85rem;
+    font-family: inherit; outline: none; transition: border-color 0.2s;
+    box-sizing: border-box; -webkit-appearance: none;
+}
+.ilts-grup input:focus, .ilts-grup select:focus, .ilts-grup textarea:focus {
+    border-color: rgba(37,117,252,0.6); background: rgba(37,117,252,0.07);
+}
+.ilts-grup select option { background: #0d1f3c; color: white; }
+.ilts-grup input::placeholder, .ilts-grup textarea::placeholder { color: rgba(255,255,255,0.22); }
+.ilts-gonder {
+    width: 100%; padding: 13px;
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    border: none; border-radius: 12px; color: white;
+    font-size: 0.95rem; font-weight: 700; cursor: pointer;
+    font-family: inherit; transition: opacity 0.2s, transform 0.2s; margin-top: 4px;
+}
+.ilts-gonder:hover { opacity: 0.88; transform: translateY(-1px); }
+
+/* ══ OFİSLER ══ */
+.ilts-ofisler { padding: 18px 14px; background: #060f1e; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.ilts-ofis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 12px; }
+.ilts-ofis-kart {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 13px; padding: 13px; position: relative; overflow: hidden; transition: border-color 0.2s;
+}
+.ilts-ofis-kart::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(180deg, #2575fc, #6a11cb);
+}
+.ilts-ofis-kart:hover { border-color: rgba(37,117,252,0.3); }
+.ilts-ofis-bayrak { font-size: 1.4rem; display: block; margin-bottom: 6px; }
+.ilts-ofis-ad { color: #93c5fd; font-size: 0.82rem; font-weight: 700; margin-bottom: 4px; }
+.ilts-ofis-adres { color: rgba(255,255,255,0.5); font-size: 0.71rem; line-height: 1.5; margin-bottom: 8px; }
+.ilts-ofis-tel a {
+    display: inline-block; background: rgba(37,117,252,0.15);
+    border: 1px solid rgba(37,117,252,0.3); border-radius: 14px;
+    padding: 3px 9px; color: #93c5fd; font-size: 0.71rem;
+    font-weight: 600; text-decoration: none; margin: 2px 2px 2px 0; transition: background 0.2s;
+}
+.ilts-ofis-tel a:hover { background: rgba(37,117,252,0.3); }
+
+/* ══ İLETİŞİM BİLGİLERİ ══ */
+.ilts-bilgiler { padding: 18px 14px; background: #080f1c; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.ilts-bilgi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 12px; }
+.ilts-bilgi-kart {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 13px; padding: 14px; display: flex; align-items: flex-start; gap: 10px;
+}
+.ilts-bilgi-ikon { font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; }
+.ilts-bilgi-etiket { color: rgba(255,255,255,0.35); font-size: 0.63rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; margin-bottom: 5px; }
+.ilts-bilgi-icerik a { display: block; color: rgba(255,255,255,0.75); font-size: 0.82rem; text-decoration: none; margin-bottom: 3px; transition: color 0.2s; }
+.ilts-bilgi-icerik a:hover { color: #93c5fd; }
+
+/* ══ SOSYAL ══ */
+.ilts-sosyal { padding: 18px 14px 24px; background: #060f1e; }
+.ilts-sosyal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 12px; }
+.ilts-sosyal-btn {
+    display: flex; align-items: center; gap: 10px;
+    padding: 13px 15px; border-radius: 13px; text-decoration: none;
+    font-weight: 700; font-size: 0.82rem; color: white !important;
+    transition: transform 0.2s, filter 0.2s;
+}
+.ilts-sosyal-btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
+.ilts-sosyal-ikon {
+    width: 36px; height: 36px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(255,255,255,0.15); flex-shrink: 0;
+}
+.ilts-sosyal-ikon svg { width: 18px; height: 18px; }
+.ilts-wa1 { background: linear-gradient(135deg,#128C7E,#25D366); box-shadow:0 4px 15px rgba(37,211,102,0.3); }
+.ilts-wa2 { background: linear-gradient(135deg,#075E54,#128C7E); box-shadow:0 4px 15px rgba(37,211,102,0.2); }
+.ilts-ig  { background: linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045); box-shadow:0 4px 15px rgba(220,39,67,0.3); }
+.ilts-tt  { background: linear-gradient(135deg,#010101,#2d2d2d); border:1px solid rgba(255,255,255,0.1); box-shadow:0 4px 15px rgba(0,0,0,0.4); }
+.ilts-sosyal-yazi span { display: block; font-size: 0.68rem; font-weight: 400; opacity: 0.75; margin-top: 1px; }
+
+@media (max-width: 400px) {
+    .ilts-row, .ilts-ofis-grid, .ilts-bilgi-grid, .ilts-sosyal-grid { grid-template-columns: 1fr; }
+}
 </style>
 
+<div class="ilts-wrap">
 
-<h1 class="section-title" style="margin-top:0.5rem;">{% if dil_kodu == 'tr' %}Çalıştığımız Firmalar ve İletişim{% elif dil_kodu == 'ru' %}Наши партнёры и контакты{% else %}Hyzmatdaşlarymyz we habarlaşmak{% endif %}</h1>
+<!-- HERO -->
+<div class="ilts-hero">
+    <h1>{% if dil_kodu == 'tr' %}📞 Bizimle İletişime Geçin{% elif dil_kodu == 'ru' %}📞 Свяжитесь с нами{% else %}📞 Biz bilen habarlaşyň{% endif %}</h1>
+    <p>{% if dil_kodu == 'tr' %}7 Türkmenistan + 1 İstanbul — 3 dilde hizmet{% elif dil_kodu == 'ru' %}7 офисов в Туркменистане + Стамбул — 3 языка{% else %}7 Türkmenistanda + 1 Stambulda — 3 dilde hyzmat{% endif %}</p>
+    <div class="ilts-stats">
+        <div class="ilts-stat"><span class="ilts-stat-sayi">500+</span><span class="ilts-stat-etiket">{% if dil_kodu == 'tr' %}Başvuru{% elif dil_kodu == 'ru' %}Заявок{% else %}Ýüz tutma{% endif %}</span></div>
+        <div class="ilts-stat"><span class="ilts-stat-sayi">%92</span><span class="ilts-stat-etiket">{% if dil_kodu == 'tr' %}Onay{% elif dil_kodu == 'ru' %}Одобрений{% else %}Tassyklama{% endif %}</span></div>
+        <div class="ilts-stat"><span class="ilts-stat-sayi">8</span><span class="ilts-stat-etiket">{% if dil_kodu == 'tr' %}Ofis{% elif dil_kodu == 'ru' %}Офисов{% else %}Ofis{% endif %}</span></div>
+        <div class="ilts-stat"><span class="ilts-stat-sayi">20+</span><span class="ilts-stat-etiket">{% if dil_kodu == 'tr' %}Ülke{% elif dil_kodu == 'ru' %}Стран{% else %}Ýurt{% endif %}</span></div>
+    </div>
+</div>
 
-<div class="iletisim-dikey">
+<!-- HANGİ ÜLKEYE VİZE? -->
+<div class="ilts-ulkeler">
+    <div class="ilts-bolum-baslik">{% if dil_kodu == 'tr' %}Hangi Ülkeye Vize İstiyorsunuz?{% elif dil_kodu == 'ru' %}В какую страну нужна виза?{% else %}Haýsy ýurda wiza gerek?{% endif %}</div>
+    <div class="ilts-ulke-grid">
+        <div class="ilts-ulke-chip" onclick="vizeSecDir('Türkiye', this)">🇹🇷 {% if dil_kodu == 'tr' %}Türkiye{% elif dil_kodu == 'ru' %}Турция{% else %}Türkiýe{% endif %}</div>
+        <div class="ilts-ulke-chip" onclick="vizeSecDir('Rusya', this)">🇷🇺 {% if dil_kodu == 'tr' %}Rusya{% elif dil_kodu == 'ru' %}Россия{% else %}Russiýa{% endif %}</div>
+        <div class="ilts-ulke-chip" onclick="vizeSecDir('Almanya', this)">🇩🇪 {% if dil_kodu == 'tr' %}Almanya{% elif dil_kodu == 'ru' %}Германия{% else %}Germaniýa{% endif %}</div>
+        <div class="ilts-ulke-chip" onclick="vizeSecDir('Dubai/BAE', this)">🇦🇪 Dubai / BAE</div>
+        <div class="ilts-ulke-chip" onclick="vizeSecDir('Belçika', this)">🇧🇪 {% if dil_kodu == 'tr' %}Belçika{% elif dil_kodu == 'ru' %}Бельгия{% else %}Belgiýa{% endif %}</div>
+        <div class="ilts-ulke-chip" onclick="vizeSecDir('Romanya', this)">🇷🇴 {% if dil_kodu == 'tr' %}Romanya{% elif dil_kodu == 'ru' %}Румыния{% else %}Rumyniýa{% endif %}</div>
+        <div class="ilts-ulke-chip" onclick="vizeSecDir('Özbekistan', this)">🇺🇿 {% if dil_kodu == 'tr' %}Özbekistan{% elif dil_kodu == 'ru' %}Узбекистан{% else %}Özbegistan{% endif %}</div>
+        <div class="ilts-ulke-chip" onclick="vizeSecDir('Azerbaycan', this)">🇦🇿 {% if dil_kodu == 'tr' %}Azerbaycan{% elif dil_kodu == 'ru' %}Азербайджан{% else %}Azerbaýjan{% endif %}</div>
+        <div class="ilts-ulke-chip" onclick="vizeSecDir('Kazakistan', this)">🇰🇿 {% if dil_kodu == 'tr' %}Kazakistan{% elif dil_kodu == 'ru' %}Казахстан{% else %}Gazagystan{% endif %}</div>
+        <div class="ilts-ulke-chip" onclick="vizeSecDir('Diger', this)">🌍 {% if dil_kodu == 'tr' %}Diğer{% elif dil_kodu == 'ru' %}Другая{% else %}Başga{% endif %}</div>
+    </div>
+</div>
 
-    <!-- FORM -->
-    <div class="iletisim-form-kart">
-        <h3>✉️ {{ t.iletisim_form_baslik }}</h3>
-        <form method="POST" action="{{ url_for('iletisim') }}">
-            <div class="form-grid-2">
-                <div class="form-grup">
-                    <label>👤 {{ t.iletisim_form_isim }}</label>
-                    <input type="text" name="isim" required placeholder="{{ t.iletisim_form_isim }}">
-                </div>
-                <div class="form-grup">
-                    <label>📞 {{ t.iletisim_form_telefon }}</label>
-                    <input type="tel" name="telefon" required placeholder="+993 / +90 ...">
-                </div>
+<!-- FORM -->
+<div class="ilts-form-bolum">
+    <div class="ilts-form-baslik">✉️ {% if dil_kodu == 'tr' %}Bize Yazın{% elif dil_kodu == 'ru' %}Напишите нам{% else %}Bize ýazyň{% endif %}</div>
+    <form method="POST" action="{{ url_for('iletisim') }}" class="ilts-form">
+        <div class="ilts-row">
+            <div class="ilts-grup">
+                <label>👤 {{ t.iletisim_form_isim }}</label>
+                <input type="text" name="isim" required placeholder="{% if dil_kodu == 'tr' %}Adınız Soyadınız{% elif dil_kodu == 'ru' %}Имя Фамилия{% else %}Adyňyz Familiýaňyz{% endif %}">
             </div>
-            <div class="form-grid-2">
-                <div class="form-grup">
-                    <label>🌍 {{ t.iletisim_form_ulke }}</label>
-                    <input type="text" name="ulke" required placeholder="{% if dil_kodu == 'tr' %}Örn: Kerki, Türkmenistan{% elif dil_kodu == 'ru' %}Напр: Керки, Туркменистан{% else %}Mysal: Kerki, Türkmenistan{% endif %}">
-                </div>
-                <div class="form-grup">
-                    <label>✈️ {{ t.iletisim_form_vize_ulke }}</label>
-                    <select name="vize_ulke" required>
-                        <option value="" disabled selected>{% if dil_kodu == 'tr' %}Seçiniz...{% elif dil_kodu == 'ru' %}Выберите...{% else %}Saýlaň...{% endif %}</option>
-                        <option value="Türkiye">🇹🇷 {% if dil_kodu == 'tr' %}Türkiye{% elif dil_kodu == 'ru' %}Турция{% else %}Türkiýe{% endif %}</option>
-                        <option value="Rusya">🇷🇺 {% if dil_kodu == 'tr' %}Rusya{% elif dil_kodu == 'ru' %}Россия{% else %}Russiýa{% endif %}</option>
-                        <option value="Almanya">🇩🇪 {% if dil_kodu == 'tr' %}Almanya{% elif dil_kodu == 'ru' %}Германия{% else %}Germaniýa{% endif %}</option>
-                        <option value="Dubai/BAE">🇦🇪 Dubai / BAE</option>
-                        <option value="Belçika">🇧🇪 {% if dil_kodu == 'tr' %}Belçika{% elif dil_kodu == 'ru' %}Бельгия{% else %}Belgiýa{% endif %}</option>
-                        <option value="Romanya">🇷🇴 {% if dil_kodu == 'tr' %}Romanya{% elif dil_kodu == 'ru' %}Румыния{% else %}Rumyniýa{% endif %}</option>
-                        <option value="Özbekistan">🇺🇿 {% if dil_kodu == 'tr' %}Özbekistan{% elif dil_kodu == 'ru' %}Узбекистан{% else %}Özbegistan{% endif %}</option>
-                        <option value="Azerbaycan">🇦🇿 {% if dil_kodu == 'tr' %}Azerbaycan{% elif dil_kodu == 'ru' %}Азербайджан{% else %}Azerbaýjan{% endif %}</option>
-                        <option value="Kazakistan">🇰🇿 {% if dil_kodu == 'tr' %}Kazakistan{% elif dil_kodu == 'ru' %}Казахстан{% else %}Gazagystan{% endif %}</option>
-                        <option value="Diger">{% if dil_kodu == 'tr' %}Diğer{% elif dil_kodu == 'ru' %}Другая{% else %}Başga{% endif %}</option>
-                    </select>
-                </div>
+            <div class="ilts-grup">
+                <label>📞 {{ t.iletisim_form_telefon }}</label>
+                <input type="tel" name="telefon" required placeholder="+993 / +90 ...">
             </div>
-            <div class="form-grup">
-                <label>💬 {{ t.iletisim_form_mesaj }}</label>
-                <textarea name="mesaj" rows="3" placeholder="{{ t.iletisim_form_mesaj }}"></textarea>
+        </div>
+        <div class="ilts-row">
+            <div class="ilts-grup">
+                <label>🌍 {{ t.iletisim_form_ulke }}</label>
+                <input type="text" name="ulke" required placeholder="{% if dil_kodu == 'tr' %}Örn: Kerki{% elif dil_kodu == 'ru' %}Напр: Керки{% else %}Mysal: Kerki{% endif %}">
             </div>
-            <button type="submit" class="gonder-btn">{{ t.iletisim_form_gonder }}</button>
-        </form>
-    </div>
-
-    <!-- OFİSLER -->
-    <div class="iletisim-bilgi-kart">
-        <h3>{{ t.iletisim_adres_baslik }}</h3>
-
-        <div class="ofis-liste" id="ofisler">
-
-    <!-- İstanbul -->
-    <div class="ofis-kart">
-        <span class="ofis-bayrak">🇹🇷</span>
-        <div class="ofis-bilgi">
-            <h4>{% if dil_kodu == 'tr' %}İstanbul Ofisi{% elif dil_kodu == 'ru' %}Стамбульский офис{% else %}Stambul ofisi{% endif %}</h4>
-            <p>Aksaray mah. Valide Cami sk. No: 8 Kat: 5 OFİS No: 52, FATİH / İSTANBUL</p>
-            <div class="ofis-tel"><a href="tel:+905530890598">📞 +90 553 089 05 98</a> <a href="tel:+905524254697">📞 +90 552 425 46 97</a></div>
+            <div class="ilts-grup">
+                <label>✈️ {{ t.iletisim_form_vize_ulke }}</label>
+                <select name="vize_ulke" id="vize-select" required>
+                    <option value="" disabled selected>{% if dil_kodu == 'tr' %}Seçiniz...{% elif dil_kodu == 'ru' %}Выберите...{% else %}Saýlaň...{% endif %}</option>
+                    <option value="Türkiye">🇹🇷 {% if dil_kodu == 'tr' %}Türkiye{% elif dil_kodu == 'ru' %}Турция{% else %}Türkiýe{% endif %}</option>
+                    <option value="Rusya">🇷🇺 {% if dil_kodu == 'tr' %}Rusya{% elif dil_kodu == 'ru' %}Россия{% else %}Russiýa{% endif %}</option>
+                    <option value="Almanya">🇩🇪 {% if dil_kodu == 'tr' %}Almanya{% elif dil_kodu == 'ru' %}Германия{% else %}Germaniýa{% endif %}</option>
+                    <option value="Dubai/BAE">🇦🇪 Dubai / BAE</option>
+                    <option value="Belçika">🇧🇪 {% if dil_kodu == 'tr' %}Belçika{% elif dil_kodu == 'ru' %}Бельгия{% else %}Belgiýa{% endif %}</option>
+                    <option value="Romanya">🇷🇴 {% if dil_kodu == 'tr' %}Romanya{% elif dil_kodu == 'ru' %}Румыния{% else %}Rumyniýa{% endif %}</option>
+                    <option value="Özbekistan">🇺🇿 {% if dil_kodu == 'tr' %}Özbekistan{% elif dil_kodu == 'ru' %}Узбекистан{% else %}Özbegistan{% endif %}</option>
+                    <option value="Azerbaycan">🇦🇿 {% if dil_kodu == 'tr' %}Azerbaycan{% elif dil_kodu == 'ru' %}Азербайджан{% else %}Azerbaýjan{% endif %}</option>
+                    <option value="Kazakistan">🇰🇿 {% if dil_kodu == 'tr' %}Kazakistan{% elif dil_kodu == 'ru' %}Казахстан{% else %}Gazagystan{% endif %}</option>
+                    <option value="Diger">🌍 {% if dil_kodu == 'tr' %}Diğer{% elif dil_kodu == 'ru' %}Другая{% else %}Başga{% endif %}</option>
+                </select>
+            </div>
         </div>
-    </div>
-
-    <!-- Aşkabat -->
-    <div class="ofis-kart">
-        <span class="ofis-bayrak">🇹🇲</span>
-        <div class="ofis-bilgi">
-            <h4>{% if dil_kodu == 'tr' %}Aşkabat Ofisi{% elif dil_kodu == 'ru' %}Офис Ашхабад{% else %}Aşgabat ofisi{% endif %}</h4>
-            <p>{% if dil_kodu == 'tr' %}Aşkabat, Arkaç Alışveriş Merkezi, 2. kat{% elif dil_kodu == 'ru' %}Ашхабад, ТЦ Аркач, 2-й этаж{% else %}Aşgabat, Arkaç sowda merkezi, 2-nji gaty{% endif %}</p>
-            <div class="ofis-tel"><a href="tel:+99361950920">📞 +993 61 95 09 20</a></div>
+        <div class="ilts-grup">
+            <label>💬 {{ t.iletisim_form_mesaj }}</label>
+            <textarea name="mesaj" rows="3" placeholder="{% if dil_kodu == 'tr' %}Eklemek istedikleriniz...{% elif dil_kodu == 'ru' %}Дополнительная информация...{% else %}Goşmaça maglumat...{% endif %}"></textarea>
         </div>
-    </div>
+        <button type="submit" class="ilts-gonder">{{ t.iletisim_form_gonder }} 🚀</button>
+    </form>
+</div>
 
-    <!-- Mary -->
-    <div class="ofis-kart">
-        <span class="ofis-bayrak">🇹🇲</span>
-        <div class="ofis-bilgi">
-            <h4>{% if dil_kodu == 'tr' %}Mary Ofisi{% elif dil_kodu == 'ru' %}Офис Мары{% else %}Mary ofisi{% endif %}</h4>
-            <p>Mary şäheri, Agzybirlik köçesi, peduçilişanyň garşy tarapy</p>
-            <div class="ofis-tel"><a href="tel:+99363028067">📞 +993 63 02 80 67</a></div>
-        </div>
-    </div>
+<!-- OFİSLER -->
+<div class="ilts-ofisler" id="ofisler">
+    <div class="ilts-bolum-baslik">{{ t.iletisim_adres_baslik }}</div>
+    <div class="ilts-ofis-grid">
 
-    <!-- Kerki -->
-    <div class="ofis-kart">
-        <span class="ofis-bayrak">🇹🇲</span>
-        <div class="ofis-bilgi">
-            <h4>{% if dil_kodu == 'tr' %}Kerki Merkez Ofis{% elif dil_kodu == 'ru' %}Центральный офис Керки{% else %}Kerki merkez ofisi{% endif %}</h4>
-            <p>Lebap welaýatynyň Kerki şäheriniň, S. Niyazow köçesiniň 98-nji jaýy</p>
-            <div class="ofis-tel"><a href="tel:+99371476324">📞 +993 71 47 63 24</a></div>
-        </div>
-    </div>
-
-    <!-- Köytendag -->
-    <div class="ofis-kart">
-        <span class="ofis-bayrak">🇹🇲</span>
-        <div class="ofis-bilgi">
-            <h4>{% if dil_kodu == 'tr' %}Köytendag Ofisi{% elif dil_kodu == 'ru' %}Офис Кёйтендаг{% else %}Köýtendag ofisi{% endif %}</h4>
-            <p>Koytendag etrap, Koytendag şähercesi, Bilim bölümüniň çep tarapy</p>
-            <div class="ofis-tel"><a href="tel:+99364759980">📞 +993 64 75 99 80</a></div>
-        </div>
-    </div>
-
-    <!-- Dänew -->
-    <div class="ofis-kart">
-        <span class="ofis-bayrak">🇹🇲</span>
-        <div class="ofis-bilgi">
-            <h4>{% if dil_kodu == 'tr' %}Dänew Ofisi{% elif dil_kodu == 'ru' %}Офис Дяньов{% else %}Dänew ofisi{% endif %}</h4>
-            <p>Dänew etraby, Dänew şäheri, S.A.Nyýazow köçesi, 5-nji çagalar bagynyň garşysy</p>
-            <div class="ofis-tel"><a href="tel:+99364489920">📞 +993 64 48 89 20</a></div>
-        </div>
-    </div>
-
-    <!-- Döwletli -->
-    <div class="ofis-kart">
-        <span class="ofis-bayrak">🇹🇲</span>
-        <div class="ofis-bilgi">
-            <h4>{% if dil_kodu == 'tr' %}Döwletli Ofisi{% elif dil_kodu == 'ru' %}Офис Дёвлетли{% else %}Döwletli ofisi{% endif %}</h4>
-            <p>Döwletli etrap Döwletli şäherçe, Ärsarybaba ýolunyň ugryndaky Kerim Gurbannepesow köçe 58-nji jaý</p>
-            <div class="ofis-tel"><a href="tel:+99361476324">📞 +993 61 47 63 24</a></div>
-        </div>
-    </div>
-
-    <!-- Köyten-Oba -->
-    <div class="ofis-kart">
-        <span class="ofis-bayrak">🇹🇲</span>
-        <div class="ofis-bilgi">
-            <h4>{% if dil_kodu == 'tr' %}Köyten-Oba Ofisi{% elif dil_kodu == 'ru' %}Офис Кёйтен-Оба{% else %}Köýten-oba ofisi{% endif %}</h4>
-            <p>Lebap welaýatynyň Köýtendag etrabynyň Köýtendag geňeşligi, A.Nyýazow köçe N 46</p>
-            <div class="ofis-tel"><a href="tel:+99364759980">📞 +993 64 75 99 80</a></div>
-        </div>
-    </div>
-
-    <!-- Magdanlı -->
-    <div class="ofis-kart">
-        <span class="ofis-bayrak">🇹🇲</span>
-        <div class="ofis-bilgi">
-            <h4>{% if dil_kodu == 'tr' %}Magdanlı Ofisi{% elif dil_kodu == 'ru' %}Офис Магданлы{% else %}Magdanly ofisi{% endif %}</h4>
-            <p>Lebap welaýatynyň Köýtendag etrabynyň Magdanly şäheri, Garaşsyzlyk köçesiniň 1-nji jaýy</p>
-            <div class="ofis-tel"><a href="tel:+99371596324">📞 +993 71 59 63 24</a></div>
-        </div>
-    </div>
-
-</div><!-- TELEFONLAR -->
-        <div class="iletisim-satir">
-            <span class="ic">📞</span>
-            <div>
-                <a href="tel:+99364489920">+993 64 48 89 20</a><br>
-                <a href="tel:+99361950920">+993 61 95 09 20</a><br>
+        <div class="ilts-ofis-kart">
+            <span class="ilts-ofis-bayrak">🇹🇷</span>
+            <div class="ilts-ofis-ad">{% if dil_kodu == 'tr' %}İstanbul Ofisi{% elif dil_kodu == 'ru' %}Стамбул{% else %}Stambul{% endif %}</div>
+            <div class="ilts-ofis-adres">Aksaray mah. Valide Cami sk. No:8 Kat:5 No:52, FATİH</div>
+            <div class="ilts-ofis-tel">
                 <a href="tel:+905530890598">+90 553 089 05 98</a>
+                <a href="tel:+905524254697">+90 552 425 46 97</a>
             </div>
         </div>
-        <div class="iletisim-satir">
-            <span class="ic">📧</span>
-            <div>
+
+        <div class="ilts-ofis-kart">
+            <span class="ilts-ofis-bayrak">🇹🇲</span>
+            <div class="ilts-ofis-ad">{% if dil_kodu == 'tr' %}Aşkabat Ofisi{% elif dil_kodu == 'ru' %}Ашхабад{% else %}Aşgabat{% endif %}</div>
+            <div class="ilts-ofis-adres">{% if dil_kodu == 'tr' %}Arkaç AVM, 2. kat{% elif dil_kodu == 'ru' %}ТЦ Аркач, 2-й этаж{% else %}Arkaç AVM, 2-nji gat{% endif %}</div>
+            <div class="ilts-ofis-tel"><a href="tel:+99361950920">+993 61 95 09 20</a></div>
+        </div>
+
+        <div class="ilts-ofis-kart">
+            <span class="ilts-ofis-bayrak">🇹🇲</span>
+            <div class="ilts-ofis-ad">{% if dil_kodu == 'tr' %}Mary Ofisi{% elif dil_kodu == 'ru' %}Мары{% else %}Mary{% endif %}</div>
+            <div class="ilts-ofis-adres">{% if dil_kodu == 'tr' %}Mary, Agzybirlik caddesi, pedyçiliş. karşısı{% elif dil_kodu == 'ru' %}г. Мары, ул. Агзыбирлик, напротив педучилища{% else %}Mary, Agzybirlik köçesi, peduçilişanyň garşysy{% endif %}</div>
+            <div class="ilts-ofis-tel"><a href="tel:+99363028067">+993 63 02 80 67</a></div>
+        </div>
+
+        <div class="ilts-ofis-kart">
+            <span class="ilts-ofis-bayrak">🇹🇲</span>
+            <div class="ilts-ofis-ad">{% if dil_kodu == 'tr' %}Kerki Merkez{% elif dil_kodu == 'ru' %}Керки (центр){% else %}Kerki merkez{% endif %}</div>
+            <div class="ilts-ofis-adres">S. Niyazow köçesi 98-nji jaý, Kerki</div>
+            <div class="ilts-ofis-tel"><a href="tel:+99371476324">+993 71 47 63 24</a></div>
+        </div>
+
+        <div class="ilts-ofis-kart">
+            <span class="ilts-ofis-bayrak">🇹🇲</span>
+            <div class="ilts-ofis-ad">{% if dil_kodu == 'tr' %}Köytendag Ofisi{% elif dil_kodu == 'ru' %}Кёйтендаг{% else %}Köýtendag{% endif %}</div>
+            <div class="ilts-ofis-adres">{% if dil_kodu == 'tr' %}Köytendag, Bilim Bölümü sol yanı{% elif dil_kodu == 'ru' %}Кёйтендаг, слева от Отдела образования{% else %}Köýtendag, Bilim bölümüniň çep tarapy{% endif %}</div>
+            <div class="ilts-ofis-tel"><a href="tel:+99364759980">+993 64 75 99 80</a></div>
+        </div>
+
+        <div class="ilts-ofis-kart">
+            <span class="ilts-ofis-bayrak">🇹🇲</span>
+            <div class="ilts-ofis-ad">{% if dil_kodu == 'tr' %}Dänew Ofisi{% elif dil_kodu == 'ru' %}Дяньов{% else %}Dänew{% endif %}</div>
+            <div class="ilts-ofis-adres">S.A.Nyýazow köçesi, 5-nji çagalar bagynyň garşysy</div>
+            <div class="ilts-ofis-tel"><a href="tel:+99364489920">+993 64 48 89 20</a></div>
+        </div>
+
+        <div class="ilts-ofis-kart">
+            <span class="ilts-ofis-bayrak">🇹🇲</span>
+            <div class="ilts-ofis-ad">{% if dil_kodu == 'tr' %}Döwletli Ofisi{% elif dil_kodu == 'ru' %}Дёвлетли{% else %}Döwletli{% endif %}</div>
+            <div class="ilts-ofis-adres">Kerim Gurbannepesow köçe 58-nji jaý, Döwletli</div>
+            <div class="ilts-ofis-tel"><a href="tel:+99361476324">+993 61 47 63 24</a></div>
+        </div>
+
+        <div class="ilts-ofis-kart">
+            <span class="ilts-ofis-bayrak">🇹🇲</span>
+            <div class="ilts-ofis-ad">{% if dil_kodu == 'tr' %}Köyten-Oba Ofisi{% elif dil_kodu == 'ru' %}Кёйтен-Оба{% else %}Köýten-oba{% endif %}</div>
+            <div class="ilts-ofis-adres">A.Nyýazow köçe N 46, Köýtendag geňeşligi</div>
+            <div class="ilts-ofis-tel"><a href="tel:+99364759980">+993 64 75 99 80</a></div>
+        </div>
+
+        <div class="ilts-ofis-kart">
+            <span class="ilts-ofis-bayrak">🇹🇲</span>
+            <div class="ilts-ofis-ad">{% if dil_kodu == 'tr' %}Magdanlı Ofisi{% elif dil_kodu == 'ru' %}Магданлы{% else %}Magdanly{% endif %}</div>
+            <div class="ilts-ofis-adres">Garaşsyzlyk köçesi 1-nji jaý, Magdanly</div>
+            <div class="ilts-ofis-tel"><a href="tel:+99371596324">+993 71 59 63 24</a></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- İLETİŞİM BİLGİLERİ -->
+<div class="ilts-bilgiler">
+    <div class="ilts-bolum-baslik">{% if dil_kodu == 'tr' %}Telefon & E-posta{% elif dil_kodu == 'ru' %}Телефон и E-mail{% else %}Telefon we E-poçta{% endif %}</div>
+    <div class="ilts-bilgi-grid">
+        <div class="ilts-bilgi-kart">
+            <span class="ilts-bilgi-ikon">📞</span>
+            <div class="ilts-bilgi-icerik">
+                <div class="ilts-bilgi-etiket">Türkmenistan</div>
+                <a href="tel:+99364489920">+993 64 48 89 20</a>
+                <a href="tel:+99361950920">+993 61 95 09 20</a>
+            </div>
+        </div>
+        <div class="ilts-bilgi-kart">
+            <span class="ilts-bilgi-ikon">📞</span>
+            <div class="ilts-bilgi-icerik">
+                <div class="ilts-bilgi-etiket">{% if dil_kodu == 'tr' %}Türkiye{% elif dil_kodu == 'ru' %}Турция{% else %}Türkiýe{% endif %}</div>
+                <a href="tel:+905530890598">+90 553 089 05 98</a>
+                <a href="tel:+905524254697">+90 552 425 46 97</a>
+            </div>
+        </div>
+        <div class="ilts-bilgi-kart">
+            <span class="ilts-bilgi-ikon">📧</span>
+            <div class="ilts-bilgi-icerik">
+                <div class="ilts-bilgi-etiket">E-Mail</div>
                 <a href="mailto:info@trustedutm.com">info@trustedutm.com</a>
             </div>
         </div>
-        <div class="sosyal-butonlar">
-            <a href="https://wa.me/905425468564" class="sosyal-btn whatsapp-link" target="_blank">WhatsApp: +90 542 546 85 64</a>
-            <a href="https://wa.me/905524254697" class="sosyal-btn whatsapp-link" target="_blank">WhatsApp: +90 552 425 46 97</a>
-            <a href="https://instagram.com/trusttmconsulting" class="sosyal-btn instagram-link" target="_blank">Instagram: @trusttmconsulting</a>
-            <a href="https://www.tiktok.com/@trusttmconsulting" class="sosyal-btn tiktok-link" target="_blank">TikTok: @trusttmconsulting</a>
+        <div class="ilts-bilgi-kart">
+            <span class="ilts-bilgi-ikon">🕐</span>
+            <div class="ilts-bilgi-icerik">
+                <div class="ilts-bilgi-etiket">{% if dil_kodu == 'tr' %}Çalışma Saatleri{% elif dil_kodu == 'ru' %}Часы работы{% else %}Iş sagatlary{% endif %}</div>
+                <a style="cursor:default;pointer-events:none;">{% if dil_kodu == 'tr' %}Pazartesi – Cumartesi{% elif dil_kodu == 'ru' %}Пн – Сб{% else %}Duşenbe – Şenbe{% endif %}</a>
+                <a style="cursor:default;pointer-events:none;">09:00 – 18:00</a>
+            </div>
         </div>
-<style>
-.sosyal-butonlar { display:flex; flex-direction:column; gap:10px; margin-top:1rem; }
-.sosyal-btn {
-    display:block; padding:12px 18px; border-radius:12px;
-    font-weight:700; font-size:0.88rem; text-decoration:none;
-    text-align:center; letter-spacing:0.3px;
-    transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
-}
-.sosyal-btn:hover { transform: translateY(-2px) scale(1.02); filter: brightness(1.15); }
-.whatsapp-link {
-    background: #25D366;
-    color: white !important;
-    box-shadow: 0 4px 15px rgba(37,211,102,0.35);
-}
-.whatsapp-link:hover { box-shadow: 0 6px 28px rgba(37,211,102,0.65); }
-.instagram-link {
-    background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-    color: white !important;
-    box-shadow: 0 4px 15px rgba(220,39,67,0.35);
-}
-.instagram-link:hover { box-shadow: 0 6px 28px rgba(220,39,67,0.6); }
-.tiktok-link {
-    background: #010101;
-    color: white !important;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-    border: 1px solid rgba(255,255,255,0.1);
-}
-.tiktok-link:hover { box-shadow: 0 6px 28px rgba(105,201,208,0.4), 0 0 0 1px #69c9d0; }
-</style>
     </div>
 </div>
+
+<!-- SOSYAL MEDYA -->
+<div class="ilts-sosyal">
+    <div class="ilts-bolum-baslik">{% if dil_kodu == 'tr' %}Sosyal Medya{% elif dil_kodu == 'ru' %}Социальные сети{% else %}Sosial media{% endif %}</div>
+    <div class="ilts-sosyal-grid">
+
+        <a href="https://wa.me/905425468564" class="ilts-sosyal-btn ilts-wa1" target="_blank">
+            <div class="ilts-sosyal-ikon">
+                <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </div>
+            <div class="ilts-sosyal-yazi">WhatsApp <span>+90 542 546 85 64</span></div>
+        </a>
+
+        <a href="https://wa.me/905524254697" class="ilts-sosyal-btn ilts-wa2" target="_blank">
+            <div class="ilts-sosyal-ikon">
+                <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </div>
+            <div class="ilts-sosyal-yazi">WhatsApp <span>+90 552 425 46 97</span></div>
+        </a>
+
+        <a href="https://instagram.com/trusttmconsulting" class="ilts-sosyal-btn ilts-ig" target="_blank">
+            <div class="ilts-sosyal-ikon">
+                <svg viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </div>
+            <div class="ilts-sosyal-yazi">Instagram <span>@trusttmconsulting</span></div>
+        </a>
+
+        <a href="https://www.tiktok.com/@trusttmconsulting" class="ilts-sosyal-btn ilts-tt" target="_blank">
+            <div class="ilts-sosyal-ikon">
+                <svg viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.78a4.85 4.85 0 01-1.02-.09z"/></svg>
+            </div>
+            <div class="ilts-sosyal-yazi">TikTok <span>@trusttmconsulting</span></div>
+        </a>
+
+    </div>
+</div>
+
+</div>
+
+<script>
+function vizeSecDir(ulke, el) {
+    var sel = document.getElementById('vize-select');
+    if (sel) {
+        for (var i = 0; i < sel.options.length; i++) {
+            if (sel.options[i].value === ulke) { sel.selectedIndex = i; break; }
+        }
+    }
+    document.querySelectorAll('.ilts-ulke-chip').forEach(function(c){ c.classList.remove('aktif'); });
+    if (el) el.classList.add('aktif');
+    var form = document.querySelector('.ilts-form-bolum');
+    if (form) form.scrollIntoView({behavior:'smooth', block:'start'});
+}
+</script>
 
 {% endblock %}
