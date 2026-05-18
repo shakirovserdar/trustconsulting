@@ -379,31 +379,7 @@ function aiModalAc() {
 .udk-fiyat  { color: #5bc4f5; font-size: 0.78rem; font-weight: 600; }
 </style>
 
-<!-- GLOBE EMBED - Üniversitelerin altında -->
-<div style="margin-top:2rem;border-radius:16px;overflow:hidden;background:#060f1e;position:relative;">
-    <div style="padding:14px 16px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.07);">
-        <div style="display:flex;align-items:center;gap:8px;">
-            <span style="font-size:1.1rem;">🌍</span>
-            <span style="color:white;font-weight:700;font-size:0.9rem;">
-                {% if dil_kodu == 'tr' %}Üniversite Dünya Haritası{% elif dil_kodu == 'ru' %}Карта университетов мира{% else %}Uniwersitetleriň dünýä kartasy{% endif %}
-            </span>
-        </div>
-        <a href="{{ url_for('globe') }}" target="_blank"
-           style="display:flex;align-items:center;gap:5px;background:linear-gradient(135deg,#2575fc,#6a11cb);color:white;text-decoration:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;">
-            ⛶ {% if dil_kodu == 'tr' %}Tam ekran{% elif dil_kodu == 'ru' %}На весь экран{% else %}Doly ekran{% endif %}
-        </a>
-    </div>
-    <div style="position:relative;height:420px;">
-        <iframe src="{{ url_for('globe') }}?embed=1"
-                style="width:100%;height:100%;border:none;display:block;"
-                loading="lazy"
-                title="Üniversite Haritası">
-        </iframe>
-    </div>
-    <div style="padding:8px 14px;text-align:center;color:rgba(255,255,255,0.35);font-size:0.7rem;">
-        {% if dil_kodu == 'tr' %}Şehre tıklayarak üniversiteleri görün · Kaydır ve yaklaştır{% elif dil_kodu == 'ru' %}Нажмите на город для просмотра университетов{% else %}Şähere basyp uniwersitetleri görüň{% endif %}
-    </div>
-</div>
+
 
 
 
